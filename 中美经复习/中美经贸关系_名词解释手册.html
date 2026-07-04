@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中美经贸关系 · 名词解释手册</title>
+<style>
+  :root {
+    --primary: #1a237e;
+    --primary-light: #3f51b5;
+    --accent: #e65100;
+    --bg: #f0f2f5;
+    --card: #fff;
+    --text: #333;
+    --text-secondary: #555;
+    --muted: #888;
+    --border: #e0e0e0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 40%, #283593 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero h1 { font-size: 2.4em; margin-bottom: 8px; position: relative; z-index: 1; }
+  .hero p { font-size: 1.1em; opacity: .85; position: relative; z-index: 1; }
+  .hero .badge-row { margin-top: 16px; position: relative; z-index: 1; }
+  .hero .badge {
+    display: inline-block; background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    padding: 4px 16px; border-radius: 20px;
+    margin: 4px 6px; font-size: .88em;
+  }
+
+  /* ── Container ── */
+  .container { max-width: 1000px; margin: -30px auto 0; padding: 0 20px 60px; position: relative; z-index: 2; }
+
+  /* ── Search ── */
+  .search-bar {
+    background: var(--card); border-radius: 14px; padding: 20px 28px;
+    margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .search-bar input {
+    flex: 1; min-width: 200px; border: 2px solid #e0e0e0;
+    border-radius: 10px; padding: 10px 16px; font-size: .95em;
+    font-family: inherit; outline: none; transition: border .15s;
+  }
+  .search-bar input:focus { border-color: var(--primary); }
+  .search-bar .result-hint { color: var(--muted); font-size: .85em; white-space: nowrap; }
+
+  /* ── Index nav ── */
+  .alpha-nav {
+    background: var(--card); border-radius: 12px; padding: 14px 20px;
+    margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  }
+  .alpha-nav .alpha-label { font-weight: 700; color: var(--primary); margin-right: 6px; }
+  .alpha-nav a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    text-decoration: none; color: var(--primary-light); font-weight: 600;
+    font-size: .88em; transition: all .12s;
+  }
+  .alpha-nav a:hover { background: #e8eaf6; }
+  .alpha-nav a.empty { color: #ccc; pointer-events: none; }
+
+  /* ── Section heading ── */
+  .section-head {
+    font-size: 1.5em; color: var(--primary); margin: 32px 0 16px;
+    padding-bottom: 8px; border-bottom: 3px solid var(--primary);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-head .letter {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--primary); color: #fff; font-size: 1.1em; font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* ── Term card ── */
+  .term {
+    background: var(--card); border-radius: 10px; padding: 20px 24px;
+    margin-bottom: 14px; box-shadow: 0 1px 6px rgba(0,0,0,.04);
+    border-left: 4px solid var(--primary-light);
+    transition: box-shadow .15s;
+  }
+  .term:hover { box-shadow: 0 3px 14px rgba(0,0,0,.08); }
+  .term .term-head {
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .term .term-name { font-size: 1.15em; font-weight: 700; color: var(--primary); }
+  .term .term-en { font-size: .88em; color: var(--muted); font-style: italic; }
+  .term .term-tags { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+  .term .tag {
+    font-size: .72em; padding: 1px 10px; border-radius: 10px;
+    background: #e8eaf6; color: var(--primary); white-space: nowrap;
+  }
+  .term .tag.lecture { background: #fff3e0; color: #e65100; }
+  .term .tag.key { background: #fce4ec; color: #c62828; }
+  .term .term-desc { color: var(--text-secondary); font-size: .95em; }
+  .term .term-extra {
+    margin-top: 10px; padding-top: 10px; border-top: 1px dashed #e0e0e0;
+    font-size: .88em; color: #777;
+  }
+  .term .term-extra strong { color: #555; }
+
+  /* ── Back to top ── */
+  .back-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--primary); color: #fff; border: none;
+    font-size: 1.3em; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .25s; pointer-events: none; z-index: 10;
+  }
+  .back-top.show { opacity: 1; pointer-events: auto; }
+  .back-top:hover { background: #283593; }
+
+  /* ── Footer ── */
+  .footer { text-align: center; padding: 30px; color: var(--muted); font-size: .85em; }
+
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 1.6em; }
+    .term { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <h1>📖 中美经贸关系 · 名词解释手册</h1>
+  <p>九讲核心概念全覆盖 · 中英对照 · 按讲标注出处</p>
+  <div class="badge-row">
+    <span class="badge">📚 9讲全收录</span>
+    <span class="badge">🔤 按字母索引</span>
+    <span class="badge">🏷️ 按讲分组</span>
+    <span class="badge">🔍 支持搜索</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════ SEARCH ═══════════════ -->
+<div class="search-bar">
+  <input type="text" id="searchBox" placeholder="🔍  输入关键词搜索名词……（支持中文/英文/拼音）" oninput="doSearch()">
+  <span class="result-hint" id="resultHint"></span>
+</div>
+
+<!-- ═══════════════ ALPHA INDEX ═══════════════ -->
+<div class="alpha-nav" id="alphaNav">
+  <span class="alpha-label">字母索引：</span>
+</div>
+
+<!-- ═══════════════ GLOSSARY ENTRIES ═══════════════ -->
+<!-- Note: entries are in Chinese-pinyin alphabetical groups for easy lookup -->
+
+<!-- ======= A ======= -->
+<div class="section-head" id="sec-A"><span class="letter">A</span> A</div>
+
+<div class="term" data-lecture="5" data-keywords="安全化 经贸关系安全化">
+  <div class="term-head">
+    <span class="term-name">安全化（经贸关系安全化）</span>
+    <span class="term-en">Securitization of Economic Relations</span>
+    <span class="term-tags"><span class="tag lecture">第五讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">将原本属于经济领域的贸易、投资和技术交流问题，重新定义为涉及国家安全的战略竞争问题。美国对华战略定位从"负责任的利益攸关方"转变为"最主要的战略竞争对手"，经贸议题从"互利共赢"被重新框定为"战略竞争"与"生存威胁"。</div>
+  <div class="term-extra"><strong>四大表现：</strong>①议题性质转变；②政策工具军事化（232条款、实体清单）；③供应链"去风险"；④摩擦领域全面扩展至高科技、数据安全、5G、学术交流。<br>
+  <strong>四大原因：</strong>实力对比变化与战略互疑、两党对华强硬共识、科技革命竞争白热化、WTO等多边机制失效。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="案例研究 比较案例">
+  <div class="term-head">
+    <span class="term-name">安全、财富、公正、自由（四大价值）</span>
+    <span class="term-en">Security, Wealth, Justice, Freedom</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">苏珊·斯特兰奇（Susan Strange）提出社会围绕四类基本价值观建构：安全、财富、公正、自由。IPE的关键问题是"谁从中得到什么？谁受益谁受损？谁承担风险？"她强调国际体系是"人为选择"的结果，而非自然形成。</div>
+</div>
+
+<!-- ======= B ======= -->
+<div class="section-head" id="sec-B"><span class="letter">B</span> B</div>
+
+<div class="term" data-lecture="1" data-keywords="霸权稳定论 Hegemonic Stability Theory">
+  <div class="term-head">
+    <span class="term-name">霸权稳定论</span>
+    <span class="term-en">Hegemonic Stability Theory</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">该理论认为霸权国家的存在使自由贸易成为可能。一战前英国、二战后美国充当霸权国——开放本国市场、容忍他国"搭便车"行为、稳定国际货币体系。当霸权国经济衰落时，贸易体制将陷入混乱。这一理论为理解美国对自由贸易态度的变化提供了宏观解释框架。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="巴统 COCOM 出口管制 冷战">
+  <div class="term-head">
+    <span class="term-name">巴统（COCOM）</span>
+    <span class="term-en">Coordinating Committee for Multilateral Export Controls</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">1950年以美国为首的西方国家成立的"巴黎出口控制协调委员会"，在冷战时期对以苏联为首的社会主义国家实施集体出口管制，是西方技术封锁的核心多边机制。中国被列入CCL的Z组（禁运类），实施比苏联更严的"中国差价"管制。1996年被"瓦森纳安排"取代。</div>
+</div>
+
+<!-- ======= C ======= -->
+<div class="section-head" id="sec-C"><span class="letter">C</span> C</div>
+
+<div class="term" data-lecture="8" data-keywords="CIPS 人民币跨境支付系统 去美元化">
+  <div class="term-head">
+    <span class="term-name">CIPS（人民币跨境支付系统）</span>
+    <span class="term-en">Cross-Border Interbank Payment System</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">中国建立的替代SWIFT的人民币跨境支付体系。截至2026年3月：194家直接参与者、1597家间接参与者、覆盖126国。2026年4月单日交易量1.22万亿元人民币（历史新高）。在中国跨境收付款中人民币占比已达56%，但全球SWIFT支付份额仍仅为3.1%（全球第五）。</div>
+</div>
+
+<div class="term" data-lecture="3" data-keywords="Chimerica 中美国 弗格森">
+  <div class="term-head">
+    <span class="term-name">"中美国"（Chimerica）</span>
+    <span class="term-en">Chimerica (Niall Ferguson, 2006)</span>
+    <span class="term-tags"><span class="tag lecture">第三讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">Niall Ferguson于2006年提出的概念，描述21世纪初中美极度紧密的互补共生关系。中国负责储蓄和生产（出口廉价商品），美国负责消费和负债（输出美元和金融资产）。金融循环：中国赚美元→买美债→压低美国利率→刺激对中国商品的需求。通俗理解为"中国生产、美国消费；中国存钱、美国花钱；中国赚的美元又借回美国"。当前该现象已被认为名存实亡。</div>
+</div>
+
+<div class="term" data-lecture="7" data-keywords="CFIUS 美国外国投资委员会 投资审查">
+  <div class="term-head">
+    <span class="term-name">CFIUS（美国外国投资委员会）</span>
+    <span class="term-en">Committee on Foreign Investment in the United States</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span></span>
+  </div>
+  <div class="term-desc">美国财政部牵头的跨部门委员会，负责审查可能影响国家安全的外国投资交易。重点关注"TID businesses"（关键技术、关键基础设施、敏感个人数据）。经由FIRRMA（2018）大幅扩权，可审查非控制性投资和特定房地产交易。核心针对中国对美投资。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="产业内贸易 公司内贸易 贸易结构">
+  <div class="term-head">
+    <span class="term-name">产业内贸易与公司内贸易</span>
+    <span class="term-en">Intra-industry Trade & Intra-firm Trade</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc"><strong>产业内贸易：</strong>比较优势相似的国家之间同类产品互相进出口（如中美互相出口电子产品），由规模经济、消费者口味差异、产品差异化推动。挑战了传统H-O理论认为贸易只发生在不同要素禀赋国之间的预测。<br><strong>公司内贸易：</strong>跨国公司全球布局的结果——同一公司的母公司与海外子公司之间、或子公司与子公司之间的跨境交易。1990年代末50%以上的美日贸易是公司内贸易。是理解中美贸易中"跨国公司既出口又进口"现象的关键概念。</div>
+</div>
+
+<div class="term" data-lecture="3" data-keywords="China Shock 中国冲击">
+  <div class="term-head">
+    <span class="term-name">"中国冲击"（China Shock）</span>
+    <span class="term-en">China Shock (Autor, Dorn & Hanson, 2013)</span>
+    <span class="term-tags"><span class="tag lecture">第三讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">指中国进口竞争对美国局部劳动力市场造成的剧烈冲击。Autor, Dorn & Hanson（2013）实证研究发现，中国进口解释了同期美国制造业就业下降的约四分之一。冲击分为两波——第一次（1990s-2011）：纺织、制鞋、家具等低端产业冲击蓝领工人；第二次（2023-2026）：电动汽车、半导体、绿色能源冲击工程师和白领阶层。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="CPTPP 全面与进步跨太平洋伙伴关系协定">
+  <div class="term-head">
+    <span class="term-name">CPTPP（全面与进步跨太平洋伙伴关系协定）</span>
+    <span class="term-en">Comprehensive and Progressive Agreement for Trans-Pacific Partnership</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">由TPP演变而来的高标准区域贸易协定，目前13个成员国（继英国后哥斯达黎加加入）。高标准涵盖：国企规则、劳工标准、环境标准、数字经济、知识产权保护。中国已提交申请正在谈判中。</div>
+</div>
+
+<!-- ======= D ======= -->
+<div class="section-head" id="sec-D"><span class="letter">D</span> D</div>
+
+<div class="term" data-lecture="5" data-keywords="脱钩 Decoupling 去风险">
+  <div class="term-head">
+    <span class="term-name">脱钩（Decoupling）</span>
+    <span class="term-en">Decoupling</span>
+    <span class="term-tags"><span class="tag lecture">第五讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">在经济、科技、供应链等领域主动减少或切断相互依赖关系，本质是战略性经济分离。CSIS（2023）将其定义为"竞争的极端形式"。与"去风险"不同，脱钩追求全面经济分离而非选择性降低依赖。当前中美更可能是"局部脱钩"与"竞争性相互依赖"并存。</div>
+</div>
+
+<div class="term" data-lecture="5" data-keywords="去风险 De-risking 耶伦">
+  <div class="term-head">
+    <span class="term-name">去风险（De-risking）</span>
+    <span class="term-en">De-risking</span>
+    <span class="term-tags"><span class="tag lecture">第五讲</span></span>
+  </div>
+  <div class="term-desc">通过供应链多元化、技术限制、投资审查等方式降低对特定国家的经济依赖，不追求全面经济分离。耶伦（2023）明确表示"去风险不是脱钩"。是拜登政府"小院高墙"策略的理论基础，强调精准控制而非全面切断。</div>
+</div>
+
+<div class="term" data-lecture="3" data-keywords="大象曲线 Elephant Curve Milanovic">
+  <div class="term-head">
+    <span class="term-name">"大象曲线"（Elephant Curve）</span>
+    <span class="term-en">Elephant Curve (Milanovic, 2016)</span>
+    <span class="term-tags"><span class="tag lecture">第三讲</span></span>
+  </div>
+  <div class="term-desc">Milanovic（2016）描绘1988-2008年间全球不同收入阶层的实际收入增长曲线，因形状似大象而得名。核心发现：全球化收益分配严重不均——西方中产阶级是获益最少的群体之一（"象背"低谷），而全球顶层1%和新兴市场中产获益最大。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="多边主义 全球治理 中美竞争">
+  <div class="term-head">
+    <span class="term-name">多边主义 vs 单边主义（全球治理中的中美分歧）</span>
+    <span class="term-en">Multilateralism vs Unilateralism</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">中国主张"真正的多边主义"——共商共建共享、提升发展中国家发言权；美国倾向于单边主义+有选择的多边主义——"公平"替代"自由"、美国优先。这是中美在全球经济治理中的根本分歧之一。</div>
+</div>
+
+<div class="term" data-lecture="8" data-keywords="债务人幸事 Exorbitant Privilege 美元特权">
+  <div class="term-head">
+    <span class="term-name">"债务人幸事"（Exorbitant Privilege）</span>
+    <span class="term-en">Exorbitant Privilege</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span></span>
+  </div>
+  <div class="term-desc">美元作为全球头号储备货币的特殊地位——其他国家必须以实际资源换取美元储备，而美国只需印钞即可购买全球商品和服务。这使得美国能以本币发债弥补赤字，长期维持"双赤字"而不必承受典型的国际收支危机。是美元霸权体系的核心体现。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="国际经济 国际政治 IPE视角">
+  <div class="term-head">
+    <span class="term-name">国际经济视角与国内社会视角（IPE四视角之两）</span>
+    <span class="term-en">International Economic & Domestic Social Perspectives</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">IPE四个视角中的两个：<strong>国际经济视角</strong>关注全球生产、金融、技术对国家间关系的影响；<strong>国内社会视角</strong>关注经济社会力量（利益集团、阶级、选民）如何影响国家对外经济决策。另两个为国际政治视角和国内机构视角。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="国际政治视角 国内机构视角 IPE">
+  <div class="term-head">
+    <span class="term-name">国际政治视角与国内机构视角（IPE四视角之两）</span>
+    <span class="term-en">International Political & Domestic Institutional Perspectives</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">IPE四个视角中的两个：<strong>国际政治视角</strong>关注地缘政治、安全战略对国家间经济关系的制约；<strong>国内机构视角</strong>关注国家机构（如议会、行政部门、法院）在经贸政策中的独立决策作用。</div>
+</div>
+
+<!-- ======= E ======= -->
+<div class="section-head" id="sec-E"><span class="letter">E</span> E</div>
+
+<div class="term" data-lecture="7" data-keywords="反向CFIUS OISP 对外投资安全计划 投资审查">
+  <div class="term-head">
+    <span class="term-name">反向CFIUS（OISP / 对外投资安全计划）</span>
+    <span class="term-en">Reverse CFIUS / Outbound Investment Security Program</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">拜登2023年发布行政命令（EO 14105），于2025年1月正式生效，限制美国资本投资中国半导体、量子计算、人工智能三大敏感技术领域。与CFIUS审查"钱进来"不同，反向CFIUS审查"钱出去"——管控美国资本流向竞争对手国家的高科技产业。</div>
+</div>
+
+<!-- ======= F ======= -->
+<div class="section-head" id="sec-F"><span class="letter">F</span> F</div>
+
+<div class="term" data-lecture="1" data-keywords="复合相互依赖 Keohane Nye 相互依赖">
+  <div class="term-head">
+    <span class="term-name">复合相互依赖（Complex Interdependence）</span>
+    <span class="term-en">Complex Interdependence (Keohane & Nye)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">Keohane和Nye提出的概念，与现实主义核心假设不同：①多渠道联系（政府、跨国公司、NGO等多行为体）；②议题间缺乏等级（经济/环境可与军事安全同等重要）；③武力低效性（高度相互依赖的伙伴间使用武力"损人不利己"）。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="FDPR 外国直接产品规则 华为 台积电">
+  <div class="term-head">
+    <span class="term-name">外国直接产品规则（FDPR）</span>
+    <span class="term-en">Foreign Direct Product Rule</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">美国出口管制中的域外管辖机制——只要外国生产的产品使用了美国软件或技术达到一定比例，即受美国管辖。2020年首次对华为动用，可切断台积电等非美国代工厂为华为代工芯片。体现美国出口管制法律的治外法权特征。</div>
+</div>
+
+<div class="term" data-lecture="7" data-keywords="FIRRMA 外国投资风险审查现代化法 2018">
+  <div class="term-head">
+    <span class="term-name">FIRRMA（《外国投资风险审查现代化法》, 2018）</span>
+    <span class="term-en">Foreign Investment Risk Review Modernization Act</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">2018年通过，大幅扩大CFIUS权限：引入对非控制性投资的审查权、扩大对特定房地产交易的审查、强化强制申报制度。法案起草人明确表示用意之一是针对"中国制造2025"。与ECRA相辅相成：FIRRMA审查资金进入，ECRA界定受控技术。</div>
+</div>
+
+<div class="term" data-lecture="7" data-keywords="负面清单 准入前国民待遇 外商投资">
+  <div class="term-head">
+    <span class="term-name">负面清单管理模式</span>
+    <span class="term-en">Negative List + Pre-establishment National Treatment</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span></span>
+  </div>
+  <div class="term-desc">中国现行外资管理体制核心——除负面清单列明的限制/禁止行业外，外资在准入阶段即享受与内资同等待遇。2013年上海自贸区试点，后推广至全国，替代了原先的逐案审批制，是中国外资管理的制度性突破。</div>
+</div>
+
+<!-- ======= G ======= -->
+<div class="section-head" id="sec-G"><span class="letter">G</span> G</div>
+
+<div class="term" data-lecture="2" data-keywords="GVC 全球价值链 供应链">
+  <div class="term-head">
+    <span class="term-name">全球价值链（GVC）</span>
+    <span class="term-en">Global Value Chain</span>
+    <span class="term-tags"><span class="tag lecture">第二讲</span></span>
+  </div>
+  <div class="term-desc">产品从设计、原材料、制造、组装到销售各环节在全球范围内分布。中国从"世界工厂"（劳动密集型组装）转为全球供应链枢纽——加工贸易从"两头在外"转向一般贸易、增加国内附加值。是全球化的核心组织方式，也是中美"脱钩"讨论的关键维度。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="国际机制 International Regimes 制度 规则">
+  <div class="term-head">
+    <span class="term-name">国际机制（International Regimes）</span>
+    <span class="term-en">International Regimes/Institutions</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">"在一特定国际关系领域中，围绕行为体预期汇合而形成的一整套显性或隐性的原则、规范、规则和决策程序"。功能包括：降低国家间交易成本、提供信息透明度、建立稳定预期。WTO是多边贸易机制的核心代表。</div>
+</div>
+
+<div class="term" data-lecture="8" data-keywords="国际货币体系 超主权储备货币 周小川">
+  <div class="term-head">
+    <span class="term-name">国际货币体系改革（超主权储备货币）</span>
+    <span class="term-en">International Monetary System Reform (Zhou Xiaochuan, 2009)</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">周小川（2009）在G20等平台推动的核心主张——创建不依赖单一国家主权（即美元）的国际储备货币，以解决当前国际货币体系的内在缺陷（"特里芬难题"）。中国推动SDR作用扩大、推动人民币国际化均是这一方向的实践探索。人民币国际化进展（2026年）：SWIFT全球支付份额3.1%（第五）、中国跨境收付中人民币占比56%、离岸人民币债券2440亿美元。但仍远弱于美元（全球外汇储备约58%、支付份额51.1%），短期内难以替代美元。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="管制清单 商业管制清单 CCL">
+  <div class="term-head">
+    <span class="term-name">CCL商业管制清单（十大类别）</span>
+    <span class="term-en">Commerce Control List (CCL) — 10 Categories</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">美国《出口管理条例》（EAR）下的商业管制清单，包含十大类受控物项：(0)核材料/设施/设备；(1)特种材料/化学品/微生物及毒素；(2)材料加工（高精度机床/增材制造）；(3)电子产品（核心：高端半导体/GAAFET技术）；(4)计算机（核心：高性能计算/超级计算机/云端算力）；(5)电信（第一部分）与信息安全/加密（第二部分）；(6)传感器与激光器；(7)导航与航天航空；(8)海事技术；(9)航空航天与推进系统（高超音速/燃气涡轮发动机）。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="Rogowski 贸易同盟 罗戈夫斯基 土地劳动比率">
+  <div class="term-head">
+    <span class="term-name">Rogowski贸易同盟理论</span>
+    <span class="term-en">Rogowski's Commerce and Coalitions Theory</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">基于斯托尔帕-萨缪尔森定理的政治联盟理论。核心变量：<strong>土地-劳动力比率</strong>。核心洞见：贸易扩大/收缩→受益/受损要素重组政治联盟。</div>
+</div>
+
+<div class="term" data-lecture="3" data-keywords="估值效应 Valuation Effect 美元 资产结构">
+  <div class="term-head">
+    <span class="term-name">估值效应（Valuation Effect）</span>
+    <span class="term-en">Valuation Effect</span>
+    <span class="term-tags"><span class="tag lecture">第三/八讲</span></span>
+  </div>
+  <div class="term-desc">美国通过国际资产与负债的结构差异自动抵消部分经常项目亏损的机制。美国持有海外股权类资产（升值快、收益高），外国持有美债权类资产（升值慢、收益低）→全球股市上涨时海外资产增值远超外债增长→自动改善净国际投资头寸。Gourinchas & Rey（2024）："美国充当世界的风险投资家"——借入便宜债权资金，投资高回报股权资产。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="G20 二十国集团 全球经济治理">
+  <div class="term-head">
+    <span class="term-name">G20（二十国集团）</span>
+    <span class="term-en">Group of Twenty</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">2008年金融危机后取代G7成为"国际经济合作首要论坛"，含发达国家+新兴经济体（中国、印度、巴西等），代表全球经济治理从"西方俱乐部"向"全球性平台"的转变。中国推动G20机制化、在其中推动IMF改革和人民币加入SDR。但G20面临议题过载+决策能力不足+大国博弈加剧的约束。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="APEC 2026 中国 亚太经合组织">
+  <div class="term-head">
+    <span class="term-name">APEC 2026中国年</span>
+    <span class="term-en">APEC 2026 — China's Host Year</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">中国担任2026年APEC东道主，四大举办城市：广州→上海→大连→深圳。主题："建设亚太共同体，促进共同繁荣"。是中国在亚太地区推动多边经济合作、塑造区域规则的重要平台。</div>
+</div>
+
+<div class="term" data-lecture="3" data-keywords="知识产权 IP产业 三大支柱 美国经济">
+  <div class="term-head">
+    <span class="term-name">知识产权产业（IP产业）</span>
+    <span class="term-en">IP-Intensive Industries</span>
+    <span class="term-tags"><span class="tag lecture">第三讲</span></span>
+  </div>
+  <div class="term-desc">美国经济形态四变化中的核心支柱——知识产权化：IP产业2025年约14.6万亿美元，占美国GDP49%。三大支柱：①软件与数字化（40%，AI驱动）；②生物医药与高新制造（专利药/芯片设计）；③品牌与娱乐（好莱坞/迪士尼/NBA等全球IP授权）。是美国从"制造经济"转向"知识经济"的核心标志，也构成其服务贸易顺差的底层支撑。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="产品周期理论 Vernon 创新 产业转移">
+  <div class="term-head">
+    <span class="term-name">产品周期理论（Vernon, 1966）</span>
+    <span class="term-en">Product Cycle Theory (Raymond Vernon)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">四阶段模型解释创新国为何从出口国变为进口国：①创新国研制和垄断阶段（美国率先开发，国内生产）；②外国生产者开始仿制（技术趋于成熟）；③外国产品在国际市场竞争（模仿国开始出口）；④创新国面临进口竞争（技术完全标准化→生产转移到低成本国家→创新国成为进口国）。是解释中美产业转移与投资关系的核心理论。</div>
+</div>
+
+<div class="term" data-lecture="8" data-keywords="次债危机 2008 金融危机 复盘">
+  <div class="term-head">
+    <span class="term-name">2008年次债危机（传导链条）</span>
+    <span class="term-en">Subprime Mortgage Crisis Transmission Chain</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span></span>
+  </div>
+  <div class="term-desc">2001经济衰退+9·11→美联储大幅降息刺激→房地产泡沫膨胀→次级贷款（信用不佳者贷款）泛滥→2006年房价见顶下跌→止赎率飙升→以次贷为底层资产的MBS/CDO等金融衍生品价格崩盘→雷曼兄弟等机构倒闭→全球信贷市场冻结→全球金融危机。2000-2007年金融衍生品年均增速41.5%，2007年全球金融资产和衍生品规模远超全球GDP。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="全球分裂 两个平行市场 冷战">
+  <div class="term-head">
+    <span class="term-name">全球经济的分裂风险（两个平行市场）</span>
+    <span class="term-en">Global Economic Fragmentation / Two Parallel Markets</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">全球经济可能分化为以美国和中国为中心的两个平行市场体系的风险情景。技术标准、支付体系、供应链、贸易规则各自独立→全球效率损失。IMF（2024）估算供应链重组可能导致全球GDP损失约5%（约4.5万亿美元）。历史类比：两次世界大战间期的经济分裂、冷战时期的东西方两大阵营。关键变量：中美关系走向。</div>
+</div>
+
+<div class="term" data-lecture="4" data-keywords="政治文化 法律主义 关系本位 中美比较">
+  <div class="term-head">
+    <span class="term-name">政治文化差异（美国法律主义 vs 中国关系本位）</span>
+    <span class="term-en">Legalistic vs Relationship-Based Political Culture</span>
+    <span class="term-tags"><span class="tag lecture">第四讲</span></span>
+  </div>
+  <div class="term-desc">中美经贸政策制定的深层文化差异。<strong>美国——法律主义与规则导向：</strong>政策高度依赖成文法和透明行政程序，具有契约性和对抗性；<strong>中国——关系本位与结果导向：</strong>"原则导向"+集体决策灵活性，倾向通过高层对话和关系协调化解矛盾。这一差异影响了双方在国际谈判中的策略选择与相互理解。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="多边出口管制 四机制 核供应集团 导弹 澳大利亚集团">
+  <div class="term-head">
+    <span class="term-name">多边出口管制四机制</span>
+    <span class="term-en">Four Multilateral Export Control Regimes</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">美国主导的四大多边出口管制机制：①<strong>瓦森纳安排</strong>（两用物质+军需品，33国）；②<strong>核供应集团</strong>（防止核扩散，34国）；③<strong>导弹技术控制机制</strong>（32国）；④<strong>澳大利亚集团</strong>（化学/生物武器，26国）。四者构成美国主导的多边出口管制体系，是美国IEC（实施出口管制）机制和联盟化封锁的制度基础。</div>
+</div>
+
+  <div class="term" data-lecture="9" data-keywords="G2 中美共治 Chinamerica 全球治理">
+  <div class="term-head">
+    <span class="term-name">G2（"中美共治"）</span>
+    <span class="term-en">G2 / "Chinamerica" Governance</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">国际社会曾提出的中美两国共同领导全球治理的构想。中国从一开始便明确否定——既避免塑造与美国"共治"的外部印象，又要统筹兼顾传统大国与新兴大国关系，维护发展中国家的整体利益。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="Gilpin 吉尔平 国家 市场">
+  <div class="term-head">
+    <span class="term-name">国家逻辑 vs 市场逻辑（吉尔平）</span>
+    <span class="term-en">State Logic vs Market Logic (Gilpin)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">吉尔平对IPE根本张力的经典概括：<strong>国家逻辑（政治）</strong>——核心是权力、安全和主权，追求相对收益，通过干预维护国家利益；<strong>市场逻辑（经济）</strong>——核心是财富和效率，打破边界，追求绝对收益。名言："没有市场的国家是效率低下的，而没有国家的市场则是无序的。"</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="公共选择理论 贸易政治 保护主义">
+  <div class="term-head">
+    <span class="term-name">公共选择理论（在贸易政治中的应用）</span>
+    <span class="term-en">Public Choice Theory (Trade Politics)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">以经济人假定（理性自利）分析政治市场：贸易保护主义是"需求方"（受进口冲击的产业和工人）与"供给方"（政客寻求选票和政治献金）在政治市场上博弈的结果。关税可被视为政治市场的均衡价格，而非单纯的经济政策工具。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="国际机制约束论 贸易自由化 WTO">
+  <div class="term-head">
+    <span class="term-name">国际机制约束论</span>
+    <span class="term-en">International Regime Constraint Theory</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">贸易政治理论之一：国际机制（如WTO争端解决机制）可以约束国内保护主义势力，推动贸易自由化改革。通过"外部锁定"——国家以国际承诺"锁定"国内改革方向，使保护主义更难回溯。</div>
+</div>
+
+<!-- ======= H ======= -->
+<div class="section-head" id="sec-H"><span class="letter">H</span> H</div>
+
+<div class="term" data-lecture="1" data-keywords="H-O定理 要素禀赋 比较优势">
+  <div class="term-head">
+    <span class="term-name">H-O定理（赫克歇尔-俄林定理）</span>
+    <span class="term-en">Heckscher-Ohlin Theorem</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">国际贸易基础理论之一：一国的比较优势由其生产要素（资本、劳动、资源）的相对丰裕程度决定。资本丰裕国倾向于出口资本密集型产品，劳动丰裕国倾向于出口劳动密集型产品。里昂惕夫悖论对此提出挑战。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="建设性战略稳定关系 中美关系 2026">
+  <div class="term-head">
+    <span class="term-name">"建设性战略稳定关系"</span>
+    <span class="term-en">Constructive Strategic Stability</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">2026年中美元首北京会晤确立的双边关系新定位，为未来三年提供战略指引。核心原则：相互尊重、和平共处、合作共赢。标志着中美双方试图为日益激烈的战略竞争建立管控框架，防止关系失控。</div>
+</div>
+
+<div class="term" data-lecture="8" data-keywords="汇率 人民币汇率 8·11汇改">
+  <div class="term-head">
+    <span class="term-name">汇改（"8·11汇改", 2015）</span>
+    <span class="term-en">August 11 Exchange Rate Reform (2015)</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span></span>
+  </div>
+  <div class="term-desc">2015年8月11日，中国央行改革人民币中间价形成机制，更加市场化地参考前一交易日收盘价和一篮子货币汇率。是人民币汇率从管理浮动走向更市场化浮动的关键转折点，引发短期资本外流和贬值压力，但长期推动了人民币汇率的双向波动。</div>
+</div>
+
+<!-- ======= I ======= -->
+<div class="section-head" id="sec-I"><span class="letter">I</span> I</div>
+
+<div class="term" data-lecture="1" data-keywords="IPE 国际政治经济学">
+  <div class="term-head">
+    <span class="term-name">IPE（国际政治经济学）</span>
+    <span class="term-en">International Political Economy</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">研究国家与市场、政治与经济、权力与财富之间互动关系的交叉学科。兼顾价值创造（效率）和价值分配（公平）两个因素。根本问题：经济全球化与以民族国家为基础的国际政治之间的结构性矛盾。核心命题：一项贸易政策中"谁获益、谁受损、谁调整"。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="IEEPA 国际紧急经济权力法 制裁 总统权力">
+  <div class="term-head">
+    <span class="term-name">IEEPA（《国际紧急经济权力法》, 1977）</span>
+    <span class="term-en">International Emergency Economic Powers Act</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">1977年通过，授权美国总统在宣布国家进入紧急状态后可规制、限制或禁止受美国管辖的财产交易。是美国经济制裁的核心法律依据。2025年特朗普实施"对等关税"即援引此法的《国家紧急状态法》（NEA）部分——但此举被联邦法院裁定违宪。</div>
+</div>
+
+<!-- ======= J ======= -->
+<div class="section-head" id="sec-J"><span class="letter">J</span> J</div>
+
+<div class="term" data-lecture="4" data-keywords="杰克逊-瓦尼克修正案 最惠国待遇 贸易法 人权 移民">
+  <div class="term-head">
+    <span class="term-name">杰克逊-瓦尼克修正案</span>
+    <span class="term-en">Jackson-Vanik Amendment (Trade Act of 1974, Section 402)</span>
+    <span class="term-tags"><span class="tag lecture">第四讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">1974年《贸易法》第402条款，将贸易待遇与移民自由挂钩——针对"限制自由移民"的共产主义国家。中国因此长期受年度最惠国待遇审查。1998年MFN改名为"正常贸易关系"（NTR）。2001年中国加入WTO后该问题彻底解决。</div>
+</div>
+
+<div class="term" data-lecture="8" data-keywords="金融恐怖平衡 萨默斯 美债 相互依赖">
+  <div class="term-head">
+    <span class="term-name">"金融恐怖平衡"</span>
+    <span class="term-en">Balance of Financial Terror (Summers, 2004)</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">萨默斯2004年提出："我们依赖不给别人融资的代价，来确保融资将继续。"核心机制：美国依赖中国购买美债提供融资+维持低利率+支撑美元；中国依赖美国提供储备价值储存+出口市场+技术进口。形成类似冷战核威慑的"相互确保摧毁"——制约对华过度制裁。中国持有美债已从峰值1.32万亿（2013）降至6523亿美元（2026.3）。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="绝对优势 比较优势 Adam Smith David Ricardo">
+  <div class="term-head">
+    <span class="term-name">绝对优势与比较优势</span>
+    <span class="term-en">Absolute Advantage & Comparative Advantage</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc"><strong>绝对优势（Adam Smith）：</strong>各国分工从事自己最擅长的生产，然后交换，各方均受益。<br>
+  <strong>比较优势（David Ricardo）：</strong>即使一国在所有产品上都没有绝对优势，贸易同样有利——基于相对机会成本的差异。这是自由贸易理论的核心基础。</div>
+</div>
+
+<div class="term" data-lecture="5" data-keywords="IPEF 印太经济框架 排他性">
+  <div class="term-head">
+    <span class="term-name">印太经济框架（IPEF）</span>
+    <span class="term-en">Indo-Pacific Economic Framework</span>
+    <span class="term-tags"><span class="tag lecture">第五讲</span></span>
+  </div>
+  <div class="term-desc">拜登政府推出的亚太地区经济合作框架，在传统贸易协定之外侧重供应链韧性、清洁能源、反腐败等领域。不包含关税减让，被视为构建排他性联盟以对冲中国区域影响力的工具。美国安全化措施与中国对策对照表中的美国工具之一。</div>
+</div>
+
+<!-- ======= K ======= -->
+<div class="section-head" id="sec-K"><span class="letter">K</span> K</div>
+
+<div class="term" data-lecture="7" data-keywords="柯达 并购 感光行业 案例">
+  <div class="term-head">
+    <span class="term-name">柯达并购中国感光行业（案例）</span>
+    <span class="term-en">Kodak's Acquisition of China's Photosensitive Industry</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span></span>
+  </div>
+  <div class="term-desc">美国柯达公司全面进入中国市场的经典案例：全球感光产业为寡头竞争格局；柯达在中国进行胶卷+冲印连锁+数码的全产业链布局；同时推动了相关配套产业（银行放贷支持加盟商、政府打假改善市场秩序）。是中美投资关系中"双赢"模式的代表。</div>
+</div>
+
+<!-- ======= L ======= -->
+<div class="section-head" id="sec-L"><span class="letter">L</span> L</div>
+
+<div class="term" data-lecture="1" data-keywords="Rogowski 罗戈夫斯基 贸易同盟 土地劳动比">
+  <div class="term-head">
+    <span class="term-name">罗戈夫斯基贸易同盟理论</span>
+    <span class="term-en">Rogowski's Commerce and Coalitions Theory</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">基于斯托尔帕-萨缪尔森定理的政治理论。以"土地-劳动力比率"为核心变量区分四种类型：资本丰裕+土地丰裕+劳动力稀缺→<strong>阶级冲突</strong>（资本对劳工，如美国现状）；资本丰裕+土地稀缺+劳动力丰裕→<strong>城乡冲突</strong>（如19世纪末英国）；资本稀缺+土地丰裕+劳动力稀缺→<strong>城乡冲突</strong>（如19世纪末美国）；资本稀缺+土地稀缺+劳动力丰裕→<strong>阶级冲突</strong>（资本+地主 vs 劳工，如19世纪末德国）。核心洞见：贸易扩大或收缩会引发国内政治联盟的重新组合。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="里昂惕夫悖论 H-O理论 美国贸易">
+  <div class="term-head">
+    <span class="term-name">里昂惕夫悖论</span>
+    <span class="term-en">Leontief Paradox</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">美国经济学家里昂惕夫实证发现：美国出口劳动密集型产品、进口资本密集型产品——与H-O理论（美国应为资本丰裕国、出口资本密集型产品）完全相反。由此引出人力资本、技术差距等解释，推动了国际贸易理论的发展。</div>
+</div>
+
+<div class="term" data-lecture="7" data-keywords="联想 IBM PC 并购 2004">
+  <div class="term-head">
+    <span class="term-name">联想并购IBM PC（2004）</span>
+    <span class="term-en">Lenovo's Acquisition of IBM PC Division</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span></span>
+  </div>
+  <div class="term-desc">中国企业对美投资的标志性案例。联想获得ThinkPad/ThinkCenter品牌+五年商标使用权；IBM持有新联想股份。联想战略：进入国际市场；IBM战略：在华继续发展。竞争对手HP/Dell曾夸大交易的不确定性以施压。是中美双向投资从"不对称"走向"对称"的转折点。</div>
+</div>
+
+<!-- ======= M ======= -->
+<div class="section-head" id="sec-M"><span class="letter">M</span> M</div>
+
+<div class="term" data-lecture="4" data-keywords="MFN 最惠国待遇 PNTR NTR 正常贸易关系">
+  <div class="term-head">
+    <span class="term-name">MFN / NTR（最惠国待遇 / 正常贸易关系）</span>
+    <span class="term-en">Most Favored Nation / Normal Trade Relations</span>
+    <span class="term-tags"><span class="tag lecture">第四讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">美国给予贸易伙伴的非歧视性关税待遇。1979年中美互给MFN，但受杰克逊-瓦尼克修正案约束须国会年度审查。1989年后成为对华政策的核心斗争场。1998年MFN改名为NTR。2001年中国加入WTO后永久解决。取消MFN对中国的影响：贸易协定基础丧失、产品竞争力削弱、百万就业受损；对美国：在华美企成本增加、欧日竞争者获利、可能引发中国经济危机反噬美国。</div>
+</div>
+
+<!-- ======= N ======= -->
+<div class="section-head" id="sec-N"><span class="letter">N</span> N</div>
+
+<div class="term" data-lecture="9" data-keywords="负责任 利益攸关方 美国对华定位">
+  <div class="term-head">
+    <span class="term-name">"负责任的利益攸关方"</span>
+    <span class="term-en">Responsible Stakeholder</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">美国对华战略定位（小布什-奥巴马时期），要求中国以"负责任"方式发展经济、强化而非削弱WTO等多边机制、不能长期"搭便车"。中国的回应：成为"建设性合作者"，在维持体系稳定的同时渐进改革。后美国将此定位调整为"最主要的战略竞争对手"。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="内嵌式自由主义 开放贸易 国内保护">
+  <div class="term-head">
+    <span class="term-name">内嵌式自由主义</span>
+    <span class="term-en">Embedded Liberalism</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">贸易政治理论之一：战后国际经济秩序的设计兼顾了自由贸易与国内社会保护——在推进贸易开放的同时，各国保留国内福利政策和社会保障以缓冲开放冲击。当前美国中产阶级萎缩和全球化"输家"的出现被视为这一平衡的破裂。</div>
+</div>
+
+<!-- ======= P ======= -->
+<div class="section-head" id="sec-P"><span class="letter">P</span> P</div>
+
+<div class="term" data-lecture="4" data-keywords="PNTR 永久性正常贸易关系 2000 中国入世">
+  <div class="term-head">
+    <span class="term-name">PNTR（永久性正常贸易关系）</span>
+    <span class="term-en">Permanent Normal Trade Relations</span>
+    <span class="term-tags"><span class="tag lecture">第四讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">2000年美国国会通过的关键立法，取代了对华贸易待遇的年度审议，为中国加入WTO扫清最后的政治障碍。PNTR立法之战是中美经贸关系史上最大规模的国会游说行动：工商界出资1200万美元游说+150万美元广告，最终以237:197通过。核心逻辑：若不通过PNTR，美国不能享受中国入世后的市场开放成果（WTO非歧视原则）。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="Putnam 双层博弈 赢集 win-set">
+  <div class="term-head">
+    <span class="term-name">双层博弈论（Putnam, 1988）</span>
+    <span class="term-en">Two-Level Game Theory (Putnam)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">国际谈判的理论框架：Level I=国际谈判层面（各国政府之间）；Level II=国内批准过程（议会、利益集团等）。核心概念——<strong>win-set（赢集）</strong>=第一层达成的、能在第二层获多数支持的协议总和。赢集越小→谈判地位越有利（"软弱的战略优势"/"谢林弱势效应"）。</div>
+</div>
+
+<!-- ======= Q ======= -->
+<div class="section-head" id="sec-Q"><span class="letter">Q</span> Q</div>
+
+<div class="term" data-lecture="1" data-keywords="全球主义 全球化 Joseph Nye 区别">
+  <div class="term-head">
+    <span class="term-name">全球主义 vs 全球化（Joseph Nye）</span>
+    <span class="term-en">Globalism vs Globalization (Joseph Nye)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">Nye的经典比喻：<strong>全球主义</strong>=静态的相互依存网络状态（一张"网"）；<strong>全球化</strong>=全球主义增减的动态过程（网上流动的"电流"）。这一区分有助于理解相互依存的强度和方向是不断变化的。</div>
+</div>
+
+<!-- ======= R ======= -->
+<div class="section-head" id="sec-R"><span class="letter">R</span> R</div>
+
+<div class="term" data-lecture="9" data-keywords="RCEP 区域全面经济伙伴关系协定 自贸区">
+  <div class="term-head">
+    <span class="term-name">RCEP（区域全面经济伙伴关系协定）</span>
+    <span class="term-en">Regional Comprehensive Economic Partnership</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">全球最大自贸区，15个成员国（中日韩+东盟+澳新），覆盖全球约30%人口/GDP/贸易。关税减免+规则对接持续落地，是中国在亚太地区推动多边主义和经济一体化的核心平台，也是对冲美国"印太经济框架"的重要区域安排。</div>
+</div>
+
+<!-- ======= S ======= -->
+<div class="section-head" id="sec-S"><span class="letter">S</span> S</div>
+
+<div class="term" data-lecture="8" data-keywords="SWIFT 金融制裁 支付系统 美元">
+  <div class="term-head">
+    <span class="term-name">SWIFT（环球银行金融电信协会）</span>
+    <span class="term-en">Society for Worldwide Interbank Financial Telecommunication</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">环球银行金融电信协会，全球跨境支付的信息传输中枢，覆盖200余国、11000+金融机构。美国利用SWIFT实施金融制裁（2012年切断伊朗银行接入、2022年切断部分俄罗斯银行），展现了金融基础设施"武器化"的权力。是推动中国建设CIPS替代体系的直接原因。2026年美元在全球SWIFT支付中占比51.1%。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="斯托尔帕-萨缪尔森 自由贸易 分配 国内">
+  <div class="term-head">
+    <span class="term-name">斯托尔帕-萨缪尔森定理</span>
+    <span class="term-en">Stolper-Samuelson Theorem</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">自由贸易有利于一国丰裕要素（如中国劳动、美国资本），不利于稀缺要素（如中国资本、美国劳动）。核心用途：解释了国内谁支持/谁反对自由贸易——美国蓝领工人反对自由贸易的根本原因（他们代表的劳动要素在美国相对稀缺）。是理解贸易政治经济学的关键理论。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="视同出口 Deemed Export 技术转让">
+  <div class="term-head">
+    <span class="term-name">"视同出口"（Deemed Export）</span>
+    <span class="term-en">Deemed Export</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">美国出口管制中的特殊管辖概念：在美国境内向外国人（如留学生、访问学者、外籍雇员）转让受控技术，也被视为"出口"，需要事先获得许可。这一概念将技术信息的"无形转让"纳入了出口管制范围，对学术交流和人才流动产生深远影响。</div>
+</div>
+
+<div class="term" data-lecture="5" data-keywords="301条款 232条款 贸易法 关税">
+  <div class="term-head">
+    <span class="term-name">301条款与232条款</span>
+    <span class="term-en">Section 301 & Section 232</span>
+    <span class="term-tags"><span class="tag lecture">第五讲</span></span>
+  </div>
+  <div class="term-desc"><strong>301条款（《1974年贸易法》）：</strong>授权美国贸易代表调查外国贸易做法并实施制裁（关税等）——特朗普对华数千亿美元关税的核心工具。2018年301调查报告提及"中国制造2025"达116次。<br>
+  <strong>232条款（《1962年贸易扩展法》）：</strong>以国家安全为由对进口产品加征关税——主要用于钢铁（25%）和铝（10%）关税。体现经贸工具"军事化"趋势。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="三大流派 IPE 现实主义 自由主义 激进主义 马克思主义">
+  <div class="term-head">
+    <span class="term-name">三大流派（IPE）</span>
+    <span class="term-en">Three Schools of IPE</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">①<strong>现实主义/民族主义：</strong>研究对象=国家，核心目标=富国强兵，关注相对所得→不平衡→冲突；②<strong>自由主义：</strong>研究对象=个人和市场，核心目标=福利水平，关注绝对所得→均衡→相互依赖→和平；③<strong>激进主义/马克思主义：</strong>研究对象=全球资本主义体系，关注全球阶级斗争和中心-边缘不平等交换。</div>
+</div>
+
+<div class="term" data-lecture="2" data-keywords="双循环 新发展格局 中国">
+  <div class="term-head">
+    <span class="term-name">"双循环"新发展格局</span>
+    <span class="term-en">Dual Circulation Strategy</span>
+    <span class="term-tags"><span class="tag lecture">第二讲</span></span>
+  </div>
+  <div class="term-desc">中国从"出口导向型"战略转向以国内大循环为主体、国内国际双循环相互促进的新发展格局。国内循环：扩大内需、完善产业链、促进消费升级；国际循环：继续对外开放但减少对单一外部市场的过度依赖。是应对中美经贸关系不确定性上升的战略回应。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="1007新规 2022 半导体 出口管制">
+  <div class="term-head">
+    <span class="term-name">"1007"新规（2022.10.7）</span>
+    <span class="term-en">October 7 Export Controls (2022)</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">拜登政府于2022年10月7日颁布的对华半导体出口管制综合新规，被广泛视为冷战以来最严单项管制措施。主要内容：限制先进计算芯片（以算力和互联带宽为门槛）、半导体制造设备（以制程为门槛）、限制"美国人"参与中国半导体制造。此后通过美日荷协议等多边协同扩大管制范围。</div>
+</div>
+
+<div class="term" data-lecture="4" data-keywords="双层博弈 中美 谈判地位 win-set 中国劣势">
+  <div class="term-head">
+    <span class="term-name">双层博弈下的中国劣势</span>
+    <span class="term-en">China's Disadvantage in Two-Level Games</span>
+    <span class="term-tags"><span class="tag lecture">第四讲</span></span>
+  </div>
+  <div class="term-desc">在双层博弈框架下，中国的集权体制导致win-set过大——对手认为"说服核心决策层→协议执行"，缺乏"安全阀"（无法以国内反对为由拒绝让步），退让易被解读为"单方面让步"。而美国谈判代表可利用"国会不通过"为由迫使对手妥协（"谢林弱势效应"）。</div>
+</div>
+
+<div class="term" data-lecture="3" data-keywords="双赤字 财政赤字 经常项目 美国">
+  <div class="term-head">
+    <span class="term-name">"双赤字"（财政赤字 + 经常项目赤字）</span>
+    <span class="term-en">Twin Deficits</span>
+    <span class="term-tags"><span class="tag lecture">第三讲</span></span>
+  </div>
+  <div class="term-desc">美国经济结构性特征：财政赤字（政府支出>税收）+ 经常项目赤字（进口>出口）并存。2025年数据：财政赤字约1.8万亿美元（占GDP 6.2%），经常项目赤字约9850亿美元（占GDP 3.3%）。美国之所以能长期维持双赤字，根源在于美元霸权——以本币发债弥补赤字、美元环流机制使外国资本持续回流。</div>
+</div>
+
+<!-- ======= T ======= -->
+<div class="section-head" id="sec-T"><span class="letter">T</span> T</div>
+
+<div class="term" data-lecture="1" data-keywords="Susan Strange 斯特兰奇 四大价值">
+  <div class="term-head">
+    <span class="term-name">四大价值（苏珊·斯特兰奇）</span>
+    <span class="term-en">Four Basic Values (Susan Strange)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">Susan Strange提出社会围绕四类基本价值观建构：安全、财富、公正、自由。IPE的关键问题是"谁从中得到什么？谁受益谁受损？谁承担风险？"她强调国际体系是"人为选择"的结果，而非自然形成，因此是可以被改变的。</div>
+</div>
+
+<div class="term" data-lecture="4" data-keywords="贸易政治 Trade Politics 定义">
+  <div class="term-head">
+    <span class="term-name">贸易政治（Trade Politics）</span>
+    <span class="term-en">Trade Politics</span>
+    <span class="term-tags"><span class="tag lecture">第四讲</span></span>
+  </div>
+  <div class="term-desc">影响贸易政策制定的政治过程，涉及政府体制、国家-市场-企业-社会关系、国际竞争地位、国际条约义务等多重因素。核心问题是理解——为什么有些贸易保护主义诉求成功转化为政策而有些没有？为什么同一国家的政策在不同时期发生根本性转变？</div>
+</div>
+
+<!-- ======= W ======= -->
+<div class="section-head" id="sec-W"><span class="letter">W</span> W</div>
+
+<div class="term" data-lecture="3" data-keywords="华盛顿共识 Washington Consensus 新自由主义 IMF">
+  <div class="term-head">
+    <span class="term-name">华盛顿共识（Washington Consensus）</span>
+    <span class="term-en">Washington Consensus</span>
+    <span class="term-tags"><span class="tag lecture">第三讲</span></span>
+  </div>
+  <div class="term-desc">IMF和世界银行在1980-90年代推动的新自由主义政策组合，十大政策要点包括：私有化、自由贸易、财政紧缩、放松管制、资本账户开放等。是经济全球化加速期的政策指导思想。后被广泛批评为西方将自身模式强加于发展中国家的工具，金融危机后影响力大降。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="瓦森纳安排 出口管制 多边 巴统">
+  <div class="term-head">
+    <span class="term-name">瓦森纳安排（Wassenaar Arrangement）</span>
+    <span class="term-en">Wassenaar Arrangement</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">1996年创立，33个成员国，对两用物质和军需品进行多边出口管制协调。为巴统（COCOM）的继任组织，标志着冷战后的出口管制从"东西方阵营对抗"转向以"防扩散"为核心逻辑的多边框架。</div>
+</div>
+
+<div class="term" data-lecture="7" data-keywords="外资三法 外商投资法 2019">
+  <div class="term-head">
+    <span class="term-name">"外资三法"与《外商投资法》（2019）</span>
+    <span class="term-en">Three FDI Laws & Foreign Investment Law</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span></span>
+  </div>
+  <div class="term-desc"><strong>"外资三法"：</strong>《中外合资经营企业法》《外资企业法》《中外合作经营企业法》，为改革开放早期外商投资提供法律框架。<br>
+  <strong>《外商投资法》（2019）：</strong>统一替代"外资三法"，确立准入前国民待遇+负面清单管理模式，是中国从"政策引资"转向"制度型开放"的标志。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="王勇 国家-市场-社会 三维分析框架">
+  <div class="term-head">
+    <span class="term-name">王勇"国家-市场-社会"分析框架</span>
+    <span class="term-en">State-Market-Society Framework (Wang Yong)</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">突破吉尔平的"国家-市场"两分法，增加"社会维度"（利益集团、价值认同）。四方面原因：①价值与认同问题日益重要；②利益集团分化组合加剧；③国家管理能力受挑战；④迫切需要国际治理。该框架打通国内与国际层次，更全面分析中美经贸关系。</div>
+</div>
+
+<!-- ======= X ======= -->
+<div class="section-head" id="sec-X"><span class="letter">X</span> X</div>
+
+<div class="term" data-lecture="5" data-keywords="小院高墙 拜登 Small Yard High Fence 去风险 脱钩">
+  <div class="term-head">
+    <span class="term-name">"小院高墙"（Small Yard, High Fence）</span>
+    <span class="term-en">Small Yard, High Fence</span>
+    <span class="term-tags"><span class="tag lecture">第五讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">拜登政府对华科技遏制的核心策略：圈定极少数核心技术（"小院"——半导体、AI、量子计算等）进行彻底封锁（"高墙"），而非全面脱钩。与特朗普的广泛关税战形成对比。哲学是：在非敏感领域保持经贸往来以获取经济利益，在国家安全攸关领域实施精准管控。</div>
+</div>
+
+<div class="term" data-lecture="2" data-keywords="新三样 电动汽车 锂电池 太阳能 绿色贸易 中国">
+  <div class="term-head">
+    <span class="term-name">"新三样"</span>
+    <span class="term-en">The "New Three"</span>
+    <span class="term-tags"><span class="tag lecture">第二讲</span></span>
+  </div>
+  <div class="term-desc">电动载人汽车、锂电池、太阳能电池——中国绿色贸易新象征，取代传统劳动密集型产品（服装、玩具、家具）成为中国出口的新支柱。代表中国从"世界工厂"向"技术型出口国"的转型，也是引发第二次"中国冲击"论的核心产业。</div>
+</div>
+
+<!-- ======= Y ======= -->
+<div class="section-head" id="sec-Y"><span class="letter">Y</span> Y</div>
+
+<div class="term" data-lecture="4" data-keywords="赢集 Win-set 双层博弈 谈判">
+  <div class="term-head">
+    <span class="term-name">赢集（Win-set）</span>
+    <span class="term-en">Win-set</span>
+    <span class="term-tags"><span class="tag lecture">第一/四讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">在双层博弈中，第一层（国际谈判）达成的协议能在第二层（国内批准）获得支持的所有可能方案的集合。Putnam的核心洞见：赢集越小→谈判者在国际谈判中越强势（"软弱的战略优势"）——因为可以"国内不同意"为由迫对手让步。美国分权体制使其赢集天然较小；中国集权体制下赢集较大。</div>
+</div>
+
+<div class="term" data-lecture="8" data-keywords="美元霸权 储备货币 金融霸权 华尔街">
+  <div class="term-head">
+    <span class="term-name">美元霸权体系（华尔街-美元体系）</span>
+    <span class="term-en">Dollar Hegemony / Wall Street-Dollar System</span>
+    <span class="term-tags"><span class="tag lecture">第八讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">美元在全球货币体系中的支配地位：占全球外汇交易约4/5、国际结算60%以上、外汇储备约58%。使美国能以本币发债弥补赤字——"用自己印的钱买别人的东西"。核心支柱：①美元发行不受约束；②美元是国际主导货币；③全球最大最灵活的资本市场；④全球资本自由流动；⑤美式自由资本主义模式。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="一带一路 Belt and Road 基础设施">
+  <div class="term-head">
+    <span class="term-name">"一带一路"倡议</span>
+    <span class="term-en">Belt and Road Initiative (BRI)</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">中国发起的全球基础设施互联互通倡议，覆盖150+国家和地区。五大联通：基础设施互联互通、贸易畅通、资金融通、政策沟通、民心相通。是美国"重建美好世界"（B3W）和"全球基础设施与投资伙伴关系"（PGII）的对冲目标。</div>
+</div>
+
+<!-- ======= Z ======= -->
+<div class="section-head" id="sec-Z"><span class="letter">Z</span> Z</div>
+
+<div class="term" data-lecture="6" data-keywords="战略贸易 普通贸易 出口管制 划分标准">
+  <div class="term-head">
+    <span class="term-name">战略贸易 vs 普通贸易</span>
+    <span class="term-en">Strategic Trade vs Ordinary Trade</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">划分标准为贸易对国家安全的影响程度。<strong>战略贸易</strong>=与军工、军民两用技术相关的贸易，受出口管制约束；<strong>普通贸易</strong>=对国家安全无重大影响的贸易，原则上自由进行。此划分为出口管制提供了逻辑基础，但"国家安全"定义的模糊性使划线本身成为政治博弈。</div>
+</div>
+
+<div class="term" data-lecture="1" data-keywords="战略贸易政策 国家干预 产业政策 竞争优势">
+  <div class="term-head">
+    <span class="term-name">战略贸易政策</span>
+    <span class="term-en">Strategic Trade Policy</span>
+    <span class="term-tags"><span class="tag lecture">第一讲</span></span>
+  </div>
+  <div class="term-desc">国家通过产业政策创造竞争优势的贸易理论。强调不完全竞争、规模经济和技术外溢，倾向于人为比较优势（政府扶持战略性产业），保留高收入岗位。与传统自由贸易理论不同，为政府干预贸易和产业提供了理论依据。中国"中国制造2025"和美国《芯片与科学法案》均可视为战略贸易政策的实践。</div>
+</div>
+
+<div class="term" data-lecture="3" data-keywords="相互依存的武器化 Weaponized Interdependence 胁迫">
+  <div class="term-head">
+    <span class="term-name">相互依存的武器化</span>
+    <span class="term-en">Weaponized Interdependence (Farrell & Newman, 2019)</span>
+    <span class="term-tags"><span class="tag lecture">第三讲</span></span>
+  </div>
+  <div class="term-desc">Farrell和Newman提出的概念：在经济全球化中建立的相互依存关系可被"武器化"——占据网络中心节点（如美元清算体系、SWIFT、半导体供应链）的国家可切断对手的接入，将经济联系转化为胁迫工具。解释了西方国家从推崇全球化到转向"去风险化"的重要原因。</div>
+</div>
+
+<div class="term" data-lecture="7" data-keywords="中国制造2025 制造强国 十大领域 三步走">
+  <div class="term-head">
+    <span class="term-name">"中国制造2025"</span>
+    <span class="term-en">Made in China 2025</span>
+    <span class="term-tags"><span class="tag lecture">第七讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">中国制造强国战略第一个十年行动纲领。十大重点领域：新一代信息技术、高档数控机床和机器人、航空航天装备、海洋工程装备及高技术船舶、先进轨道交通装备、节能与新能源汽车、电力装备、农业装备、新材料、生物医药及高性能医疗器械。三步走目标：2025→制造强国行列，2035→第二方阵前列，2045→第一方阵。美国301调查报告提及"中国制造2025"高达116次（"逆差"仅出现1次），FIRRMA立法明确针对该战略。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="ECRA 出口管制改革法 2018 两用物项">
+  <div class="term-head">
+    <span class="term-name">《出口管制改革法》（ECRA, 2018）</span>
+    <span class="term-en">Export Control Reform Act</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">2018年通过，为美国两用物项出口管制提供了永久性法定基础（替代到期的旧《出口管理法》）。核心创新：引入"新兴和基础技术"（Emerging and Foundational Technologies）管制概念，要求商务部识别和管控AI、量子、生物技术等前沿领域。标志着美国对华出口管制进入"ECRA时代"。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="实体清单 Entity List 出口管制 黑名单 BIS">
+  <div class="term-head">
+    <span class="term-name">实体清单（Entity List）</span>
+    <span class="term-en">Entity List</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span><span class="tag key">核心</span></span>
+  </div>
+  <div class="term-desc">美国商务部工业安全局（BIS）维护的出口管制黑名单。被列入的实体在获取受控物项（美国技术、软件、设备）时面临严格许可要求，通常适用"推定拒绝"标准（即默认不批准）。目前含1200+中国实体，涵盖华为、中芯国际等核心企业，是美国对华科技遏制的最重要工具之一。</div>
+</div>
+
+<div class="term" data-lecture="9" data-keywords="经济帝国 五根支柱 美国霸权">
+  <div class="term-head">
+    <span class="term-name">"经济帝国"五根支柱</span>
+    <span class="term-en">Five Pillars of American Economic Empire</span>
+    <span class="term-tags"><span class="tag lecture">第九讲</span></span>
+  </div>
+  <div class="term-desc">支撑美国全球经济霸权的五个制度性支柱：①美元发行不受约束；②美元是国际主导货币；③全球最大最灵活的资本市场；④推动全球资本自由流动；⑤美国式自由资本主义模式在国际上的吸引力。这五根支柱相互支撑，使美国能做其他国家做不到的事——长期双赤字而不发生货币危机。</div>
+</div>
+
+<div class="term" data-lecture="6" data-keywords="VEU 验证最终用户 出口管制 合规">
+  <div class="term-head">
+    <span class="term-name">VEU（验证最终用户）制度</span>
+    <span class="term-en">Validated End-User</span>
+    <span class="term-tags"><span class="tag lecture">第六讲</span></span>
+  </div>
+  <div class="term-desc">美国出口管制中的便利化机制——经认证的"好用户"可享受简化许可程序，降低合规成本。2007年小布什时期创设，旨在"在安全与商业之间寻求平衡"。与之配套的还有HVAC（最终用户访问计划）。目前在中国受到的审查日益严格。</div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<div class="footer">
+  <p>📖 中美经贸关系课程 · 名词解释手册 | 按首字母排序 · 中英对照 · 标注出处讲次</p>
+  <p>建议配合「知识点自查清单」和「复习提纲」使用，系统覆盖九讲全部核心概念</p>
+</div>
+
+</div>
+
+<!-- ═══════════════ BACK TO TOP ═══════════════ -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆</button>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // ── Build Alpha Index ──
+  (function buildIndex() {
+    const sections = document.querySelectorAll('.section-head');
+    const nav = document.getElementById('alphaNav');
+    const lettersInDoc = new Set();
+    sections.forEach(s => {
+      const id = s.getAttribute('id');
+      if (id) lettersInDoc.add(id.replace('sec-', ''));
+    });
+    for (let c = 65; c <= 90; c++) {
+      const letter = String.fromCharCode(c);
+      const a = document.createElement('a');
+      a.textContent = letter;
+      if (lettersInDoc.has(letter)) {
+        a.href = '#sec-' + letter;
+      } else {
+        a.classList.add('empty');
+      }
+      nav.appendChild(a);
+    }
+  })();
+
+  // ── Search ──
+  function doSearch() {
+    const q = document.getElementById('searchBox').value.trim().toLowerCase();
+    const terms = document.querySelectorAll('.term');
+    const sections = document.querySelectorAll('.section-head');
+    let visibleCount = 0;
+    const visibleSections = new Set();
+
+    terms.forEach(t => {
+      const keys = t.getAttribute('data-keywords') || '';
+      const text = t.textContent.toLowerCase();
+      const match = !q || text.includes(q) || keys.includes(q);
+      t.style.display = match ? '' : 'none';
+      if (match) {
+        visibleCount++;
+        const prev = t.previousElementSibling;
+        if (prev && prev.classList.contains('section-head')) {
+          visibleSections.add(prev.getAttribute('id'));
+        }
+      }
+    });
+
+    sections.forEach(s => {
+      const id = s.getAttribute('id');
+      s.style.display = (!q || visibleSections.has(id)) ? '' : 'none';
+    });
+
+    document.getElementById('resultHint').textContent = q ? `找到 ${visibleCount} 个名词` : '';
+  }
+
+  // ── Back to top visibility ──
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', function() {
+    backTop.classList.toggle('show', window.scrollY > 500);
+  });
+</script>
+
+</body>
+</html>

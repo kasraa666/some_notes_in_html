@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中美经贸关系 · 高阶综合论述题</title>
+<style>
+  :root {
+    --bg: #f5f0eb;
+    --card: #fffbf5;
+    --accent: #8b1a1a;
+    --accent2: #1a3a5c;
+    --gold: #b8860b;
+    --text: #2c2416;
+    --text-light: #5c5040;
+    --border: #d4c5a9;
+    --tag-bg: #fdf3e0;
+    --tag-text: #8b6914;
+    --diff-high: #c0392b;
+    --diff-mid: #e67e22;
+    --diff-low: #2980b9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', 'STSong', 'Songti SC', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #1a1a2e 100%);
+    color: #f0e6d3;
+    padding: 80px 40px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--gold);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .hero h1 {
+    font-size: 2.8em;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    position: relative;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .hero .subtitle {
+    font-size: 1.25em;
+    color: #c9a96e;
+    letter-spacing: 0.12em;
+    position: relative;
+  }
+  .hero .meta {
+    margin-top: 24px;
+    font-size: 0.95em;
+    color: #a09080;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero .meta span {
+    background: rgba(255,255,255,0.06);
+    padding: 4px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ===== INSTRUCTIONS ===== */
+  .instructions {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent2);
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin-bottom: 44px;
+    font-size: 0.95em;
+    color: var(--text-light);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .instructions h3 {
+    color: var(--accent2);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+  .instructions ul {
+    margin-left: 20px;
+  }
+  .instructions li {
+    margin-bottom: 4px;
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title {
+    font-size: 1.6em;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin: 52px 0 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+    letter-spacing: 0.06em;
+    position: relative;
+  }
+  .section-title::after {
+    content: '◆';
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 16px;
+    color: var(--accent);
+    font-size: 0.5em;
+  }
+
+  /* ===== QUESTION CARD ===== */
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px 34px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    transition: box-shadow 0.25s;
+    position: relative;
+  }
+  .q-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+  }
+  .q-card .q-num {
+    position: absolute;
+    top: -14px;
+    left: 28px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.85em;
+    font-weight: 700;
+    padding: 3px 16px;
+    border-radius: 14px;
+    letter-spacing: 0.06em;
+  }
+  .q-card .q-type {
+    display: inline-block;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .q-type.case   { background: #e8f0fe; color: #1a56db; }
+  .q-type.theory { background: #fef3c7; color: #92400e; }
+  .q-type.compare{ background: #e6f3e6; color: #1e6f1e; }
+  .q-type.synth  { background: #fce4ec; color: #9b1b30; }
+
+  .q-card h3 {
+    font-size: 1.2em;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .q-card .q-body {
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+  .q-card .q-body p {
+    margin-bottom: 8px;
+  }
+  .q-card .q-body ol, .q-card .q-body ul {
+    margin-left: 24px;
+    margin-bottom: 8px;
+  }
+  .q-card .q-body li {
+    margin-bottom: 3px;
+  }
+
+  /* difficulty & tags */
+  .q-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  .diff {
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 2px 12px;
+    border-radius: 12px;
+    letter-spacing: 0.04em;
+  }
+  .diff.hard  { background: #ffe0e0; color: var(--diff-high); }
+  .diff.medium{ background: #fff3e0; color: var(--diff-mid); }
+  .diff.easy  { background: #e3f0ff; color: var(--diff-low); }
+
+  .tag {
+    font-size: 0.75em;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid #e8d5a3;
+  }
+
+  /* ===== HINT ===== */
+  .hint-box {
+    background: #fffef5;
+    border: 1px dashed #c9a96e;
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-top: 16px;
+    font-size: 0.88em;
+    color: #6b5c30;
+    display: none;
+  }
+  .hint-box.show { display: block; }
+  .hint-toggle {
+    font-size: 0.82em;
+    color: var(--accent2);
+    cursor: pointer;
+    user-select: none;
+    text-decoration: underline dotted;
+    margin-top: 8px;
+    display: inline-block;
+  }
+  .hint-toggle:hover { color: var(--accent); }
+
+  /* ===== TABLE ===== */
+  .overview-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 0.92em;
+  }
+  .overview-table th {
+    background: var(--accent2);
+    color: #f0e6d3;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .overview-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .overview-table tr:nth-child(even) td {
+    background: rgba(0,0,0,0.015);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 1.6em; }
+    .container { padding: 20px 12px 60px; }
+    .q-card { padding: 28px 18px; }
+  }
+
+  /* print */
+  @media print {
+    body { background: #fff; }
+    .hero { background: #1a1a2e !important; -webkit-print-color-adjust: exact; }
+    .q-card { box-shadow: none; break-inside: avoid; }
+    .hint-box { display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <h1>中美经贸关系 · 高阶综合论述题</h1>
+  <div class="subtitle">—— 融会贯通 · 开眼界 · 练思维 ——</div>
+  <div class="meta">
+    <span>📚 课程：中美经贸关系</span>
+    <span>🏛️ 北京大学国际关系学院</span>
+    <span>📅 2026年6月</span>
+    <span>📝 共 21 道精选题</span>
+  </div>
+</div>
+
+<!-- ============ MAIN ============ -->
+<div class="container">
+
+<!-- 说明 -->
+<div class="instructions">
+  <h3>📋 使用说明</h3>
+  <ul>
+    <li><strong>题型定位：</strong>以下题目均为<em>综合论述题</em>，要求跨模块、跨理论、跨案例进行灵活运用，而非单一知识点复述。</li>
+    <li><strong>难度分级：</strong>⭐⭐⭐ 高难度（需原创性思考+多框架整合）| ⭐⭐ 中高难度（需理论+案例对位分析）| ⭐ 中难度（需系统梳理+论证）</li>
+    <li><strong>标签体系：</strong>每题标注所涉知识模块，方便针对性练习。</li>
+    <li><strong>答题建议：</strong>每题建议 800–1500 字，注重逻辑链条、理论工具运用、正反论证与独立判断。</li>
+    <li><strong>点击"💡 思路提示"</strong>可查看破题方向（建议先独立思考再查看）。</li>
+  </ul>
+</div>
+
+<!-- ============ 第一部分：理论框架的深层追问 ============ -->
+<div class="section-title">第一部分 · 理论框架的深层追问</div>
+
+<!-- Q1 -->
+<div class="q-card">
+  <div class="q-num">第 1 题</div>
+  <span class="q-type theory">理论辨析</span>
+  <h3>吉尔平的"国家-市场"二分法 vs. 王勇的"国家-市场-社会"三维框架</h3>
+  <div class="q-body">
+    <p>罗伯特·吉尔平（Robert Gilpin）将国际政治经济学（IPE）的核心张力定义为<strong>"国家与市场的对立"</strong>——国家追求权力与安全，市场追求财富与效率，"没有市场的国家是低效的，没有国家的市场是毁灭性的"。而王勇教授则批评这一二分法存在"社会维度的缺位"，提出<strong>"国家-市场-社会"三维互动框架</strong>，强调利益集团、社会价值、阶级分化等因素对中美经贸关系的独立塑造力。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>吉尔平的"国家-市场"二分法在解释中美贸易战爆发原因时，存在哪些<strong>解释力不足</strong>之处？请结合具体现象说明（如美国"铁锈带"选民的政治转向、美国商会在对华关税问题上的立场分裂）。</li>
+      <li>引入"社会"维度后，我们对<strong>"中美经贸关系为何从'压舱石'变为'冲突源'"</strong>这一问题的理解发生了怎样的深化？</li>
+      <li>你认为在当前"大国战略竞争"时代，是"国家-市场"二分法更有解释力，还是三维框架更有解释力？请给出你的独立判断并论证。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">IPE理论</span>
+    <span class="tag">国家-市场-社会</span>
+    <span class="tag">贸易政治</span>
+    <span class="tag">理论创新</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 吉尔平框架侧重国家间体系层面的对抗，但美国对华关税之所以获得两党支持，根源在于国内"铁锈带"产业工人（社会维度）通过选票将经济焦虑转化为政治压力；② 美国商会（代表市场/跨国资本）与劳联-产联（代表社会/劳工）在对华关税上的立场完全相反，这说明"市场"本身并非铁板一块，需要引入社会维度来解释市场内部的裂变；③ 可以结合第四讲"国内政治体制、利益集团与经贸政策制定"和第五讲"中美贸易摩擦"的内容进行论述。
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card">
+  <div class="q-num">第 2 题</div>
+  <span class="q-type theory">理论辨析</span>
+  <h3>现实主义 vs. 自由主义 vs. 马克思主义：三种 IPE 视角下的"中美脱钩"</h3>
+  <div class="q-body">
+    <p>自 2018 年以来，"中美脱钩"（decoupling）从一个边缘概念演变为美国对华经济政策的重要选项。但不同的 IPE 理论流派对"脱钩"的性质、成因与前景给出了截然不同的诊断。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>分别从<strong>现实主义（重商主义/国家主义）</strong>、<strong>自由主义</strong>和<strong>马克思主义（结构主义）</strong>三种视角出发，解释"中美脱钩"的<strong>根本驱动力</strong>是什么？</li>
+      <li>这三种理论对"脱钩是否可逆"分别会给出怎样的预测？为什么？</li>
+      <li>你个人最认同哪一种解释？请用至少一个<strong>具体案例</strong>（如半导体供应链重组、苹果产业链向印度转移、或特斯拉上海超级工厂的逆势扩产）来支撑你的判断。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">三大理论流派</span>
+    <span class="tag">脱钩与去风险</span>
+    <span class="tag">理论比较</span>
+    <span class="tag">供应链</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 现实主义强调"相对收益"（relative gain）——中国的技术崛起威胁美国霸权地位，脱钩是国家间权力竞争的必然结果；② 自由主义强调"绝对收益"（absolute gain）——脱钩对双方都有巨大的效率损失，理性的市场力量终将推动重新挂钩；③ 马克思主义强调全球资本主义的结构性矛盾——脱钩是跨国资本在华超额利润下降后资本逻辑的自我调整，但资本的逐利本性使其不可能真正"脱钩"。④ 关键是要用具体案例展示你能否在三种理论之间灵活切换，并做出有论证的判断而非简单表态。
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card">
+  <div class="q-num">第 3 题</div>
+  <span class="q-type theory">理论辨析</span>
+  <h3>"武器化的相互依存"——当经济纽带从"和平之力"变成"胁迫杠杆"</h3>
+  <div class="q-body">
+    <p>基欧汉（Keohane）和奈（Nye）的<strong>"复合相互依存"</strong>（Complex Interdependence）理论认为，国家间紧密的经济纽带会降低军事冲突的可能并促进合作。然而近年来，"相互依存"概念遭遇了严重挑战——法雷尔（Farrell）和纽曼（Newman）提出了<strong>"武器化的相互依存"</strong>（Weaponized Interdependence）理论，指出在网络化的全球经济中，处于关键节点（如美元清算体系、SWIFT、半导体供应链、互联网骨干网）的国家可以利用不对称依存关系作为胁迫工具。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>"相互依存"从"和平力量"转变为"武器"的<strong>条件</strong>是什么？请结合 SWIFT 金融制裁和 AI 芯片出口管制两个案例加以说明。</li>
+      <li>在中美关系中，存在<strong>双向</strong>的"武器化相互依存"——即不仅美国可以"武器化"美元和芯片，中国也可以在哪些领域"武器化"其网络中心地位？请具体分析。</li>
+      <li>这种"相互威慑"式的武器化相互依存，最终是<strong>促进还是阻碍</strong>了国际机制（International Regimes）的重建？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">复合相互依存</span>
+    <span class="tag">武器化相互依存</span>
+    <span class="tag">金融制裁</span>
+    <span class="tag">出口管制</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① "武器化"的条件至少包括：网络结构的不对称性（中心-边缘）、关键节点（chokepoint）的可控性、替代选择的缺失；② 中国的潜在反制领域包括：稀土加工（全球~90%的产能）、动力电池/锂电供应链、全球最大消费市场（美国企业营收依赖）等——即课程中提到的"第二次中国冲击"的产业结构背景；③ 关键洞见在于：当双方都有"武器"时，可能形成一种"恐怖平衡"，反而催生新的国际规则协商需求——正如基欧汉所论述的制度功能。
+  </div>
+</div>
+
+<!-- ============ 第二部分：贸易摩擦与投资关系的综合剖析 ============ -->
+<div class="section-title">第二部分 · 贸易摩擦与投资关系的综合剖析</div>
+
+<!-- Q4 -->
+<div class="q-card">
+  <div class="q-num">第 4 题</div>
+  <span class="q-type compare">比较分析</span>
+  <h3>"第一次中国冲击"vs."第二次中国冲击"：连续与断裂</h3>
+  <div class="q-body">
+    <p>学术界将 1990s—2011 年间的"中国冲击"（China Shock，Autor, Dorn & Hanson, 2013）定义为<strong>第一次</strong>中国冲击：中国凭借廉价劳动力优势，在低端制造品（服装、家具、玩具）领域对发达国家制造业就业造成剧烈冲击。而近年来出现了<strong>"第二次中国冲击"</strong>的提法：2023—2026 年，中国在电动汽车、锂电池、光伏（"新三样"）以及产能密集型高技术产品上的全球扩张，正在对发达国家的支柱产业构成"结构性威胁"。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>两次"中国冲击"在<strong>产业属性</strong>（劳动密集型 vs. 资本/技术密集型）、<strong>对美国的冲击方式</strong>（就业替代 vs. 产业链主导权）、<strong>美国的应对策略</strong>（关税 vs. 出口管制+产业补贴）上有哪些本质不同？</li>
+      <li>第一次中国冲击的研究发现其对美国制造业就业下降的"贡献率"约为 25%。你认为第二次中国冲击对美国经济的冲击程度是<strong>更大还是更小</strong>？为什么？（提示：可以考虑美国对华进口依赖度已经下降的现状）</li>
+      <li>从"比较优势"的动态演变角度看，第二次中国冲击是否恰恰说明了<strong>中国比较优势正在从劳动密集型向资本/技术密集型升级</strong>——而这本身是全球化的"正常产物"？如果是，美国为什么反应比第一次更激烈？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">中国冲击</span>
+    <span class="tag">比较优势</span>
+    <span class="tag">新三样</span>
+    <span class="tag">产业升级</span>
+    <span class="tag">贸易摩擦</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 核心差异不在于"冲击"本身，而在于被冲击的产业在美国经济中的战略位置——低端制造业的流失可以被服务业吸收，但汽车工业（第二次冲击的主要靶心）是美国制造业皇冠上的明珠，其政治动员能力远超纺织业；② 这可以关联第三讲"经济全球化对中美经贸关系的影响"中的"大象曲线"——第一次冲击中受害的西方中产阶级正是民粹主义反全球化的社会基础；③ 第二次冲击更触及"国家安全"叙事，因为电动汽车、电池、光伏涉及能源安全和未来产业竞争力——这可以对接第六讲出口管制的逻辑。
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q-card">
+  <div class="q-num">第 5 题</div>
+  <span class="q-type synth">综合运用</span>
+  <h3>301 条款关税、FIRRMA 审查、实体清单——美国对华经济"组合拳"的内在逻辑</h3>
+  <div class="q-body">
+    <p>自 2017 年以来，美国对华经济政策形成了<strong>多工具、多层次、多部门</strong>协同施压的态势。主要工具包括：（1）以 301 条款为基础的<strong>惩罚性关税</strong>（对华有效税率从 ~3% 升至 ~34% 以上）；（2）以 CFIUS/FIRRMA 为核心的<strong>投资安全审查</strong>升级；（3）以实体清单（Entity List）为主导的<strong>出口管制</strong>体系；以及（4）以《芯片与科学法案》《通胀削减法案》为代表的<strong>产业补贴</strong>政策。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>这四类工具分别针对中美经贸关系中的<strong>哪个环节</strong>（商品流动、资本流动、技术流动、产业竞争力本身）？它们在逻辑上如何形成<strong>"组合闭环"</strong>？</li>
+      <li>运用<strong>IP四种视角之一的"国家主义"</strong>或<strong>双层次博弈理论</strong>（Putnam, 1988），解释为什么美国这样一个通常信奉"自由贸易"的国家，会同时动用这么多政府干预手段。</li>
+      <li>从<strong>国际机制</strong>（International Regimes）的角度看，美国的这些单边/双边/小多边工具是否正在<strong>替代</strong>WTO的多边贸易争端解决机制？这对全球贸易治理意味着什么？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">301条款</span>
+    <span class="tag">FIRRMA</span>
+    <span class="tag">实体清单</span>
+    <span class="tag">国际机制</span>
+    <span class="tag">双层次博弈</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 关税切"存量"（现有贸易格局），出口管制卡"增量"（技术追赶），投资审查防"渗透"（资本与控制权），产业补贴拼"未来"（本土竞争力）——四者叠加形成了一道从低端到高端、从当下到未来的全方位屏障；② "国家主义"视角关注相对收益和综合国力竞争，双层次博弈视角关注国内政治如何塑造对外经济政策——两者可以互补；③ WTO 争端解决机制自 2019 年上诉机构停摆后陷入瘫痪，美国实际上是以"规则之外"的工具取代了"规则之内"的多边程序——这对第十讲/十一讲"全球地区经济治理"中的讨论至关重要。
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q-card">
+  <div class="q-num">第 6 题</div>
+  <span class="q-type compare">比较分析</span>
+  <h3>中美双向投资："去工业化"叙事 vs."去风险"叙事</h3>
+  <div class="q-body">
+    <p>观察中美双向直接投资（FDI）的数据可以发现一个悖论：2016 年中美双边 FDI 创历史高峰（约 600 亿美元），随后断崖式下跌（至 2018 年仅为峰值的约 30%），此后长期低位徘徊。然而驱动这一下跌的<strong>叙事框架</strong>在中美两国截然不同——美国的主流叙事是<strong>"国家安全风险"</strong>（中国投资可能获取关键技术、威胁国家安全）；中国的主流叙事则更侧重于<strong>"市场准入壁垒"</strong>（CFIUS审查的泛政治化、对美国对华投资限制的不对等）。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>这两种叙事的差异反映了中美两国在<strong>国际投资规则理念</strong>上的什么根本分歧（如"准入前国民待遇+负面清单"vs."国家安全例外"的边界争议）？</li>
+      <li>2025 年"美国优先投资政策"（America First Investment Policy）提出对华投资"推定禁止"（presumption of denial），这一政策转变对中美技术脱钩的<strong>实际效果</strong>会是什么样的？——请区分短期（1—3年）和长期（5—10年）来分析。</li>
+      <li>在中美投资关系"冰封"的背景下，中国资本转向欧洲和东南亚，这是<strong>替代性调整</strong>还是<strong>被迫的低效替代</strong>？请用第七讲的内容和具体数据加以论证。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff medium">⭐⭐ 中高难度</span>
+    <span class="tag">FDI</span>
+    <span class="tag">CFIUS</span>
+    <span class="tag">投资审查</span>
+    <span class="tag">国家安全</span>
+    <span class="tag">去风险</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 理念分歧的核心在于"国家安全例外"条款究竟应该是窄义的、有约束的例外（中国立场），还是广义的、国家可自行界定的安全范畴（美国近年实践）；② 短期看，投资禁令的"信号效应"大于"实质效应"——因为中国对美直接投资本身已经很低；但长期看，技术脱钩的深化会通过人才流动阻断、技术合作中断等渠道产生累积性影响；③ 资本转向东南亚并非完全"替代"——东南亚在高端制造配套能力、市场规模、人才储备上与中国的差距决定了部分投资是不可替代的损失。
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q-card">
+  <div class="q-num">第 7 题</div>
+  <span class="q-type case">案例分析</span>
+  <h3>"脱钩"还是"再挂钩"？——从苹果产业链的"中国+1"策略说起</h3>
+  <div class="q-body">
+    <p>苹果公司近年来推行"中国+1"（China Plus One）供应链多元化策略，将部分组装产能转移至印度、越南。然而，到 2025 年，苹果仍有约 85% 的 iPhone 生产集中在中国大陆，且最高端的 Pro 系列几乎全部在中国完成最终组装。与此同时，富士康在印度的工厂良率仅为中国工厂的约 70—80%，供应链配套远未成熟。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>苹果案例是否证明<strong>"全面脱钩"在短期内（3—5年）几乎不可能</strong>？请从制造业生态系统的<strong>集群效应</strong>（agglomeration effect）、<strong>劳动力技能密度</strong>、<strong>基础设施完备度</strong>三个角度进行分析。</li>
+      <li>如果"脱钩"不是非黑即白的选择，那么<strong>实际的趋势是什么</strong>？——请用一个更准确的词或短语来概括当前中美供应链关系的演变方向，并论证你的判断。</li>
+      <li>从<strong>中国视角</strong>出发，苹果的"中国+1"策略对中国制造业是威胁还是机遇？请结合中国制造业升级（向高附加值环节攀升）和就业结构转型来讨论。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff medium">⭐⭐ 中高难度</span>
+    <span class="tag">供应链</span>
+    <span class="tag">产业转移</span>
+    <span class="tag">苹果</span>
+    <span class="tag">中国+1</span>
+    <span class="tag">脱钩</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 集群效应（即中国珠三角/长三角的供应商密度、响应速度）在可预见的未来无法在任何单一国家被复制——这不是简单劳动力成本问题，而是组织生态问题；② 更准确的描述可能是"缓慢去中心化"（slow diversification）或"选择性的去风险"（selective de-risking）而非"脱钩"（decoupling）；③ 对中国的威胁在于低端组装岗位的流失（这些岗位可能也不会返回美国），机遇在于倒逼向设计、品牌、核心零部件等高附加值环节升级——即从"世界工厂"到"世界总部+研发中心+高端制造"的转型。可结合第二讲"中美贸易经济与经贸关系的演变"。
+  </div>
+</div>
+
+<!-- ============ 第三部分：金融货币与技术管制 ============ -->
+<div class="section-title">第三部分 · 金融货币与技术管制的交叉地带</div>
+
+<!-- Q8 -->
+<div class="q-card">
+  <div class="q-num">第 8 题</div>
+  <span class="q-type case">案例分析</span>
+  <h3>昆仑银行、人民币国际化与"去美元化"的非对称路径</h3>
+  <div class="q-body">
+    <p>2012 年后，昆仑银行在美国对伊朗金融制裁的背景下，通过人民币跨境结算体系（CIPS）和以石油作为事实上的"锚定物"，建立了一套<strong>"非常规"</strong>的人民币国际化路径。这一模式的核心创新在于：不走传统的"资本账户开放→货币可自由兑换→成为国际储备货币"路线，而是通过<strong>双边贸易闭环</strong>（中国进口伊朗石油→伊朗用人民币购买中国商品/服务）绕开了美元体系，实质上在 SWIFT 和美元清算体系之外创造了替代通道。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>昆仑银行模式在多大程度上是<strong>可推广</strong>的？——即它是否能成为人民币国际化的"模板"（如复制到中俄、中国-沙特贸易），还是它只能在<strong>极端制裁语境</strong>下运作？</li>
+      <li>从<strong>国际政治经济学</strong>的角度看，这种"去美元化"路径是<strong>削弱</strong>了美元霸权，还是反而<strong>强化</strong>了现有国际货币体系的两极化趋势（出现一个"人民币区"和一个"美元区"）？</li>
+      <li>结合第八讲"中美货币汇率关系"和"美国双赤字"的论述，讨论：如果人民币国际化加速推进，对美国维持其"双赤字"模式（通过发行美元债务吸收全球储蓄）会产生怎样的<strong>结构性影响</strong>？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">人民币国际化</span>
+    <span class="tag">昆仑银行</span>
+    <span class="tag">去美元化</span>
+    <span class="tag">金融制裁</span>
+    <span class="tag">双赤字</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 昆仑银行模式的可推广性受限于两个条件：对方国家也必须处于被美元体系排斥的境地，且中国与对方之间有足够大的贸易量来支撑"闭环"——对沙特而言，它并不面临同样的制裁压力，因此动力不足；② 两极化趋势在于：如果"去美元化"不是建立新的全球公共品而是形成封闭的"人民币区"，那实质上是对全球化的一种替代方案而非升级方案；③ 对"双赤字"的冲击：如果各国央行减少美元储备配置、增持人民币，美国长期利率将被迫上升，财政赤字融资成本增加——这正是"美元霸权"的隐性代价开始显性化的过程。可关联"过度特权"（Exorbitant Privilege）概念。
+  </div>
+</div>
+
+<!-- Q9 -->
+<div class="q-card">
+  <div class="q-num">第 9 题</div>
+  <span class="q-type case">案例分析</span>
+  <h3>英伟达的"夹缝博弈"——跨国公司在国家竞争中的角色嬗变</h3>
+  <div class="q-body">
+    <p>英伟达（NVIDIA）在美国对华 AI 芯片出口管制中处于极其微妙的地位：它既是美国 AI 技术霸权的"皇冠上的明珠"（美国国家安全的重要资产），又是中国 AI 产业生态的"基础设施供应商"（中国市场的核心受益者）。英伟达的策略——推出"合规阉割版"芯片（A800/H20/H200）、在越南分散封装产能、高层游说美国政府、同时保持与中国客户的密切互动——堪称跨国公司在"新冷战"语境下生存博弈的教科书级案例。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>运用<strong>"技术权力"（Technological Power）</strong>理论，分析英伟达在全球 AI 产业中的权力来源——为什么它不仅仅是"一个很能赚钱的公司"，而是具有<strong>结构性支配力</strong>的行为体？</li>
+      <li>在<strong>"国家-市场-社会"</strong>三维框架中，英伟达的"夹缝博弈"折射出<strong>国家逻辑（安全）与市场逻辑（利润）</strong>之间怎样的张力？英伟达是更偏向"国家的工具"还是更偏向"自主的市场行为体"？请用具体行为来支撑你的判断。</li>
+      <li>从<strong>中国视角</strong>出发：英伟达的这种博弈策略对中国 AI 产业是<strong>机遇</strong>（提供了"合规但可用"的芯片窗口）还是<strong>陷阱</strong>（延缓了中国自主 GPU 研发的紧迫性，形成新的依赖）？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">技术权力</span>
+    <span class="tag">英伟达</span>
+    <span class="tag">AI芯片</span>
+    <span class="tag">出口管制</span>
+    <span class="tag">跨国公司</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 英伟达的三重权力：硬件架构权力（GPU设计）、生态锁定权力（CUDA平台）、供应链整合权力（与台积电等形成的技术-资本共同体）——三者叠加形成结构性支配；② "夹缝博弈"本质上是一种"合规套利"（regulatory arbitrage）——在法律边缘最大化商业利益——但这恰恰说明英伟达并非完全自主的市场行为体，其博弈空间是由国家划定的；③ 对中国的"陷阱"论述可以参考中国历史上"以市场换技术"战略的教训——"阉割版"芯片的存在可能削弱自主研发的紧迫性——但也需注意"倒逼效应"（华为昇腾系列的加速发展）。
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="q-card">
+  <div class="q-num">第 10 题</div>
+  <span class="q-type synth">综合运用</span>
+  <h3>"硅幕"降临：技术脱钩的三种逻辑——安全、经济、霸权</h3>
+  <div class="q-body">
+    <p>"硅幕"（Silicon Curtain）这一概念被用来形容中美在 AI、半导体、量子计算等前沿技术领域正在形成的<strong>技术铁幕</strong>。美国对华技术脱钩政策通常以"国家安全"为公开理由。但批评者指出，"国家安全"是一个具有弹性边界的政治概念——它可能掩盖了<strong>经济竞争</strong>（保护美国企业的市场主导地位）和<strong>霸权护持</strong>（维持美国在全球等级体系中的顶端位置）的深层动机。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>请区分<strong>"安全逻辑"</strong>（防止军事对手获取尖端技术）、<strong>"经济逻辑"</strong>（保护知识产权和产业竞争力）和<strong>"霸权逻辑"</strong>（维持结构性的等级差距）在美国对华技术管制中的<strong>不同权重</strong>——你认为哪种逻辑是主导性的？请在回答中引用至少一个具体管制政策（如 2022 年 10 月 7 日的全面对华芯片出口管制新规）来说明。</li>
+      <li>如果"国家安全"的定义不断泛化（从军事技术扩展到 5G→AI→电动汽车→甚至 TikTok），长期来看，这对<strong>全球技术创新的速度和方向</strong>会产生什么影响？</li>
+      <li>对中国而言，"硅幕"的另一面是<strong>"技术自立"的压力</strong>——你认为中国应该采取"全面自主"（全产业链自研）还是"选择性自主+开放合作"的策略？请给出你的论证。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff medium">⭐⭐ 中高难度</span>
+    <span class="tag">硅幕</span>
+    <span class="tag">技术脱钩</span>
+    <span class="tag">国家安全</span>
+    <span class="tag">芯片管制</span>
+    <span class="tag">科技自主</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 2022 年 10 月 7 日的管制新规是一个极佳的切入点——它的范围远远超出了狭义的"军事终端用途"，覆盖了所有先进计算芯片，这实质上是以"安全"之名行"遏制技术追赶"之实；② 三种逻辑在不同政策上权重不同：FIRRMA 更偏安全逻辑，301 关税更偏经济逻辑，实体清单则三者兼有——需要展示你区分不同政策工具背后的主导逻辑的能力；③ "选择性自主+开放合作"的论据：全面自主的代价极高（参考苏联的经验），而中国即使在半导体领域也不需要"100%国产化"——关键是确保在最极端的制裁情景下不至于"无芯可用"，同时维持与除美国之外的技术伙伴（欧洲ASML的二线设备、日本材料、韩国存储器）的合作通道。
+  </div>
+</div>
+
+<!-- ============ 第四部分：全球经济治理与体系变革 ============ -->
+<div class="section-title">第四部分 · 全球经济治理与体系变革</div>
+
+<!-- Q11 -->
+<div class="q-card">
+  <div class="q-num">第 11 题</div>
+  <span class="q-type synth">综合运用</span>
+  <h3>G2 的诱惑与陷阱——"中美共治"为什么不可行？</h3>
+  <div class="q-body">
+    <p>2009 年，兹比格涅夫·布热津斯基（Zbigniew Brzezinski）提出中美"G2"概念；同一时期，"中美国"（Chimerica）的概念也由尼尔·弗格森（Niall Ferguson）提出，描绘了中美经济相互依存的共生关系。然而，中国官方对 G2 始终保持冷淡甚至拒绝的态度。十五年后回头看，G2 构想已成为一个历史名词。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>从<strong>IPE 的视角</strong>出发，G2/"中美国"构想本质上是一种<strong>霸权合作模式</strong>（即中国在现有美国主导体系内承担更多"责任"但接受美国领导地位），还是一种<strong>真正的权力共享</strong>？中国为什么拒绝？</li>
+      <li>2025—2026 年国际格局的变化（美国关税战回归、WTO 边缘化、RCEP/CPTPP 双轨并行、金砖扩员）是否意味着<strong>多极化</strong>正在实质性取代 G2 的可能性？请用第十讲/十一讲的内容加以分析。</li>
+      <li>如果我们把 G2 理解为"全球公共品供给者"的合作机制——你认为中美两国在<strong>哪些议题领域</strong>仍然存在合作空间（如气候变化、全球公共卫生、AI 安全治理），在<strong>哪些领域</strong>合作几乎不可能？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff medium">⭐⭐ 中高难度</span>
+    <span class="tag">G2</span>
+    <span class="tag">中美国</span>
+    <span class="tag">全球经济治理</span>
+    <span class="tag">多极化</span>
+    <span class="tag">全球公共品</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① "Chimerica"本质上是等级制的不对称依存——中国生产+储蓄，美国消费+借贷——中国在其中的角色是被锁定在产业链低端且承担美元贬值风险的"附属伙伴"，而非平等的"共治者"，因此中国拒绝 G2 不仅是政治姿态，更是利益考量；② 多极化趋势：RCEP 是"没有美国的亚太一体化"，金砖扩员是"没有西方的全球南方聚合"，但这两种趋势目前都更像是"有限替代"而非"全面替代"；③ 合作空间按"对抗性"强弱排序：气候合作 > AI 安全 > 公共卫生 > 贸易规则 > 半导体。关键是论证而非罗列。
+  </div>
+</div>
+
+<!-- Q12 -->
+<div class="q-card">
+  <div class="q-num">第 12 题</div>
+  <span class="q-type compare">比较分析</span>
+  <h3>WTO、RCEP、CPTPP、IPEF——全球贸易治理的"碎片化"与中国的战略选择</h3>
+  <div class="q-body">
+    <p>当前全球贸易治理格局呈现出明显的<strong>碎片化</strong>（fragmentation）特征：WTO 的多哈回合长期停滞，争端解决机制瘫痪；RCEP（以东盟+中日韩澳新为核心）和 CPTPP（以日本等 12 国为核心）形成亚太地区的"双轨制"；美国主导的"印太经济框架"（IPEF）则刻意<strong>不包含</strong>关税减让内容，被视为"没有牙齿的框架"。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>从<strong>国际机制（International Regimes）理论</strong>出发，分析为什么 WTO 的多边贸易体制会陷入当前的困境——是机制设计的问题（如"协商一致"原则的效率低下），还是<strong>权力结构变化</strong>（中国崛起对原有"北方主导"体制的冲击）导致的？</li>
+      <li>中国同时参与 RCEP 和申请加入 CPTPP，这看似矛盾的策略（RCEP 标准远低于 CPTPP）背后的<strong>战略逻辑</strong>是什么？请从"规则制定权"和"市场多元化"两个维度分析。</li>
+      <li>IPEF 刻意排除关税减让和市场准入，说明美国在亚太贸易治理中的角色发生了怎样的<strong>根本性变化</strong>？这对中国的区域经济战略意味着什么？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff medium">⭐⭐ 中高难度</span>
+    <span class="tag">WTO</span>
+    <span class="tag">RCEP</span>
+    <span class="tag">CPTPP</span>
+    <span class="tag">IPEF</span>
+    <span class="tag">国际机制</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① WTO 危机是"设计缺陷+权力转移"的双重叠加——协商一致原则在成员数量从 GATT 时期的 23 国扩张到 WTO 的 164 国后效率骤降，同时中国等新兴经济体的崛起打破了原有的"美欧共识"格局；② 中国参与 RCEP（低标准、覆盖广、以东盟为中心）以维护"发展中国家阵营"的领导力，申请 CPTPP（高标准、深度一体化）则释放"我愿意接受更高规则约束"的信号——两者并不矛盾，而是"多层次参与"的战略布局；③ IPEF 不包含市场准入的本质原因是美国国内政治的约束（工会和产业利益集团强烈反对进一步开放市场），这为中国填补"亚太贸易自由化领导者"角色缺口创造了空间——这正是 APEC"中国年"（2026）的战略背景。
+  </div>
+</div>
+
+<!-- ============ 第五部分：制度比较与政策博弈 ============ -->
+<div class="section-title">第五部分 · 制度比较与政策博弈</div>
+
+<!-- Q13 -->
+<div class="q-card">
+  <div class="q-num">第 13 题</div>
+  <span class="q-type compare">比较分析</span>
+  <h3>美国"多元碎片式"vs.中国"协同集中式"——经贸决策体制如何塑造对外博弈能力？</h3>
+  <div class="q-body">
+    <p>第四讲详细比较了中美两国的对外经贸决策体制：美国的<strong>"多元碎片"</strong>模式——国会与行政部门的权力分享、利益集团的广泛游说、PAC（政治行动委员会）的竞选献金、USTR 的跨部门协调——导致政策制定过程高度透明但反复无常；中国的<strong>"协同集中"</strong>模式——中央财经委的顶层设计、部际协调机制、产业政策与贸易政策的紧密耦合——赋予了中国在战略连贯性和执行效率上的显著优势。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>运用<strong>普特南（Putnam）的"双层次博弈"理论</strong>，分析两种决策体制在<strong>国际谈判</strong>中的优劣势：为什么美国的"小赢集"（small win-set）同时是"杠杆"和"枷锁"？为什么中国的"大赢集"（large win-set）给中国带来谈判优势但也可能引发国际社会的"承诺可信度"质疑？</li>
+      <li>从<strong>"制度比较优势"</strong>的角度看，在当下"大国战略竞争"时代，哪种决策体制更适应<strong>长期、高强度、多维度</strong>的经贸博弈？请给出你的判断并论证。</li>
+      <li>这两种体制是否存在<strong>趋同</strong>的趋势？——例如美国是否在通过《芯片法案》等产业政策变得更"像中国"，而中国是否在通过加强知识产权保护等制度变得更"像美国"？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">决策体制</span>
+    <span class="tag">双层次博弈</span>
+    <span class="tag">制度比较</span>
+    <span class="tag">利益集团</span>
+    <span class="tag">产业政策</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① "小赢集做杠杆"——美国谈判代表经常以"即使我答应了，国会也不会批准"为由迫使对方让步（"谢林猜想"中的"绑住自己的手"策略）；"小赢集做枷锁"——美国签署的国际协议在国内批准的不确定性也削弱了其作为谈判伙伴的吸引力（如 TPP 被特朗普退出、巴黎协定的反复）；② 制度比较优势的判断需要结合具体博弈类型——如果是"一次性博弈"（如关税战中的报复对等），集中式体制有优势；如果是"重复博弈"（如长期规则制定），多元体制的可预测性和透明度反而可能是优势；③ 趋同论据——美国《芯片法案》和《通胀削减法案》是典型的产业政策回归，而中国加强知识产权法院建设、完善负面清单管理则向规则化方向靠拢——但趋同的深层动因不同：美国是"安全焦虑驱动的国家回归"，中国是"发展阶段驱动的制度升级"。
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="q-card">
+  <div class="q-num">第 14 题</div>
+  <span class="q-type synth">综合运用</span>
+  <h3>当"最惠国待遇"变成政治筹码——PNTR 争议的历史镜鉴</h3>
+  <div class="q-body">
+    <p>1990—2000 年间，美国国会围绕是否延长中国的最惠国待遇（MFN，后更名为"永久正常贸易关系"PNTR）展开了长达十年的激烈政治斗争。这场争论中，<strong>人权</strong>（杰克逊-瓦尼克修正案）、<strong>贸易利益</strong>（美国企业进入中国市场的渴望）和<strong>战略考量</strong>（将中国"拴在"国际体系中）三条线索交织在一起。最终，2000 年 PNTR 法案以 237:197（众议院）和 83:15（参议院）通过，为中国 2001 年入世铺平了道路。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>回顾 PNTR 争议的历史，运用<strong>"利益集团政治"</strong>分析框架，说明哪些利益集团<strong>支持</strong>PNTR（为什么），哪些<strong>反对</strong>（为什么），以及最终支持方为何能够胜出。</li>
+      <li>2025—2026 年，美国国会中出现了<strong>撤销中国 PNTR 地位的立法动议</strong>。"撤销 PNTR"与当年的"拒绝 MFN"在<strong>动机</strong>和<strong>后果</strong>上有何异同？如果 PNTR 真的被撤销，对中美经贸关系的影响与 1990 年代的情景相比是<strong>更严重</strong>还是<strong>更温和</strong>？</li>
+      <li>从更宏观的角度看，美国从大力推动中国加入 WTO（1990s—2001）到如今考虑撤销 PNTR（2020s），这一政策"大逆转"反映了美国对华战略思维的<strong>什么根本变化</strong>？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">PNTR</span>
+    <span class="tag">最惠国待遇</span>
+    <span class="tag">利益集团</span>
+    <span class="tag">WTO</span>
+    <span class="tag">政策逆转</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 支持方：跨国公司（波音、通用汽车、沃尔玛等——进入中国市场+低成本采购）、农业出口集团（大豆、玉米）、金融服务业；反对方：劳工组织（劳联-产联）、人权组织、部分制造业行会——支持方胜出的关键是克林顿政府将 PNTR 与中国入世捆绑，形成了一个跨党派的企业-农业联盟；② 撤销 PNTR 的后果在 2026 年比 1990 年代更严重——因为当前中美贸易的基数远大于 1990 年代，且美国对华关税水平已经处于高位，撤销 PNTR 意味着将关税提升至非 MFN 税率（可高达 40—70%），这将使得双边贸易面临崩溃式风险；但同时可能"更温和"——因为中美贸易依存度已从 2017 年峰值下降。你可以选择一种立场并论证。③ 政策逆转反映了从"接触促变"（engagement for transformation）到"竞争管控"（competition management）乃至"遏制"（containment）的根本范式转变。
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="q-card">
+  <div class="q-num">第 15 题</div>
+  <span class="q-type synth">综合运用</span>
+  <h3>人民币汇率的"政治经济学"——为什么汇率从来不只是价格？</h3>
+  <div class="q-body">
+    <p>人民币汇率问题持续数十年成为中美经济关系中的焦点争议。从 2000 年代初美国指责中国"操纵汇率"以获取不公平贸易优势，到 2025—2026 年中美关税战升级背景下人民币面临贬值压力，汇率问题始终被高度政治化。第八讲详细分析了美国施压人民币升值的五类论点，并讨论了汇率形成机制的改革。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>运用<strong>国际政治经济学</strong>的分析工具，说明为什么汇率从来不可能只是市场供需决定的"纯价格"——它反映了哪些<strong>国内外政治经济力量的博弈</strong>？（请从贸易竞争力、国内利益集团、货币政策自主性三个维度展开）</li>
+      <li>在当前中美经济"部分脱钩"和关税战背景下，人民币汇率面临<strong>贬值压力</strong>（资本外流+出口需求减弱）和<strong>升值压力</strong>（关税对冲+购买力平价）的<strong>双向撕扯</strong>——你认为哪种力量在 2026—2027 年将占据主导？为什么？</li>
+      <li>如果将人民币汇率问题放在<strong>"美元霸权"和"国际货币体系改革"</strong>的更大图景中——中国是应该积极推动人民币成为挑战美元地位的"替代储备货币"，还是更务实地推动"多极化货币体系"（SDR 扩容、本币互换、区域货币合作）？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff medium">⭐⭐ 中高难度</span>
+    <span class="tag">汇率</span>
+    <span class="tag">人民币</span>
+    <span class="tag">货币政治</span>
+    <span class="tag">美元霸权</span>
+    <span class="tag">国际货币体系</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 汇率政治经济学的经典框架——贸易品部门（出口商）偏好本币低估以获得价格竞争力，非贸易品部门和消费者偏好本币升值以降低进口成本和提高购买力；政府在其中权衡——这本质上是不同社会集团之间的利益分配问题（回到了"社会维度"）；② 2026 年双向撕扯的判断需要权衡：短期看贬值压力更大（因为关税冲击出口收入、资本外流压力），中期看如果人民银行通过逆周期因子和外汇储备干预维持稳定，汇率可能保持"有管理的浮动"而非自由落体；③ 推动人民币成为"挑战者"的路径有巨大风险（资本账户开放可能引发系统性金融风险），更务实的策略是推动"多极化"——中国已经是全球最大贸易国，推动本币结算的增量空间巨大，不必非要取代美元才能获益。
+  </div>
+</div>
+
+<!-- Q16 -->
+<div class="q-card">
+  <div class="q-num">第 16 题</div>
+  <span class="q-type synth">综合运用</span>
+  <h3>终极论述题：21 世纪的中美经贸关系——"新常态"的结构性特征与中国应对</h3>
+  <div class="q-body">
+    <p>这是本课程的一道<strong>综合性终极论述题</strong>，要求你将课程所学的理论框架、历史演进、专题分析贯通运用。</p>
+    <p><strong>请撰写一篇结构化分析文章，回答以下核心问题：</strong></p>
+    <ol>
+      <li><strong>诊断："新常态"是什么？</strong>——与 1979—2016 年"合作主导"的旧常态相比，当前中美经贸关系在贸易、投资、技术、金融、全球治理五个维度上分别呈现出怎样的"新常态"特征？</li>
+      <li><strong>归因：导致"新常态"的根本原因是什么？</strong>——请至少从三个层面进行分析：① 国际体系层面的权力转移（Power Transition）；② 国内政治层面的民粹主义和利益集团重组；③ 技术革命层面的人工智能竞争和数字主权争夺。</li>
+      <li><strong>预测：这种"新常态"是暂时的还是持久的？</strong>——按照你的判断，未来 10—15 年中美经贸关系最可能走向哪一种"均衡"状态？（A. "温和管理下的竞争"；B. "全面技术脱钩+有限贸易挂钩"；C. "新冷战式的经济隔绝"；D. "再挂钩与制度化合作"）请论证你的判断。</li>
+      <li><strong>对策：中国应如何应对？</strong>——请从短期（1—3 年，关税战与技术管制的危机管理）、中期（3—7 年，供应链韧性与自主创新体系的构建）、长期（7—15 年，全球经济治理体系的改革参与）三个时间维度提出中国的战略选择。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">终极论述</span>
+    <span class="tag">全课程综合</span>
+    <span class="tag">新常态</span>
+    <span class="tag">战略预测</span>
+    <span class="tag">政策建议</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>这是一个展示你"融会贯通"能力的终极题目。建议的答题结构：（1）首先明确"旧常态"的四个支柱——互利贸易、技术转移、资本双向流动、多边机制约束——以及每一支柱在"新常态"下的瓦解或变形；（2）归因部分切忌各层面孤立论述，而要展示层面之间的"因果链"——例如：中国 GDP 接近美国的 2/3（权力转移）→ 引发美国国内的去工业化焦虑（国内政治）→ 人工智能又放大了技术竞争的战略紧迫性（技术革命）——三层叠加使得中美关系从"合作博弈"变为"安全困境"；（3）预测部分的关键是给出你的判断并且展示你考虑了反面论据（counter-argument），而不是简单地选择一个选项；（4）对策部分应体现"战略思维"——不是简单的"我们应该自主创新"，而是展示对战略权衡（trade-off）的理解——例如：自主创新与开放合作的平衡、对美斗争与团结盟友的平衡、短期反制与长期制度建设的平衡。
+  </div>
+</div>
+
+<!-- ============ 第六部分：前五大板块的覆盖缺口补遗 ============ -->
+<div class="section-title">第六部分 · 补遗——框架概念、金融危机与战略工具</div>
+
+<!-- Q17 -->
+<div class="q-card">
+  <div class="q-num">第 17 题</div>
+  <span class="q-type theory">理论辨析</span>
+  <h3>Strange 的四大价值：中美经贸博弈中的"价值配方"分析</h3>
+  <div class="q-body">
+    <p>苏珊·斯特兰奇（Susan Strange）在《国家与市场》中指出，国际政治经济学本质上围绕<strong>四种基本价值的权衡</strong>展开：<strong>安全</strong>（Security）、<strong>财富</strong>（Wealth）、<strong>自由</strong>（Freedom）和<strong>正义</strong>（Justice）。不同国家、不同时期对社会安排的"价值配方"（Mix of Values）存在根本性分歧——而这恰是国际经贸冲突的深层根源之一。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>请用 Strange 四大价值框架，分析中美两国在<strong>出口管制</strong>问题上的"价值配方"差异——美国为何在 AI 芯片出口管制中高度优先"安全"而牺牲"财富"和"自由"？中国又是如何将"安全"（技术自主）纳入其经贸政策价值观的？</li>
+      <li>Strange 的核心追问——<strong>"Cui bono?"（谁受益？）</strong>——在美国 301 关税政策中如何回答：关税究竟是保护了美国产业工人（正义），还是保护了在全球化中不再具有比较优势的企业（以消费者和下游企业为代价）？</li>
+      <li>你认为在当前中美关系中，四种价值的"冲突烈度排序"是怎样的？——即安全 vs 财富、自由 vs 正义、安全 vs 自由之间，哪一对张力最大？请结合具体政策实例说明。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">Strange</span>
+    <span class="tag">四大价值</span>
+    <span class="tag">价值配方</span>
+    <span class="tag">Cui bono</span>
+    <span class="tag">出口管制</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 美国 AI 管制中的价值排序显然是 安全 > 财富（英伟达和半导体企业损失了中国市场份额）且 安全 > 自由（企业对华贸易自由被国家强制压缩）——这是一种"安全压倒一切"的配方；中国则以"安全即自主可控"重构了发展观。② "Cui bono" 追问非常有力——301 关税的受益者是受到进口竞争的国内企业及其工人，受损者是消费者（价格上升）和使用中国中间品的美国制造商——这就是"价值冲突"的具体展开（财富内部的分化、自由与正义的冲突）。③ 建议你这样排序：安全 vs 财富（第一张力——技术管制和关税都以此为轴）、安全 vs 自由（第二——两国都在收缩市场自由以换取安全）、自由 vs 正义（第三——自由市场效率与分配公平之间的经典矛盾在两国国内都愈演愈烈）。关键是要展示你对这四种价值的理解不是"背定义"而是能灵活运用于政策分析。
+  </div>
+</div>
+
+<!-- Q18 -->
+<div class="q-card">
+  <div class="q-num">第 18 题</div>
+  <span class="q-type theory">理论辨析</span>
+  <h3>全球化的"不对称性"——Nye 四类型全球化框架下的中美角色定位</h3>
+  <div class="q-body">
+    <p>约瑟夫·奈（Joseph Nye）区分了<strong>"全球主义"（Globalism）与"全球化"（Globalization）</strong>，并将全球主义细分为<strong>经济全球主义、军事全球主义、环境全球主义和社会/文化全球主义</strong>四种类型。Nye 的核心论点在于：这四种全球主义以<strong>不同速度、不同方向</strong>演变，它们之间的"不同步性"（unevenness）是理解当代国际关系的关键。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>分别描述中美两国在 Nye 的<strong>四种全球主义网络</strong>中的位置和角色——在经济网络中谁是"中心节点"？在军事网络中谁是"联盟轴心"？在社会文化网络中，TikTok 和好莱坞各自代表了什么？在环境网络中，谁是规则制定者？</li>
+      <li>美国在经济全球主义网络中的"节点地位"是否正在<strong>相对衰落</strong>——而这一衰落与它在军事全球主义网络中依然强大的"联盟轴心"角色形成了怎样的"不同步"矛盾？这种不同步如何影响了美国对华政策的焦虑感？</li>
+      <li>中国通过"一带一路"在环境全球主义（绿色基建/可再生能源标准）和社会全球主义（人文交流/数字丝绸之路）中的布局，是否在<strong>有意识地"补短板"</strong>——即在军事全球主义无法挑战美国的前提下，从另外三条战线塑造新的全球相互依存网络？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">Nye</span>
+    <span class="tag">全球化四类型</span>
+    <span class="tag">不对称性</span>
+    <span class="tag">一带一路</span>
+    <span class="tag">网络节点</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 经济网络：美国以美元、华尔街、科技IP为"上层节点"，中国以制造业产能、供应链枢纽为"实体节点"——双方在不同层次上都是不可或缺的；军事网络：美国以 NATO+美日韩澳为轴心（绝对中心），中国处于防御性位置；社会文化网络：好莱坞→全球流行文化输出（软实力），TikTok→算法驱动的草根文化传播（新型软实力），两者代表了不同模式的"文化节点"；环境网络：中国在可再生能源产能上绝对领先，但规则制定权（碳市场标准等）仍在欧洲手中。② "不同步"核心洞见——美国的经济网络中心地位在相对下降（中国 GDP 占比上升、贸易网络多元化），但其军事网络中心地位未被动摇→这种"经济-军事的权力资源错配"让美国产生"必须在经济上遏制中国否则军事优势也难保"的焦虑。③ 一带一路确实可以被理解为一种"非对称回应"——不在军事上硬碰硬，而在基础设施、贸易走廊、数字标准等方面编织一个以中国为枢纽的平行网络。
+  </div>
+</div>
+
+<!-- Q19 -->
+<div class="q-card">
+  <div class="q-num">第 19 题</div>
+  <span class="q-type case">案例分析</span>
+  <h3>次贷危机→全球金融海啸：美国"双赤字"的跨境传导机制与中国角色</h3>
+  <div class="q-body">
+    <p>2008 年全球金融危机的爆发表面上是美国次贷市场的崩溃，但其深层根源在于<strong>"中美国"（Chimerica）共生结构下的全球失衡</strong>：中国高储蓄→购买大量美国国债→压低美国长期利率→催生美国房地产泡沫和金融衍生品泛滥→泡沫破裂后通过全球化金融网络向全球传导。这一过程完美展示了"国内经济政策失误→国际系统性风险"的跨境传导链条。第八讲 PPT 详细梳理了 2007—2008 年全球金融衍生品分布和危机传导路径。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>请从<strong>"双赤字"（Twin Deficits）</strong>概念出发，梳理次贷危机爆发的宏观逻辑链条——美国的财政赤字、经常账户赤字、低储蓄率与中国的外汇储备积累<strong>如何互为因果</strong>地构成了"全球失衡"？</li>
+      <li>在这场危机中，中国持有约 1.3 万亿美元的美元资产（主要是美债和机构债）——这使得中国"被绑架"于美元体系的稳定性。但反过来，这也赋予了中国一定程度的<strong>"结构性权力"</strong>（如果中国大规模抛售美债将引发美国利率飙升）。你如何评价这种"相互确保摧毁"（Mutual Assured Destruction）式的金融相互依存——它更像是<strong>稳定器</strong>还是<strong>定时炸弹</strong>？</li>
+      <li>2008 年危机的教训是否已被今天的中美两国<strong>吸取</strong>？具体而言——在后危机时代，中国是否成功降低了自身经济对美元体系的依赖（参考人民币国际化、CIPS、金砖支付系统等举措）？而美国是否降低了其财政的不可持续性？</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">次贷危机</span>
+    <span class="tag">双赤字</span>
+    <span class="tag">全球失衡</span>
+    <span class="tag">金融传导</span>
+    <span class="tag">Chimerica</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 逻辑链要清晰——中国出口→赚取美元→央行购买美债以稳定汇率→美债需求旺盛→压低美国长期利率→美国消费者和企业加杠杆→房地产泡沫→次贷违约→CDO/CDS连锁爆雷→全球金融机构受损。这个过程完美展示了"国家与市场"的交互以及"国内与国际"层次的联动（回到第一讲的四视角框架）。② "相互确保摧毁"的双面性——一方面，这种结构的稳定性来自于双方都承担不起解体的代价（因此危机后中美反而加强了 G20 层面的协调）；另一方面，它也是一种"绑架"——中国的外汇储备在美元贬值时面临巨大损失，而美国则被外国持有的大量债务所约束。称之为"稳定器"还是"定时炸弹"取决于你对中美关系大方向的判断。③ 教训确实部分被吸取了——中国通过 CIPS、本币互换、黄金储备增加等手段降低了美元依赖（但幅度有限——约 58% 的全球储备仍是美元），而美国的财政赤字在 2025—2026 年非但没有改善反而恶化（2026 年美债 38.98 万亿美元）。这意味着一场新的"信心危机"并非不可能。
+  </div>
+</div>
+
+<!-- Q20 -->
+<div class="q-card">
+  <div class="q-num">第 20 题</div>
+  <span class="q-type synth">综合运用</span>
+  <h3>"一带一路"作为中国的全球经济治理工具——IPE 视角下的战略评估</h3>
+  <div class="q-body">
+    <p>"一带一路"倡议（BRI）是中国自 2013 年以来最主要的全球经济治理战略工具。它既可以被视为中国版本的"全球化再平衡"努力（补充既有国际发展融资体系的不足），也可以被批评者视为"债务陷阱外交"和"输出中国模式"的地缘经济工具。第十讲/十一讲将 BRI 定位为中国应对 TPP/TTIP 等西方主导高标准贸易安排的战略性对冲，同时也是中国从国际体系的"参与者"向"建设性改革者"转变的标志。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>从<strong>IPE 三种理论视角</strong>出发，分别对 BRI 进行解读——现实主义会看到什么（地缘影响力扩张）、自由主义会看到什么（基础设施公共品供给）、马克思主义会看到什么（中国资本输出与全球剩余价值再分配）？</li>
+      <li>BRI 在实施过程中引发了"债务可持续性"的广泛批评（如斯里兰卡汉班托塔港、巴基斯坦走廊等案例）。从<strong>"国家-市场-社会"</strong>三维框架看，这些批评揭示了 BRI 的什么<strong>内在张力</strong>——中国国家战略利益（国家维度）、中国企业的商业回报（市场维度）、东道国的社会分配后果（社会维度）之间的不协调？</li>
+      <li>在"美国优先投资政策"（2025）和 IPEF（无市场准入）背景下，BRI 在为发展中国家提供<strong>"替代性融资选择"</strong>方面的战略价值是否上升了？——请结合 CPTPP、RCEP 与 BRI 之间的互动关系（即中国同时参与贸易规则制定和基础设施布局的"双轮驱动"策略）来讨论。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">一带一路</span>
+    <span class="tag">BRI</span>
+    <span class="tag">全球经济治理</span>
+    <span class="tag">债务可持续性</span>
+    <span class="tag">战略对冲</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① 三种视角的BRI解读——现实主义：BRI是中国扩展地缘影响力、在"印太"和"欧亚"腹地建立战略纵深、挑战美国主导秩序的"软性扩张"；自由主义：BRI填补了全球基础设施融资的巨大缺口（亚开行估计亚洲每年有 1.7 万亿美元的基础设施缺口），提供了一种"公共品"——尽管其治理标准（透明度、环境评估）与西方主导的多边开发银行有差距；马克思主义：BRI是中国资本在国内产能过剩背景下寻求海外市场、在全球范围重配剩余价值的资本逻辑——同时它也带有与"华盛顿共识"不同的"北京共识"意识形态色彩。② 三维框架下的张力——国家需要战略支点（如瓜达尔港），企业需要盈利（但部分项目回报率低），东道国社会需要实实在在的就业和福利（但大量使用中国劳工的做法引发不满）——三者不总是协调的。这正是王勇教授"社会维度"分析力的生动运用。③ 战略价值确实在上升——当美国通过 IPEF 刻意不提供市场准入、通过关税战加高壁垒时，BRI 为全球南方"不想选边站"的国家提供了第三条路——即接受中国的基础设施投资+通过 RCEP 进入亚洲市场——这种"双轮驱动"使中国在全球经济治理中的工具组合比美国更丰富。
+  </div>
+</div>
+
+<!-- Q21 -->
+<div class="q-card">
+  <div class="q-num">第 21 题</div>
+  <span class="q-type case">案例分析</span>
+  <h3>华为 &amp; 中芯国际——实体清单上的"技术铁幕"双面镜像</h3>
+  <div class="q-body">
+    <p>华为（5G/通信设备/芯片设计）和中芯国际（SMIC，半导体制造）是美国对华实体清单上被打击最重的两家中国企业。与英伟达的"夹缝博弈"（Q9）形成对照——英伟达是在管制体系中"周旋求生"的美国跨国公司，而华为和 SMIC 则是管制体系<strong>直接打击</strong>的中国本土企业。两者共同构成了"技术铁幕"的两面。2019 年华为被列入实体清单后，其智能手机业务遭受重创（失去 Google 移动服务和高端芯片供应），但随后通过鸿蒙系统和国产替代实现了"带伤重生"；SMIC 则在 2020 年被列入实体清单后，推动了中国半导体制造的本土化进程（成熟制程产能大幅扩张），但在先进制程（7nm 及以下）方面仍严重受限。</p>
+    <p><strong>请回答：</strong></p>
+    <ol>
+      <li>华为案例是否验证了<strong>"制裁的倒逼效应"</strong>（sanction-driven innovation）——即外部压力反而加速了被制裁方的自主创新？请从鸿蒙生态、EDA 工具国产替代、Mate 60 系列的芯片突破等方面论证。同时请指出<strong>"倒逼"的边界和代价</strong>（哪些方面即使"倒逼"也无法在短期内弥补）。</li>
+      <li>请将华为和 SMIC 的遭遇与英伟达的"夹缝博弈"进行<strong>对照分析</strong>——这三角关系（美国管制者—英伟达—华为/SMIC）展示了国际政治经济学中的<strong>"三角博弈"</strong>（Triangle Game）：美国政府的目标函数是什么？英伟达的目标函数是什么？华为/SMIC 的目标函数是什么？三个行为体的策略如何相互影响？</li>
+      <li>从<strong>长期</strong>（5—10 年）来看，实体清单对中国半导体产业的"净效应"更可能是<strong>正向</strong>（加速了自主化进程，因此长远来看是"塞翁失马"）还是<strong>负向</strong>（切断了与全球创新生态的联结，导致中国半导体走上一条"封闭且落后"的道路）？请给出你的独立判断并论证。</li>
+    </ol>
+  </div>
+  <div class="q-footer">
+    <span class="diff hard">⭐⭐⭐ 高难度</span>
+    <span class="tag">华为</span>
+    <span class="tag">中芯国际</span>
+    <span class="tag">实体清单</span>
+    <span class="tag">制裁倒逼</span>
+    <span class="tag">三角博弈</span>
+    <span class="tag">半导体</span>
+  </div>
+  <span class="hint-toggle">💡 思路提示</span>
+  <div class="hint-box">
+    <strong>破题方向：</strong>① "倒逼"确实存在——鸿蒙从"备胎"变为全球第三大移动操作系统（虽然离 Android/iOS 仍有差距）、国产 EDA 工具在成熟制程上取得突破、Mate 60 系列展示了"去美化"供应链的初步成果——但从高端芯片的持续受限可以看出"倒逼"的边界：半导体制造设备（光刻机）不可能在 5 年内实现完全替代，先进制程的差距可能在扩大而非缩小。② 三角博弈的关键洞察——美国管制者的目标是"在不杀死英伟达（否则美国也失去 AI 霸权）的前提下最大限度限制中国 AI 发展"；英伟达的目标是"在不违反美国法律的前提下最大限度保持中国市场份额"；华为/SMIC 的目标是"在制裁之下最大化生存和发展空间"。三者的互动不是简单的"两国对抗"，而是一个动态的、充满策略性行为的复杂博弈——这正是 IPE 超越"国家中心论"的魅力所在。③ "净效应"的判断是高难度部分——支持"正向"的论据：五年制裁后中国半导体自给率反而从 15% 左右上升到约 23%（成熟制程领域），且催生了前所未有的研发投入强度；支持"负向"的论据：在 AI 训练芯片（7nm 以下）等最关键的前沿领域，中国与国际前沿的差距可能在拉大而非缩小。你的回答应展示对这两种论据的全面权衡，而非简单站队。
+  </div>
+</div>
+
+<!-- ============ OVERVIEW TABLE ============ -->
+<div class="section-title">题目总览</div>
+
+<table class="overview-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>标题</th>
+      <th>类型</th>
+      <th>难度</th>
+      <th>涉及模块</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>国家-市场二分法 vs. 国家-市场-社会三维框架</td><td>理论辨析</td><td>⭐⭐⭐</td><td>第一讲、第四讲、第五讲</td></tr>
+    <tr><td>2</td><td>三大理论流派视角下的"中美脱钩"</td><td>理论辨析</td><td>⭐⭐⭐</td><td>第一讲、第二讲、第五讲</td></tr>
+    <tr><td>3</td><td>"武器化的相互依存"：从和平之力到胁迫杠杆</td><td>理论辨析</td><td>⭐⭐⭐</td><td>第一讲、第六讲、第八讲</td></tr>
+    <tr><td>4</td><td>第一次 vs. 第二次"中国冲击"</td><td>比较分析</td><td>⭐⭐⭐</td><td>第二讲、第三讲、第五讲</td></tr>
+    <tr><td>5</td><td>美国对华经济"组合拳"的内在逻辑</td><td>综合运用</td><td>⭐⭐⭐</td><td>第五讲、第六讲、第七讲、第十/十一讲</td></tr>
+    <tr><td>6</td><td>中美双向投资：两种叙事的碰撞</td><td>比较分析</td><td>⭐⭐</td><td>第七讲、第五讲</td></tr>
+    <tr><td>7</td><td>"脱钩"还是"再挂钩"？苹果产业链案例</td><td>案例分析</td><td>⭐⭐</td><td>第二讲、第三讲、第五讲</td></tr>
+    <tr><td>8</td><td>昆仑银行、人民币国际化与去美元化</td><td>案例分析</td><td>⭐⭐⭐</td><td>第八讲、第十/十一讲</td></tr>
+    <tr><td>9</td><td>英伟达的"夹缝博弈"：跨国公司的角色嬗变</td><td>案例分析</td><td>⭐⭐⭐</td><td>第六讲、第一讲、第四讲</td></tr>
+    <tr><td>10</td><td>"硅幕"降临：技术脱钩的三种逻辑</td><td>综合运用</td><td>⭐⭐</td><td>第六讲、第二讲</td></tr>
+    <tr><td>11</td><td>G2的诱惑与陷阱：为什么"中美共治"不可行？</td><td>综合运用</td><td>⭐⭐</td><td>第十/十一讲、第八讲</td></tr>
+    <tr><td>12</td><td>WTO、RCEP、CPTPP、IPEF：贸易治理碎片化</td><td>比较分析</td><td>⭐⭐</td><td>第十/十一讲、第一讲</td></tr>
+    <tr><td>13</td><td>美国"多元碎片"vs.中国"协同集中"：决策体制比较</td><td>比较分析</td><td>⭐⭐⭐</td><td>第四讲、第一讲</td></tr>
+    <tr><td>14</td><td>PNTR争议的历史镜鉴与政策逆转</td><td>综合运用</td><td>⭐⭐⭐</td><td>第四讲、第二讲、第五讲</td></tr>
+    <tr><td>15</td><td>人民币汇率的政治经济学</td><td>综合运用</td><td>⭐⭐</td><td>第八讲、第三讲</td></tr>
+    <tr><td>16</td><td>终极论述："新常态"的结构性特征与中国应对</td><td>综合运用</td><td>⭐⭐⭐</td><td>全课程综合</td></tr>
+    <tr><td>17</td><td>Strange 四大价值框架下的中美"价值配方"分歧</td><td>理论辨析</td><td>⭐⭐⭐</td><td>第一讲、第六讲</td></tr>
+    <tr><td>18</td><td>Nye 全球化四类型与中美"不同步"霸权</td><td>理论辨析</td><td>⭐⭐⭐</td><td>第三讲、第十/十一讲</td></tr>
+    <tr><td>19</td><td>次贷危机的跨境传导与"相互确保摧毁"式金融依存</td><td>案例分析</td><td>⭐⭐⭐</td><td>第八讲</td></tr>
+    <tr><td>20</td><td>"一带一路"作为中国全球经济治理工具</td><td>综合运用</td><td>⭐⭐⭐</td><td>第十/十一讲、第一讲</td></tr>
+    <tr><td>21</td><td>华为 & 中芯国际——实体清单上的"技术铁幕"双面镜像</td><td>案例分析</td><td>⭐⭐⭐</td><td>第六讲、第九题(英伟达对照)</td></tr>
+  </tbody>
+</table>
+
+<p style="text-align:center; color:var(--text-light); margin-top:40px; font-size:0.9em;">
+  🎓 每一道题都旨在挑战你"把珍珠串成项链"的能力——祝你答题愉快，眼界大开！
+</p>
+
+</div>
+
+<script>
+// 点击"思路提示"展开/收起
+document.querySelectorAll('.hint-toggle').forEach(el => {
+  el.addEventListener('click', function() {
+    this.nextElementSibling.classList.toggle('show');
+  });
+});
+</script>
+
+</body>
+</html>

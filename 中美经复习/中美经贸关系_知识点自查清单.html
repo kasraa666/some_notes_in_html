@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中美经贸关系 · 知识点自查清单</title>
+<style>
+  :root {
+    --primary: #1a237e;
+    --primary-light: #3f51b5;
+    --accent: #ff6f00;
+    --bg: #f0f2f5;
+    --card: #fff;
+    --text: #333;
+    --muted: #888;
+    --border: #e0e0e0;
+    --checked: #e8f5e9;
+    --done: #4caf50;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  /* ── Header ── */
+  .hero {
+    background: linear-gradient(135deg, #0d1b4a 0%, #1a237e 40%, #283593 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero h1 { font-size: 2.4em; margin-bottom: 8px; position: relative; z-index: 1; }
+  .hero p { font-size: 1.1em; opacity: .85; position: relative; z-index: 1; }
+  .hero .badge-row { margin-top: 18px; position: relative; z-index: 1; }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,.25);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin: 4px 6px;
+    font-size: .88em;
+  }
+
+  /* ── Container ── */
+  .container { max-width: 1000px; margin: -30px auto 0; padding: 0 20px 60px; position: relative; z-index: 2; }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .stats-bar .stat { text-align: center; min-width: 80px; }
+  .stats-bar .stat .num { font-size: 2em; font-weight: 800; color: var(--primary); line-height: 1.1; }
+  .stats-bar .stat .label { font-size: .82em; color: var(--muted); margin-top: 2px; }
+  .stats-bar .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    border: none; border-radius: 8px; padding: 8px 20px; font-size: .9em; cursor: pointer;
+    font-family: inherit; font-weight: 600; transition: all .15s;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: #283593; }
+  .btn-outline { background: #fff; color: var(--primary); border: 2px solid var(--primary); }
+  .btn-outline:hover { background: #e8eaf6; }
+  .btn-accent { background: var(--accent); color: #fff; }
+  .btn-accent:hover { background: #e65100; }
+
+  /* ── TOC ── */
+  .toc-card {
+    background: var(--card); border-radius: 12px; padding: 28px 30px; margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  .toc-card h2 { font-size: 1.25em; color: var(--primary); margin-bottom: 14px; }
+  .toc-card .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; }
+  .toc-card .toc-grid a {
+    display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+    border-radius: 6px; text-decoration: none; color: var(--primary-light);
+    font-size: .92em; transition: background .12s;
+  }
+  .toc-card .toc-grid a:hover { background: #e8eaf6; }
+  .toc-card .toc-grid a .lec-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--primary); color: #fff; font-size: .8em; font-weight: 700; flex-shrink: 0;
+  }
+
+  /* ── Lecture card ── */
+  .lecture {
+    background: var(--card); border-radius: 12px; padding: 32px; margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06); border-left: 5px solid var(--primary);
+  }
+  .lecture h2 { color: var(--primary); font-size: 1.5em; margin-bottom: 6px; }
+  .lecture .lec-subtitle { color: var(--muted); font-size: .9em; margin-bottom: 22px; }
+  .lecture h3 {
+    color: #0d47a1; font-size: 1.1em; margin: 24px 0 10px;
+    padding-bottom: 6px; border-bottom: 2px solid #e8eaf6;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .lecture h3 .icon { font-size: 1.2em; }
+
+  /* ── Checklist item ── */
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 12px; margin: 3px 0;
+    border-radius: 8px; cursor: pointer; transition: background .12s;
+    border: 1px solid transparent;
+  }
+  .check-item:hover { background: #f5f5f5; }
+  .check-item.checked {
+    background: var(--checked);
+  }
+  .check-item.checked .item-text { color: #666; }
+  .check-item input[type="checkbox"] {
+    margin-top: 5px; flex-shrink: 0;
+    width: 18px; height: 18px; accent-color: var(--done); cursor: pointer;
+  }
+  .check-item .item-text { flex: 1; font-size: .95em; }
+  .check-item .item-tag {
+    font-size: .72em; padding: 1px 10px; border-radius: 10px;
+    background: #e8eaf6; color: var(--primary); white-space: nowrap; flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .check-item .item-tag.hot {
+    background: #fce4ec; color: #c62828;
+  }
+
+  /* ── Sub-section ── */
+  .sub-block {
+    margin: 6px 0 6px 12px; padding-left: 16px;
+    border-left: 2px solid #e8eaf6;
+  }
+
+  /* ── Separator ── */
+  .sep { border: none; border-top: 1px dashed #e0e0e0; margin: 16px 0; }
+
+  /* ── Footer ── */
+  .footer { text-align: center; padding: 30px; color: var(--muted); font-size: .85em; }
+
+  /* ── Responsive ── */
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 1.6em; }
+    .lecture { padding: 20px; }
+    .stats-bar { padding: 16px; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <h1>✅ 中美经贸关系 · 知识点自查清单</h1>
+  <p>基于课程PPT原文梳理 · 九讲全覆盖 · 逐项打勾自测</p>
+  <div class="badge-row">
+    <span class="badge">📚 9讲体系</span>
+    <span class="badge">📝 200+知识点</span>
+    <span class="badge">🔍 覆盖名词/理论/时间线/案例</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════ STATS ═══════════════ -->
+<div class="stats-bar">
+  <div class="stat"><div class="num" id="statTotal">0</div><div class="label">总知识点</div></div>
+  <div class="stat"><div class="num" id="statDone" style="color:#4caf50;">0</div><div class="label">已掌握</div></div>
+  <div class="stat"><div class="num" id="statPct" style="color:#ff6f00;">0%</div><div class="label">完成率</div></div>
+  <div class="actions">
+    <button class="btn btn-outline" onclick="checkAll()">☑ 全部勾选</button>
+    <button class="btn btn-outline" onclick="uncheckAll()">☐ 全部取消</button>
+    <button class="btn btn-accent" onclick="resetLocal()">🔄 重置</button>
+  </div>
+</div>
+
+<!-- ═══════════════ TOC ═══════════════ -->
+<div class="toc-card">
+  <h2>📑 快速导航</h2>
+  <div class="toc-grid">
+    <a href="#L1"><span class="lec-num">1</span>分析框架：IPE与中美经贸关系</a>
+    <a href="#L2"><span class="lec-num">2</span>中美贸易经济与经贸关系的演变</a>
+    <a href="#L3"><span class="lec-num">3</span>经济全球化对中美经贸关系的影响</a>
+    <a href="#L4"><span class="lec-num">4</span>国内政治体制、利益集团与经贸政策制定</a>
+    <a href="#L5"><span class="lec-num">5</span>中美贸易摩擦</a>
+    <a href="#L6"><span class="lec-num">6</span>出口管制、经济安全与国家安全</a>
+    <a href="#L7"><span class="lec-num">7</span>中美投资关系：产业合作与产业安全</a>
+    <a href="#L8"><span class="lec-num">8</span>中美货币汇率关系</a>
+    <a href="#L9"><span class="lec-num">9</span>中国、美国与全球地区经济治理</a>
+  </div>
+</div>
+
+<!-- ═══════════════ LECTURE 1 ═══════════════ -->
+<div class="lecture" id="L1">
+<h2>第一讲：分析框架——中美经贸关系与国际政治经济学（IPE）</h2>
+<p class="lec-subtitle">核心主题：国家与市场、政治与经济的互动关系</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">能否说出IPE研究的根本问题是什么？（经济全球化与民族国家政治之间的结构性矛盾）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">能否解释为什么IPE核心议题"关系到战争与和平"？（一战、二战教训——国际经济竞争加剧→国际协调失败→世界大战）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">能否说出国际贸易政治经济学的核心命题？（谁获益、谁受损、谁调整）</span><span class="item-tag hot">必考</span></div>
+
+<h3><span class="icon">📖</span>核心名词概念</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">IPE（国际政治经济学）的定义与研究对象</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">复合相互依赖（Keohane &amp; Nye）——三个特征</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">国际机制（International Regimes）的定义与功能</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">全球主义 vs 全球化（Joseph Nye 的比喻）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">霸权稳定论——核心主张与逻辑</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">双层博弈论（Putnam, 1988）——Level I &amp; Level II、win-set</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">战略贸易政策——定义与逻辑</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"国家-市场-社会"三维分析框架（王勇）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">内嵌式自由主义——概念与含义</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">相互依存的武器化（Weaponized Interdependence）</span></div>
+
+<h3><span class="icon">🧠</span>理论辨析</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">吉尔平（Gilpin）：国家逻辑 vs 市场逻辑的核心区别</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">苏珊·斯特兰奇（Susan Strange）：四大价值与IPE关键问题</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">三大流派（现实主义/自由主义/激进主义）的核心区别——研究对象、目标、逻辑</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">IPE四个视角：国际政治、国际经济、国内机构、国内社会</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国学派 vs 英国学派的区别（方法论、关注点）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">公共选择理论对贸易政治的解释（保护主义的需求方与供给方）</span></div>
+
+<h3><span class="icon">📐</span>经济学基础理论</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">绝对优势（Adam Smith）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">比较优势（David Ricardo）</span><span class="item-tag">基础</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">H-O定理（要素禀赋决定比较优势）——能完整说出逻辑并用中美案例说明</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">里昂惕夫悖论及其解释（人力资本、技术差距、干中学）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">斯托尔帕-萨缪尔森定理（自由贸易的国内分配效应）——能用中美实例解释</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">产业内贸易（同类产品互相出口）与公司内贸易（跨国公司内部交易）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">产品周期理论（Vernon, 1966）——四阶段及其与中美产业转移的关系</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">竞争优势论（Porter）——国家政策如何影响竞争优势的创造</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">Rogowski贸易同盟理论——土地-劳力比率模型、城乡冲突 vs 阶级冲突四种类型</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">全球主义 vs 全球化（Nye）——静态之网 vs 动态电流</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">全球主义四种类型（经济/军事/环境/社会文化）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">IPE产生的历史背景——一战、二战教训与布雷顿森林体系的建立</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 2 ═══════════════ -->
+<div class="lecture" id="L2">
+<h2>第二讲：中美贸易经济与经贸关系的演变</h2>
+<p class="lec-subtitle">核心主题：从无到有、从互补到竞争的历史演进</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">贸易如何成为拉动中美两国经济增长的引擎？（四个机制）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美经贸关系从互补到竞争、从合作到摩擦的演变逻辑</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国加入WTO对中美经贸关系的结构性重塑影响（6点）</span><span class="item-tag hot">必考</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"双循环"新发展格局</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"新三样"（电动载人汽车、锂电池、太阳能电池）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">全球价值链（GVC）——中国角色的转变</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">PNTR（永久性正常贸易关系）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">NICs / NIEs（新兴工业化经济体）</span></div>
+
+<h3><span class="icon">📅</span>时间线记忆</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1950-1972：朝鲜战争至尼克松访华——封锁禁运期</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1972-1978：中美关系徘徊期，贸易缓慢恢复</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1979-1991：半盟友关系下的贸易（共同对苏），最惠国待遇年度审查时代</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1992-2001：中国加速改革开放，入世谈判期；美国"接触"与"遏制"摇摆</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2001-2016：中国加入WTO——贸易总量激增（705亿→2117亿美元），相互依赖加深</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2017至今：贸易战、科技战延续，结构性对抗</span></div>
+
+<h3><span class="icon">📊</span>数据与事实</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国贸易伙伴排名（2025）：东盟 > 欧盟 > 美国</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国贸易伙伴排名（2025）：墨西哥 > 加拿大 > 欧盟 > 中国</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国贸易的三个历史阶段（追赶→霸权→结构转型）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">贸易与中国经济的四个机制：增长引擎、GVC集成、产业升级、就业减贫</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 3 ═══════════════ -->
+<div class="lecture" id="L3">
+<h2>第三讲：经济全球化对中美经贸关系的影响</h2>
+<p class="lec-subtitle">核心主题："中美国"的兴起与解体、全球化的赢家与输家</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">经济全球化的四大动力</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国经济形态的四大变化（国际化、服务化、知识产权化、金融化）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"中美国"（Chimerica）的循环机制与解体原因</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"中国冲击"1.0 vs 2.0 的区别</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"中美国"（Chimerica, Niall Ferguson 2006）——定义与机制</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"中国冲击"（China Shock, Autor, Dorn &amp; Hanson 2013）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"大象曲线"（Elephant Curve, Milanovic 2016）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">相互依存的武器化（Farrell &amp; Newman 2019）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">华盛顿共识（Washington Consensus）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"竞争性自由主义"</span></div>
+
+<h3><span class="icon">🧠</span>分析要点</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">西方国家的收获与损失对比（消费者福利/企业利润 vs 不平等/产业空心化）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国"双赤字"与金融霸权的运行逻辑（美元环流）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">全球化的社会后果——美国（贫富悬殊、中产阶级萎缩、政治极化）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">估值效应——美国如何通过资产结构差异自动抵消部分亏损</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">两次"中国冲击"对比（产业、竞争优势、受冲击对象、西方反应）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"中美国"解体后中美各自的争论（鹰派vs温和派、自主派vs全球化派）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">估值效应（Valuation Effect）——美国如何通过资产结构差异自动抵消部分亏损</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">知识产权产业三大支柱（软件与数字化、生物医药与高新制造、品牌与娱乐）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"大象曲线"（Elephant Curve, Milanovic 2016）——全球化收益分配的视觉化呈现</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 4 ═══════════════ -->
+<div class="lecture" id="L4">
+<h2>第四讲：国内政治体制、利益集团与中美经贸政策的制定</h2>
+<p class="lec-subtitle">核心主题：制度比较、赢集大小与谈判地位</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美经贸政策制定体制的核心差异（多头博弈型 vs 顶层设计型）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">双层博弈下中美谈判地位为何不对称？（"谢林弱势效应"）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">利益集团如何影响美国对华经贸政策？</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">贸易政治（Trade Politics）——定义与影响因素</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">赢集（Win-set）——定义与双层博弈中的战略意义</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">PNTR立法之战（2000年）——支持与反对阵营</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">杰克逊-瓦尼克修正案（Jackson-Vanik Amendment, 1974年贸易法第402条款）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">AFL-CIO（劳联-产联）</span></div>
+
+<h3><span class="icon">🧠</span>分析要点</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美政策制定体制五维比较（核心决策点、时间维度、社会参与、驱动逻辑、法律底色）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">政治文化差异：美国法律主义/规则导向 vs 中国关系本位/结果导向</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">国家竞争地位与政策取向的动态关系（强势→自由贸易，弱化→保护主义）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">MFN年度审查斗争的时间线（1979→2001）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">政治文化差异：美国法律主义/规则导向 vs 中国关系本位/结果导向</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">国家竞争地位与政策取向的动态关系（强势→自由贸易，弱化→保护主义；中美轨迹对比）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">农业利益集团的独特政治能量（选区锁定+贸易政策杠杆）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">取消MFN对中国和美国的各自影响（各5点）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">PNTR立法中政府的六大游说策略</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">工商界在PNTR之战中的投入与策略</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 5 ═══════════════ -->
+<div class="lecture" id="L5">
+<h2>第五讲：中美贸易摩擦</h2>
+<p class="lec-subtitle">核心主题：从经济逻辑到安全逻辑的转变</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美贸易摩擦四个阶段及其特征变化</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">经贸关系"安全化"的含义、四大表现与四大原因</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"脱钩"与"去风险"的区别与联系</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国对华战略定位的演变（"利益攸关方"→"战略竞争对手"）</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">经贸关系"安全化"</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">脱钩（Decoupling）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">去风险（De-risking, 耶伦2023）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"小院高墙"（Small Yard, High Fence, 拜登）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">301条款、232条款</span></div>
+
+<h3><span class="icon">🧠</span>分析要点</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">四阶段时间线：1978-2001 → 2002-2016 → 2017-2020 → 2021至今</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国安全化措施 vs 中国对策（五组对应）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">脱钩/去风险的四大领域表现（贸易、科技、投资、供应链）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">关键数据：对华有效关税率33.9%、实体清单1200+企业、全球供应链重组损失约4.5万亿美元</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"印太经济框架"（IPEF）的战略意图——不包含关税减让的排他性联盟</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 6 ═══════════════ -->
+<div class="lecture" id="L6">
+<h2>第六讲：出口管制、经济安全与国家安全</h2>
+<p class="lec-subtitle">核心主题：美国对华出口管制体制与七阶段演变</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">国家实施出口管制的六大特点</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">五大争论：安全优先、经济优先、外交工具、多边有效、出口管制有害</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国出口管制三原则（国家安全、对外政策、短缺供应）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国对华出口管制七阶段演变的核心逻辑</span><span class="item-tag hot">必考</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">战略贸易 vs 普通贸易（划分标准）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">巴统（COCOM, 1950）及其继任组织 瓦森纳安排（1996）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">实体清单（Entity List）——BIS维护、1200+中国实体</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">外国直接产品规则（FDPR）及其战略意义</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"视同出口"（Deemed Export）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">IEEPA（《国际紧急经济权力法》, 1977）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">ECRA（《出口管制改革法》, 2018）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">EAR + CCL（《出口管理条例》+ 商业管制清单十大类）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">VEU（验证最终用户）制度</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"1007"新规（2022.10.7，冷战以来最严单项管制）</span><span class="item-tag hot">必考</span></div>
+
+<h3><span class="icon">📅</span>时间线：对华出口管制七阶段</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1949-1971 冷战僵持期/全面禁运（Z组→"中国差价"）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1972-1989 战略合作"蜜月"期/有条件放宽（联华抗苏，Z→P→V组）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1993-2001 克林顿时期/以市场换转型（接触战略+HPC门槛）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">1990s中后期 政策反复（佩洛西修正案+考克斯报告+HVAC/VEU）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2001-2009 小布什时期/反恐背景下"利益相关者"</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2009-2017 奥巴马时期/出口倍增与亚太再平衡</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2018至今 ECRA时代/系统性遏制（实体清单+FDPR+小院高墙+1007新规+反向CFIUS+云端算力限制）</span><span class="item-tag hot">必考</span></div>
+
+<h3><span class="icon">📋</span>案例</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">CCL商业管制清单十大类别（尤其是类别3-5：电子/计算机/电信）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">多边出口管制四机制：瓦森纳安排 + 核供应集团 + 导弹技术控制机制 + 澳大利亚集团</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美卫星发射合作案例（1985-1999）——安全-商业张力</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美核合作案例（西屋电气AP1000）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">出口管制与中美贸易不平衡争论（中方立场 vs 美工商界批评 vs 美政府反驳）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2025-2026最新管制三大特征（云端管制、供应链+终端用途、多边小多边协同）</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 7 ═══════════════ -->
+<div class="lecture" id="L7">
+<h2>第七讲：中美投资关系——产业合作与产业安全</h2>
+<p class="lec-subtitle">核心主题：双向投资的阶段演变与产业安全比较</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国利用外资理念的转变（自力更生→开放型经济）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美双向投资的阶段与特点（不对称→对称→双向萎缩）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">产业安全与投资管理的中美比较</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"外资三法"与《外商投资法》（2019）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">准入前国民待遇 + 负面清单管理模式</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">FIRRMA（《外国投资风险审查现代化法》, 2018）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">反向CFIUS / OISP（对外投资安全计划, EO 14105→2025）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">CFIUS（美国外国投资委员会）——"TID businesses"</span></div>
+
+<h3><span class="icon">📅</span>时间线</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国利用外资四阶段（1979-1991→1992-2001→2001-2012→2013至今）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国对华投资三阶段（1980s-2008→2009-2016→2017至今）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国对美投资三阶段（2000前后→2008-2016快速"走出去"→2017至今急刹车）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2016年中美双向FDI历史高位（约600亿美元）→2018年降约70%（约180亿）</span></div>
+
+<h3><span class="icon">📋</span>案例</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">柯达并购中国感光行业案例——"双赢"模式的代表</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">联想并购IBM PC（2004）——中美投资关系"角色反转"的里程碑</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"中国制造2025"——十大领域、三步走、美国反应（301报告提及116次）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美投资管理四维比较（目标定位、工具结构、审查范围、演变趋势）</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 8 ═══════════════ -->
+<div class="lecture" id="L8">
+<h2>第八讲：中美货币汇率关系——汇率、国债与摩擦</h2>
+<p class="lec-subtitle">核心主题：金融"恐怖平衡"、美元霸权与人民币国际化</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">汇率问题的政治经济学视角——为何汇率不只是经济议题？</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国"双赤字"作为全球经济失衡的深层根源</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美"金融恐怖平衡"的机制与逻辑</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">人民币国际化与"去美元化"趋势</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"金融恐怖平衡"（萨默斯, 2004）——机制与含义</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美元霸权体系（华尔街-美元体系）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"债务人幸事"（Exorbitant Privilege）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">SWIFT——功能与美国如何利用其进行金融制裁</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">CIPS（人民币跨境支付系统）——2026年数据</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"超主权储备货币"（周小川, 2009）</span></div>
+
+<h3><span class="icon">📅</span>时间线与数据</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">人民币汇率70年演变（六个时期）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"8·11汇改"（2015）的意义</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">关键数据：外储3.41万亿、持美债6523亿、美国总国债38.98万亿、人民币支付份额3.1%</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2008年金融危机复盘——溯源链条</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2008年次债危机复盘——溯源链条（降息→房地产泡沫→次级贷款→衍生品崩盘→全球金融危机）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"超主权储备货币"（周小川, 2009）——中国的国际货币体系改革主张</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国货币联盟（利益集团施压）——美国国内施压人民币汇率的利益集团分析</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国国内对华持美债三派观点（担忧派Setser/反驳派Labonte/乐见派Krugman）</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">人民币国际化进展（SWIFT份额、跨境收付占比、离岸债券规模）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美金融"脱钩"的有限性——四维分析（贸易/金融/技术/支付体系）</span></div>
+</div>
+
+<!-- ═══════════════ LECTURE 9 ═══════════════ -->
+<div class="lecture" id="L9">
+<h2>第九讲：中国、美国与全球地区经济治理</h2>
+<p class="lec-subtitle">核心主题：全球治理格局中的中美竞争与合作</p>
+
+<h3><span class="icon">📌</span>核心议题理解</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2008年金融危机后全球政治经济格局的深刻变革</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">美国霸权的基础与挑战（四大支撑 vs 四大削弱）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国从"革命者"→"建设性参与者"的角色转变</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美在全球经济治理中的竞争维度（治理理念、贸易原则、规则制定、基础设施）</span><span class="item-tag hot">必考</span></div>
+
+<h3><span class="icon">📖</span>核心名词</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">G2（"中美共治"）——中国的否定立场</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"负责任的利益攸关方"（Responsible Stakeholder）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"建设性战略稳定关系"（2026年中美元首北京会晤）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"经济帝国"五根支柱</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">New Washington Consensus</span></div>
+
+<h3><span class="icon">📊</span>数据与机制</h3>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">G20在全球经济治理中的作用与局限</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">G2（"中美共治"）——中国为何明确拒绝？（四点原因）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">"负责任的利益攸关方"（佐利克2005）→ "建设性合作者" → "建设性战略稳定关系"（2026）的定位演变</span><span class="item-tag hot">必考</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">APEC 2026中国年——主题"建设亚太共同体，促进共同繁荣"，四大城市</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">全球经济分裂前景——两个平行市场风险、历史类比（两次世界大战间期、冷战）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中美实力对比关键数据（GDP、人均GDP、AI专利、对外直接投资）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">2026年中美经贸关系三结构性事实（规模高位+依赖度降+结构高度互补+品类分化）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">中国参与全球治理的四大策略原则（建设性参与、选择性维护、前瞻性建设、战略性平衡）</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">地区合作机制矩阵：中国-东盟3.0、RCEP、APEC（2026中国东道主）、CPTPP、一带一路</span></div>
+<div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="item-text">全球分裂前景——关键变量是中美关系走向</span></div>
+</div>
+
+<div class="footer">
+  <p>📘 中美经贸关系课程 · 知识点自查清单 | 基于课堂PPT与笔记整理</p>
+  <p>建议逐讲核对，打勾项即已掌握；未打勾项需重点复习 📝</p>
+</div>
+
+</div>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // Toggle checkbox on row click
+  function toggleCheck(row) {
+    const cb = row.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    row.classList.toggle('checked', cb.checked);
+    updateStats();
+    saveState();
+  }
+
+  // Update stats bar
+  function updateStats() {
+    const all = document.querySelectorAll('.check-item input[type="checkbox"]');
+    const done = document.querySelectorAll('.check-item input[type="checkbox"]:checked');
+    document.getElementById('statTotal').textContent = all.length;
+    document.getElementById('statDone').textContent = done.length;
+    const pct = all.length ? Math.round(done.length / all.length * 100) : 0;
+    document.getElementById('statPct').textContent = pct + '%';
+  }
+
+  // Save state to localStorage
+  function saveState() {
+    const cbs = document.querySelectorAll('.check-item input[type="checkbox"]');
+    const state = Array.from(cbs).map(cb => cb.checked);
+    localStorage.setItem('sino-us-check', JSON.stringify(state));
+  }
+
+  // Load state from localStorage
+  function loadState() {
+    const raw = localStorage.getItem('sino-us-check');
+    if (!raw) return;
+    try {
+      const state = JSON.parse(raw);
+      const cbs = document.querySelectorAll('.check-item input[type="checkbox"]');
+      cbs.forEach((cb, i) => {
+        if (i < state.length) {
+          cb.checked = state[i];
+          cb.closest('.check-item').classList.toggle('checked', state[i]);
+        }
+      });
+      updateStats();
+    } catch (e) {}
+  }
+
+  function checkAll() {
+    document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => {
+      cb.checked = true;
+      cb.closest('.check-item').classList.add('checked');
+    });
+    updateStats(); saveState();
+  }
+
+  function uncheckAll() {
+    document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.check-item').classList.remove('checked');
+    });
+    updateStats(); saveState();
+  }
+
+  function resetLocal() {
+    localStorage.removeItem('sino-us-check');
+    uncheckAll();
+  }
+
+  // Prevent double-fire from label click + input click
+  document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.closest('.check-item').classList.toggle('checked', this.checked);
+      updateStats();
+      saveState();
+    });
+  });
+
+  // Init
+  updateStats();
+  loadState();
+</script>
+
+</body>
+</html>
