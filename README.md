@@ -16,6 +16,12 @@ Click any file to open/download directly. Right-click → **Save link as** to do
 | [波斯语写作复习汇编-第2页](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%B3%A2%E6%96%AF%E8%AF%AD%E5%86%99%E4%BD%9C%E5%A4%8D%E4%B9%A0%E6%B1%87%E7%BC%96-%E7%AC%AC2%E9%A1%B5.html) | Persian writing review — Page 2 of 3 (structure & linking expressions) |
 | [波斯语写作复习汇编-第3页](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%B3%A2%E6%96%AF%E8%AF%AD%E5%86%99%E4%BD%9C%E5%A4%8D%E4%B9%A0%E6%B1%87%E7%BC%96-%E7%AC%AC3%E9%A1%B5.html) | Persian writing review — Page 3 of 3 (genre templates) |
 
+### 🇮🇷 现代伊朗的政治经济学 (Political Economy of Modern Iran)
+
+| File | Description |
+|---|---|
+| [现代伊朗的政治经济学_研读解析](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E7%8E%B0%E4%BB%A3%E4%BC%8A%E6%9C%97%E7%9A%84%E6%94%BF%E6%B2%BB%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E7%A0%94%E8%AF%BB%E8%A7%A3%E6%9E%90.html) | Reading analysis & study notes |
+
 ### 🏛 毛概 (Mao Zedong Thought)
 
 | File | Description |
