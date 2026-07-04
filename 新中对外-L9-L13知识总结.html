@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新中国对外关系 · L9-L13 知识总结</title>
+<style>
+  :root {
+    --bg: #0f172a; --card-bg: #1e293b; --text: #e2e8f0;
+    --text-secondary: #94a3b8; --accent: #f59e0b; --accent2: #3b82f6;
+    --border: #334155; --green: #10b981; --red: #ef4444;
+    --purple: #8b5cf6; --cyan: #06b6d4; --orange: #f97316;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: var(--bg); color: var(--text); min-height: 100vh;
+  }
+
+  /* 导航 */
+  .navbar {
+    position: sticky; top: 0; background: rgba(15,23,42,0.95);
+    backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+    padding: 14px 28px; display: flex; align-items: center;
+    justify-content: space-between; z-index: 100; flex-wrap: wrap; gap: 10px;
+  }
+  .navbar h1 {
+    font-size: 1.15rem;
+    background: linear-gradient(135deg, var(--accent), #fbbf24);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .nav-link {
+    padding: 5px 14px; border-radius: 14px; font-size: 0.75rem;
+    cursor: pointer; border: 1px solid var(--border); background: transparent;
+    color: var(--text-secondary); transition: all 0.2s;
+  }
+  .nav-link:hover, .nav-link.active { border-color: var(--accent); color: var(--accent); }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px 24px 60px; }
+  .back-top {
+    position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px;
+    border-radius: 50%; background: var(--accent); color: #000; display: flex;
+    align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem;
+    border: none; box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 200;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .back-top.show { opacity: 1; }
+
+  /* 讲 */
+  .lecture { margin-bottom: 40px; }
+  .lec-header {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px 24px; margin-bottom: 20px;
+    border-left: 5px solid var(--accent);
+  }
+  .lec-header h2 { font-size: 1.1rem; color: var(--accent); margin-bottom: 4px; }
+  .lec-header .lec-date { font-size: 0.7rem; color: var(--text-secondary); }
+  .lec-header .lec-summary { font-size: 0.8rem; color: #cbd5e1; margin-top: 8px; line-height: 1.6; }
+
+  /* 知识卡片 */
+  .topic-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; margin-bottom: 16px; overflow: hidden;
+  }
+  .topic-header {
+    padding: 14px 20px; display: flex; align-items: center; gap: 10px;
+    cursor: pointer; user-select: none; transition: background 0.2s;
+  }
+  .topic-header:hover { background: rgba(255,255,255,0.03); }
+  .topic-icon {
+    width: 32px; height: 32px; border-radius: 8px; display: flex;
+    align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0;
+  }
+  .topic-icon.event { background: #ef4444; }
+  .topic-icon.concept { background: #3b82f6; }
+  .topic-icon.quote { background: #8b5cf6; }
+  .topic-icon.significance { background: #10b981; }
+  .topic-title { flex: 1; font-size: 0.85rem; font-weight: 600; }
+  .topic-arrow { font-size: 0.65rem; color: var(--text-secondary); transition: transform 0.3s; }
+  .topic-header.open .topic-arrow { transform: rotate(180deg); }
+  .topic-body { display: none; padding: 0 20px 18px; border-top: 1px solid var(--border); }
+  .topic-body.open { display: block; }
+
+  .topic-body p { font-size: 0.8rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 8px; }
+  .topic-body ul, .topic-body ol { padding-left: 20px; margin: 8px 0; font-size: 0.8rem; line-height: 1.8; color: #cbd5e1; }
+  .topic-body li { margin-bottom: 4px; }
+  .topic-body strong { color: var(--accent); }
+  .topic-body em { color: var(--cyan); font-style: normal; font-weight: 600; }
+
+  /* 引用块 */
+  .quote-block {
+    background: #0f172a; border-left: 3px solid var(--purple);
+    border-radius: 0 8px 8px 0; padding: 12px 16px;
+    margin: 10px 0; font-size: 0.78rem; line-height: 1.7; color: #cbd5e1;
+  }
+  .quote-block .q-attribution {
+    margin-top: 6px; font-size: 0.68rem; color: var(--text-secondary);
+  }
+
+  /* 时间线 */
+  .timeline { position: relative; padding-left: 24px; margin: 12px 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item { position: relative; margin-bottom: 14px; font-size: 0.8rem; line-height: 1.7; color: #cbd5e1; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -20px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent2); border: 2px solid var(--bg);
+  }
+  .tl-date { font-size: 0.7rem; color: var(--accent2); font-weight: 700; }
+
+  /* 对比表 */
+  .compare-table {
+    width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.78rem;
+  }
+  .compare-table th {
+    background: #0f172a; color: var(--accent); padding: 8px 12px;
+    text-align: left; font-weight: 700; border-bottom: 2px solid var(--border);
+  }
+  .compare-table td {
+    padding: 8px 12px; border-bottom: 1px solid var(--border); color: #cbd5e1; line-height: 1.7;
+  }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+  /* 阶段标签 */
+  .phase-tag {
+    display: inline-block; padding: 3px 10px; border-radius: 10px;
+    font-size: 0.65rem; font-weight: 700; margin: 2px 4px;
+  }
+  .phase-tag.red { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .phase-tag.blue { background: rgba(59,130,246,0.2); color: #93c5fd; }
+  .phase-tag.green { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+  .phase-tag.purple { background: rgba(139,92,246,0.2); color: #c4b5fd; }
+  .phase-tag.orange { background: rgba(249,115,22,0.2); color: #fdba74; }
+
+  /* 考点提示 */
+  .exam-hint {
+    margin-top: 8px; padding: 8px 14px; background: rgba(245,158,11,0.08);
+    border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;
+    font-size: 0.72rem; color: #fbbf24; line-height: 1.6;
+  }
+  .exam-hint::before { content: '📌 考点提示：'; font-weight: 700; }
+
+  /* 高亮框 */
+  .highlight-box {
+    background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 8px; padding: 12px 16px; margin: 10px 0; font-size: 0.8rem; line-height: 1.7;
+  }
+  .highlight-box strong { color: var(--accent); }
+
+  @media print {
+    .navbar, .back-top { display: none; }
+    body { background: #fff; color: #000; }
+    .topic-body { display: block; }
+    .topic-card, .lec-header { border: 1px solid #ccc; }
+    .quote-block, .highlight-box { background: #f9f9f9; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <h1>📘 新中国对外关系 · L9-L13 知识总结</h1>
+  <div class="nav-links">
+    <a class="nav-link active" href="#L9">L9 苏联成胁</a>
+    <a class="nav-link" href="#L10">L10-11 中美和解</a>
+    <a class="nav-link" href="#L12">L12 外交纠左</a>
+    <a class="nav-link" href="#L13">L13 中国&联合国</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ═══════════════ L9 ═══════════════ -->
+  <div class="lecture" id="L9">
+    <div class="lec-header">
+      <h2>第九讲：苏联开始成为安全威胁？</h2>
+      <div class="lec-date">📅 2026年5月6日</div>
+      <div class="lec-summary">
+        本讲核心线索：<strong>中苏关系从同盟走向对抗</strong>，苏联从盟友逐步演变为中国国家安全的主要威胁。关键转折点包括中苏边界问题激化、毛泽东放弃"北顶南放"战略、珍宝岛事件，最终导致中国安全战略的重大转变——从"一个战争策源地"到"两个战争策源地"，并推动了中美和解的进程。
+      </div>
+    </div>
+
+    <!-- 北顶南放 → 放弃 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">🏛️</span>
+        <span class="topic-title">"北顶南放"战略的兴与废</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>"北顶南放"</strong>是中国在50年代形成的军事防御战略方针：</p>
+        <ul>
+          <li><strong>"北顶"</strong>：在北方边境坚决顶住来自苏联方向的军事压力</li>
+          <li><strong>"南放"</strong>：在南方沿海地区采取相对灵活的防御策略</li>
+          <li><strong>前提条件</strong>：中苏同盟关系正常运作，北方有苏联作为战略后方</li>
+        </ul>
+        <p>随着中苏关系恶化，这个前提条件不复存在。1964年6月，<em>毛泽东正式放弃"北顶南放"战略</em>，开始从军事防御战略的角度关注苏联对中国国家安全的影响。</p>
+        <div class="exam-hint">理解"北顶南放"的前提条件及其放弃的逻辑——这是一个因同盟瓦解而被迫调整战略的典型案例。</div>
+      </div>
+    </div>
+
+    <!-- 中苏边界问题 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">📜</span>
+        <span class="topic-title">中苏边界问题的历史经纬与激化</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>一、历史背景</strong></p>
+        <ul>
+          <li><strong>漫长边界线</strong>：中苏边界全长约7300公里</li>
+          <li><strong>"三笔领土账"</strong>：沙俄时期通过不平等条约割占的领土（《瑷珲条约》《北京条约》等）；苏联继承并巩固的边界；外蒙古独立问题</li>
+          <li><strong>蜜月期</strong>：50年代"万里北疆有边无防"，边界问题被搁置</li>
+        </ul>
+        <p><strong>二、冲突升级</strong></p>
+        <ul>
+          <li><strong>1960年起</strong>：零星边界冲突开始出现（如伊塔事件）</li>
+          <li><strong>1964年中苏边境谈判</strong>：双方立场严重分歧，未达成协议</li>
+          <li><strong>毛泽东首次公开提出中苏边界问题</strong>（1964年7月10日接见日本社会党人士）</li>
+        </ul>
+        <div class="quote-block">
+          "一百多年以前，把贝加尔湖以东，包括伯力、海参崴、堪察加半岛都划过去了。那个账是算不清的。我们还没跟他们算这个。"
+          <div class="q-attribution">—— 毛泽东接见日本社会党人士代表团（1964年7月10日）</div>
+        </div>
+        <div class="quote-block">
+          "外蒙古的领土，比你们千岛的面积要大得多。我们曾经提过把外蒙古归还中国是不是可以。他们说不可以。"
+          <div class="q-attribution">—— 同上</div>
+        </div>
+        <p><strong>苏联反应</strong>：以"核战争"相威胁，双方军事对抗态势迅速升温。</p>
+        <div class="exam-hint">中苏边界问题是理解中苏分裂从"意识形态争论"走向"国家利益对抗"的关键节点。注意毛泽东公开提边界问题的时间点（1964年）及其政治含义。</div>
+      </div>
+    </div>
+
+    <!-- 两个战争策源地 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">⚠️</span>
+        <span class="topic-title">从"一个战争策源地"到"两个战争策源地"</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>60年代中期以前，中国认定的战争策源地：<strong>美帝国主义（一个）</strong>。</p>
+        <p>随后，苏联的一系列行动促使中国重新判断：</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-date">1966年</span><br>
+            <strong>苏蒙条约签订</strong>：苏联将军事力量向中蒙边境推进，在中蒙边境中国一侧形成军事压力。
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">1968年8月</span><br>
+            <strong>苏联入侵捷克斯洛伐克</strong>：镇压"布拉格之春"，提出"有限主权论""国际专政论""社会主义大家庭论"等理论，直接干涉社会主义国家内政。这使中国极大警觉——苏联可以用同样的理由武装干涉中国。
+          </div>
+        </div>
+        <p><strong>影响</strong>：</p>
+        <ul>
+          <li>苏联从"安全威胁"<em>升级为"新的战争策源地"</em></li>
+          <li>中国的安全战略判断出现重大转变：<em>认为世界大战不可避免</em>，且有一定紧迫性</li>
+          <li>中国安全环境严重恶化：面临"<strong>帝、修</strong>"（美国+苏联）的双重包围</li>
+          <li>美苏开始并列为主要威胁，且苏联威胁越来越严重</li>
+        </ul>
+        <div class="quote-block">
+          "我们要准备修正主义来打，打进满洲，东三省，打进新疆，中央突破，从外蒙古打进北京……我们还要准备美苏合作，瓜分中国。以淮河，陇海铁路为界，苏联占领北边，美国占领南边。"
+          <div class="q-attribution">—— 毛泽东，1966年3月</div>
+        </div>
+        <div class="highlight-box">
+          <strong>关键概念</strong>："有限主权论"等理论是苏联为入侵捷克斯洛伐克而创造的，其逻辑是——社会主义国家的主权是有限的，当社会主义制度受到威胁时，其他社会主义国家有权干涉。这对中国意味着：如果苏联认定中国偏离了社会主义轨道，它同样可能武装干涉中国。
+        </div>
+        <div class="exam-hint">从"一个"到"两个"战争策源地的转变是理解60年代中国安全观和安全战略变化的枢纽。捷克斯洛伐克事件是关键催化剂。</div>
+      </div>
+    </div>
+
+    <!-- 大三线建设 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">🏗️</span>
+        <span class="topic-title">大三线建设</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>面对苏联日益增加的军事威胁，毛泽东推动实施<strong>"大三线"建设</strong>战略：将国防工业和重要基础设施向西南内陆纵深地区转移，以应对可能的战争（尤其是核战争），确保战略后方安全。</p>
+        <p>华北被定位为可能的敌人主攻方向和主战场，"备战、备荒"成为重要指导方针。</p>
+        <div class="exam-hint">大三线建设是对苏联威胁的直接战略回应，体现了毛泽东时代"备战"思维的高峰。</div>
+      </div>
+    </div>
+
+    <!-- 苏联成为"主要"威胁 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">🔥</span>
+        <span class="topic-title">珍宝岛事件——苏联成为"主要"威胁</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>珍宝岛事件</strong>（1969年3月）：中苏在乌苏里江珍宝岛发生大规模武装冲突。毛泽东明确提出<strong>"要准备打仗"</strong>。</p>
+        <p><strong>苏联后续行动</strong>：</p>
+        <ul>
+          <li><strong>勃列日涅夫提出"亚洲集体安全体系"</strong>（1969年6月）：试图建立以苏联为首的亚洲安全架构，意在<em>孤立和包围中国</em></li>
+        </ul>
+        <p><strong>中国的战略评估（"四人小组"——四位老帅）</strong>：</p>
+        <ul>
+          <li>苏联对中国"安全的威胁比美国大"</li>
+          <li>"在可预见的时期内，美帝、苏修单独或联合发动大规模侵华战争的可能性都还不大"——战略判断趋向冷静</li>
+          <li><em>叶剑英提出著名的"魏蜀吴"三国类比</em></li>
+        </ul>
+        <div class="quote-block">
+          "四位老帅还反复研究，万一苏修对我发动大规模战争，我们是否从战略上打美国牌。叶帅说：魏、蜀、吴三国鼎立，诸葛亮的战略方针是'东联孙吴，北拒曹魏'，可以参考。"
+          <div class="q-attribution">—— 熊向晖《我的情报与外交生涯》</div>
+        </div>
+        <p><strong>中国的安全战略发生重大转变</strong>：</p>
+        <ol>
+          <li>对世界形势的判断转变——认定苏联为<em>新世界战争策源地</em></li>
+          <li>认定世界大战有紧迫性</li>
+          <li>对中国安全的主要威胁<em>由美国变为苏联</em></li>
+          <li>外交逐步转向建立<strong>反苏国际统一战线</strong>的轨道</li>
+        </ol>
+        <div class="exam-hint"><strong>高频考点！</strong>珍宝岛事件是理解中美苏三角关系变化的转折点。叶剑英的"魏蜀吴"比喻极其重要——"东联孙吴（美国），北拒曹魏（苏联）"= 联美遏苏。</div>
+      </div>
+    </div>
+
+    <!-- 中美和解 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">🤝</span>
+        <span class="topic-title">中美和解（Rapprochement）</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>60年代中期中美对抗的三个层次</strong>：全球战略层次、地区层次、双边关系层次。</p>
+        <p><strong>珍宝岛事件后中美苏关系变化</strong>：</p>
+        <ul>
+          <li>中国向美国发出和解信号</li>
+          <li>美苏关系：苏联势力日益扩张，威胁美国利益</li>
+          <li>尼克松政府内部"<em>联华遏苏</em>"战略的条件逐渐成熟
+            <ul>
+              <li>美国政府内部出现要求调整对华政策的声音</li>
+              <li>美国社会对华舆论出现扭转</li>
+              <li>尼克松——"最让人放心的大鹰派"转向对华接触</li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>根本原因</strong>：<em>中美对于抗衡苏联扩张存在大量共同利益</em>。</p>
+        <div class="exam-hint">中美和解的核心逻辑："敌人的敌人是朋友"——共同面对苏联威胁是中美走向和解的根本驱动力。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ L10-11 ═══════════════ -->
+  <div class="lecture" id="L10">
+    <div class="lec-header" style="border-left-color: var(--accent2);">
+      <h2 style="color: var(--accent2);">第十、十一讲：从互相试探到中美关系正常化</h2>
+      <div class="lec-date">📅 2026年5月6日 & 5月21日</div>
+      <div class="lec-summary">
+        本讲追踪中美从敌对走向和解的具体操作过程：两次互相试探性接触→基辛格秘密访华→尼克松访华→《上海公报》。同时分析中美苏三角关系的复杂博弈——三国各自在三角中如何打牌。最后涵盖"一条线一大片"反苏统一战线、"三个世界"理论、以及重返联合国的历程。
+      </div>
+    </div>
+
+    <!-- 互相试探 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">📡</span>
+        <span class="topic-title">两次互相试探性接触</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>第一次接触（1969年夏天）</strong></p>
+        <ul>
+          <li>毛泽东指示在《人民日报》<em>全文转载尼克松就职演讲</em></li>
+          <li>中方建议举行第135次中美大使级会谈</li>
+          <li>尼克松投桃报李：公开反对苏联"亚洲集体安全体系"、通过第三国领导人向中国传达和解信息</li>
+          <li>中方反应较克制：内部仍处于对国际形势和中美苏三角关系的评估中</li>
+        </ul>
+        <p><strong>第二次接触（1969年秋天起）</strong></p>
+        <ul>
+          <li>美方停止台湾海峡巡航</li>
+          <li>周恩来告诉巴基斯坦驻华大使——美国可以通过正式渠道与中国接触（<em>1969年12月2日，重要信号</em>）</li>
+          <li>恢复中美大使级会谈</li>
+          <li>美国在柬埔寨问题上保持克制</li>
+          <li><strong>乒乓外交</strong>、斯诺登上天安门（1971年国庆）</li>
+          <li>通过巴基斯坦和罗马尼亚渠道协调尼克松访华</li>
+        </ul>
+        <div class="exam-hint">第二次接触是实质性的：周恩来通过巴基斯坦传递"可以通过正式渠道接触"的信号，标志着中国决策层已准备采取行动。</div>
+      </div>
+    </div>
+
+    <!-- 基辛格+尼克松访华 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">✈️</span>
+        <span class="topic-title">基辛格秘密访华 → 尼克松访华</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>基辛格秘密访华</strong>（1971年7月 & 10月）：</p>
+        <ul>
+          <li><strong>印度支那问题</strong></li>
+          <li><strong>中美关系正常化时间表</strong></li>
+          <li><strong>台湾问题（核心中的核心）</strong>——联合公报最困难的部分</li>
+        </ul>
+        <p><strong>尼克松访华</strong>（1972年2月）：</p>
+        <ul>
+          <li>毛泽东当日会见——<em>最高领导人直接掌握中美关系进程</em></li>
+          <li>周恩来会谈涉及：全球战略形势问题（共同利益）、台湾问题、地区问题</li>
+          <li>发表《上海公报》：双方关于台湾问题的表述、双方仍存分歧</li>
+        </ul>
+        <p><strong>中美和解的意义</strong>：</p>
+        <ol>
+          <li>中美实现历史性和解</li>
+          <li>中国摆脱外交孤立，打开外交局面</li>
+          <li><strong>改变了"战略三角"</strong>（美、中、苏）的力量平衡，推动苏联的削弱、解体及冷战的结束</li>
+        </ol>
+        <div class="exam-hint">台湾问题是核心中的核心。毛泽东当日即会见尼克松——表明最高领导人对中美关系的亲自掌控。中美和解不仅改变了两国关系，更改变了整个冷战格局。</div>
+      </div>
+    </div>
+
+    <!-- 中美苏三角博弈 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">🔺</span>
+        <span class="topic-title">中美苏三角关系的复杂博弈</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <table class="compare-table">
+          <tr><th style="width:80px;">国家</th><th>战略策略</th></tr>
+          <tr><td><strong>美国</strong></td><td>试图联合中国牵制苏联；但也随时摆出与苏联缓和关系的姿态制约中国——令毛泽东不断担心美国要<em>"踏着中国的肩膀跑莫斯科"</em></td></tr>
+          <tr><td><strong>苏联</strong></td><td>试图通过对中国打出和谈旗帜，增加同美国争夺的资本；在谈判桌上向美国打中国牌，<em>干扰中美关系发展</em></td></tr>
+          <tr><td><strong>中国</strong></td><td>响应苏联边界会谈建议，缓和两国紧张局势；<em>利用谈判桌对美国打苏联牌</em>，以利用苏美矛盾，加速中美关系正常化步伐</td></tr>
+        </table>
+        <div class="quote-block">
+          "边界谈判期间，在中国代表团于双方会晤后的每次讨论中，周恩来最先询问的不是谈判的情况，而是美国方面有何反应。"
+          <div class="q-attribution">—— 2000年9月29日沈志华、张玥等采访王荩卿记录</div>
+        </div>
+        <p><strong>关键判断</strong>：中国调整政策的主要原因是<em>外部安全环境</em>，内生动力不强。<strong>思考</strong>：中美关系为何未能在尼克松访华后一直未能实现突破？——因为中方的主要驱动力是对抗苏联，当外部安全压力缓解时，推进动力就减弱了。</p>
+        <div class="exam-hint">周恩来"最先询问美国反应"这一细节极为关键——说明中苏谈判的真正对象其实是美国，中国在打"苏联牌"以推动中美关系。</div>
+      </div>
+    </div>
+
+    <!-- 一条线一大片 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">🧵</span>
+        <span class="topic-title">"一条线，一大片"——反苏国际统一战线</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>背景</strong>：中国安全形势变化 + 中共十大报告 + 毛泽东对"踩着北京去莫斯科"的担忧</p>
+        <p><strong>"一条线"</strong>（1973年2月，基辛格第五次访华时毛泽东提出）：</p>
+        <div class="quote-block">
+          "一条横线，就是纬度，美国、日本、中国、巴基斯坦、伊朗、土耳其、欧洲。"
+          <div class="q-attribution">—— 毛泽东</div>
+        </div>
+        <p>即"从东到西建立一条反苏霸的统一战线"。</p>
+        <p><strong>"一大片"</strong>：进一步联合"一条线"周边的国家——"一大片的第三世界要团结"。</p>
+        <div class="quote-block">
+          "我们两家出于需要，所以就这样，hand-in-hand（手携手）。……共同对付一个王八蛋！"
+          <div class="q-attribution">—— 毛泽东会见基辛格（1973年2月17日）</div>
+        </div>
+        <p><strong>意义</strong>：反苏国际统一战线政策最终形成的重要标志。一方面需要同广大亚非拉新独立国家合作，另一方面也需要联合同美国关系密切的多数西方国家。但<em>也存在困难</em>——美国在尽自己的责任方面"有某些不足"。</p>
+        <div class="exam-hint">毛泽东用"王八蛋"指苏联——这个极其口语化的表述清晰展现了"联美遏苏"的战略意图。"一条线一大片"标志着反苏国际统一战线的正式形成。</div>
+      </div>
+    </div>
+
+    <!-- 三个世界 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">🌍</span>
+        <span class="topic-title">"三个世界"划分理论</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>理论渊源</strong>：从"两个中间地带"（1960年代中期）发展而来</p>
+        <p><strong>背景</strong>：1970年代多极化开始出现，并强烈冲击两极格局</p>
+        <p><strong>三个世界的划分</strong>：</p>
+        <table class="compare-table">
+          <tr><th>世界</th><th>构成</th><th>特征</th></tr>
+          <tr><td><strong>第一世界</strong></td><td>美国、苏联</td><td>"原子弹多，也比较富"</td></tr>
+          <tr><td><strong>第二世界</strong></td><td>欧洲、日本、澳大利亚、加拿大等</td><td>"原子弹没有那么多，也没有那么富"</td></tr>
+          <tr><td><strong>第三世界</strong></td><td>广大亚非拉国家</td><td>"亚洲除了日本都是第三世界，整个非洲都是第三世界，拉丁美洲也是第三世界"</td></tr>
+        </table>
+        <p><strong>邓小平在联合国大会的讲话</strong>（1974年）正式向国际社会阐述了"三个世界"理论。</p>
+        <p><strong>意义</strong>：</p>
+        <ol>
+          <li>成为1970年代中国外交的<em>指导思想</em></li>
+          <li>奠定了在新形势下中国对外关系发展的<em>立足点</em>（第三世界国家）</li>
+          <li>确立了对苏联的认识</li>
+          <li>"第二世界"的形成为中国外交带来<em>更大的发展空间</em></li>
+        </ol>
+        <div class="exam-hint">"三个世界"理论是对"中间地带"思想的发展，关键创新在于：将美苏并列在第一世界（均为霸权），将欧洲日本等发达国家单独列为"第二世界"（可争取的力量），扩大了中国的外交空间。</div>
+      </div>
+    </div>
+
+    <!-- 重返联合国 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">🇺🇳</span>
+        <span class="topic-title">重返联合国</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>中国共产党与联合国的渊源</strong>：董必武曾参加旧金山制宪会议（1945年），中共是联合国创始会员国之一。</p>
+        <p><strong>重返之路的三个阶段</strong>：</p>
+        <table class="compare-table">
+          <tr><th>阶段</th><th>时期</th><th>特征</th></tr>
+          <tr><td>① 深陷对抗</td><td>1949-1951</td><td>朝鲜战争使中国被排斥在联合国之外</td></tr>
+          <tr><td>② "革命者"</td><td>1951-1971</td><td>美国用程序手段阻挠（从"暂不讨论"到"重要议案"）；中国对联合国持否定、反对态度（中苏分裂进一步激化）；但<em>私下态度复杂</em></td></tr>
+          <tr><td>③ 万事俱备</td><td>1971年</td><td>亚非新兴国家大量加入联合国→支持美方提案的国家减少→"两阿提案"→<strong>2758号决议</strong></td></tr>
+        </table>
+        <p><strong>三个关键提案</strong>：</p>
+        <ul>
+          <li><strong>美日等国"重要问题"提案</strong>：将取消"中华民国代表权"设为需三分之二多数通过的特别重要问题</li>
+          <li><strong>"两阿提案"</strong>（1971年7月15日）：阿尔巴尼亚、阿尔及利亚等17国要求恢复中国在联合国的合法席位，驱逐蒋介石集团代表</li>
+          <li><strong>"双重代表权"提案</strong>：同意中华人民共和国在联合国拥有席位，同时不剥夺"中华民国"代表权（PRC获安理会位置）</li>
+        </ul>
+        <p><strong>中方态度——去还是不去？</strong></p>
+        <div class="quote-block">
+          "我只记得大约（1971年）9月里有一天夜晚，章文晋从周总理处开会回来找到我，让我准备万一联合国准备恢复我们的合法权利的决议时，我们可以找什么理由推迟进入。"
+          <div class="q-attribution">—— 凌青《从延安到联合国——凌青外交生涯》</div>
+        </div>
+        <p>中方内部曾犹豫是否立刻进入联合国，但<em>最终决定立即参加</em>。</p>
+        <p><strong>意义</strong>：</p>
+        <ol>
+          <li>表明中国国际地位日益加强和影响迅速提升</li>
+          <li>标志着<strong>"一个中国"原则</strong>成为当代国际体系的一个组成部分</li>
+        </ol>
+        <div class="exam-hint">"双重代表权"被否决意味着国际社会在法律上确认了中华人民共和国政府是代表全中国的唯一合法政府。中国起初的犹豫态度也值得关注——反映了中国对国际体系从对抗到参与的过渡。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ L12 ═══════════════ -->
+  <div class="lecture" id="L12">
+    <div class="lec-header" style="border-left-color: var(--green);">
+      <h2 style="color: var(--green);">第十二讲：改革开放时代的外交转型</h2>
+      <div class="lec-date">📅 2026年6月3日</div>
+      <div class="lec-summary">
+        本讲核心：文革结束后<strong>国家战略从"革命/斗争"转向"经济建设"</strong>→外交"纠左"→确立"和平与发展"时代主题→独立自主的和平外交方针→中美建交→中苏关系正常化。这是一条从"极左外交"到"务实外交"的根本转型之路。
+      </div>
+    </div>
+
+    <!-- 国家战略转移 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">🔄</span>
+        <span class="topic-title">文革结束与国家战略转移</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-date">1977年8月</span><br>
+            <strong>十一大</strong>宣布文革结束
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">1978年12月</span><br>
+            <strong>十一届三中全会</strong>：明确将"全党工作的着重点和全国人民的注意力转移到社会主义经济建设上来"→实行改革开放政策→<em>标志着中国国家战略的转变</em>。
+          </div>
+        </div>
+        <p><strong>国家战略和对外政策的关系</strong>：</p>
+        <ul>
+          <li>对外政策发生根本性转变的动力来自于<em>国家战略的转变</em></li>
+          <li>新的战略：以经济建设为中心 → 新的外交目标：<strong>为经济发展创造良好（和平稳定）的外部环境</strong></li>
+          <li><strong>但是</strong>，国家发展战略对外交政策的影响具有<em>滞后性</em>——文革结束后一个时期内出现矛盾现象：一方面强调需要和平稳定的国际环境，另一方面对国际形势判断趋向严峻</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>核心逻辑链</strong>：国家战略转变（以经济建设为中心）→ 外交目标转变（创造和平环境）→ 需要外交"纠左"→ 重新评估时代主题、中国国际地位、外交出发点。
+        </div>
+        <div class="exam-hint">理解"滞后性"这一概念：外交观念不会因为国内政局变化立即改变。十一大（1977）仍讲"苏修亡我之心不死"，直到邓小平时代才彻底扭转。</div>
+      </div>
+    </div>
+
+    <!-- 外交纠左 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">🔧</span>
+        <span class="topic-title">外交"纠左"——从极左外交到务实外交</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>极左外交的四个特征</strong>（来自第八讲）：</p>
+        <ol>
+          <li><strong>对时代和世界形势的判断不符合实际</strong>——错误估计世界发展方向，否定国际形势中缓和因素的存在</li>
+          <li><strong>高估中国在世界政治中的地位和影响力</strong>——"中国革命中心论"</li>
+          <li><strong>将无产阶级国际主义置于中心位置</strong>——以国家性质决定处理国际关系的标准，忽视国家利益</li>
+          <li><strong>"两个拳头打人"</strong>——"反帝必反修"，极少数同时与两个超级大国对抗的国家</li>
+        </ol>
+        <p><strong>"纠左"的三个维度</strong>：</p>
+
+        <p><strong>其一：摆脱"时代"问题束缚</strong></p>
+        <ul>
+          <li>提出<em>"和平与发展"是当今世界的主题</em></li>
+          <li>彻底否定建国以来在时代问题上长期坚持的主要观点（重回中共八大判断）</li>
+          <li>百万大裁军——实践上的最直接体现</li>
+        </ul>
+        <div class="quote-block">
+          "世界大战在几年内打不起来，美苏两霸在战争问题上谁也不敢先发动。我们不要自己吓唬自己，造成人为的紧张。"
+          <div class="q-attribution">—— 邓小平，1981年3月3日</div>
+        </div>
+
+        <p><strong>其二：对中国的国际地位作出客观评价</strong></p>
+        <ul>
+          <li>直面经济发展在世界上处于落后水平的现实</li>
+          <li>"中国是个大国，又是个小国"（邓小平）</li>
+          <li>开始转向务实的对外政策——<em>"千万不要当头，这是一个国策"</em></li>
+        </ul>
+
+        <p><strong>其三：国家利益回归对外政策的出发点</strong></p>
+        <ul>
+          <li>外交为经济建设服务、为实现现代化服务</li>
+          <li>对外政策的决定因素从"国家性质"→"安全威胁"→<em>"经济建设"</em></li>
+        </ul>
+        <div class="quote-block">
+          "我们面临发展和摆脱落后的任务。我们希望有一个和平的国际环境。我们希望至少有50年到70年的和平时间。"
+          <div class="q-attribution">—— 《邓小平思想年编》</div>
+        </div>
+
+        <p><strong>毛 vs 邓 对比</strong>：</p>
+        <table class="compare-table">
+          <tr><th></th><th>关于时代判断</th><th>关于中国地位</th><th>对外政策决定因素</th></tr>
+          <tr><td><strong>毛泽东时代</strong></td><td>革命和斗争</td><td>"中国革命中心论"</td><td>从"国家性质"到"国家安全"</td></tr>
+          <tr><td><strong>邓小平时代</strong></td><td>和平和发展</td><td>贫穷落后，需努力追赶</td><td>经济建设</td></tr>
+        </table>
+        <div class="exam-hint"><strong>极高频考点！</strong>外交"纠左"的三个维度（时代判断→国际地位→国家利益）是理解改革开放后中国外交转型的核心框架。毛邓对比表必须掌握。</div>
+      </div>
+    </div>
+
+    <!-- 中共十二大和独立自主 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">🎯</span>
+        <span class="topic-title">中共十二大与"独立自主"的和平外交</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>中共十二大确立80年代三大任务</strong>：</p>
+        <ol>
+          <li><strong>加紧现代化建设</strong>（<em>核心</em>）</li>
+          <li>实现国家统一</li>
+          <li>反对霸权主义和维护世界和平</li>
+        </ol>
+        <p><strong>外交方针的重大调整</strong>：</p>
+        <ul>
+          <li>中国<em>不同任何大国结盟</em></li>
+          <li>在独立自主、和平共处五项原则的基础上，同世界一切国家建立和发展关系</li>
+          <li>核心：<strong>独立自主</strong></li>
+        </ul>
+        <p><strong>中国外交战略的三大阶段演变</strong>：</p>
+        <div style="display:flex; gap:10px; margin:10px 0; flex-wrap:wrap;">
+          <span class="phase-tag red">50年代 "一边倒"</span> <span style="color:var(--text-secondary);">→</span>
+          <span class="phase-tag orange">70年代 "一条线，一大片"</span> <span style="color:var(--text-secondary);">→</span>
+          <span class="phase-tag green">80年代起 "独立自主"</span>
+        </div>
+        <div class="quote-block">
+          "我们外交政策的基本点是反对霸权主义，维护世界和平，不管这种霸权主义来自何方，中国不会依附任何一个超级大国，中国不会打'美国牌'去对付苏联，不会打'苏联牌'去对付美国，也决不允许任何人玩'中国牌'。"
+          <div class="q-attribution">—— 黄华同联合国秘书长德奎利亚尔会谈，1982年8月21日《人民日报》</div>
+        </div>
+        <p><strong>意义</strong>：</p>
+        <ol>
+          <li>对外战略发展史上具有<em>里程碑意义</em>的重大调整</li>
+          <li>提升了中国的国际地位，使中国真正成为国际舞台上一支独立自主的力量</li>
+          <li>为中国经济建设营造了相对有利的环境</li>
+        </ol>
+        <div class="exam-hint">"不结盟"是独立自主外交方针的核心内容。"不打美国牌不打苏联牌也不允许被玩中国牌"——这句经典表述必须记住。</div>
+      </div>
+    </div>
+
+    <!-- 中美建交 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">🇺🇸🇨🇳</span>
+        <span class="topic-title">中美建交</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>尼克松后期低潮→福特时期倒退→卡特时期转折</strong>：</p>
+        <ul>
+          <li>70年代早期：美苏缓和；70年代中期：苏攻美守</li>
+          <li>福特时期：对苏缓和，台湾问题倒退</li>
+          <li>卡特时期前期：企图继续"缓和"政策；后期：缓和政策破产</li>
+        </ul>
+        <p><strong>布热津斯基访华</strong>→中美建交谈判→<strong>1978年《建交公报》</strong>：</p>
+        <ul>
+          <li>"中华人民共和国政府是中国的唯一合法政府"</li>
+          <li>"只有一个中国，台湾是中国的一部分"</li>
+          <li>1979年1月1日美国与台湾断交，结束共同防御条约</li>
+          <li>《建交公报》比《上海公报》<em>前进一大步</em></li>
+        </ul>
+        <p><strong>邓小平1979年访美</strong></p>
+        <p><strong>中美最终建交之原因</strong>：</p>
+        <ol>
+          <li>两国重新就遏制苏联达成一致</li>
+          <li>中方实现中美关系正常化的动力已经从<em>单纯对抗苏联扩张</em>，提升到<strong>配合国家发展战略需要</strong>的层次</li>
+        </ol>
+        <div class="quote-block">
+          "我们相信中美关系正常化能为美国用先进的东西帮助我们实现四个现代化创造更有利的条件。"
+          <div class="q-attribution">—— 邓小平，1979年1月访美前夕</div>
+        </div>
+        <div class="highlight-box">
+          <strong>对比思考</strong>：72-78期间中方追求正常化主要为了<em>对抗苏联（安全驱动）</em>；78-79期间则增加了<em>配合四个现代化（发展驱动）</em>——动力结构发生了质的提升。
+        </div>
+        <div class="exam-hint">中美建交的双重驱动力（安全+发展）是理解改革开放后中国外交的关键视角。</div>
+      </div>
+    </div>
+
+    <!-- 中苏关系正常化 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon event">🇷🇺🇨🇳</span>
+        <span class="topic-title">中苏关系正常化</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>"中苏关系正常化"定义</strong>：指两国关系从敌对恢复到合作友好的状态。</p>
+        <p><strong>回望1970年代</strong>：苏联在中国周边的军事行动——边境陈兵百万、支持越南入侵柬埔寨、入侵阿富汗。1979年：不再续约《中苏友好同盟互助条约》，同盟关系正式结束。</p>
+        <p><strong>第一轮尝试（1982-1986）</strong>：</p>
+        <ul>
+          <li>1982年勃列日涅夫"塔什干讲话"释放缓和信号</li>
+          <li>中方提出<strong>三大诉求</strong>：①中苏边界和蒙古驻扎重兵问题；②支持越南入侵柬埔寨；③武装占领阿富汗</li>
+          <li><em>成效有限</em>：苏联内部局势动荡（领导人频繁更替），苏方未能在中方核心关切上让步</li>
+        </ul>
+        <p><strong>第二轮尝试（1987-1989）</strong>：</p>
+        <ul>
+          <li>中苏恢复边界谈判</li>
+          <li>苏方撤军（蒙古、阿富汗以及越南问题）</li>
+          <li><strong>1989年戈尔巴乔夫访华</strong>——30年后第一位来华访问的苏联最高领导人</li>
+          <li>《中苏联合公报》宣布两国关系正常化</li>
+        </ul>
+        <div class="quote-block">
+          "中苏两国领导人的任务是结束过去，开辟未来。……不过有个限度，只是了解，不予纠缠，重点在于开辟未来。"
+          <div class="q-attribution">—— 邓小平会见苏联外长谢瓦尔德纳泽，1989年2月4日</div>
+        </div>
+        <p><strong>动因</strong>：经济发展需要和平稳定的周边环境 + 务实的对外政策</p>
+        <p><strong>意义</strong>：中国走上<em>独立自主的和平外交道路</em>的一个重大标志。</p>
+        <div class="exam-hint">中苏正常化的"三大障碍"（边境驻军、柬埔寨、阿富汗）必须记住。邓小平"结束过去开辟未来"体现了务实外交的精髓。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ L13 ═══════════════ -->
+  <div class="lecture" id="L13">
+    <div class="lec-header" style="border-left-color: var(--purple);">
+      <h2 style="color: var(--purple);">第十三讲：中国和联合国关系</h2>
+      <div class="lec-date">📅 2026年6月10日</div>
+      <div class="lec-summary">
+        本讲通过"中国与联合国关系"这一案例，系统展现中国与国际体系关系的变迁：<strong>重返（1971）→体制内的反对者（1971-1978）→全面认识和务实对待（1978-1990s）→新时代的积极参与者</strong>。核心问题：中国究竟是现行国际秩序的Conformist（遵从者）还是Revisionist（修正者）？
+      </div>
+    </div>
+
+    <!-- 国际秩序概念 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">🌐</span>
+        <span class="topic-title">中国与国际秩序的关系——核心概念</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p><strong>自由国际秩序</strong>（Liberal International Order）：以美国为主导的、二战后建立的国际秩序。</p>
+        <p><strong>中国的话语</strong>：使用"<em>现行国际秩序</em>"而非"自由国际秩序"，强调<strong>以联合国为核心的国际体系</strong>。</p>
+        <div class="quote-block">
+          "中国是现行国际体系的参与者、建设者、贡献者，同时也是受益者。"
+          <div class="q-attribution">—— 习近平在第70届联合国大会的讲话，2015年9月</div>
+        </div>
+        <div class="quote-block">
+          "世界只有一个体系，就是以联合国为核心的国际体系。只有一个秩序，就是以国际法为基础的国际秩序。只有一套规则，就是以联合国宪章宗旨和原则为基础的国际关系基本准则。"
+          <div class="q-attribution">—— 习近平在第76届联合国大会一般性辩论，2021年9月21日</div>
+        </div>
+        <p><strong>中国对外政策重要原则</strong>："联合国是国际体系的核心"——通过强调联合国体系来<em>对抗美国的单边主义</em>。</p>
+        <div class="exam-hint">中国使用"现行国际秩序"而非"自由国际秩序"，反映了对二战后美国主导秩序的谨慎态度——同时强调以联合国为核心的多边主义来制衡美国的单边主义。</div>
+      </div>
+    </div>
+
+    <!-- 三个发展阶段 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">📈</span>
+        <span class="topic-title">中国和联合国关系的三个阶段</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <table class="compare-table">
+          <tr><th style="width:10%;">阶段</th><th style="width:15%;">时间</th><th>特征</th><th style="width:25%;">具体表现</th></tr>
+          <tr>
+            <td><span class="phase-tag red">①</span></td>
+            <td><strong>1971-1978</strong></td>
+            <td><strong>体制内的反对者</strong></td>
+            <td>
+              • 定位：一个<em>反霸、宣传中国外交政策和革命形势的讲坛</em><br>
+              • 基本观点：反对霸权主义，支持第三世界的正义斗争；支持国家独立、民族解放、人民革命<br>
+              • 参与方式：保持超脱——对安理会和经社理事会以外的机构暂不参与<br>
+              • 典型案例："不参加"投票（Non-Participation）；对UNESCO的消极态度<br>
+              • <strong>局限</strong>：忽视了联合国作为"促进合作"平台的特点
+            </td>
+          </tr>
+          <tr>
+            <td><span class="phase-tag blue">②</span></td>
+            <td><strong>1978-1990s中</strong></td>
+            <td><strong>全面认识和务实对待</strong></td>
+            <td>
+              • 时代背景：<em>国家战略转移</em>→社会主义现代化建设→外交纠左<br>
+              • 认识转变：认可联合国的普世性和权威性，同时也看到不足<br>
+              • <strong>服务于经济建设</strong>：联合国会费、UNDP、世界银行<br>
+              • <strong>服务于和平环境</strong>：裁军问题、联合国维和问题<br>
+              • 全面深化在联合国的参与程度
+            </td>
+          </tr>
+          <tr>
+            <td><span class="phase-tag green">③</span></td>
+            <td><strong>新时代</strong></td>
+            <td><strong>继续深化参与</strong></td>
+            <td>
+              • 国家利益需要长期和平稳定的国际环境<br>
+              • 作为<em>现行国际体系的最大受益者之一</em><br>
+              • 积极参与并逐步改革<br>
+              • 核心辩论：中国——<strong>Conformist还是Revisionist？</strong><br>
+              • 案例研究：UNGA投票、UNSC投票
+            </td>
+          </tr>
+        </table>
+        <div class="exam-hint">三个阶段的核心逻辑：从"体制外"（1971前革命者）→"体制内的反对者"→"体制内的务实参与者"→"体制的积极建设者/改革者"。每个阶段的转变动因都是国家战略和对外政策的转变。</div>
+      </div>
+    </div>
+
+    <!-- Conformist vs Revisionist -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+        <span class="topic-icon concept">⚖️</span>
+        <span class="topic-title">核心辩论：Conformist（遵从者）还是 Revisionist（修正者）？</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <p>这是当今学术界和政策界关于中国与国际秩序关系的<strong>核心辩论</strong>。</p>
+        <p><strong>案例一：联合国大会投票</strong>——中国在联大的投票模式与美国的相似度如何？</p>
+        <p><strong>案例二：联合国安理会投票</strong>——中国在安理会的投票行为与西方国家的"反直觉"低相似度。</p>
+        <p><strong>解释这种"反直觉"低相似度的可能原因</strong>：</p>
+        <ol>
+          <li>关于"干涉主义"的不同看法（中国坚持不干涉内政原则）</li>
+          <li>中美关系恶化后，非洲等发展中国家需要选边站队</li>
+          <li>安理会Informal Power差距大（西方在非正式影响力方面远超中国）</li>
+        </ol>
+        <p><strong>总结</strong>：中国和国际秩序的关系是<em>复杂的</em>——既是既有秩序的受益者和维护者（在贸易、发展等领域），又在某些领域挑战现有规则（在治理模式、人权话语等方面），同时在推动增量改革（如亚投行、"一带一路"）。</p>
+        <div class="exam-hint">这个问题没有标准答案——重点在于理解中国既不是彻底的遵从者也不是彻底的修正者，而是在不同议题领域扮演不同角色的复杂行为体。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ 综合时间线 ═══════════════ -->
+  <div class="lecture">
+    <div class="lec-header" style="border-left-color: var(--orange);">
+      <h2 style="color: var(--orange);">🗓️ L9-L13 综合时间线（1960s-1980s）</h2>
+    </div>
+    <div class="timeline" style="max-width:800px; margin:0 auto;">
+      <div class="tl-item"><span class="tl-date">1960</span> 中苏边界零星冲突开始出现</div>
+      <div class="tl-item"><span class="tl-date">1964.6</span> 毛泽东放弃"北顶南放"战略</div>
+      <div class="tl-item"><span class="tl-date">1964.7</span> 毛泽东首次公开提出中苏边界问题</div>
+      <div class="tl-item"><span class="tl-date">1964.10</span> 赫鲁晓夫下台；毛泽东开始担忧苏联军事入侵</div>
+      <div class="tl-item"><span class="tl-date">1966</span> 苏蒙条约签订；大三线建设</div>
+      <div class="tl-item"><span class="tl-date">1968.8</span> 苏联入侵捷克斯洛伐克→"两个战争策源地"</div>
+      <div class="tl-item"><span class="tl-date">1969.3</span> 珍宝岛事件→苏联成为"主要"威胁</div>
+      <div class="tl-item"><span class="tl-date">1969.6</span> 勃列日涅夫提出"亚洲集体安全体系"</div>
+      <div class="tl-item"><span class="tl-date">1969夏-秋</span> 中美两次互相试探性接触</div>
+      <div class="tl-item"><span class="tl-date">1971.7</span> "两阿提案"；基辛格秘密访华</div>
+      <div class="tl-item"><span class="tl-date">1971.10</span> 2758号决议——重返联合国</div>
+      <div class="tl-item"><span class="tl-date">1972.2</span> 尼克松访华，发表《上海公报》</div>
+      <div class="tl-item"><span class="tl-date">1973.2</span> 毛泽东提出"一条线一大片"</div>
+      <div class="tl-item"><span class="tl-date">1974</span> 邓小平联大阐述"三个世界"理论</div>
+      <div class="tl-item"><span class="tl-date">1978.12</span> 十一届三中全会→国家战略转移</div>
+      <div class="tl-item"><span class="tl-date">1978.12</span> 中美《建交公报》</div>
+      <div class="tl-item"><span class="tl-date">1979.1.1</span> 中美正式建交；邓小平访美</div>
+      <div class="tl-item"><span class="tl-date">1982.9</span> 中共十二大——"独立自主"和平外交方针确立</div>
+      <div class="tl-item"><span class="tl-date">1982-1986</span> 中苏第一轮正常化尝试</div>
+      <div class="tl-item"><span class="tl-date">1987-1989</span> 中苏第二轮正常化尝试→戈尔巴乔夫访华</div>
+    </div>
+  </div>
+
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// 回到顶部
+window.addEventListener('scroll', () => {
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 500);
+});
+// 导航高亮
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

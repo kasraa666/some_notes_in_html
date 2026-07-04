@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新中国对外关系 — 主题串讲复习</title>
+<style>
+  :root {
+    --c1: #1a3a5c;
+    --c2: #c41230;
+    --c3: #2d6a4f;
+    --c4: #7b2d8b;
+    --c5: #b8860b;
+    --c6: #1a73a8;
+    --c7: #c7452a;
+    --c8: #2c5f2d;
+    --bg: #f8f6f0;
+    --card: #fff;
+    --text: #222;
+    --muted: #666;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2b5a8c 50%, #1a3a5c 100%);
+    color: #fff; text-align: center; padding: 48px 20px 36px;
+  }
+  .hero h1 { font-size: 2em; letter-spacing: 4px; margin-bottom: 8px; }
+  .hero .sub { opacity: .85; font-size: 1em; margin-bottom: 16px; }
+  .hero .desc { font-size: .88em; opacity: .7; max-width: 700px; margin: 0 auto; line-height: 1.7; }
+
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 24px 20px; }
+
+  /* ===== THEME NAV ===== */
+  .theme-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 24px 0 32px;
+  }
+  .theme-nav a {
+    display: block;
+    padding: 12px 16px;
+    background: var(--card);
+    border-left: 3px solid var(--c1);
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 0 6px 6px 0;
+    font-size: .92em;
+    transition: .2s;
+  }
+  .theme-nav a:hover { background: #e8f0fe; border-left-width: 5px; }
+
+  /* ===== THEME SECTION ===== */
+  .theme { margin-bottom: 44px; }
+  .theme-hd {
+    padding: 14px 20px;
+    border-radius: 8px 8px 0 0;
+    color: #fff;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .theme-hd .num {
+    background: rgba(255,255,255,.25);
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85em; font-weight: bold;
+  }
+  .theme-body {
+    background: var(--card);
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 24px 28px;
+  }
+
+  /* Colors per theme */
+  .t1 { background: var(--c1); } .t1b { border-color: var(--c1); }
+  .t2 { background: var(--c2); } .t2b { border-color: var(--c2); }
+  .t3 { background: var(--c3); } .t3b { border-color: var(--c3); }
+  .t4 { background: var(--c4); } .t4b { border-color: var(--c4); }
+  .t5 { background: var(--c5); } .t5b { border-color: var(--c5); }
+  .t6 { background: var(--c6); } .t6b { border-color: var(--c6); }
+  .t7 { background: var(--c7); } .t7b { border-color: var(--c7); }
+  .t8 { background: var(--c8); } .t8b { border-color: var(--c8); }
+
+  /* ===== COMPONENTS ===== */
+  h3 { font-size: 1.05em; color: var(--c1); margin: 22px 0 8px; padding-bottom: 4px; border-bottom: 1px dashed #ddd; }
+  h3:first-child { margin-top: 0; }
+  h4 { font-size: .95em; color: #555; margin: 14px 0 6px; }
+
+  .big-idea {
+    background: linear-gradient(135deg, #fffaee, #fff8e1);
+    border-left: 4px solid #e6a817;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: .95em;
+  }
+  .big-idea strong:first-child { color: #b8860b; }
+
+  .arc-box {
+    background: #e8f4fd;
+    border: 1px solid #bdd7ee;
+    padding: 16px 20px;
+    margin: 14px 0;
+    border-radius: 8px;
+  }
+  .arc-box h4 { margin-top: 0; color: var(--c1); }
+
+  .phase-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 10px 0;
+  }
+  .phase-card {
+    flex: 1 1 180px;
+    min-width: 160px;
+    background: #f5f5f5;
+    padding: 13px 15px;
+    border-radius: 6px;
+    border-top: 3px solid var(--c1);
+    font-size: .88em;
+  }
+  .phase-card .yr { font-weight: bold; color: var(--c1); margin-bottom: 4px; font-size: .9em; }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: .9em;
+  }
+  .compare-table th {
+    background: var(--c1);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: normal;
+  }
+  .compare-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  .compare-table tr:nth-child(even) td { background: #f9f9f9; }
+
+  .quote {
+    border-left: 3px solid #bbb;
+    padding-left: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 10px 0;
+    font-size: .9em;
+  }
+  .quote .author { color: #999; font-size: .85em; }
+
+  ul, ol { padding-left: 22px; }
+  li { margin: 3px 0; }
+  .tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-size: .78em;
+    margin: 0 4px;
+    font-weight: bold;
+  }
+  .tag-up { background: #d4edda; color: #155724; }
+  .tag-down { background: #f8d7da; color: #721c24; }
+  .tag-flat { background: #e2e3e5; color: #383d41; }
+
+  .exam-hint {
+    background: #fff3f3;
+    border: 1px dashed #c41230;
+    padding: 10px 16px;
+    margin: 18px 0 0 0;
+    border-radius: 6px;
+    font-size: .85em;
+    color: #a31028;
+  }
+  .exam-hint::before { content: "✏️ 可能的考题方向："; font-weight: bold; }
+
+  hr { border: none; border-top: 1px solid #ddd; margin: 24px 0; }
+
+  footer { text-align: center; padding: 30px; color: var(--muted); font-size: .85em; border-top: 1px solid #ddd; margin-top: 20px; }
+
+  @media print {
+    body { font-size:11px; }
+    .theme-nav { display:none; }
+    .theme-body { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>中华人民共和国对外关系</h1>
+  <div class="sub">主题式串讲复习 · 多维角度梳理</div>
+  <div class="desc">
+    将课程内容从"时间顺序"重新组织为"主题脉络"。每个主题跨越多个历史时期，揭示演变逻辑——这正是论述题的考察重点。
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ====== 导航 ====== -->
+<div class="theme-nav">
+  <a href="#t1" style="border-left-color:var(--c1)">主题一：身份与定位</a>
+  <a href="#t2" style="border-left-color:var(--c2)">主题二：独立自主</a>
+  <a href="#t3" style="border-left-color:var(--c3)">主题三：中美苏三角</a>
+  <a href="#t4" style="border-left-color:var(--c4)">主题四：对国际体系的态度</a>
+  <a href="#t5" style="border-left-color:var(--c5)">主题五：战争与和平观</a>
+  <a href="#t6" style="border-left-color:var(--c6)">主题六：决定因素演变</a>
+  <a href="#t7" style="border-left-color:var(--c7)">主题七：党际与国家关系</a>
+  <a href="#t8" style="border-left-color:var(--c8)">主题八：周边与邻国外交</a>
+</div>
+
+
+<!-- ======================== 主题一 ======================== -->
+<div class="theme" id="t1">
+  <div class="theme-hd t1"><span class="num">一</span> 主题：中国自我身份定位的演变</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>"中国是什么？"——对这个问题的回答，直接决定了中国如何处理与世界的关系。不同时期中国对自己的身份定位发生了显著变化，每一次身份重构都伴随着外交政策的重大调整。
+  </div>
+
+  <h3>身份演变的六个阶段</h3>
+
+  <div class="phase-row">
+    <div class="phase-card" style="border-top-color:var(--c2)">
+      <div class="yr">1949-1954</div>
+      <strong>社会主义阵营一员</strong>
+      <p style="margin-top:4px;">"一边倒"；"打扫干净屋子再请客"。身份来源：革命运动塑造的政党身份 + 冷战两极格局。定位单一，以意识形态划线。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#e6a817">
+      <div class="yr">1954-1957</div>
+      <strong>双重身份构建</strong>
+      <p style="margin-top:4px;">既是社会主义国家，<em>也是</em>亚洲新兴国家。日内瓦会议→和平共处五项原则→万隆会议。"中间地带"理论的再提出。这是第一次重要的身份扩展。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#c41230">
+      <div class="yr">1966-1976</div>
+      <strong>"世界革命中心"</strong>
+      <p style="margin-top:4px;">极左外交下的身份膨胀："中国革命中心论"；"世界革命的政治中心、军事中心、兵工厂"（毛泽东，1967）。严重脱离实际。</p>
+    </div>
+  </div>
+  <div class="phase-row">
+    <div class="phase-card" style="border-top-color:var(--c6)">
+      <div class="yr">1970年代</div>
+      <strong>第三世界代言人</strong>
+      <p style="margin-top:4px;">"三个世界"理论：明确将自己定位为第三世界国家。"亚洲除了日本，都是第三世界。"与两个超级大国保持距离。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:var(--c3)">
+      <div class="yr">1980年代</div>
+      <strong>"大国又小国"</strong>
+      <p style="margin-top:4px;">邓小平："中国是个大国，又是个小国。所谓大国就是人多，土地面积大。所谓小国就是中国还是发展中国家，还比较穷。"——客观务实的自我认知。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:var(--c4)">
+      <div class="yr">1990年代至今</div>
+      <strong>"负责任大国"</strong>
+      <p style="margin-top:4px;">现行国际体系的"参与者、建设者、贡献者、受益者"（习近平，2015）。从体制外批判者转变为体制内的建设性力量。</p>
+    </div>
+  </div>
+
+  <h3>身份转变背后的三条主线驱动</h3>
+  <table class="compare-table">
+    <tr><th style="width:15%">阶段</th><th style="width:28%">革命运动主线</th><th style="width:28%">内政主线</th><th style="width:29%">国际环境主线</th></tr>
+    <tr>
+      <td>建国初期</td>
+      <td>革命党思维主导——"一边倒"就是革命的选择</td>
+      <td>巩固新政权——需要在国际上站住脚</td>
+      <td>冷战刚性结构——只能在两极中选择</td>
+    </tr>
+    <tr>
+      <td>八大前后</td>
+      <td>革命运动时代被认为"已经结束"</td>
+      <td>经济建设成为主题——需要和平环境</td>
+      <td>朝鲜战争结束、日内瓦会议——缓和趋势</td>
+    </tr>
+    <tr>
+      <td>文革时期</td>
+      <td>革命逻辑全面回归——世界革命论</td>
+      <td>国内极左化——革命/反革命标准压倒一切</td>
+      <td>中苏分裂——极度不安全感和意识形态激进化</td>
+    </tr>
+    <tr>
+      <td>改革开放</td>
+      <td>革命遗产沉淀为独立自主原则，不再以"革命"逻辑运作</td>
+      <td><strong>以经济建设为中心——成为主导主线</strong></td>
+      <td>"和平与发展"新判断——全球化时代</td>
+    </tr>
+  </table>
+
+  <div class="exam-hint">论述中国在不同时期的国际身份定位及其对外交政策的影响；分析"国家身份构建"在和平共处五项原则提出过程中的作用</div>
+  </div>
+</div>
+
+
+<!-- ======================== 主题二 ======================== -->
+<div class="theme" id="t2">
+  <div class="theme-hd t2"><span class="num">二</span> 主题："独立自主"的演进——从原则到异化再到回归</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>"独立自主"是中国对外关系中最高频的原则话语。但它在不同时期的实质内容和实践方式差异巨大——话语的连续性背后，是内涵的重大变化。理解这一点，是回答论述题的关键。
+  </div>
+
+  <h3>五阶段演进脉络</h3>
+
+  <div class="arc-box">
+    <h4>① 革命时期的起源（1930s-1949）</h4>
+    <p>独立自主来自于<strong>革命的惨痛教训</strong>。遵义会议前，中共作为共产国际支部"亦步亦趋"，教条主义带来巨大损失。毛泽东（1963）总结："真正懂得独立自主是从遵义会议开始的"。这一时期确立的独立自主包含三层含义：思想上不盲从；组织上不依附；行动上从中国实际出发。</p>
+    <p>⚠️ 注意：这个时期确立的独立自主针对的是<strong>苏联/共产国际的不当干涉</strong>。</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>② "一边倒"下的独立自主（1949-1950s）</h4>
+    <p>表面上"一边倒"和"独立自主"似乎矛盾。但课程强调：<strong>"一边倒"是总揽全局的方针，不等于放弃独立自主。</strong></p>
+    <p>具体体现：在社会主义阵营内部，中国坚持平等地位（"不是苏联的附庸"）；在处理双边关系时保持自主决策权（抗美援朝的决策过程就是独立自主的体现——反复与苏联协调，但最终是中国自己作出的决定）。但客观上"一边倒"确实制约了战略空间。</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>③ 中苏分裂期——独立自主的强化与代价（1960s）</h4>
+    <p>中苏论战的核心原因之一就是<strong>中共坚持独立自主</strong>，拒绝接受苏共的领导和路线。长波电台和联合舰队事件中，毛泽东以主权和使用权为底线，拒绝苏联的"联合"方案。</p>
+    <p>但这一时期的独立自主走向了另一个极端——从"反对依附"变为<strong>"反对一切"</strong>（"两个拳头打人"），反而使中国陷入空前的国际孤立。独立自主被异化为自我封闭。</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>④ "一条线"——独立自主的暂时让位（1970s）</h4>
+    <p>安全威胁的极端压力下（苏联成为主要威胁），中国事实上与美国形成"准结盟"关系。虽然名义上未放弃独立自主，但"一条线、一大片"战略实际上使中国的外交选择被安全威胁所锁定。毛泽东自己也担心美国"踏着中国的肩膀跑莫斯科"。</p>
+    <p>这一阶段的教训是：<strong>外部安全压力过大时，独立自主很难真正落实。</strong></p>
+  </div>
+
+  <div class="arc-box">
+    <h4>⑤ 十二大——独立自主的回归与升华（1982年后）</h4>
+    <p>中共十二大确立"不同任何大国结盟"的方针。核心变化：</p>
+    <ul>
+      <li>从<strong>"以谁划线"</strong>变为<strong>"不以任何大国划线"</strong></li>
+      <li>从<strong>安全威胁驱动</strong>变为<strong>发展需求驱动</strong></li>
+      <li>"中国不会打'美国牌'去对付苏联，不会打'苏联牌'去对付美国，也决不允许任何人玩'中国牌'"——黄华，1982年</li>
+    </ul>
+    <p>这一次独立自主之所以能够实现，根本原因是：<strong>国家战略转为以经济建设为中心</strong>——发展需求大于安全恐惧，才真正有了"独立"选择的空间；对国际形势的判断更为客观——"世界大战在几年内打不起来"。</p>
+  </div>
+
+  <h3>贯穿始终的辩证关系</h3>
+  <table class="compare-table">
+    <tr><th>维度</th><th>早期的独立自主</th><th>成熟期的独立自主</th></tr>
+    <tr><td>动力来源</td><td>革命的教训（对苏联控制的反弹）</td><td>发展的需要（为经济建设服务）</td></tr>
+    <tr><td>表现形式</td><td>拒绝依附、反抗控制</td><td>主动选择、多方平衡</td></tr>
+    <tr><td>关系网络</td><td>同盟中的自主 vs 同盟义务的张力</td><td>不结盟 = 对所有国家保持等距</td></tr>
+    <tr><td>内在矛盾</td><td>容易从"不依附一家"滑向"对抗两家"</td><td>在介入与超脱之间保持平衡</td></tr>
+  </table>
+
+  <div class="exam-hint">论述"独立自主"原则在中国不同历史时期的实质内涵变化；分析"一边倒"与"独立自主"是否矛盾</div>
+  </div>
+</div>
+
+
+<!-- ======================== 主题三 ======================== -->
+<div class="theme" id="t3">
+  <div class="theme-hd t3"><span class="num">三</span> 主题：中美苏战略三角的演变</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>冷战期间，中美苏三角关系是中国对外关系的结构性约束和战略舞台。三角形中任何两方关系的变化都会牵动第三方。理解这个三角的几次"翻转"，是把握1949-1990年中国外交的钥匙。
+  </div>
+
+  <h3>三角关系的五次重大变化</h3>
+
+  <table class="compare-table">
+    <tr><th style="width:8%">阶段</th><th style="width:12%">时间</th><th style="width:26%">中国-苏联</th><th style="width:26%">中国-美国</th><th style="width:28%">美-苏</th></tr>
+    <tr>
+      <td><strong>①</strong></td>
+      <td>1949-1950s中</td>
+      <td><span class="tag tag-up">紧密同盟</span> 中苏友好同盟互助条约</td>
+      <td><span class="tag tag-down">尖锐对抗</span> 朝鲜战争、台海危机</td>
+      <td><span class="tag tag-down">冷战对抗</span></td>
+    </tr>
+    <tr>
+      <td><strong>②</strong></td>
+      <td>1950s末-1960s</td>
+      <td><span class="tag tag-flat">同盟裂变→公开分裂</span> "九评"中苏论战</td>
+      <td><span class="tag tag-down">持续对抗</span> 越南战争</td>
+      <td><span class="tag tag-flat">既对抗又缓和</span> 古巴导弹危机后部分合作</td>
+    </tr>
+    <tr>
+      <td><strong>③</strong></td>
+      <td>1969-1970s</td>
+      <td><span class="tag tag-down">严重敌对</span> 珍宝岛事件、百万陈兵</td>
+      <td><span class="tag tag-up">历史性和解</span> 尼克松访华、"一条线"</td>
+      <td><span class="tag tag-flat">尼克松"缓和"</span> SALT谈判</td>
+    </tr>
+    <tr>
+      <td><strong>④</strong></td>
+      <td>1979-1980s</td>
+      <td><span class="tag tag-flat">关系正常化</span> 1989年戈尔巴乔夫访华</td>
+      <td><span class="tag tag-up">正式建交</span> 1979.1.1 邓小平访美</td>
+      <td><span class="tag tag-down">"新冷战"</span> 苏联入侵阿富汗</td>
+    </tr>
+    <tr>
+      <td><strong>⑤</strong></td>
+      <td>1982年后</td>
+      <td colspan="2" style="text-align:center;"><span class="tag tag-up">真正的不结盟</span> —— 中国退出"选边"逻辑，成为独立一极</td>
+      <td>——</td>
+    </tr>
+  </table>
+
+  <h3>理解三角关系的三个关键概念</h3>
+
+  <div class="arc-box">
+    <h4>① "被牵连"的恐惧（Entrapment）</h4>
+    <p>这是三角关系中反复出现的主题。</p>
+    <ul>
+      <li><strong>炮击金门（1958）：</strong>苏联担心被中国的对台军事行动牵连进与美国的冲突</li>
+      <li><strong>珍宝岛事件后：</strong>中国担心被苏联的大规模进攻"教训"</li>
+      <li><strong>1970年代：</strong>毛泽东反复担心美国"踏着中国的肩膀跑莫斯科"（中美走近后被美国利用来对苏施压，然后美国单独与苏缓和）</li>
+      <li><strong>中美苏三角的本质：</strong>每一方都想利用另一方对抗第三方，但每一方都担心被另一方"卷入"不愿面对的冲突</li>
+    </ul>
+  </div>
+
+  <div class="arc-box">
+    <h4>② "打牌"的逻辑——三角关系中的信号与博弈</h4>
+    <p>课程中最精彩的细节之一：</p>
+    <div class="quote">
+      "边界谈判期间，在中国代表团于双方会晤后的每次讨论中，周恩来最先询问的不是谈判的情况，而是美国方面有何反应。"
+      <div class="author">——沈志华、张玥等采访王荩卿记录，2000年</div>
+    </div>
+    <p>中国的策略：<strong>利用对苏谈判桌向美国打苏联牌</strong>，加速中美关系正常化。同理，苏联也利用对华和谈向美国打中国牌，美国利用对苏缓和向中国施压。三方互相"打牌"。</p>
+  </div>
+
+  <div class="arc-box">
+    <h4>③ 三角关系中的"结构性变化"——从两极到三角到多极</h4>
+    <ul>
+      <li><strong>1950年代：</strong>严格的两极格局——中国被锁定在苏联阵营一方，没有三角的空间</li>
+      <li><strong>1960年代：</strong>中苏分裂打破两极——出现了"三角"的雏形，但中国"两个拳头打人"，并未利用三角空间</li>
+      <li><strong>1970年代：</strong>真正的三角博弈——中美苏三方互动，中国灵活运用三角空间</li>
+      <li><strong>1980年代：</strong>超越三角——中国退出在大国间"选边"的逻辑，独立自主成为真正的第三极</li>
+    </ul>
+  </div>
+
+  <div class="exam-hint">论述中美苏三角关系的演变及其对中国外交选择的影响；以具体事件为例分析三角关系中"被牵连"的困境</div>
+  </div>
+</div>
+
+
+<!-- ======================== 主题四 ======================== -->
+<div class="theme" id="t4">
+  <div class="theme-hd t4"><span class="num">四</span> 主题：中国对国际体系的态度——从革命者到建设者</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>中国对以联合国为核心的国际体系的态度，经历了从"否定和推翻"到"参与和改革"的深刻转变。这一转变浓缩了中国对外关系的整体逻辑变化。
+  </div>
+
+  <h3>态度演变的四个阶段</h3>
+
+  <div class="phase-row">
+    <div class="phase-card" style="border-top-color:#c41230">
+      <div class="yr">1945-1949</div>
+      <strong>建章立制时的在场</strong>
+      <p style="margin-top:4px;">董必武参加旧金山制宪会议。中共是最早参与联合国创建的力量之一。但随后因内战和冷战，中国的席位被蒋介石集团占据。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#e67e22">
+      <div class="yr">1949-1971</div>
+      <strong>被排斥的革命者</strong>
+      <p style="margin-top:4px;">深陷中美对抗漩涡。公开立场：联合国被美国操纵，"只能做坏事不可能做好事"（周恩来，1965）；"可以另立一个革命的联合国"。但私下态度复杂：毛泽东对斯诺说"不能"说中国不想进入联合国。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#f1c40f">
+      <div class="yr">1971-1978</div>
+      <strong>体制内的反对者</strong>
+      <p style="margin-top:4px;">2758号决议后进入联合国。定位：反霸、宣传中国外交政策和革命形势的讲坛。保持超脱参与——"不参加"投票；忽视联合国作为"促进合作"平台的特点。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#27ae60">
+      <div class="yr">1978至今</div>
+      <strong>全面参与的建设者</strong>
+      <p style="margin-top:4px;">外交纠左后认识趋于理性务实。全面深化参与程度；联合国政策服务于"以经济建设为中心"和"改革开放"。成为联合国维和行动重要贡献国、会费大国。</p>
+    </div>
+  </div>
+
+  <h3>转变的关键节点：1975年联合国开发计划署（UNDP）决定在华设立代表处</h3>
+  <p>这是一个标志性事件，意味着中国开始将联合国视作<strong>可以获得发展资源的平台</strong>，而不仅仅是政治斗争的讲坛。这体现了对外政策从"政治/安全"逻辑向"发展"逻辑的转变。</p>
+
+  <h3>"国际秩序"话语的变化</h3>
+  <table class="compare-table">
+    <tr><th style="width:15%">时期</th><th style="width:42%">对国际秩序的话语</th><th style="width:43%">对联合国的态度</th></tr>
+    <tr>
+      <td>文革时期</td>
+      <td>"帝国主义走向全面崩溃"——现有秩序即将被推翻</td>
+      <td>"另立一个革命的联合国"</td>
+    </tr>
+    <tr>
+      <td>1970年代</td>
+      <td>"三个世界"——两个超级大国是霸权，需要建立新秩序</td>
+      <td>利用联合国讲坛反霸</td>
+    </tr>
+    <tr>
+      <td>1990年代</td>
+      <td>"建立国际政治经济新秩序"——改革而非革命</td>
+      <td>全面参与、主张改革</td>
+    </tr>
+    <tr>
+      <td>近年</td>
+      <td>"维护以联合国为核心的国际体系"——现行秩序的维护者</td>
+      <td>"联合国是国际体系的核心"</td>
+    </tr>
+  </table>
+
+  <div class="quote">
+    世界只有一个体系，就是以联合国为核心的国际体系。只有一个秩序，就是以国际法为基础的国际秩序。只有一套规则，就是以联合国宪章宗旨和原则为基础的国际关系基本准则。
+    <div class="author">——习近平在第76届联合国大会，2021年</div>
+  </div>
+
+  <div class="exam-hint">论述中国对国际体系态度的演变及其原因；结合联合国案例，分析中国从"革命外交"到"国家外交"的转变</div>
+  </div>
+</div>
+
+
+<!-- ======================== 主题五 ======================== -->
+<div class="theme" id="t5">
+  <div class="theme-hd t5"><span class="num">五</span> 主题："战争与和平"观——中国对世界大势判断的变化</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>中国领导人对"世界会打仗吗？"这一问题的判断，直接决定了国家资源的配置方向（国防优先还是发展优先）、外交战略的选择（对抗还是缓和）。这个判断在历史上几次发生重大转折，每一次转折都深刻重塑了对外政策。
+  </div>
+
+  <h3>五次重大判断转折</h3>
+
+  <table class="compare-table">
+    <tr><th>时间</th><th>判断</th><th>来源/标志</th><th>外交后果</th></tr>
+    <tr>
+      <td><strong>1956</strong></td>
+      <td>世界大战<strong>可以避免</strong>，持久和平<strong>有希望</strong></td>
+      <td>中共八大——毛泽东开幕词、刘少奇政治报告</td>
+      <td>八项和平外交方针；积极发展同各类国家的关系</td>
+    </tr>
+    <tr>
+      <td><strong>1960年代中</strong></td>
+      <td>世界大战<strong>不可避免</strong>且有一定紧迫性</td>
+      <td>放弃"北顶南放"（1964）；大三线建设；苏联入侵捷克斯洛伐克（1968）</td>
+      <td>"备战备荒"；国防支出急剧增加；极左外交蔓延</td>
+    </tr>
+    <tr>
+      <td><strong>1969-1970s</strong></td>
+      <td>大战"可能性<strong>还不大</strong>"，但战争危险严重</td>
+      <td>"四人小组"老帅研判；毛泽东"要准备打仗"但认可老帅判断</td>
+      <td>"一条线"联美反苏；既备战又寻求外交突破</td>
+    </tr>
+    <tr>
+      <td><strong>1977</strong></td>
+      <td>两面性：华国锋称"苏美是新世界大战策源地"、"苏修亡我之心不死"</td>
+      <td>十一大政治报告</td>
+      <td>出现矛盾现象——既想以经济建设为中心，又维持战争危险的判断</td>
+    </tr>
+    <tr>
+      <td><strong>1980年代</strong></td>
+      <td>世界大战<strong>在几年内打不起来</strong>；<strong>"和平与发展"是时代主题</strong></td>
+      <td>邓小平1981年讲话；百万大裁军（1985）</td>
+      <td>全面"纠左"；独立自主和平外交；外交为经济建设服务</td>
+    </tr>
+  </table>
+
+  <h3>关键转折点：从"一个战争策源地"到"两个战争策源地"</h3>
+  <div class="arc-box">
+    <p><strong>1968年8月苏联入侵捷克斯洛伐克</strong>是战争观变化的关键事件：</p>
+    <ul>
+      <li>勃列日涅夫主义的提出——"有限主权论""国际专政论""社会主义大家庭论"——表明苏联可以<strong>直接干涉社会主义国家内政</strong></li>
+      <li>苏联从"安全威胁"<strong>进化</strong>为"新的战争策源地"</li>
+      <li>中国的判断转变：世界大战不可避免 + 紧迫性 → 中国面临"帝、修"（美苏）的包围 → 其中苏联的威胁越来越严重</li>
+      <li>直接后果：大三线建设、备战体制、"要准备打仗"</li>
+    </ul>
+  </div>
+
+  <h3>最重要的思想解放：邓小平对时代主题的重新判断</h3>
+  <div class="arc-box">
+    <p>这是一个<strong>认识论上的巨大飞跃</strong>——</p>
+    <ul>
+      <li>彻底否定了建国以来在时代问题上长期坚持的主要观点</li>
+      <li>实质上<strong>回到了中共八大的判断</strong>——但经过了历史的螺旋上升</li>
+      <li>关键不在于"和平"这个结论本身，而在于：<strong>愿意根据实际情况修正判断，而不是固守教条</strong></li>
+    </ul>
+    <div class="quote">
+      我们不要自己吓唬自己，造成人为的紧张。如果当前老是强调战争马上打起来，使我们的精力都集中到打仗上面，就会影响四个现代化建设。
+      <div class="author">——邓小平，1981年</div>
+    </div>
+  </div>
+
+  <div class="exam-hint">论述中国领导人"战争与和平"观的演变及其对中国外交和内政的影响；试分析为什么邓小平对时代主题的判断被认为是一次"认识上的巨大飞跃"</div>
+  </div>
+</div>
+
+
+<!-- ======================== 主题六 ======================== -->
+<div class="theme" id="t6">
+  <div class="theme-hd t6"><span class="num">六</span> 主题：对外政策决定因素的演变——意识形态、安全、发展的权重变化</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>一个国家的对外政策到底由什么决定？在这个问题上，中国经历了从"以意识形态划线"到"以安全威胁为导向"再到"以经济建设为中心"的根本变化。理解决定因素的演变，是把握整个课程逻辑的总纲。
+  </div>
+
+  <h3>三阶段演变</h3>
+
+  <div class="arc-box">
+    <h4>第一阶段：以"国家性质"决定对外政策（1949-1960年代中期）</h4>
+    <ul>
+      <li><strong>逻辑：</strong>社会主义国家→站在社会主义阵营→反对帝国主义</li>
+      <li><strong>典型表现：</strong>"一边倒"、"打扫干净屋子再请客"、对帝国主义国家不承认</li>
+      <li><strong>文革发展到极端：</strong>将无产阶级国际主义定为"最高指导原则"；以国家性质决定处理国际关系的标准；忽视国家利益</li>
+      <li><strong>问题：</strong>"以我划线"使得外交空间极度狭窄，凡是"非社会主义"就不能做朋友</li>
+    </ul>
+  </div>
+
+  <div class="arc-box">
+    <h4>第二阶段：以"国家安全"决定对外政策（1960年代末-1970年代）</h4>
+    <ul>
+      <li><strong>逻辑：</strong>谁威胁我最大，我就联合另一方对抗谁</li>
+      <li><strong>转折：</strong>苏联成为"主要威胁"→对世界形势判断转变→外交转向建立反苏国际统一战线</li>
+      <li><strong>成果：</strong>中美和解、重返联合国、"一条线一大片"</li>
+      <li><strong>局限：</strong>安全威胁驱动下，中国事实上从"一边倒向苏"变为"一边倒向美"（准结盟），并未真正实现独立自主。而且调整动力主要来自<strong>外部</strong>安全环境，<strong>内生动力不强</strong>——这也是中美关系在尼克松访华后长期未能突破的根本原因。</li>
+    </ul>
+  </div>
+
+  <div class="arc-box">
+    <h4>第三阶段：以"经济建设"为中心决定对外政策（1978年后）</h4>
+    <ul>
+      <li><strong>逻辑：</strong>为经济发展创造良好的（和平稳定的）外部环境</li>
+      <li><strong>新对外政策目标：</strong>不再是推翻世界旧秩序（革命），也不再仅仅是抵挡威胁（安全），而是<strong>为现代化建设服务</strong></li>
+      <li><strong>典型表现：</strong>中美建交的新动力（"为美国用先进的东西帮助我们实现四个现代化创造更有利的条件"——邓小平，1979）；中苏正常化（经济发展要创造和平稳定的周边环境）；联合国政策转向务实（利用联合国获取发展资源）</li>
+      <li><strong>质的飞跃：</strong>国家利益回归对外政策的出发点——外交"为经济建设服务"、"为实现现代化服务"</li>
+    </ul>
+  </div>
+
+  <h3>总结对比</h3>
+  <table class="compare-table">
+    <tr><th>维度</th><th>意识形态阶段</th><th>安全阶段</th><th>发展阶段</th></tr>
+    <tr><td>核心问题</td><td>谁是我们的朋友/敌人？<br>（按社会制度划分）</td><td>谁是最危险的威胁？<br>（按安全威胁划分）</td><td>如何服务于发展？<br>（按国家利益划分）</td></tr>
+    <tr><td>决策依据</td><td>国家性质、意识形态</td><td>军事威胁、安全压力</td><td>经济发展需要</td></tr>
+    <tr><td>灵活度</td><td>低——非黑即白</td><td>中——可"联吴抗曹"</td><td>高——同所有国家发展关系</td></tr>
+    <tr><td>代表性话语</td><td>"无产阶级国际主义是最高指导原则"</td><td>"要准备打仗"、"备战备荒"</td><td>"和平与发展是时代主题"</td></tr>
+    <tr><td>战略选择</td><td>"一边倒"、"两个拳头打人"</td><td>"一条线、一大片"</td><td>"独立自主的不结盟"</td></tr>
+  </table>
+
+  <div class="exam-hint">论述中国对外政策决定因素的演变及其在每个阶段的表现；为什么说从"安全驱动"到"发展驱动"的转变是中国外交史上最深刻的变化之一？</div>
+  </div>
+</div>
+
+
+<!-- ======================== 主题七 ======================== -->
+<div class="theme" id="t7">
+  <div class="theme-hd t7"><span class="num">七</span> 主题：党际关系与国家关系的张力</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>中国共产党在处理对外关系时，始终存在"党际关系"和"国家关系"两个层面。这两个层面的逻辑有时一致、有时冲突，如何处理二者的关系是贯穿课程的一个重要线索。
+  </div>
+
+  <h3>核心制度安排：中联部的独特地位</h3>
+  <p>中共中央对外联络部是<strong>党中央机构</strong>（不是国务院下属），负责中国共产党的对外关系。这体现了中国对外关系的一个独特之处——<strong>党政双轨对外关系体系</strong>。外交部（政府） + 中联部（党） = 两条线并行。</p>
+
+  <h3>党际关系与国家关系的四种关系模式</h3>
+
+  <div class="phase-row">
+    <div class="phase-card" style="border-top-color:var(--c3)">
+      <div class="yr">1950年代</div>
+      <strong>党际关系 = 国家关系</strong>
+      <p style="margin-top:4px;">对社会主义国家：党和国高度重合。中苏同盟既是国家同盟也是党的同盟。中共八大和苏共二十大的互动既在党际层面也在国家层面展开。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#e6a817">
+      <div class="yr">1960年代</div>
+      <strong>党际关系恶化 ＞ 国家关系恶化</strong>
+      <p style="margin-top:4px;">中苏分裂的核心是党际路线争论→扩散到国家关系。"九评"是对苏共的路线批判。伊塔事件后开始从<strong>国家安全角度</strong>看待中苏关系。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:var(--c2)">
+      <div class="yr">文革时期</div>
+      <strong>党际逻辑压倒一切</strong>
+      <p style="margin-top:4px;">以党的意识形态和革命逻辑主导对外关系。支持他国共产党和革命运动。无产阶级国际主义——党际义务高于国家利益。</p>
+    </div>
+    <div class="phase-card" style="border-top-color:var(--c1)">
+      <div class="yr">改革开放后</div>
+      <strong>国家关系优先于党际关系</strong>
+      <p style="margin-top:4px;">中苏正常化的三大诉求都是<strong>国家间</strong>问题（边界驻军、柬埔寨、阿富汗），而非意识形态问题。邓小平："结束过去，开辟未来"——不再纠缠党际争论。</p>
+    </div>
+  </div>
+
+  <h3>中苏分裂中的"国家利益 vs 无产阶级国际主义"</h3>
+  <div class="arc-box">
+    <p>课程结尾提出的反思问题：</p>
+    <p style="text-align:center;font-size:1.05em;color:var(--c1);"><strong>无产阶级国际主义原则和国家间关系原则的冲突？</strong></p>
+    <p>这是中苏关系破裂的深层理论问题。按照无产阶级国际主义，各国共产党应该团结；但按照主权国家原则，中国有权拒绝苏联的路线和安排。当二者冲突时，如何处理？</p>
+    <ul>
+      <li>1950年代中共的立场：既坚持国际主义（支持苏联为首），又强调国家平等（反对大国沙文主义）→ 试图调和，但矛盾逐渐不可调和</li>
+      <li>1980年代的解决之道：以和平共处五项原则为处理一切国家关系的基础——党际关系和国家关系分开，不再以党的意识形态判断来决定国家关系的好恶</li>
+    </ul>
+  </div>
+
+  <div class="exam-hint">论述党际关系与国家关系在中国对外关系中的互动——以中苏关系为例；为什么说"党际关系与国家关系的处理方式"是理解中苏分裂的关键？</div>
+  </div>
+</div>
+
+
+<!-- ======================== 主题八 ======================== -->
+<div class="theme" id="t8">
+  <div class="theme-hd t8"><span class="num">八</span> 主题：周边外交与邻国关系的演变</div>
+  <div class="theme-body">
+
+  <div class="big-idea">
+    <strong>核心问题：</strong>中国有14个陆上邻国和多个海上邻国，周边外交一直是中国对外关系的重要组成部分。从"一边倒"到"睦邻友好"，周边外交经历了从意识形态划线到务实合作的转变。
+  </div>
+
+  <h3>周边外交的四个发展阶段</h3>
+
+  <table class="compare-table">
+    <tr><th style="width:12%">时期</th><th style="width:20%">特征</th><th style="width:28%">标志性事件</th><th style="width:40%">逻辑</th></tr>
+    <tr>
+      <td><strong>建国初期</strong></td>
+      <td>以阵营划线，区别对待</td>
+      <td>抗美援朝（朝鲜）；援越抗法（越南）→ "帮助但不包办"</td>
+      <td>社会主义邻国优先；非社国家（如印度）早期有开拓空间</td>
+    </tr>
+    <tr>
+      <td><strong>1954-1960</strong></td>
+      <td><span class="tag tag-up">黄金时期</span> 积极开拓</td>
+      <td>中印中缅联合声明（和平共处五项原则）；万隆会议；日内瓦会议解决印支问题</td>
+      <td>超越意识形态；"求同存异"；和平共处五项原则为周边外交提供框架</td>
+    </tr>
+    <tr>
+      <td><strong>1960s-1970s</strong></td>
+      <td><span class="tag tag-down">恶化时期</span> 多重冲突</td>
+      <td>中印边境自卫反击战（1962）；中苏边界冲突（珍宝岛1969）；"三砸一烧"波及缅甸、印尼等</td>
+      <td>安全威胁驱动；极左外交的破坏——输出革命+意识形态划线</td>
+    </tr>
+    <tr>
+      <td><strong>1980s至今</strong></td>
+      <td><span class="tag tag-up">务实合作</span> 睦邻友好</td>
+      <td>中苏正常化（1989）；与东盟关系正常化；"周边是首要"</td>
+      <td>以经济建设为中心→和平稳定周边环境的重要性；搁置争议、共同开发</td>
+    </tr>
+  </table>
+
+  <h3>关键案例：印度支那问题的演变</h3>
+  <div class="arc-box">
+    <p><strong>1954年日内瓦会议：</strong></p>
+    <ul>
+      <li>越共和法国的斗争：本身是反殖民主义的民族解放斗争，早期未成为冷战的一部分</li>
+      <li>美国介入后印度支那问题开始"冷战化"——中华人民共和国成立在此过程中是一个关键变量</li>
+      <li>中国的处理：奠边府战役大捷后→周恩来斡旋停战和分界线→在越共和社会主义阵营中扮演关键协调角色</li>
+    </ul>
+    <p><strong>1970年代：</strong></p>
+    <ul>
+      <li>越南统一后倒向苏联→中越关系恶化</li>
+      <li>柬埔寨问题（越南入侵柬埔寨）成为中苏正常化中方的三大诉求之一</li>
+    </ul>
+  </div>
+
+  <h3>关键案例：中印关系的起伏</h3>
+  <div class="arc-box">
+    <p>从中印关系的演变可以看出周边外交的变化：</p>
+    <ul>
+      <li><strong>1954年蜜月期：</strong>中印关于西藏的协定→周恩来访印→和平共处五项原则</li>
+      <li><strong>1959-1962年恶化：</strong>西藏平叛→印度因素→"朗久"事件→1962边境自卫反击战</li>
+      <li><strong>核心矛盾：</strong>边界是否已正式划定？"麦克马洪线"的合法性问题。背后是殖民遗产+民族主义+冷战三角关系（苏联态度、美国因素）</li>
+    </ul>
+  </div>
+
+  <div class="exam-hint">论述中国周边外交的演变及其阶段性特征；以中印关系或中越关系为例，分析中国周边外交中的主要矛盾</div>
+  </div>
+</div>
+
+
+<!-- ====== 汇总 ====== -->
+<div style="background:var(--card);border:2px solid var(--c1);border-radius:8px;padding:24px;margin-top:32px;">
+  <h2 style="color:var(--c1);margin-bottom:16px;text-align:center;">🗺️ 八个主题与课程三条主线的交叉矩阵</h2>
+  <p style="text-align:center;color:var(--muted);margin-bottom:20px;">任何论述题都可以从这个矩阵中找到切入点</p>
+  <table class="compare-table">
+    <tr><th>主题</th><th>革命运动维度</th><th>内政维度</th><th>国际环境维度</th></tr>
+    <tr>
+      <td>① 身份定位</td>
+      <td>革命党→执政党身份转变</td>
+      <td>国内合法性需求驱动身份建构</td>
+      <td>冷战阵营身份 vs 第三世界身份</td>
+    </tr>
+    <tr>
+      <td>② 独立自主</td>
+      <td>源于革命教训，但在革命逻辑中被异化</td>
+      <td>内政转向经济建设后才真正实现</td>
+      <td>两极结构 vs 多极化→独立空间的大小</td>
+    </tr>
+    <tr>
+      <td>③ 中美苏三角</td>
+      <td>意识形态划定"谁是我们、谁是敌人"</td>
+      <td>国内政治变动改变对外部敌人的判断</td>
+      <td><strong>核心维度</strong>——三角结构本身就是国际环境</td>
+    </tr>
+    <tr>
+      <td>④ 对国际体系</td>
+      <td>革命逻辑→否定和推翻现有体系</td>
+      <td>发展需求→参与和利用现有体系</td>
+      <td>体系的变化（多极化）为中国参与提供机会</td>
+    </tr>
+    <tr>
+      <td>⑤ 战争与和平</td>
+      <td>革命乐观主义→"敌人一天天烂下去"</td>
+      <td><strong>核心维度</strong>——国家战略决定对战争的判断</td>
+      <td>实际国际形势变化促成判断修正</td>
+    </tr>
+    <tr>
+      <td>⑥ 决定因素</td>
+      <td>早期：意识形态是首要决定因素</td>
+      <td><strong>核心维度</strong>——最终决定因素回归内政</td>
+      <td>安全环境作为外部变量</td>
+    </tr>
+    <tr>
+      <td>⑦ 党际/国家关系</td>
+      <td><strong>核心维度</strong>——党际关系是革命运动遗产</td>
+      <td>国家治理要求→国家关系优先</td>
+      <td>国际社会以主权国家为基本单位</td>
+    </tr>
+    <tr>
+      <td>⑧ 周边外交</td>
+      <td>早期支持周边国家的革命运动</td>
+      <td>边境安全、领土完整→内政需求</td>
+      <td>冷战在亚洲的蔓延（朝鲜、印支）</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+
+<footer>
+  <p>📚 基于吴昊老师2026年春季《中华人民共和国对外关系》课程讲义整理</p>
+  <p>北京大学国际关系学院 · 主题式复习 · 论述题备考专用</p>
+</footer>
+
+</body>
+</html>

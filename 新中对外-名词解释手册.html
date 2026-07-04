@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新中国对外关系 · 名词解释手册</title>
+<style>
+  :root {
+    --bg: #f8f6f0;
+    --card: #fffefc;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #d8d5c8;
+    --red: #b91c1c;
+    --blue: #1e40af;
+    --green: #166534;
+    --purple: #6b21a8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif;
+    background: var(--bg); color: var(--text); line-height: 1.85;
+    font-size: 16px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a3a5c, #2b5a8c);
+    color: #fff; text-align: center; padding: 32px 20px 24px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }
+  .header h1 { font-size: 1.5em; letter-spacing: 3px; margin-bottom: 6px; }
+  .header .sub { opacity: .78; font-size: .85em; }
+
+  /* Search */
+  .search-wrap {
+    background: #fff; padding: 12px 20px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 96px; z-index: 99;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .search-input {
+    flex: 1; min-width: 200px; padding: 8px 14px; border: 1px solid #ccc;
+    border-radius: 20px; font-size: .9em; font-family: inherit; outline: none;
+  }
+  .search-input:focus { border-color: #1a3a5c; }
+  .search-clear {
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-size: .85em; text-decoration: underline;
+  }
+  .search-count { font-size: .8em; color: var(--muted); white-space: nowrap; }
+
+  /* Unit filter */
+  .unit-filters {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    padding: 8px 20px; background: #fff;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 140px; z-index: 98;
+  }
+  .unit-chip {
+    padding: 4px 14px; border-radius: 14px; border: 1px solid #ccc;
+    background: #fff; cursor: pointer; font-size: .78em; font-family: inherit;
+    transition: all .2s;
+  }
+  .unit-chip.active { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+  .unit-chip:hover:not(.active) { border-color: #1a3a5c; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 18px 20px 60px; }
+
+  /* Unit section */
+  .unit-section { margin-bottom: 24px; }
+  .unit-title {
+    font-size: 1.05em; font-weight: bold; padding: 10px 16px;
+    border-radius: 8px 8px 0 0; color: #fff; letter-spacing: 1px;
+  }
+  .u-intro { background: #1a3a5c; }
+  .u1 { background: #b91c1c; }
+  .u2 { background: #1e40af; }
+  .u3 { background: #6b21a8; }
+  .u4 { background: #166534; }
+  .unit-terms { padding: 4px 0; }
+
+  /* Term card */
+  .term {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px; margin: 4px 0;
+  }
+  .term.hidden { display: none; }
+  .term-header {
+    padding: 12px 16px; display: flex; align-items: baseline; gap: 10px;
+    cursor: pointer; user-select: none; transition: background .15s;
+  }
+  .term-header:hover { background: #f9fafb; }
+  .term-num {
+    color: var(--muted); font-size: .75em; min-width: 28px;
+    font-variant-numeric: tabular-nums;
+  }
+  .term-name {
+    flex: 1; font-weight: 700; font-size: .95em;
+    color: #1a3a5c;
+  }
+  .term-tags { display: flex; gap: 4px; flex-shrink: 0; }
+  .term-tag {
+    font-size: .65em; padding: 1px 8px; border-radius: 10px;
+    font-weight: 700; white-space: nowrap;
+  }
+  .tag-event { background: #fef2f2; color: #b91c1c; }
+  .tag-concept { background: #eff6ff; color: #1e40af; }
+  .tag-person { background: #faf5ff; color: #6b21a8; }
+  .tag-policy { background: #ecfdf5; color: #166534; }
+  .tag-doc { background: #fffbeb; color: #92400e; }
+  .tag-theory { background: #fdf2f8; color: #9d174d; }
+  .term-arrow {
+    color: var(--muted); font-size: .7em; transition: transform .3s;
+  }
+  .term-header.open .term-arrow { transform: rotate(180deg); }
+
+  .term-body {
+    display: none; padding: 0 16px 16px; border-top: 1px dashed #e5e7eb;
+    font-size: .88em; line-height: 1.85;
+  }
+  .term-body.open { display: block; }
+
+  .term-body .def { margin: 8px 0; }
+  .term-body .def strong { color: var(--red); }
+  .term-body .detail { margin: 6px 0; color: #333; }
+  .term-body .detail em { color: #1e40af; font-style: normal; font-weight: 600; }
+  .term-body .significance {
+    margin: 8px 0; padding: 8px 14px; background: #f9fafb;
+    border-left: 3px solid #1a3a5c; border-radius: 0 4px 4px 0;
+    font-size: .85em; color: #444;
+  }
+  .term-body .significance::before { content: "📌 要点："; font-weight: 700; color: #1a3a5c; }
+
+  /* Back to top */
+  .back-top {
+    position: fixed; bottom: 24px; right: 24px;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #1a3a5c; color: #fff; border: none; cursor: pointer;
+    font-size: 1.1em; box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    z-index: 200; transition: opacity .3s;
+  }
+
+  footer {
+    text-align: center; padding: 28px; color: var(--muted);
+    font-size: .82em; border-top: 1px solid var(--border); margin-top: 20px;
+  }
+
+  @media print {
+    .header, .search-wrap, .unit-filters, .back-top, footer { display: none; }
+    body { font-size: 11px; }
+    .term-body { display: block !important; }
+    .term { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📖 中华人民共和国对外关系 · 名词解释手册</h1>
+  <div class="sub">覆盖全部课程核心名词 · 按单元组织 · 点击展开释义</div>
+</div>
+
+<div class="search-wrap">
+  <input type="text" class="search-input" placeholder="🔍 搜索名词…" oninput="doSearch(this.value)">
+  <button class="search-clear" onclick="clearSearch()">清除</button>
+  <span class="search-count" id="searchCount"></span>
+</div>
+
+<div class="unit-filters">
+  <button class="unit-chip active" onclick="filterUnit('all')">全部</button>
+  <button class="unit-chip" onclick="filterUnit('intro')">导论</button>
+  <button class="unit-chip" onclick="filterUnit('unit1')">第一单元</button>
+  <button class="unit-chip" onclick="filterUnit('unit2')">第二单元</button>
+  <button class="unit-chip" onclick="filterUnit('unit3')">第三单元</button>
+  <button class="unit-chip" onclick="filterUnit('unit4')">第四单元</button>
+  <span style="font-size:.78em;color:var(--muted);margin-left:auto;" id="totalCount"></span>
+</div>
+
+<div class="container" id="glossary">
+
+<!-- ═══════════════ 导论 ═══════════════ -->
+<div class="unit-section" data-unit="intro">
+  <div class="unit-title u-intro">📖 导论：贯穿三条主线</div>
+  <div class="unit-terms">
+
+<div class="term" data-unit="intro">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">01</span>
+    <span class="term-name">对外关系</span>
+    <span class="term-tags"><span class="term-tag tag-concept">核心概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中国对外关系涵盖范围比"外交"更广，不仅包括外交部处理的政治关系，还包括经济关系（商务部）、军事关系（国防部）、文化关系（文化旅游部）、教育关系（教育部）以及党际关系（中联部）。</p>
+    <p class="detail">中联部是<em>党中央机构</em>（非国务院下属），负责中国共产党的对外关系。这形成了中国特有的<em>"党政双轨"对外关系体系</em>——外交部（政府间）+ 中联部（党际）= 两条线并行。</p>
+    <p class="significance">区分"对外关系"和"外交"是本课程的基本方法——它意味着不能只研究政府间外交，还要理解党际关系、经济关系等多维度互动。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="intro">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">02</span>
+    <span class="term-name">三条主线</span>
+    <span class="term-tags"><span class="term-tag tag-theory">分析框架</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>贯穿中华人民共和国对外关系的三个核心分析维度——① 中国革命运动 ② 中国内政 ③ 国际环境。三条主线不是孤立的分析变量，而是相互交织、在不同时期以不同权重共同塑造中国对外政策的动力系统。</p>
+    <p class="detail"><em>革命运动主线：</em>中华人民共和国对外关系是中共革命时期对外关系的延续，革命塑造了政党身份，确立了"独立自主"原则，形成了"国际体系本质是压迫和不平等"的基本认知。<br><em>内政主线：</em>"对外关系是内政的延续"——国家统一和领土完整、经济发展、社会核心价值构建、执政合法性。前三十年高度关注国家安全；改革开放以来关注和平发展。<br><em>国际环境主线：</em>冷战→后冷战（一超多强/多极化）。不仅包括客观国际形势，还包括领导人<em>如何认知</em>这些形势。</p>
+    <p class="significance">三条主线是本课程最基本的分析框架。任何时期的外交政策都可以从这三个维度分析。注意：内政对外交的影响具有"滞后性"——文革结束后仍判断"苏修亡我之心不死"即为例证。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="intro">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">03</span>
+    <span class="term-name">独立自主原则</span>
+    <span class="term-tags"><span class="term-tag tag-concept">核心原则</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中国对外政策中的核心原则，源自中国革命运动的惨痛教训——遵义会议前中共作为共产国际支部"亦步亦趋"，教条主义带来巨大损失。毛泽东（1963年）总结："真正懂得独立自主是从遵义会议开始的"。</p>
+    <p class="detail">独立自主在不同时期有不同内涵：革命时期——思想上不盲从、组织上不依附、行动上从中国实际出发；建国后"一边倒"时期——在同盟中保持自主决策（抗美援朝的自主决策、联合舰队事件中的主权捍卫）；文革时期被<em>异化为自我封闭</em>（"两个拳头打人"）；1982年中共十二大——回归并升华为<em>"不同任何大国结盟"</em>的正面方针。</p>
+    <p class="significance">独立自主原则是中国外交话语中最高频的概念之一，但其内涵在不同历史时期差异巨大。理解这一原则从"反对依附"到"主动选择"的演变，是理解整个中国外交史的钥匙。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="intro">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">04</span>
+    <span class="term-name">中联部</span>
+    <span class="term-tags"><span class="term-tag tag-concept">制度概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中共中央对外联络部，是党中央机构（非国务院下属部门），负责中国共产党的对外关系。它体现了中国对外关系的一个独特特征——党政双轨对外关系体系。</p>
+    <p class="detail">外交部（政府间国家关系） + 中联部（党的对外关系） = 两条线并行。这一体制源自革命时期——中共在取得全国政权前就通过党际关系与共产国际和各国共产党保持联系。</p>
+    <p class="significance">中联部的存在提醒：理解中国对外关系必须同时关注"党际逻辑"和"国家逻辑"两个层面。课程中"党际关系与国家关系的张力"是一个贯穿始终的分析线索。</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第一单元 ═══════════════ -->
+<div class="unit-section" data-unit="unit1">
+  <div class="unit-title u1">📗 第一单元：建国初期的对外关系（1949-1955）</div>
+  <div class="unit-terms">
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">05</span>
+    <span class="term-name">"蒋之下的和平"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">核心概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1945年抗日战争结束后，美苏两大阵营与国共两大阵营之间形成的特殊格局——美苏都支持在蒋介石领导下实现中国和平统一。</p>
+    <p class="detail">美国：出于处理美苏关系和集中中国力量抗日的需要，支持蒋介石统一中国。苏联：出于避免与美冲突和维护在东北利益的需要，1945年与<em>国民党政府</em>签订《中苏友好同盟条约》。中共作为实力最弱一方，策略是避免大规模内战，争取用政治方式加强自身政治地位——"在全国范围内大体要走法国的路"、"我们还是钻进去给蒋介石洗脸，而不要砍头"（毛泽东，1945）。斯大林初期对中共持怀疑态度，称之为<em>"人造奶油"共产党</em>。</p>
+    <p class="significance">理解"蒋之下的和平"格局是理解新中国"一边倒"选择的前提——在美苏都支持国民党的情况下，中共对美国的信任极为有限，"一边倒"在这个时期已经埋下了结构性伏笔。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">06</span>
+    <span class="term-name">"一边倒"</span>
+    <span class="term-tags"><span class="term-tag tag-policy">三大外交原则</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>新中国建国初期三大外交原则之一，也是<em>总揽全局的方针</em>。核心内容是：和苏联结盟以获取安全保障和经济技术援助，同时对以美国为首的帝国主义国家采取不承认和不接触的立场。</p>
+    <p class="detail">1949年12月至1950年2月毛泽东访问苏联，签订《中苏友好同盟互助条约》，明确了加入冷战中的苏联阵营。"一边倒"并不等于放弃独立自主——在同盟内部中国从未接受苏联的"指挥"，抗美援朝决策虽然与苏联反复协调但最终由中国自主作出。</p>
+    <p class="significance">"一边倒"是三条主线合力作用的结果：革命运动（中共与苏联的历史关系）、内政（巩固新生政权）、国际环境（冷战两极刚性框架）。其局限在于：极大限制了中国在国际舞台上的活动空间，压制了对西方国家外交的展开。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">07</span>
+    <span class="term-name">"另起炉灶"</span>
+    <span class="term-tags"><span class="term-tag tag-policy">三大外交原则</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>新中国建国初期三大外交原则之一。不承认国民党时期旧的对外关系体系，重新建立全新的外交关系框架。</p>
+    <p class="detail">具体做法：对旧中国与外国建立的外交关系一律不予承认，外国驻华使节一律以外交官个人身份对待；在平等、互利和互相尊重领土主权的基础上，与各国重新谈判建交。</p>
+    <p class="significance">彻底否定了国民党政府的外交遗产，确立了新中国在国际体系中的主权独立形象。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">08</span>
+    <span class="term-name">"打扫干净屋子再请客"</span>
+    <span class="term-tags"><span class="term-tag tag-policy">三大外交原则</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>新中国建国初期三大外交原则之一。先清除帝国主义国家在中国的所有特权和势力，然后再考虑与这些国家建交。</p>
+    <p class="detail">1954年7月7日中央政治局扩大会议决定<em>结束</em>这一方针——"前几年，我们说打扫干净房子再请客。现在经过初步整理，房子已经基本打扫干净了，因此可以请一些客人来"（周恩来）。毛泽东判断："门要关死已经不可能了，而又有一种很有利的局势，需要我们走出去。"</p>
+    <p class="significance">从"打扫干净屋子再请客"到"走出去"的转变，标志着中国外交从"守"到"走"的姿态转变，为和平共处五项原则的提出和日内瓦会议后的外交拓展创造了前提。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">09</span>
+    <span class="term-name">《中苏友好同盟互助条约》</span>
+    <span class="term-tags"><span class="term-tag tag-doc">条约文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1950年2月14日在莫斯科签订，由毛泽东和斯大林共同签署，确立中苏同盟关系的核心法律文件。有效期为30年。</p>
+    <p class="detail">签约前的关键步骤：1949年1月<em>米高扬访问西柏坡</em>（苏共试探中共意图）、1949年6月<em>刘少奇秘密访苏</em>（中共向苏联争取援助和支持）、1949年12月毛泽东亲自赴莫斯科谈判——经过反复博弈最终签约。毛泽东在谈判过程中坚持了主权立场——不签署有损中国利益的不平等条款。</p>
+    <p class="significance">条约的签订意味着中国明确加入冷战中的苏联阵营，获得了安全保障（共同防止日本军国主义再起）和经济技术援助（"156项工程"）。<em>1979年条约到期后不再续约</em>，标志着中苏同盟关系的正式终结。条约签订过程中毛泽东坚持主权的立场，也预示了独立自主与同盟义务之间的内在张力。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">10</span>
+    <span class="term-name">米高扬西柏坡谈话</span>
+    <span class="term-tags"><span class="term-tag tag-event">历史事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1949年1月，苏共中央政治局委员米高扬（化名安德列夫）秘密访问西柏坡，与毛泽东、刘少奇、周恩来等中共领导人会谈。这是苏联领导人在中国革命胜利前夕对中共的首次高层接触。</p>
+    <p class="detail">会谈内容涉及中共夺取全国政权后的内政外交方向、中苏关系、对国民党政权残余的处理等。米高扬此行带有试探性质——苏联希望了解中共的真实意图以及建立政权后是否会走"铁托道路"（独立于莫斯科）。</p>
+    <p class="significance">米高扬西柏坡谈话是中共建国前夕与苏联沟通的关键环节，拉开了中苏同盟建立的序幕。斯大林的怀疑（"人造奶油"共产党的顾虑）在这次会谈后有所缓解，但真正的信任建立要等到中共取得全国胜利之后。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">11</span>
+    <span class="term-name">刘少奇秘密访苏</span>
+    <span class="term-tags"><span class="term-tag tag-event">历史事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1949年6月，刘少奇率中共代表团秘密访问莫斯科，与斯大林等苏联领导人会谈。这是建国前夕中共向苏联争取援助和支持的最重要外交行动。</p>
+    <p class="detail">刘少奇此行主要任务：向苏联说明中共建国的计划、争取苏联的经济和军事援助、协调两党在建国后的关系、就毛泽东访苏事宜进行沟通。斯大林在会谈中承认了此前对中共判断的"错误"——"我在判断中国形势方面犯了错误，形势的发展证明中共领导人是对的"。</p>
+    <p class="significance">刘少奇秘密访苏是中苏同盟形成过程中的关键一步——这次访问实质性推动了苏联从地区性、策略性合作向全面战略合作的转变，为毛泽东1949年底正式访苏和1950年签约奠定了基础。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">12</span>
+    <span class="term-name">抗美援朝</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1950年10月中国人民志愿军跨过鸭绿江，支援朝鲜对抗以美国为首的联合国军。朝鲜战争（1950-1953）是冷战在亚洲的第一场热战，也是新中国第一次大规模对外军事行动。</p>
+    <p class="detail"><em>决策过程：</em>中国内部存在不同意见，苏、朝各有态度。毛泽东力主出兵。<em>军事目标的动态调整：</em>10月2日——"歼灭和驱逐美国及其他国家的侵略军" → 10月3日——"恢复战争爆发前状况" → 10月中旬——"构筑防御线"。毛泽东形容为"草鞋没样，边打边像"。<em>结果：</em>1953年签订《朝鲜停战协定》。</p>
+    <p class="significance"><em>五点意义：</em>① 国家安全得到保障 ② 民族自信极大提升 ③ 国际地位显著提高 ④ 获得现代化战争经验 ⑤ 台湾问题延宕（美国第七舰队进入台湾海峡）。从三条主线看：抗美援朝既是革命运动塑造的安全观指导下的决策，也是巩固新生政权的政治必需，同时深刻受到冷战在亚洲蔓延的国际格局推动。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">13</span>
+    <span class="term-name">日内瓦会议（1954）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1954年4月至7月在瑞士日内瓦召开的国际会议，主要讨论朝鲜问题和印度支那问题。中国首次以"五大国"之一的身份登上多边外交舞台，周恩来率团参加。</p>
+    <p class="detail">1953年苏联提出召开"五国外长会"。中方预设目标：朝鲜问题解决希望不大，力求取得政治上有利地位；印度支那问题力争"出结果"。<em>关键转折：</em>奠边府战役大捷（1954年5月7日）——越南人民军重创法军，极大改善了社会主义阵营在谈判桌上的地位。<em>两大矛盾点：</em>停战问题（周恩来斡旋越共接受停火）+ 军事分界线（18度线还是13度线，周恩来再次斡旋）。</p>
+    <p class="significance"><em>四大意义：</em>调整外交政策的开端；周边外交和邻国关系良好开端；开始与西方国家展开接触（中美通过英国渠道进行"领事级接触"，为后来中美大使级会谈奠基）；标志着"大国"身份的初步确立。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">14</span>
+    <span class="term-name">和平共处五项原则</span>
+    <span class="term-tags"><span class="term-tag tag-policy">外交原则</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>互相尊重主权和领土完整、互不侵犯、互不干涉内政、平等互利、和平共处。1954年正式提出，1955年万隆会议最终确定，至今仍是中国对外政策的旗帜性原则。</p>
+    <p class="detail"><em>提出过程：</em>最早萌芽于1954年4月中印关于西藏的协定（首次写入"互相尊重领土主权、互不侵犯、互不干涉内政、平等互惠、和平共处"）→ 1954年6月周恩来"休会期之旅"访问印度和缅甸（签署中印、中缅联合声明）→ 1955年万隆会议上获得亚非国家广泛认同。<em>关键背景：</em>1954年7月7日中央政治局扩大会议决定结束"打扫干净屋子再请客"，毛泽东再提"中间地带"（时隔八年），中国外交从"守"到"走"。</p>
+    <p class="significance"><em>三大意义：</em>① 国家身份构建——使中国不仅是社会主义国家，也是亚洲新兴国家 ② 革命外交→国家外交转变的标志性事件 ③ 破解美国对华孤立的战略手段。五项原则的生命力在于它不是封闭的教条体系，而是一个可以不断被重新诠释的开放框架，在不同时期被赋予不同的侧重点。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">15</span>
+    <span class="term-name">周恩来"休会期之旅"</span>
+    <span class="term-tags"><span class="term-tag tag-event">外交行动</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1954年6月25日至29日日内瓦会议休会期间，周恩来访问印度和缅甸，分别签署中印和中缅《联合声明》，同意以和平共处五项原则作为发展双边关系的指导原则。</p>
+    <p class="detail">访印期间，周恩来与尼赫鲁进行了六次长时间会谈。访缅期间，与吴努总理发表联合声明。两次联合声明均倡议将和平共处五项原则"作为处理国际关系的准则"。</p>
+    <p class="significance">这一外交行动将日内瓦会议期间的外交成果延伸到了周边国家关系层面，使五项原则从双边共识发展为具有更广泛国际意义的准则框架，为1955年万隆会议的成功奠定了基础。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">16</span>
+    <span class="term-name">万隆会议（1955）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1955年4月在印度尼西亚万隆召开的亚非会议，是第一次由获得独立的亚非国家参加且没有西方殖民国家参加的大型国际会议。29个亚非国家和地区的代表参加。</p>
+    <p class="detail">中国代表团由周恩来率领。<em>核心方针——"求同存异"：</em>在国家身份层面（中国既是社会主义国家，也是经历殖民痛苦的亚洲新兴国家——后者是与亚非国家的共同身份基础）+ 观点立场层面（在反对殖民主义、争取和平等议题上寻求共识，在意识形态问题上避免争论）。周恩来在会上提出的"求同存异"方针成功化解了会议上对中国的不利因素。</p>
+    <p class="significance">万隆会议标志着和平共处五项原则的最终确定；深化了中国领导人对和平共处可能性的思考；构建了中国作为"亚洲新兴国家"的第二重身份——不仅是社会主义国家，也是经历过殖民痛苦的被压迫民族的一员，极大拓展了中国的外交空间。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">17</span>
+    <span class="term-name">"求同存异"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">外交方针</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>周恩来在1955年万隆会议上提出的核心外交方针。在反对殖民主义、争取和平等共同议题上寻求共识（"求同"），在意识形态和社会制度的差异问题上避免争论（"存异"）。</p>
+    <p class="detail">"求同存异"在万隆会议上体现在两个层面：<em>国家身份层面：</em>中国既是社会主义国家，也是经历过殖民痛苦的亚洲新兴国家——后者是与亚非国家的共同身份基础。<em>观点立场层面：</em>在反对殖民主义、争取和平等议题上寻求共识，在意识形态和社会制度问题上避免争论。</p>
+    <p class="significance">"求同存异"成为中国外交的一个重要方法论遗产——它使中国能够在与不同社会制度、不同意识形态的国家交往中寻找共同利益空间。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">18</span>
+    <span class="term-name">"中间地带"理论</span>
+    <span class="term-tags"><span class="term-tag tag-theory">理论概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>毛泽东关于世界格局的战略判断，经历了三次演进——1946年首次提出 → 1954年再提 → 1960年代发展为"两个中间地带"。</p>
+    <p class="detail"><em>1946年"中间地带"：</em>二战结束后毛泽东提出，美国和苏联之间存在广阔的中间地带（欧、亚、非许多资本主义国家和殖民地半殖民地国家），美国在压服中间地带之前难以进攻苏联。<em>1954年再提（时隔八年）：</em>意义在于——为日内瓦会议后中国走向世界、从革命外交转向国家外交提供理论依据。<em>1960年代"两个中间地带"：</em>① 第一个中间地带——亚非拉经济落后国家；② 第二个中间地带——欧洲、北美加拿大、大洋洲等。将美苏并列为"第一世界"。</p>
+    <p class="significance">"中间地带"理论的演进反映了毛泽东对世界格局认知的不断深化：从简单的两极论到更精细化的多极化视野。它为中国在不同时期寻找外交空间提供了理论支撑，直接促成了1960-1964年的第二次建交高峰。"三个世界"理论是该思想的最终发展。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">19</span>
+    <span class="term-name">奠边府战役</span>
+    <span class="term-tags"><span class="term-tag tag-event">军事事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1954年3月至5月，越南人民军在奠边府对法国殖民军队取得决定性胜利。战役于5月7日结束，法国守军全部投降。</p>
+    <p class="detail">奠边府大捷发生在日内瓦会议期间（1954年4月-7月），极大地改变了社会主义阵营在谈判桌上的地位。战役胜利后第二天（5月8日），日内瓦会议开始讨论印度支那问题，越方在谈判中获得了有力地位。</p>
+    <p class="significance">奠边府大捷是日内瓦会议印支讨论的关键转折点——它使法国政府认识到继续战争已无可能，为印支停战协议的达成创造了军事前提。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">20</span>
+    <span class="term-name">1954年7月7日政治局扩大会议</span>
+    <span class="term-tags"><span class="term-tag tag-event">关键会议</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>日内瓦会议期间周恩来回国参加的中共中央政治局扩大会议，作出对中国外交具有重大战略意义的决定：采取更进取的印度支那和平政策，决定大幅调整对外政策——结束"打扫干净屋子再请客"。</p>
+    <p class="detail">周恩来在会上汇报日内瓦会议进展后，会议认为："前几年，我们说打扫干净房子再请客。现在经过初步整理，房子已经基本打扫干净了，因此可以请一些客人来。""门要关死已经不可能了，而又有一种很有利的局势，需要我们走出去"（毛泽东）。</p>
+    <p class="significance">7月7日会议是中国外交从"守"到"走"的政策转折点。此后周恩来返回日内瓦积极推动印支停战，同时启动休会期之旅访问印度和缅甸。没有这次会议的政策调整，和平共处五项原则和万隆会议的突破都难以实现。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">21</span>
+    <span class="term-name">第一次台海危机（1955）</span>
+    <span class="term-tags"><span class="term-tag tag-event">危机事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1955年1月解放军攻占一江山岛，进而威胁大陈岛和台湾本岛。美国国会通过《福尔摩沙决议案》授权总统在台湾海峡使用武力，台海局势急剧紧张。</p>
+    <p class="detail">危机中，美方急于管控台海局势、避免与中国直接军事冲突。中国方面在展示军事能力和决心后，也愿意通过外交渠道沟通。</p>
+    <p class="significance">第一次台海危机直接推动中美大使级会谈于1955年8月1日正式开启。它表明即使在激烈对抗的情况下，双方都有避免冲突失控的共同利益——这种"危机管控"逻辑成为中美大使级会谈的核心功能。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">21A</span>
+    <span class="term-name">中印关于西藏的协定（1954）</span>
+    <span class="term-tags"><span class="term-tag tag-doc">条约文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1954年4月29日，中印两国在北京签署《中华人民共和国和印度共和国关于中国西藏地方和印度之间的通商和交通协定》——这是和平共处五项原则<em>最初出现</em>的官方文件。</p>
+    <p class="detail">协定的序言中首次写入了"互相尊重领土主权、互不侵犯、互不干涉内政、平等互惠、和平共处"五项原则。在此之前，五项原则尚未以成文形式出现。周恩来同年6月访问印度（休会期之旅）时，与尼赫鲁发表联合声明，将协定中的原则正式确认为处理两国关系的指导原则并倡议其成为国际关系准则。</p>
+    <p class="significance">这个协定是和平共处五项原则的"出生证明"——虽然万隆会议（1955）让五项原则获得国际声誉，但其源头在1954年4月的中印西藏协定。"五项原则最初是为了解决中印之间在西藏问题上的具体分歧而产生的"——这一细节提醒我们：重要外交原则往往诞生于具体问题的处理中，而非抽象设计。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit1">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">21B</span>
+    <span class="term-name">NSC-68号文件</span>
+    <span class="term-tags"><span class="term-tag tag-doc">政策文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1950年4月美国国家安全委员会第68号文件（NSC-68），是冷战时期美国遏制战略的纲领性文件。文件明确提出在全球范围内遏制共产主义扩张，特别是在亚洲和东南亚地区。</p>
+    <p class="detail">文件直接引文："采取一切可行的措施阻止共产党在东南亚的进一步扩张，对美国的国家安全利益来说是非常重要的。"在中华人民共和国成立和朝鲜战争爆发的背景下，NSC-68推动美国大幅增加军费，并将印度支那问题"冷战化"——越共和法国的反殖民斗争原本未成为冷战的一部分，美国的介入使其成为两大阵营对抗的战场。</p>
+    <p class="significance">NSC-68是理解美国介入印度支那（越战）和全面遏制中国政策的思想源头。它推动了美国对法属印度支那战争的军事援助，从而将中国卷入与美国的间接对抗。中华人民共和国成立在此过程中是一个关键变量——美国担忧"共产主义在亚洲的进一步扩张"，做出了由"不介入"到"全面介入"印支事务的战略转变。</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第二单元 ═══════════════ -->
+<div class="unit-section" data-unit="unit2">
+  <div class="unit-title u2">📘 第二单元：发展和波动的十年（1955-1965）</div>
+  <div class="unit-terms">
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">22</span>
+    <span class="term-name">中共八大（1956）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大会议</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1956年9月召开的中国共产党第八次全国代表大会。在外交层面作出了一个在当时具有前瞻性的重要判断：革命运动时代已经结束，社会矛盾发生变化，国际局势趋向缓和，"世界的持久和平已经开始有了实现的可能"。</p>
+    <p class="detail">毛泽东在开幕词中指出："国际的局势已经趋向和缓。"刘少奇在政治报告中进一步阐述："世界局势不能不趋向于和缓，世界的持久和平已经开始有了实现的可能。"基于这一判断，大会提出了<em>八项和平外交方针</em>。</p>
+    <p class="significance">八大外交方针与后来极左外交形成鲜明对比。邓小平时代关于"和平与发展"的判断实质上是"重回八大判断"——经过了历史的螺旋式上升，因为它不再是革命乐观主义的产物，而是基于对国际力量对比的冷静分析。八大所代表的"现实中已存在的转变可能"与"现实中这种可能被极左化所淹没"之间的张力，是理解整个课程的关键问题。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">23</span>
+    <span class="term-name">八项外交方针</span>
+    <span class="term-tags"><span class="term-tag tag-policy">政策文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1956年中共八大提出的八项对外政策方针，在长期实践、探索和总结的基础上逐步酝酿形成。</p>
+    <p class="detail"><em>八项内容：</em>① 巩固和加强与苏联及社会主义国家的关系 ② 在和平共处五项原则基础上同亚非国家建立和发展友好关系 ③ 同愿意与中国建交并发展经济文化的国家发展正常的国家关系 ④ 反对在国际事务中使用或威胁使用武力 ⑤ 支持世界人民的和平运动 ⑥ 反对殖民主义和支持反对殖民主义的斗争 ⑦ 支持各国的社会主义运动 ⑧ 在对外交往中采取平等对待的态度和严格反对大国主义。</p>
+    <p class="significance">八项方针没有一项是以"战争准备"为基本前提的——这与后来极左外交形成鲜明反差。课程提出的关键历史问题：如何解释1955-1965对外政策的波折？八大方针是正确的，但为什么没有持续下去？</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">24</span>
+    <span class="term-name">苏共二十大（1956）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1956年2月召开的苏联共产党第二十次代表大会，是中苏关系从蜜月走向分歧的起点。</p>
+    <p class="detail"><em>主要观点：</em>对外政策——"和平共处、和平过渡、和平竞赛"（三和路线）；国内政策——平衡轻重工业发展，提高人民生活水平；党内——加强集体领导，反对个人崇拜。<em>赫鲁晓夫秘密报告：</em>在大会闭幕后作的关于斯大林个人崇拜及其后果的秘密报告，全面批判斯大林，引发社会主义阵营巨大震荡。<em>中共不同看法：</em>对和平过渡问题保留意见（认为暴力革命的普遍经验不能轻易否定）；对秘密报告不完全认同（认为应全面评价斯大林而非全盘否定）；中苏在一些问题上开始存在不同思路。</p>
+    <p class="significance">苏共二十大"留下了隐患"——中苏分歧从此萌芽。社会主义阵营内部在"非斯大林化"问题上陷入分裂，波匈事件是其直接后果。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">25</span>
+    <span class="term-name">"三和路线"</span>
+    <span class="term-tags"><span class="term-tag tag-policy">政策概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>赫鲁晓夫在苏共二十大提出的苏联对外政策总路线——和平共处、和平过渡、和平竞赛。</p>
+    <p class="detail"><em>和平共处：</em>主张不同社会制度国家和平共处，缓和与西方的紧张关系。<em>和平过渡：</em>认为资本主义国家的共产党可以通过议会道路和平过渡到社会主义（而非必须暴力革命）。<em>和平竞赛：</em>社会主义与资本主义通过经济和技术竞赛来证明优越性。</p>
+    <p class="significance">"三和路线"对中苏关系的冲击在于——它与中国领导人基于自身革命经验形成的世界观（暴力革命必要性、对帝国主义的警惕）产生了深层张力。中共尤其对"和平过渡"持保留态度。此后中苏在国际形势判断上的分歧——缓和 or 世界斗争——成为中苏分裂的核心争论之一。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">26</span>
+    <span class="term-name">赫鲁晓夫秘密报告</span>
+    <span class="term-tags"><span class="term-tag tag-doc">历史文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1956年2月苏共二十大闭幕后，赫鲁晓夫在秘密会议上所作的《关于个人崇拜及其后果》报告，系统批判斯大林的个人崇拜和肃反扩大化错误。</p>
+    <p class="detail">中共反应：不完全认同——认为应全面评价斯大林的历史功过，而非全盘否定。<em>国际后果：</em>秘密报告内容很快泄露，在社会主义阵营内引发"非斯大林化"浪潮，直接引发波匈事件（1956年），资本主义国家共产党内部也出现剧烈震荡和分裂。</p>
+    <p class="significance">秘密报告是中苏分歧加深的关键环节——在斯大林评价问题上，中苏立场出现了根本分歧。此后中共认为应旗帜鲜明反对修正主义。1961年苏共二十二大再次批判斯大林，甚至将斯大林遗体移出列宁墓，进一步触犯了中共对社会主义本质的理解。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">27</span>
+    <span class="term-name">波匈事件（1956）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1956年赫鲁晓夫秘密报告后，波兰和匈牙利先后发生严重政治危机。波匈事件是苏共二十大"非斯大林化"的直接后果，社会主义阵营面临从内部瓦解的风险。</p>
+    <p class="detail">赫鲁晓夫在危机中"首先想到的就是'同兄弟的中国共产党协商'"——中共在危机处理中发挥了稳定社会主义阵营的作用。<em>中共处理原则：</em>对波兰——<em>强调在社会主义国家关系中实行独立平等的原则</em>（支持波兰有权走适合本国国情的道路）；对匈牙利——<em>强调社会主义阵营的稳定</em>，坚决排斥和打击一切有可能背离社会主义道路的措施和倾向。</p>
+    <p class="significance"><em>双重影响：</em>正面——中共在世界社会主义阵营中威望上升，赫鲁晓夫需要中共的政治支持；负面——斯大林评价分歧加深，中共认为应旗帜鲜明反对修正主义。波匈事件的处理经验加深了中国领导人对国际形势和各社会主义国家发展道路认识的新变化。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">28</span>
+    <span class="term-name">莫斯科会议（1957）</span>
+    <span class="term-tags"><span class="term-tag tag-event">国际会议</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1957年11月在莫斯科举行的世界各国共产党和工人党代表会议，是国际共运史上规模最大、人数最多的盛会之一。</p>
+    <p class="detail">会议发表了《莫斯科宣言》，系统概括国际共运经验，强调社会主义阵营团结，肯定十月革命经验的普遍意义。宣言中关于十月革命经验普遍意义的表述反映了中共的思考和意见。中国在会议中具有<em>特殊地位</em>。</p>
+    <p class="significance"><em>辩证评价：</em>既维护了社会主义阵营在一段时间内的稳定和友好发展，但仍暴露了中苏对世界形势看法的分歧。宣言所达成的共识更多是"表面团结、深层分歧"的结构——深层的战略判断差异（国际形势走向缓和还是持续斗争）并未真正弥合，很快在实践中破裂。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">29</span>
+    <span class="term-name">长波电台事件</span>
+    <span class="term-tags"><span class="term-tag tag-event">矛盾事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1958年中苏关系中的重大矛盾事件之一。苏方提议"联合建设和管理"长波电台（用于潜艇通信和指挥），中方认为这涉及<em>国家主权和使用权</em>问题，不能接受"联合"方案。</p>
+    <p class="detail">毛泽东在会谈中明确表示：援助可以接受，但涉及主权的事项不应附加条件。"你们就是不相信中国人，只相信俄国人。俄国人是上等人，中国人是下等人？"（毛泽东对赫鲁晓夫的质问）</p>
+    <p class="significance">长波电台和联合舰队事件共同暴露了中苏同盟中的一个根本矛盾——苏联以"社会主义国际主义"之名试图获取对中国军事设施的控制，中国则以主权独立为由坚决抵制。这严重削弱了莫斯科会议以来建立的双边互信。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">30</span>
+    <span class="term-name">联合舰队事件</span>
+    <span class="term-tags"><span class="term-tag tag-event">矛盾事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1958年中苏关系中的重大矛盾事件之一。苏方（尤金大使）向中方提出建设"共同潜艇舰队"的建议，引发毛泽东的激烈反应。</p>
+    <p class="detail">毛泽东认为这涉及国家主权——苏联海军使用中国港口和设施、共同指挥——实质上是对中国军事主权的侵犯。赫鲁晓夫紧急访华辩解，称是尤金"传达有误"，但双方互信已经严重受损。赫鲁晓夫的反应："莫名其妙！毛泽东是怎么啦？"——反映了双方互信的严重断裂。</p>
+    <p class="significance">联合舰队事件是中苏矛盾从隐性走向显性的关键节点——它将同盟内部的平等地位问题推到了前台。毛泽东在会谈中不仅讨论了具体军事合作问题，更提出"我们应该就会谈发表一个公报，或许可以吓一吓帝国主义者"——暗示中方已经不再将中苏同盟视作无条件的战略配合。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">31</span>
+    <span class="term-name">炮击金门（1958）</span>
+    <span class="term-tags"><span class="term-tag tag-event">军事事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1958年8月23日，中国人民解放军开始大规模炮击国民党军队占据的金门岛，引发第二次台海危机。</p>
+    <p class="detail">炮击发生的时间尴尬——赫鲁晓夫刚结束访华（7月31日至8月3日）并签订联合公报，国际媒体将炮击误读为中苏联合行动。苏联担心中方的军事行动会将其"牵连"进与美国的冲突（entrapment恐惧）。中苏在对外政策上的根本分歧暴露——苏联追求与西方的缓和，中国更重视主权和革命原则。</p>
+    <p class="significance">炮击金门是中苏1958-1959四大矛盾之一。它暴露了同盟关系中核心的结构性困境——一方可以单方面采取可能将同盟卷入冲突的行动。此后中美大使级会谈功能转变为危机管理和沟通渠道。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">32</span>
+    <span class="term-name">1959年赫鲁晓夫访华</span>
+    <span class="term-tags"><span class="term-tag tag-event">转折事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1959年9月底至10月初赫鲁晓夫访华，参加中国国庆十周年活动。此访旨在缓和中苏之间的紧张关系，但受到中国领导人的冷遇，三天的会谈以激烈争吵告终。</p>
+    <p class="detail">赫鲁晓夫试图说服中共接受苏共的对外政策路线（缓和方针），但未能成功。此时中苏之间已经在长波电台、联合舰队、炮击金门、大跃进等四个矛盾领域积累了严重分歧。赫鲁晓夫在访华前不久访问了美国（戴维营会谈），中苏在对美政策上的分歧更加明显。</p>
+    <p class="significance">课程将其定性为<em>"中苏同盟走向衰亡的转折点"</em>——此前双方矛盾是分散的、局部的；此后中苏在国际问题上的分歧开始被归结为赫鲁晓夫<em>背离马克思主义</em>，"修正主义"标签被正式贴到苏共领导人身上，中苏从"同盟内部矛盾"升级为"路线性对抗"。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">32A</span>
+    <span class="term-name">大跃进与苏联态度（中苏矛盾）</span>
+    <span class="term-tags"><span class="term-tag tag-event">矛盾事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1958-1959年大跃进运动期间中苏在发展道路上的分歧，是1958-1959中苏四大矛盾之一。苏联最初避免公开评论，但赫鲁晓夫在访问波兰期间隐晦批评了人民公社，引发毛泽东的强烈反应。</p>
+    <p class="detail">毛泽东在1958年8月与赫鲁晓夫会谈时表达了极度乐观："1949年中国解放我是很高兴的，但是觉得中国问题还没有完全解决……只有这次大跃进，我才完全愉快了！按照这个速度发展下去，中国人民的幸福生活完全有指望了！"赫鲁晓夫则在波兰评论称苏联早年也搞过公社但失败了——此言传到北京后，毛泽东在庐山会议期间（1959年7-8月）将其与彭德怀的批评联系起来，认为存在党内与国外"内外呼应"攻击大跃进的危险。庐山会议后毛泽东对赫鲁晓夫的态度急剧恶化，被视为"对赫鲁晓夫的宣战"。</p>
+    <p class="significance">大跃进问题上的分歧表明中苏矛盾已从外交军事领域延伸到国内发展道路领域。毛泽东将苏联对公社的批评解读为对中国内政的干涉和对中国革命经验的否定——"内外呼应"的逻辑使得中苏矛盾与国内政治斗争深度交织，为后来的全面对抗奠定了情绪基础。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">32B</span>
+    <span class="term-name">1959年西藏叛乱</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1959年3月西藏上层反动集团发动的武装叛乱，中国人民解放军迅速平定。叛乱牵动中苏关系和中印关系两条线——是典型的"一事件、多主线"案例。</p>
+    <p class="detail"><em>中苏维度：</em>苏联不赞成中方平叛的做法——赫鲁晓夫在1959年访华前已对此表达不满，成为1958-1959中苏矛盾之一（L4将"西藏问题"与长波电台、联合舰队、炮击金门、大跃进并列为矛盾清单）。<em>中印维度：</em>叛乱后达赖喇嘛流亡印度，印度给予政治庇护；印度舆论和政界对华态度急剧恶化；尼赫鲁面临国内政治压力（印度议会和媒体要求对华强硬）；"印度因素"开始成为中印关系中的核心变量。1959年"朗久"事件后，西藏问题与边界问题交织在一起。</p>
+    <p class="significance">西藏叛乱是三条主线高度交汇的事件——内政（平定分裂叛乱、维护领土完整）、国际环境（冷战背景下中苏和中印关系的联动）、革命运动（中国以革命国家的姿态维护主权）——在一个事件中同时被激活。它同时成为中苏矛盾和中印关系恶化的催化剂。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">32C</span>
+    <span class="term-name">布加勒斯特会议（1960）</span>
+    <span class="term-tags"><span class="term-tag tag-event">国际会议</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1960年6月在罗马尼亚首都布加勒斯特举行的各国共产党和工人党代表会议。赫鲁晓夫在会上组织了对中共的围攻式批判，中苏矛盾从内部分歧升级为公开论战。</p>
+    <p class="detail">赫鲁晓夫在会议上散发致中共的通知书，批评中共的路线和政策，要求中共放弃"派别活动"。以彭真为首的中共代表团拒绝接受批评，发表了反驳声明，坚持独立自主的立场。布加勒斯特会议是中苏矛盾"公开化"的标志事件——此前双方分歧虽已实质存在，但保持在党际内部讨论层面，此后转为在国际共运场合的公然交锋。</p>
+    <p class="significance">布加勒斯特会议是中苏分裂从"隐性分歧"到"公开论战"的分水岭。它开启了一个不可逆的过程——一旦在国际共运的公开场合相互攻讦，回到内部和解的道路就被封闭了。此后1960年11月第二次莫斯科会议虽有短暂缓和，但"表面团结、深层分歧"的结构已无法修复。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">33</span>
+    <span class="term-name">中苏在核问题上的矛盾</span>
+    <span class="term-tags"><span class="term-tag tag-event">矛盾事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1958-1959年中苏之间的一个重要分歧点。苏联推动禁止核试验谈判，并推迟履行1957年协定中向中国提供原子弹模型和相关资料的承诺。</p>
+    <p class="detail">1959年6月，苏联单方面废止了向中国提供核技术援助的协议。中方认为苏联在核问题上的政策——与美英合作限制核武器扩散——是以牺牲中国的安全利益为代价来追求与西方的缓和。苏联方面的逻辑是避免核扩散激化冷战局势。</p>
+    <p class="significance">核问题分歧反映了中苏两国在国际战略层面的根本矛盾——苏联作为核大国追求战略稳定和军备控制，中国作为无核国家将获取核能力视为国家安全和独立自主的关键保障。这一矛盾促使中国决心独立自主研发核武器（1964年中国成功试爆第一颗原子弹）。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">34</span>
+    <span class="term-name">"九评"苏共中央公开信</span>
+    <span class="term-tags"><span class="term-tag tag-doc">文献群</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1963年9月6日至1964年7月14日，中共以《人民日报》和《红旗》杂志编辑部的名义，连续发表九篇评苏共中央公开信的文章，系统批判赫鲁晓夫修正主义路线。中苏论战达到理论和政治上的顶峰。</p>
+    <p class="detail">九评涉及的核心议题：对斯大林的评价、和平过渡问题、战争与和平问题、无产阶级专政、社会主义阵营内部关系等。毛泽东亲自参与了九评的起草和修改工作。九评不仅批判苏共路线，也系统阐述了中共对国际共产主义运动的理论立场。</p>
+    <p class="significance">"九评"标志着中苏两党从内部争论走向公开的思想体系对抗。它是党际关系恶化直接破坏国家关系的最典型案例——"九评"是党的论战而非政府间外交照会，但其后果直接摧毁了中苏国家关系。1964年十月革命庆祝期间中方确认苏联政策不会因赫鲁晓夫下台而改变，中苏分裂已成定局。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">35</span>
+    <span class="term-name">苏共二十二大（1961）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大会议</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1961年10月召开的苏共第二十二次代表大会。大会继续"三和路线"并提出升级版——"全民国家""全民的党"理论，同时再次批判斯大林，<em>将斯大林遗体移出列宁墓</em>。</p>
+    <p class="detail">"全民国家"和"全民的党"意味着苏联不再是"无产阶级专政国家"和"无产阶级先锋队党"，这从根本上触犯了中共对社会主义本质的理解。再次批判斯大林（包括移出列宁墓）进一步激化了中苏在斯大林评价问题上的分歧。</p>
+    <p class="significance">苏共二十二大是中苏分裂过程中的关键升级——从此中共确认苏共已经"彻底背叛马克思主义"。大会引发的争执为1962年起的持续恶化（伊塔事件→中苏论战→九评→彻底决裂）奠定了基础。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">36</span>
+    <span class="term-name">伊塔事件（1962）</span>
+    <span class="term-tags"><span class="term-tag tag-event">边界事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1962年发生在中国新疆伊犁和塔城地区的大规模边民外逃事件，数万中国公民在苏联领事馆的鼓动和组织下越境进入苏联。</p>
+    <p class="detail">事件的背景是中苏关系持续恶化和两国在新疆地区的长期影响竞争。苏联驻伊宁领事馆被指直接参与了组织边民外逃。事件发生后，中方关闭了苏联在新疆的所有领事馆。</p>
+    <p class="significance">伊塔事件是中苏关系的重要转折点——它标志着中国开始从<em>国家安全角度</em>（而不仅是党的意识形态角度）审视中苏关系。如果说此前中苏矛盾主要在党际和意识形态层面，伊塔事件后"苏联威胁"具有了具体的国家安全含义。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">37</span>
+    <span class="term-name">中印边界冲突（1962）</span>
+    <span class="term-tags"><span class="term-tag tag-event">军事冲突</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1962年10月至11月，中国与印度在喜马拉雅山脉边境地区发生的大规模武装冲突。中国边防部队在取得军事胜利后主动宣布停火并后撤，恢复至1959年实际控制线。</p>
+    <p class="detail"><em>历史经纬：</em>核心矛盾是传统"习惯线"与"麦克马洪线"（1914年西姆拉会议产物，中方从未承认）之间的分歧。中印分歧的根本点：中印边界是否已正式划定？<em>背景：</em>1954年中印关系曾快速发展——1954年4月中印关于西藏的协定是五项原则的最初出现处。1959年西藏平叛后印度因素凸显 → 1959年"朗久"事件（中印边界首次武装冲突）→ 1959-1962年试图缓和的努力失败。<em>国际背景：</em>古巴导弹危机同期发生（1962年10-11月），美苏聚焦古巴，客观上为中国采取军事行动提供了特殊的国际窗口。苏联在冲突期间保持事实上的中立但随后加强对印度的军事援助。</p>
+    <p class="significance">中印冲突反映了周边外交从"黄金时期"（1954-1960）到"恶化时期"（1960s-1970s）的转变。殖民遗产（麦克马洪线）+ 民族主义 + 冷战三角关系（苏联态度、美国因素）= 多重因素交织酿成冲突。中方主动后撤的决策体现了政治解决而非军事扩张的意图。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">38</span>
+    <span class="term-name">"麦克马洪线"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">边界概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1914年西姆拉会议期间，英国殖民政府代表亨利·麦克马洪与西藏地方代表（未经中国政府授权）秘密换文划定的所谓"中印东段边界线"，将约九万平方公里中国领土划入英属印度。中方从未承认。</p>
+    <p class="detail">印度独立后继承了英国的殖民边界主张，坚称"麦克马洪线"具有法律效力，是"已正式划定的边界"。中方的立场是：中印边界从未正式划定，"麦克马洪线"是非法的殖民主义产物。这一分歧成为1962年中印边界冲突的核心矛盾。</p>
+    <p class="significance">"麦克马洪线"问题是殖民主义遗产如何影响当代国际关系的典型案例——殖民时期的非法划界被独立后的国家继承为主权主张，制造了持续至今的边界争端。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">39</span>
+    <span class="term-name">"朗久"事件（1959）</span>
+    <span class="term-tags"><span class="term-tag tag-event">边界冲突</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1959年发生的中印边界首次武装冲突，地点在"麦克马洪线"附近的朗久地区。事件标志着中印边界摩擦从外交争议升级为军事冲突。</p>
+    <p class="detail">1959年西藏平叛后，印度总理尼赫鲁致信周恩来，对中国政府的行动表示不满。印度舆论和政界对华态度急剧恶化。苏联在"朗久"事件后公开表态持中立态度，中国对此感到不满——在中苏关系已出现裂痕的背景下，苏联在亚洲社会主义国家（中国）与亚洲新兴国家（印度）之间选择中立，被中国视为对兄弟国家的背弃。</p>
+    <p class="significance">"朗久"事件开启了中印边界军事冲突的序幕，也是中印关系从1954年蜜月期转向1959-1962年急剧恶化的转折点。此事件同时反映了中苏关系与中印关系的交叉——苏联的态度进一步加剧了中苏之间的不信任。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">40</span>
+    <span class="term-name">"两个中间地带"</span>
+    <span class="term-tags"><span class="term-tag tag-theory">战略理论</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>毛泽东在1960年代中期对世界格局的分析框架——将美苏并列为"第一世界"（都想统治世界），其余国家划分为"两个中间地带"：第一个中间地带是亚非拉广大经济落后国家；第二个中间地带是欧洲、北美加拿大、大洋洲等。</p>
+    <p class="detail">相较于1946年"中间地带"和1954年"中间地带"，"两个中间地带"是对国际格局认识的进一步精细化——不仅区分了美苏（统治势力）与其他国家，还在其他国家内部区分了不同层次。</p>
+    <p class="significance"><em>三大意义：</em>① 在中苏关系恶化的背景下，为中国对外关系提供了新的落脚点（尤其亚非拉）② 为中国与西方国家（第二中间地带）改善关系提供了理论依据 ③ 直接促成了1960-1964期间的<em>第二次建交高峰</em>。"两个中间地带"是"三个世界"理论的前身。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">41</span>
+    <span class="term-name">第二次建交高峰</span>
+    <span class="term-tags"><span class="term-tag tag-event">历史阶段</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1960-1964年间，在中苏关系恶化背景下，中国积极拓展与亚非拉新兴独立国家的外交关系，迎来建国后第二次大规模建交浪潮。</p>
+    <p class="detail">第一次建交高峰发生在建国初期（1949-1950年代初），主要是与社会主义阵营国家建交。第二次建交高峰的特点是与亚非拉国家——而非社会主义国家——建交；受"两个中间地带"理论的直接推动。这一时期中国与一大批非洲新独立国家建立了外交关系。</p>
+    <p class="significance">第二次建交高峰表明：中苏关系恶化虽然缩小了中国在社会主义阵营内的外交空间，但反而推动了向更广泛的亚非拉世界的拓展。从"一边倒"的一个方向，到多方向的探索——中国的外交空间在结构上得到了拓宽。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">42</span>
+    <span class="term-name">中美大使级会谈</span>
+    <span class="term-tags"><span class="term-tag tag-event">外交机制</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1955年8月1日至1970年，中美两国在日内瓦（后移至华沙）举行的大使级会谈，共136次，是世界外交史上独特的"马拉松"会谈，一直持续到基辛格秘密访华。</p>
+    <p class="detail"><em>启动原因：</em>1954年日内瓦会议期间中美通过英国渠道的"领事级接触"（侨民问题）→ 1955年第一次台海危机（美国急于管控局势）→ 1955年8月1日正式开启。<em>三阶段：</em>① 1955.8-1955.9——达成有关侨民回国的协议（<em>15年间达成的唯一协议</em>；钱学森于1955年回国）② 1955.9-1957.12——中方提出解除贸易禁运+举行外长级会谈，因美方单方面降低会谈级别而结束 ③ 1958年金门炮战后——功能转变为危机管理和沟通渠道。<em>贯穿主线：</em>台湾问题。</p>
+    <p class="significance">在两国没有外交关系的隔绝年代，中美大使级会谈为两国提供了官方接触的唯一渠道。矛盾来源和管控目的——中国反对美国介入台湾问题（矛盾来源），但同时又通过这一渠道防止台海局势失控（管控目的）。为未来中美关系正常化"托底"。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">43</span>
+    <span class="term-name">钱学森回国</span>
+    <span class="term-tags"><span class="term-tag tag-event">标志事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1955年，中国火箭科学家钱学森冲破美国政府的阻挠回到中国。这是中美大使级会谈第一阶段达成的侨民回国协议的最重要成果，也是15年会谈中达成的唯一协议的实际体现。</p>
+    <p class="detail">1955年6月，钱学森通过亲属转信给陈叔通（全国人大常委会副委员长），表达回国意愿。中方在中美会谈中以这封信为证据，要求美方放人。美方最终同意钱学森等中国侨民离境。</p>
+    <p class="significance">钱学森回国不仅是一个侨民案例，更具有历史性意义——他后来领导了中国导弹和航天事业，被誉为"中国航天之父"。这一案例也说明：中美大使级会谈虽成果有限，但在具体人道事务上能够发挥实际作用。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit2">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">44</span>
+    <span class="term-name">中苏对破裂的反思</span>
+    <span class="term-tags"><span class="term-tag tag-concept">分析框架</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>课程对中苏关系从同盟走向对抗的原因所提出的四点反思，是理解这段历史的核心分析框架。</p>
+    <p class="detail"><em>四点反思：</em>① <em>不同的历史文化、国情和发展阶段</em>——苏联是超级大国追求全球稳定，中国是发展中大国面临紧迫的现代化和安全需求 ② <em>对外关系的不同看法</em>——苏联追求与西方的缓和（"三和路线"），中国持更为革命性的国际形势判断 ③ <em>国际形势的有利条件如何判断</em>——何者是有利条件、何者是不利条件，双方看法迥异 ④ <em>无产阶级国际主义原则和国家间关系原则的冲突</em>——这是最深层的理论张力：国际主义要求各国共产党团结一致，但主权原则允许各国独立决定自己的道路。苏联以"国际主义"之名行"大国沙文主义"之实，中国拒绝的是以国际主义为包装的不平等关系。</p>
+    <p class="significance">第四点"无产阶级国际主义 vs 国家主权原则的冲突"是课程结尾提出的最深层理论问题，也是论述题的重要切入角度。</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第三单元 ═══════════════ -->
+<div class="unit-section" data-unit="unit3">
+  <div class="unit-title u3">📙 第三单元：文革期间的中国外交（1966-1976）</div>
+  <div class="unit-terms">
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">45</span>
+    <span class="term-name">"左"的含义（课程定义）</span>
+    <span class="term-tags"><span class="term-tag tag-concept">概念界定</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>课程对"左"的界定——追求超越时代或高于现实可能性的目标；运用与实际能力不符的方式去追求目标。</p>
+    <p class="detail">这一界定提醒我们：极左外交的问题不在于某些"理想"本身（如反对帝国主义、支持民族解放），而在于它脱离了中国实际所处的历史发展阶段、中国实际拥有的国际影响力、以及国际关系的实际运作规律。<em>当目标和手段同时脱离实际，越努力就离正确越远。</em></p>
+    <p class="significance">这个定义是理解文革时期极左外交全部分析的前提——它提供了诊断"左"的标准，也解释了为什么八大外交方针是"正确"的而极左外交是"错误"的。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">46</span>
+    <span class="term-name">王稼祥</span>
+    <span class="term-tags"><span class="term-tag tag-person">人物</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中共资深领导人，曾任中央书记处书记、中央对外联络部部长。在1959-1962年三年困难时期，他提出了一系列调整对外政策的主张，基本思路是中共八大外交方针的延续。</p>
+    <p class="detail"><em>核心主张：</em>采取和缓的方针，注意斗争的策略，争取和平的国际环境；调整对外宣传、周边安全、中苏意识形态争论、对民族解放运动的支持、对外援助等政策。<em>目的：</em>消除对外政策中已出现的"左"的倾向，为克服国内经济困难争取良好的国际环境。</p>
+    <p class="significance">王稼祥的主张被批判为"三和一少"，他本人因此退出领导岗位。批判王稼祥的深远后果是：<em>错过了一次调整对外关系和对外政策的重要机会</em>，客观上为文革时期极左外交的泛滥铺平了道路。保持党内政策讨论的开放性和对纠偏机制的尊重——这是从这段历史中得出的重要教训。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">47</span>
+    <span class="term-name">"三和一少"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">批判标签</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>文革前夕对王稼祥对外政策主张的批判性标签——"三和"指对帝国主义、修正主义和各国反动派要和；"一少"指对民族解放运动和革命运动支持要少。</p>
+    <p class="detail">王稼祥原来的主张是：在三年困难时期和周边环境恶化情况下，采取和缓方针，注意斗争策略，争取和平的国际环境——实际上是中共八大外交方针的延续。但这一合理调整被扣上"三和一少"的帽子加以批判。</p>
+    <p class="significance">"三和一少"的批判关闭了在党内通过正常讨论来纠正对外政策偏差的可能性。错过了一次调整的机会，付出的代价是此后十年极左外交的灾难性实践。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">48</span>
+    <span class="term-name">八大十一中全会公报（1966.8）</span>
+    <span class="term-tags"><span class="term-tag tag-doc">纲领文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1966年8月中共八届十一中全会通过的公报，系统提出了极左外交的理论纲领——标志着中国对外政策的根本性"左转"。</p>
+    <p class="detail"><em>核心内容：</em>关于时代——"世界革命的新时代"；关于世界政治形势——"帝国主义走向全面崩溃，社会主义走向全世界胜利"；关于中国对外政策的<em>最高指导原则</em>——<em>无产阶级国际主义</em>（而非国家利益）；关于对外政策任务——支持亚非民族解放运动和世界各国革命运动、建立反美国际统一战线、将反苏联修正主义斗争进行到底。</p>
+    <p class="significance">这份公报与中共八大（1956年）的外交方针形成了两个极端——后者以"和平与发展"为基本判断，前者以"世界革命新时代"为基本判断。理解这两个文件的对比是理解中国外交从发展转向灾难的关键。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">49</span>
+    <span class="term-name">极左外交四大特征</span>
+    <span class="term-tags"><span class="term-tag tag-theory">分析框架</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>课程对文革时期极左外交思潮特征的系统概括，是理解这一时期中国外交灾难性实践的分析框架。</p>
+    <p class="detail"><em>四大特征：</em>① <em>对时代和世界形势的判断不符合实际</em>——错误估计世界发展方向，否定国际形势中缓和因素的存在 ② <em>高估中国在世界政治中的地位和影响力</em>——"中国革命中心论"，过度强调毛泽东思想在世界范围内的作用 ③ <em>将无产阶级国际主义置于中心位置</em>——以国家性质决定处理国际关系的标准，忽视国家利益在对外政策中的重要性 ④ <em>"两个拳头打人"</em>——"反帝必反修"，极少数同时与两个超级大国对抗的国家，外交空间极度收缩。</p>
+    <p class="significance">四大特征提供了一个检验标准——任何时期的外交政策是否出现了"左"的偏差，可以从这四个维度来判断。外交"纠左"也是从这四个维度进行的（时代判断→国际地位→国家利益→战略姿态）。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">50</span>
+    <span class="term-name">"两个拳头打人"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">战略概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>文革时期中国外交的战略姿态——"反帝必反修"，同时与美帝国主义和苏联修正主义两个超级大国对抗。中国成为极少数同时与两个超级大国对抗的国家。</p>
+    <p class="detail">这种战略姿态的后果是：外交空间极度收缩；在国际上陷入空前孤立；安全压力倍增——实际上被美苏两个超级大国同时包围。在"两个拳头打人"的框架下，中国无法灵活利用美苏之间的矛盾来改善自身安全环境。</p>
+    <p class="significance">"两个拳头打人"是极左外交最直观的战略表现。从"一边倒"（联苏反美）→"两个拳头打人"（同时对抗美苏）→"一条线"（联美反苏）→"独立自主"（不结盟），这一演变脉络是整门课程的脊梁。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">51</span>
+    <span class="term-name">"中国革命中心论"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">极左概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>文革时期中国对自身国际地位严重脱离实际的定位——将中国视为世界革命的"政治中心、军事中心、兵工厂"（毛泽东，1967年）。</p>
+    <p class="detail">"我们中国不仅是世界革命的政治中心，而且在军事上、技术上也要成为世界革命的中心，要给他们武器……要成为世界革命的兵工厂。"——毛泽东接见军训会议代表时的讲话（1967）。这种自我定位是革命运动历史遗产的膨胀——一个经过了长期革命战争洗礼并最终胜利的政党容易将自己的经验普遍化——同时也是国内政治极左化在外交认知上的投射。</p>
+    <p class="significance">"中国革命中心论"与改革开放后邓小平"中国是个大国，又是个小国"的客观评价形成鲜明反差——后者直面经济发展的落后现实，从而得出"千万不要当头"的务实结论。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">52</span>
+    <span class="term-name">外交部夺权事件</span>
+    <span class="term-tags"><span class="term-tag tag-event">极左事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1967年文革期间外交部造反派夺取外交部领导权的事件，标志着极左外交混乱的顶峰之一。</p>
+    <p class="detail"><em>时间线：</em>1967年1月上海造反派夺权（"一月风暴"）→ 1967年5月外交部门开始受到冲击 → 1967年7-8月外交部全面瘫痪。<em>关键节点：</em>王力"八七讲话"——"红卫兵就不能干外交？""让我们共同努力把外交部搞成彻底革命的外交部"。外交部党委领导被批斗，正常外交工作基本瘫痪。周恩来在极端困难条件下尽力控制事态。</p>
+    <p class="significance">外交部夺权事件是"内政极端化必然波及对外关系"的最典型例证——国内的政治狂热和夺权运动直接转化为外交领域的混乱和失控。它也说明外交工作具有专业性——"红卫兵能不能干外交"这个问题的提出本身就注定了灾难。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">53</span>
+    <span class="term-name">王力"八七讲话"</span>
+    <span class="term-tags"><span class="term-tag tag-event">关键事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1967年8月7日，中央文革小组成员王力在外交部发表讲话，公开煽动外交部造反派夺权——"红卫兵就不能干外交？""让我们共同努力把外交部搞成彻底革命的外交部"。</p>
+    <p class="detail">王力讲话后，外交部造反派的行动迅速升级，外交部党委领导被批斗，外交部运作陷入瘫痪。"三砸一烧"事件均发生在王力讲话之后的外交部最混乱时期（1967年7-8月）。</p>
+    <p class="significance">"八七讲话"是极左外交从思潮变为实质性灾难的触发点——讲话发表后的几周内，发生了冲击印度、缅甸、印尼使馆和火烧英国代办处等极端事件。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">54</span>
+    <span class="term-name">"三砸一烧"</span>
+    <span class="term-tags"><span class="term-tag tag-event">极左实践</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1967年文革期间外交部被夺权后发生的一系列严重违反国际法的极端事件——冲击印度驻华使馆、袭击缅甸驻华使馆、冲击印尼驻华使馆、火烧英国驻华代办处。</p>
+    <p class="detail"><em>火烧英国代办处背景链（最严重事件）：</em>1967年5月香港劳资纠纷（左派工人示威）→ 香港当局镇压（逮捕新华社记者）→ 北京群众抗议示威 → 8月22日群众冲击英国代办处并纵火。<em>共同特点：</em>均发生在外交部被冲击最严重的1967年7-8月期间。当时外交专业规范被彻底冲垮，周恩来在极端困难条件下尽力控制但外交部运作已瘫痪。</p>
+    <p class="significance">"三砸一烧"是极左外交混乱的顶峰——它不仅是严重违反国际法的行为，而且标志着中国外交行为在极端时刻完全失去了基本的底线约束。这些事件严重损害了中国的国际形象和与相关国家的关系。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">54A</span>
+    <span class="term-name">"内外有别"原则</span>
+    <span class="term-tags"><span class="term-tag tag-concept">外事纪律</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中国共产党外事工作的传统基本原则——对外宣传与对内教育应该有区别，外事人员在驻在国的行为应遵守专业外交规范，不能将国内政治运动的方式搬到国际场合。</p>
+    <p class="detail">文革极左外交对此原则的突破：外事人员被鼓励在驻在国开展"革命行动"、宣传毛泽东思想；红宝书在世界范围内发行，突破了过去克制的做法；将国内阶级斗争逻辑直接移植到外交领域。突破"内外有别"导致中国与许多已建交国家关系急剧恶化。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">54B</span>
+    <span class="term-name">苏蒙条约（1966）</span>
+    <span class="term-tags"><span class="term-tag tag-event">安全事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1966年苏联与蒙古人民共和国签订的友好合作互助条约，苏联据此将大量军事力量部署至中蒙边境，在中蒙边境中国一侧形成直接军事压力。</p>
+    <p class="detail">中蒙边境距北京仅约600公里——机械化部队数日内可抵达华北平原。此前苏联军事压力主要来自中苏边界北段，苏蒙条约使中国北方腹地直接暴露在苏联军事威胁之下。</p>
+    <p class="significance">苏蒙条约是苏联对中国安全威胁"从量变走向质变"的关键步骤——其使苏联军事部署延伸至距中国核心区域极近的蒙古方向，是毛泽东判断苏联已成为"主要威胁"的重要依据之一。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">55</span>
+    <span class="term-name">"北顶南放"战略</span>
+    <span class="term-tags"><span class="term-tag tag-concept">军事战略</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中国在1950年代形成的军事防御战略方针——"北顶"：在北方边境坚决顶住来自苏联方向的军事压力；"南放"：在南方沿海地区采取相对灵活的防御策略。</p>
+    <p class="detail"><em>前提条件：</em>中苏同盟关系正常运作，北方有苏联作为战略后方——苏联方向不存在来自苏联自身的军事威胁。<em>放弃：</em>随着中苏关系恶化，这一前提不复存在。1964年6月毛泽东正式放弃"北顶南放"战略，开始从军事防御战略角度关注苏联威胁——"我们不能只注意东边，不注意北边；只注意帝国主义，不注意修正主义，要有两面作战的准备"（毛泽东，1964年）。</p>
+    <p class="significance">"北顶南放"的放弃是中苏关系从盟友转变为潜在敌人的军事战略标志——它意味着中国必须在南北两个方向同时准备应对可能的军事威胁，大三线建设就是这一战略转变的直接产物。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">56</span>
+    <span class="term-name">"备战、备荒"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">战略口号</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>毛泽东时代国防战略的核心方针——"备战、备荒、为人民"。这一口号集中体现了1960-70年代中国以战争准备为优先的国家资源配置逻辑。</p>
+    <p class="detail">"备战"——以应对可能的大规模战争（尤其是苏联入侵）为各项工作的中心；"备荒"——在战争可能破坏农业生产的情况下确保粮食储备；大三线建设、"深挖洞、广积粮"等国家工程都是这一方针的具体体现。周恩来在相关讲话中将其与具体地域结合："备战、备荒，具体到华北来说，就是要建立战备体制"。该方针指导下的资源投向严重挤压了民生和经济建设。</p>
+    <p class="significance">"备战、备荒"与改革开放后的"以经济建设为中心"构成了鲜明的时代对比——两者背后是对"战争是否迫在眉睫"这一根本问题的截然相反的判断。理解这一口号的兴衰，就是理解中国从"备战体制"转向"建设体制"的全过程。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">56</span>
+    <span class="term-name">大三线建设</span>
+    <span class="term-tags"><span class="term-tag tag-event">国防战略</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1960年代中期毛泽东推动实施的大规模国防工业转移战略——将国防工业和重要基础设施向西南内陆纵深地区转移，以应对可能的战争（尤其是核战争），确保战略后方安全。</p>
+    <p class="detail">背景：中苏关系恶化（苏联"核战争"威胁）+ 美国在越南的战争升级。华北被定位为可能的敌人主攻方向和主战场。"备战、备荒"成为重要指导方针。大三线建设投入了大量国家资源，客观上影响了沿海地区的经济发展和民生改善。</p>
+    <p class="significance">大三线建设是对苏联威胁加剧的直接战略回应，体现了毛泽东时代"备战"思维的高峰。它与后来邓小平时代的"和平与发展"判断及百万大裁军形成了鲜明的时代对比——"战争是否迫在眉睫"这一判断直接决定了国家资源的配置方向。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">57</span>
+    <span class="term-name">中苏边界"三笔领土账"</span>
+    <span class="term-tags"><span class="term-tag tag-concept">历史概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中苏边界问题的历史根源——① 沙俄时期通过不平等条约割占的领土（《瑷珲条约》《北京条约》等）② 苏联继承并巩固的边界 ③ 外蒙古独立问题。中苏边界全长约7300公里。</p>
+    <p class="detail">1950年代蜜月期——"万里北疆有边无防"，边界问题被搁置。1960年起零星边界冲突开始出现（如伊塔事件）。1964年毛泽东首次公开提出中苏边界问题（7月10日接见日本社会党人士："一百多年以前，把贝加尔湖以东，包括伯力、海参崴、堪察加半岛都划过去了。那个账是算不清的。我们还没跟他们算这个。"），苏联则以"核战争"回应。</p>
+    <p class="significance">"三笔领土账"是理解中苏边界冲突从何而来的关键——边界问题不是1960年代突然出现的，而是沙俄和苏联长期历史遗产的累积爆发。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">58</span>
+    <span class="term-name">苏联入侵捷克斯洛伐克（1968）</span>
+    <span class="term-tags"><span class="term-tag tag-event">关键转折</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1968年8月，苏联率领华沙条约组织军队入侵捷克斯洛伐克，武力镇压"布拉格之春"改革运动。这是苏联直接干涉社会主义国家内政的标志性事件。</p>
+    <p class="detail"><em>勃列日涅夫主义</em>为入侵辩护的理论体系："有限主权论"（社会主义国家的主权是有限的）、"国际专政论"（社会主义阵营有权对偏离路线国家进行专政）、"社会主义大家庭论"（阵营是一个整体）、"利益有关论"（各成员国的命运涉及所有成员国利益）、"大国特殊责任论"（苏联作为大国负有特殊责任）。</p>
+    <p class="significance"><em>对中国安全认知的深远影响：</em>苏联从"安全威胁"进化为<em>"新的战争策源地"</em>。中国的判断转变为：世界大战不可避免且有一定紧迫性 → 中国面临美苏"帝、修"的包围 → 其中苏联的威胁越来越严重。这是中国从"一个战争策源地"过渡到"两个战争策源地"判断的关键事件。因为如果苏联可以用这些理由入侵捷克斯洛伐克，在中苏关系严重恶化的背景下，有什么能阻止苏联用类似理由对待中国？</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">59</span>
+    <span class="term-name">勃列日涅夫主义</span>
+    <span class="term-tags"><span class="term-tag tag-theory">理论概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>苏联为1968年入侵捷克斯洛伐克辩护而提出的一套理论体系，核心是"有限主权论"——社会主义国家的主权是有限的，当社会主义制度受到威胁时，其他社会主义国家有权干涉。</p>
+    <p class="detail"><em>五大理论：</em>"有限主权论"——社会主义国家的主权不是绝对的；"国际专政论"——社会主义阵营有权对偏离路线的国家进行专政；"社会主义大家庭论"——阵营是一个不可分割的整体；"利益有关论"——他国的发展道路涉及所有成员国的利益；"大国特殊责任论"——苏联作为大国对阵营负有特殊责任。</p>
+    <p class="significance">勃列日涅夫主义对中国安全认知的冲击是根本性的——它意味着苏联可以用"保卫社会主义"的名义武装干涉任何社会主义国家。在中国看来，这使苏联从"安全威胁"升级为"新的战争策源地"。中国从此判断世界大战不可避免且有一定紧迫性——这是改变中国安全战略和外交方向的最关键认知转折之一。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">60</span>
+    <span class="term-name">珍宝岛事件（1969）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1969年3月，中苏两国军队在乌苏里江的珍宝岛（苏联称达曼斯基岛）发生大规模武装冲突。这是中苏从同盟走向对抗的军事标志性事件。</p>
+    <p class="detail">事件后毛泽东明确提出<em>"要准备打仗"</em>。苏联后续行动：勃列日涅夫提出"亚洲集体安全体系"（1969年6月）——试图建立以苏联为首的亚洲安全架构，意在孤立和包围中国。苏联甚至考虑对中国核设施进行"外科手术式"打击。</p>
+    <p class="significance"><em>中国安全战略的重大转变：</em>① 认定苏联为新世界战争策源地 ② 世界大战有一定紧迫性 ③ 对中国安全的主要威胁<em>由美国变为苏联</em> ④ 外交逐步转向建立反苏国际统一战线的轨道。珍宝岛事件是中国从"两个拳头打人"转向"联美反苏"的最直接触发因素——四位老帅的"东联孙吴，北拒曹魏"战略建议正是在此背景下提出的。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">61</span>
+    <span class="term-name">"四人小组"（四位老帅）</span>
+    <span class="term-tags"><span class="term-tag tag-person">人物群</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1969年珍宝岛事件后，毛泽东委托四位老帅——陈毅、叶剑英、徐向前、聂荣臻——研究国际战略形势。他们的战略研判为中国外交从"两个拳头打人"转向"联美反苏"提供了认识论基础。</p>
+    <p class="detail"><em>核心判断：</em>① 苏联对中国的"安全威胁比美国大" ② "在可预见的时期内，美帝、苏修单独或联合发动大规模侵华战争的可能性都还不大"——这个"还打不起来"的判断为中美和解提供了战略决策空间。<em>叶剑英的战略建议：</em>"魏、蜀、吴三国鼎立，诸葛亮的战略方针是'东联孙吴，北拒曹魏'，可以参考"——建议从战略上打美国牌，联合美国抗衡苏联。</p>
+    <p class="significance">"四人小组"的研判为毛泽东最终决定打开中美关系大门提供了关键的战略论证。"还打不起来"的判断虽然承认了战争危险的客观存在，但给出了一个时间窗口——正是这个窗口的存在使与"头号敌人"美国改善关系在政治上成为可能。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">62</span>
+    <span class="term-name">乒乓外交</span>
+    <span class="term-tags"><span class="term-tag tag-event">标志事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1971年4月，中国邀请在日本名古屋参加世界乒乓球锦标赛的美国乒乓球队访问中国。这是中美之间长达二十多年民间交往冻结后的首次突破——"小球转动大球"成为国际关系史上以民间外交推动国家关系突破的经典案例。</p>
+    <p class="detail">美国乒乓球队在北京和上海进行了参观访问和友谊比赛，周恩来亲自接见了美国乒乓球队成员。中国媒体对此进行了广泛报道。美国方面也积极回应。</p>
+    <p class="significance">乒乓外交是在基辛格秘密访华之前先释放的公开信号——它以非政治的方式测试了双方关系改善的可能性，为高层秘密接触提供了"民意基础"。从方法上讲，它以体育交流绕过了政治障碍，体现了中国外交中利用多种渠道推进战略目标的灵活性。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">63</span>
+    <span class="term-name">斯诺登上天安门（1971年国庆）</span>
+    <span class="term-tags"><span class="term-tag tag-event">外交信号</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1971年10月1日中华人民共和国国庆典礼上，毛泽东邀请美国记者埃德加·斯诺（Edgar Snow）登上天安门城楼观礼。这是中国向美国公开释放善意的重要外交信号。</p>
+    <p class="detail">斯诺是《西行漫记》（Red Star Over China）的作者，与中共领导人有着长期的个人友谊。让他登上天安门城楼——通常只有中国最高领导人才能站的位置——并让新华社发布毛泽东与斯诺夫妇的合影，是精心设计的外交姿态。这一姿态与乒乓外交（1971年4月）并行构成中方向美方释放的双重信号——前者在民间交往层面，后者在最高政治姿态层面。</p>
+    <p class="significance">斯诺登上天安门体现了中国外交中利用多层次渠道（非正式个人关系、公开政治姿态、体育交流等）推进战略目标的灵活性。斯诺本人后来表示："毛泽东通过让我上天安门来告诉尼克松，他愿意改善中美关系。"</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">63</span>
+    <span class="term-name">基辛格秘密访华</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1971年7月和10月，美国总统国家安全事务助理基辛格通过巴基斯坦渠道秘密访问北京，与周恩来总理进行会谈。这是中美断绝交往二十多年后双方高层的首次直接接触，为尼克松访华铺平了道路。</p>
+    <p class="detail"><em>讨论的关键问题：</em>印度支那问题（美国在越南的战争）、中美关系正常化时间表、台湾问题（"核心中的核心"——《联合公报》最困难的部分）。基辛格实行了严格保密——先访问巴基斯坦，然后"生病"秘密前往北京。中方在会谈中展现了坚定立场：台湾问题是原则底线，不可退让。</p>
+    <p class="significance">基辛格秘密访华打破了中美外交隔绝的僵局，标志着中美和解从"信号试探"进入实质性高层接触阶段。会谈中就尼克松访华达成协议——直接开启了1972年2月的历史性访问。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">64</span>
+    <span class="term-name">尼克松访华（1972.2）</span>
+    <span class="term-tags"><span class="term-tag tag-event">历史时刻</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1972年2月，美国总统尼克松访问中国，这是美国总统首次访问中华人民共和国。访问期间毛泽东当日亲自会见尼克松，周恩来与尼克松进行多轮会谈，最终发表中美第一个联合公报——《上海公报》。</p>
+    <p class="detail">毛泽东当日即会见尼克松——最高领导人直接掌握中美关系进程，显示了中方对此次访问的高度重视。周恩来会谈主要涉及三个层面：全球战略形势问题（双方在抗衡苏联扩张上的共同利益）、台湾问题、地区问题（越南、朝鲜半岛等）。《上海公报》最困难的部分是台湾问题的表述——美方使用"acknowledge"（认知到）而非"recognize"（承认）海峡两岸的中国人认为只有一个中国。</p>
+    <p class="significance">尼克松访华实现了中美<em>历史性和解</em>。中国摆脱外交孤立，打开了外交新局面。改变了"战略三角"（美、中、苏）的力量平衡——推动苏联的削弱、解体及冷战的结束。但课程也指出：中国调整政策的主要驱动力来自外部安全环境（对抗苏联），"内生动力不强"——这解释了为何访华后中美长期未能实现关系正常化。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">65</span>
+    <span class="term-name">《上海公报》</span>
+    <span class="term-tags"><span class="term-tag tag-doc">外交文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1972年2月尼克松访华结束时中美双方发表的第一份联合公报，是中美关系史上具有开创性意义的外交文件。</p>
+    <p class="detail"><em>关键表述：</em>关于台湾问题——美方声明："美国认知到（acknowledge），在台湾海峡两边的所有中国人都认为只有一个中国，台湾是中国的一部分。美国政府对这一立场不提出异议。"注意：美方使用"acknowledge"（认知到）而非"recognize"（承认）——用词上的微妙差异留下了后续争论的空间。《上海公报》还体现了美国在亚太地区"逐步减少"军事存在的意愿。公报的另一个特点是坦诚列出了双方存在的分歧。</p>
+    <p class="significance">《上海公报》奠定了中美关系正常化的第一块基石。与后来《建交公报》（1978年）相比——后者前进了一大步（"承认中华人民共和国政府是唯一合法政府"），但《上海公报》迈出了从隔绝到接触的第一步。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">66</span>
+    <span class="term-name">"一条线，一大片"</span>
+    <span class="term-tags"><span class="term-tag tag-policy">战略方针</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1973年2月毛泽东在会见第五次访华的基辛格时提出的反苏国际统一战线战略——"一条线"即"从东到西建立一条反苏霸的统一战线"，包括美国、日本、中国、巴基斯坦、伊朗、土耳其、欧洲；"一大片"即进一步联合"一条线"周边的一大片第三世界国家。</p>
+    <p class="detail">毛泽东原话："一条横线，就是纬度，美国、日本、中国、巴基斯坦、伊朗、土耳其、欧洲。"以及——"美国、日本、中国，连巴基斯坦、伊朗、土耳其，阿拉伯世界，欧洲，都要团结起来呀。一大片的第三世界要团结。"毛泽东还用极其口语化的方式将战略意图概括为："共同对付一个王八蛋！"（指苏联）。</p>
+    <p class="significance">"一条线、一大片"是反苏国际统一战线政策最终形成的标志。它意味着中国对外政策的逻辑从"姓社姓资"（意识形态划线）转变为"是否反苏"（安全威胁划线）——只要是反苏的就可以发展关系。其局限在于：中国事实上与美国形成"准结盟"关系；1979年邓小平坦率承认"这一反霸统一战线，坦率地讲是包括美国在内的"。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">67</span>
+    <span class="term-name">"三个世界"理论</span>
+    <span class="term-tags"><span class="term-tag tag-theory">核心理论</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>毛泽东在1970年代提出的国际格局分析框架——第一世界：美国和苏联（"原子弹多，也比较富"）；第二世界：欧洲、日本、澳大利亚、加拿大等（"原子弹没有那么多，也没有那么富"）；第三世界：广大亚非拉国家（"亚洲除了日本，都是第三世界。整个非洲都是第三世界，拉丁美洲也是第三世界"）。邓小平在1974年联合国大会特别会议上正式向国际社会阐述了这一理论。</p>
+    <p class="detail"><em>理论渊源：</em>从"中间地带"（1946）→"两个中间地带"（1960s）→"三个世界"（1970s）的发展。相较于"两个中间地带"，"三个世界"中"第二世界"概念的独立是一个创新——欧洲、日本等发达国家不仅不是敌人，而且是"可以争取"的力量。</p>
+    <p class="significance">"三个世界"理论成为1970年代中国外交的<em>指导思想</em>。它奠定了对第三世界国家关系的立足点；确立了对苏联的认识——将美苏并列，以"霸权主义"而非"意识形态"划线；"第二世界"概念为中国外交带来更大的发展空间。中国明确将自己定位为第三世界一员。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">68</span>
+    <span class="term-name">董必武与旧金山制宪会议</span>
+    <span class="term-tags"><span class="term-tag tag-event">历史事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1945年4月至6月，中共代表董必武参加在美国旧金山举行的联合国国际组织会议（United Nations Conference on International Organization），并在《联合国宪章》上签字。中共是联合国创始会员国之一，这是中国后来称"重返联合国"而非"加入联合国"的法律和历史依据。</p>
+    <p class="detail">董必武是中国代表团十名成员中唯一的中共代表。在旧金山，他参与了联合国宪章的讨论和签署工作。这是中共在国际多边外交舞台上最早的重要参与。注意：当时中国还是国民党政府执政，但中共的代表参与并签署了联合国宪章——这意味着中华人民共和国的"联合国创始会员国"身份并非来自台湾，而是源自1945年的制宪过程。</p>
+    <p class="significance">理解"重返"而非"加入"的措辞至关重要——这不只是语义问题，而是涉及中华人民共和国在联合国法律地位的核心主张：中国从未"退出"联合国，只是合法代表权被蒋介石集团非法占据。2758号决议"恢复"中国合法权利的"恢复"一词，正是建立在这一法理基础之上。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">68</span>
+    <span class="term-name">重返联合国</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1971年10月25日，联合国大会通过第2758号决议，恢复中华人民共和国在联合国及其所有附属机构的合法席位，并将蒋介石集团的代表从联合国驱逐出去。中国官方表述为"重返"而非"加入"——因为中共曾参与联合国创建（董必武参加1945年旧金山制宪会议）。</p>
+    <p class="detail"><em>三个提案：</em>① 美日"重要问题"提案（将驱逐蒋介石代表设为需三分之二多数通过）② "两阿提案"（阿尔巴尼亚、阿尔及利亚等17国，后增至23国，要求恢复中国合法席位并驱逐蒋代表）③ 美国"双重代表权"提案（PRC获安理会位置，但不剥夺"中华民国"代表权）。"两阿提案"以76:35:17的压倒性多数通过。<em>一个意味深长的细节：</em>根据凌青回忆录，投票前中方曾准备"找什么理由推迟进入"——说明中国对于进入联合国既渴望又顾虑。最终决定参加。</p>
+    <p class="significance">表明中国国际地位日益加强和影响迅速提升；标志着<em>"一个中国"原则</em>成为当代国际体系的一个组成部分；"双重代表权"被否决意味着国际社会在法律上确认了PRC是代表全中国的唯一合法政府。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">69</span>
+    <span class="term-name">第2758号决议</span>
+    <span class="term-tags"><span class="term-tag tag-doc">联合国文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1971年10月25日联合国大会第26届会议通过的第2758号决议——"恢复中华人民共和国在联合国的合法权利，承认中华人民共和国政府的代表是中国在联合国组织的唯一合法代表，并立即把蒋介石的代表从它在联合国组织及其所属一切机构中所非法占据的席位上驱逐出去。"</p>
+    <p class="detail">决议以76票赞成、35票反对、17票弃权的压倒性多数通过。美国的"双重代表权"方案因此失效——联大先投票通过了"两阿提案"，美国方案未及表决。</p>
+    <p class="significance">2758号决议是"一个中国"原则被纳入当代国际体系的法律标志。此后任何国家要与中国建交，都必须先承认中华人民共和国政府是代表全中国的唯一合法政府——这一原则成为国际社会处理涉台问题的法律基准。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">70</span>
+    <span class="term-name">"两阿提案"</span>
+    <span class="term-tags"><span class="term-tag tag-doc">联合国提案</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1971年7月15日由阿尔巴尼亚、阿尔及利亚等17国（后增至23国）联合提出的联合国大会议案，要求恢复中华人民共和国在联合国的一切合法权利，并立即将蒋介石集团的代表从联合国及其附属机构驱逐出去。最终以76票赞成成为2758号决议。</p>
+    <p class="detail">"两阿提案"的提出和执行背景是：亚非新兴国家大量加入联合国，改变了联合国大会的表决力量对比；支持美方提案（维持蒋代表权）的国家不断减少。美国则试图以"双重代表权"方案来阻止"两阿提案"——但未及表决"两阿提案"已获通过。</p>
+    <p class="significance">"两阿提案"的通过表明，大量新独立的亚非国家在国际组织中形成了不可忽视的力量——这与中国在1955年万隆会议以来与亚非国家建立的关系密不可分。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">71</span>
+    <span class="term-name">中美苏三角关系中的"打牌"逻辑</span>
+    <span class="term-tags"><span class="term-tag tag-concept">博弈概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1970年代中美苏三方在彼此关系中灵活运用双边谈判影响第三方关系走向的复杂博弈策略。课程引用了一个极富表现力的细节：中苏边界谈判期间，周恩来每次讨论后"最先询问的不是谈判的情况，而是美国方面有何反应"——中国利用对苏谈判桌向美国"打苏联牌"以加速中美正常化。</p>
+    <p class="detail"><em>三方各自的策略：</em>美国——试图联合中国牵制苏联，但也随时摆出与苏联缓和关系的姿态制约中国，令毛泽东担心被"踏着中国的肩膀跑莫斯科"。苏联——试图通过对中国打出和谈的旗帜，增加同美国进行争夺的资本，在美国的谈判桌上"打中国牌"。中国——响应苏联边界会谈建议以缓和紧张局势，同时"利用谈判桌对美国打苏联牌"，利用美苏矛盾加速中美关系正常化步伐。</p>
+    <p class="significance">三角博弈虽然为中国提供了战略空间，但也有内在局限——把中国战略锁定在"安全威胁驱动"的逻辑之中。1982年"独立自主的不结盟"方针的提出，标志着中国退出在大国之间"选边"的逻辑，从三角博弈的战术层面上升到战略自主层面。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit3">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">72</span>
+    <span class="term-name">"被牵连"的恐惧（Entrapment）</span>
+    <span class="term-tags"><span class="term-tag tag-concept">理论概念</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>国际关系理论概念，指在同盟或准同盟关系中，一方担心被另一方的单方面行动拖入不愿面对的冲突。在中美苏三角关系中反复出现。</p>
+    <p class="detail"><em>三个历史例证：</em>① 炮击金门（1958）——苏联担心被中国对台军事行动牵连进与美国的冲突 ② 珍宝岛事件后——中国担心被苏联的大规模进攻"教训" ③ 1970年代——毛泽东反复担心美国"踏着中国的肩膀跑莫斯科"（中美走近后被美国利用来对苏施压，然后美国单独与苏缓和）。</p>
+    <p class="significance">"被牵连"的恐惧揭示了同盟（或准同盟）关系中的一个结构性困境——信息不对称和利益不完全重合使得各方都面临被"拖下水"的风险。理解这一概念有助于解释三角关系中各方的谨慎和反复。</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第四单元 ═══════════════ -->
+<div class="unit-section" data-unit="unit4">
+  <div class="unit-title u4">📕 第四单元：改革开放以来的中国外交（1978至今）</div>
+  <div class="unit-terms">
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">73</span>
+    <span class="term-name">华国锋十一大政治报告（1977）</span>
+    <span class="term-tags"><span class="term-tag tag-doc">关键文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1977年8月，华国锋在中共第十一次全国代表大会上所作的政治报告。报告中仍然宣称"苏美两家是新世界大战的策源地，特别是苏联社会帝国主义具有更大的危险性"、"苏修亡我之心不死"。</p>
+    <p class="detail">这份报告的意义在于——它是课程论证"国家战略转变对外交政策影响具有滞后性"的<em>核心例证</em>。文革已于1976年结束，十一大正式宣布"文革结束"，但对外交领域而言，对世界形势的认识框架并没有因为国内政局的变化而立即更新。华国锋的政治报告中对国际形势的判断仍然沿用了极左外交时期的分析框架——"战争策源地"、"苏修亡我"——这与同年稍后开始强化的"需要和平稳定的国际环境搞现代化"的诉求形成了矛盾。</p>
+    <p class="significance">"滞后性"的典型案例：国家战略转变不会自动带来外交观念的转变。从1977年华国锋报告的"苏修亡我"到1981年邓小平的"世界大战在几年内打不起来"，中间必须经过外交"纠左"这一关键的认识论转变环节。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">73</span>
+    <span class="term-name">十一届三中全会（1978.12）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大会议</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1978年12月召开的中共十一届三中全会，明确将"全党工作的着重点和全国人民的注意力转移到社会主义经济建设上来"，实行改革开放政策。这标志着中国国家战略的根本转变——从"以阶级斗争为纲"到"以经济建设为中心"。</p>
+    <p class="detail">全会对中国对外政策的影响是根本性的——新的国家战略：以经济建设为中心 → 新的外交目标：为经济发展创造良好（和平稳定）的外部环境。<em>但存在滞后性：</em>长期保持的对世界政治形势的判断不可能因国内政局变化立即消失。文革结束后出现矛盾现象——一方面强调需要和平稳定的国际环境，另一方面对国际形势判断却趋向严峻（华国锋1977年政治报告仍称"苏修亡我之心不死"）。</p>
+    <p class="significance">十一届三中全会是中国外交从"革命外交"转向"国家外交"的最根本驱动力——对外政策发生根本性转变的动力来自于国家战略的转变。但战略转变不会自动带来外交转型，需要通过认识上的"纠左"作为中间环节。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">74</span>
+    <span class="term-name">外交"纠左"</span>
+    <span class="term-tags"><span class="term-tag tag-policy">政策调整</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>十一届三中全会后在外交领域进行的系统性思想纠正和政策调整，是中国外交从"极左外交"转向"务实外交"的关键环节，也是中国对外关系史上最深刻的一场观念变革。</p>
+    <p class="detail"><em>三大维度：</em>① <em>摆脱"时代"问题上的束缚</em>——提出"和平与发展"是当今世界的主题（认识时代问题上的巨大飞跃；彻底否定建国以来在时代问题上长期坚持的主要观点；实质上是重回中共八大判断）；百万大裁军（1985）。② <em>对中国的国际地位作出客观评价</em>——直面经济发展在世界上处于落后水平的现实；"中国是个大国，又是个小国"（邓小平）；"千万不要当头，这是一个国策"。③ <em>国家利益回归对外政策的出发点</em>——外交为经济建设服务、为现代化服务；决定因素从"国家性质"→"安全威胁"→"经济建设"。</p>
+    <p class="significance">外交"纠左"实现了中国外交从革命外交到国家外交的根本转变——这不是枝节性的政策修正，而是涉及时代判断、自我认知和国家利益定义三个层面的认识论重塑。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">75</span>
+    <span class="term-name">"和平与发展"是时代主题</span>
+    <span class="term-tags"><span class="term-tag tag-theory">时代判断</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>邓小平在1980年代提出的对时代特征的根本判断——"和平与发展是当今世界的两大主题"。这不仅是战争可能性的判断，更是对整个时代特征的总体概括。</p>
+    <p class="detail">邓小平1981年关键讲话："世界大战在几年内打不起来，美苏两霸在战争问题上谁也不敢先发动。我们不要自己吓唬自己，造成人为的紧张。如果当前老是强调战争马上打起来，使我们的精力都集中到打仗上面，就会影响四个现代化建设。"1985年百万大裁军是对"和平"判断最有力的行动背书。<em>认识论意义：</em>承认了此前对战争危险的判断有"人为"放大的成分——即不是基于客观事实，而是基于主观认知框架产生的过度焦虑。</p>
+    <p class="significance">这个判断是"认识上的巨大飞跃"——它彻底否定了建国以来长期坚持的"战争不可避免"观点，实质上是<em>重回中共八大判断</em>，但经过了历史的螺旋式上升：邓小平的判断不是革命乐观主义的产物，而是基于对国际力量对比的冷静分析和对中国发展需求的清醒认识。它为中国外交从此前的"备战"模式转向"建设"模式提供了根本性的认识论前提。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">76</span>
+    <span class="term-name">百万大裁军（1985）</span>
+    <span class="term-tags"><span class="term-tag tag-event">重大决策</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1985年中国宣布裁减军队员额100万，是"和平与发展"判断最有力的行动背书。邓小平："减少军队人员，把省下来的钱用于更新装备……如果能够节省出一点用到经济建设上就更好了"（1980年）。</p>
+    <p class="detail">背景：邓小平对国际形势作出了新判断——"世界大战在几年内打不起来"；长期维持的高额军费不利于国家建设和军队现代化。裁军的逻辑不是"削弱国防"，而是以精简换取质量提升，以"消肿"换取装备更新，以军费节省支持经济发展。</p>
+    <p class="significance">百万大裁军向世界表明中国的战略判断是真诚的而非口头的——它是"和平与发展"判断最直接、最大胆的实践检验。它标志着中国从"备战"模式向"建设"模式的根本转变，也极大改善了中国的国际形象。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">77</span>
+    <span class="term-name">"中国是个大国，又是个小国"</span>
+    <span class="term-tags"><span class="term-tag tag-quote">邓小平名句</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>邓小平对中国国际地位的客观务实定位——"所谓大国就是人多，土地面积大。所谓小国就是中国还是发展中国家，还比较穷，国民生产总值人均不过三百美元"（1984年）。</p>
+    <p class="detail">与此前"中国革命中心论"的膨胀式自我定位形成鲜明反差。基于这种实事求是的自我评估，邓小平得出了"<em>千万不要当头，这是一个国策，因为'这个头我们当不起'</em>"的务实结论。</p>
+    <p class="significance">对自身地位的客观评价是外交务实化的前提——承认落后不是自贬，而是找到正确发展道路的前提；不当头才能避免被卷入不必要的国际争端和"为他人火中取栗"。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">78</span>
+    <span class="term-name">中共十二大外交方针（1982）</span>
+    <span class="term-tags"><span class="term-tag tag-policy">重大方针</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1982年9月中共十二大确立的新外交方针，核心是<em>"独立自主"</em>——中国不同任何大国结盟或建立战略关系；在独立自主、和平共处五项原则的基础上，同世界一切国家（包括结盟国家和不结盟国家）建立和发展各方面的关系。</p>
+    <p class="detail"><em>80年代三大任务：</em>加紧现代化建设（核心）、实现国家统一、反对霸权主义和维护世界和平。<em>演变脉络：</em>"一边倒" → "一条线，一大片" → "独立自主"。<em>核心变化：</em>从"以谁划线"变为"不以任何大国划线"；从安全威胁驱动变为发展需求驱动。"中国不会打'美国牌'去对付苏联，不会打'苏联牌'去对付美国，也决不允许任何人玩'中国牌'"——黄华，1982年。</p>
+    <p class="significance">对外战略发展史上具有<em>里程碑意义</em>的重大调整。提升了中国的国际地位，使中国真正成为国际舞台上一支独立自主的力量。为中国经济建设营造了相对有利的国际环境。这一次独立自主之所以能够实现，根本原因是国家战略转为以经济建设为中心——发展需求大于安全恐惧，才真正有了"独立"选择的空间。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">79</span>
+    <span class="term-name">布热津斯基访华（1978）</span>
+    <span class="term-tags"><span class="term-tag tag-event">外交事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1978年5月，美国总统卡特的国家安全事务助理兹比格涅夫·布热津斯基（Zbigniew Brzezinski）访问中国，直接推动了停滞多年的中美关系正常化进程，为同年12月《建交公报》的签署铺平了道路。</p>
+    <p class="detail">布热津斯基访华的背景：尼克松访华（1972）后中美关系经历了长期徘徊——尼克松后期水门事件、福特时期对苏缓和、卡特初期企图继续"缓和"政策——直到1970年代后期缓和政策破产。布热津斯基访华时向中方明确表示：美国决心实现中美关系正常化，并愿意接受中方关于台湾问题的三项条件（断交、废约、撤军）。</p>
+    <p class="significance">布热津斯基访华是中美建交进程从"停滞"到"加速"的转折点。他访华后不久，中美建交谈判正式启动，半年内即达成《建交公报》。这一速度与此前长达六年的徘徊形成了鲜明对比——十一届三中全会确立以经济建设为中心的国家战略后，中方推进中美关系正常化的动力发生了质的提升。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">79</span>
+    <span class="term-name">中美《建交公报》（1978）</span>
+    <span class="term-tags"><span class="term-tag tag-doc">外交文件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1978年12月（十一届三中全会期间）中美发表的第二份联合公报，宣布两国将于1979年1月1日起互相承认并建立外交关系。</p>
+    <p class="detail"><em>核心内容：</em>美国"承认中华人民共和国政府是中国的唯一合法政府"；"承认只有一个中国，台湾是中国的一部分"；1979年1月1日起与台湾断交、终止《共同防御条约》。<em>与《上海公报》对比——前进一大步：</em>《上海公报》中美国仅"acknowledge"（认知到）一个中国原则；《建交公报》中明确"承认"/"recognize"。<em>遗留问题：</em>1979年4月美国国会通过<em>《与台湾关系法》</em>——以国内立法形式承诺继续向台湾提供防御性武器——实质上保留了干预杠杆。</p>
+    <p class="significance">中方推动建交的动力发生了质的提升——从单纯对抗苏联扩张（安全驱动），提升到"为美国用先进的东西帮助我们实现四个现代化创造更有利的条件"（发展驱动）（邓小平，1979）。这体现了中国外交从"安全驱动"到"发展驱动"的转变。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">80</span>
+    <span class="term-name">《与台湾关系法》</span>
+    <span class="term-tags"><span class="term-tag tag-doc">美国法律</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1979年4月美国国会在中美建交后通过的一项国内法律，承诺继续向台湾提供防御性武器，并声称以非和平方式决定台湾前途将会引起美国"严重关切"。该法以国内立法的形式保留了美国干预台湾问题的法律依据。</p>
+    <p class="detail">《与台湾关系法》在美国与台湾"断交、废约"的同时，建立了一种实质上维持美台非官方关系——特别是军事关系——的法律框架。中国政府一直坚决反对该法，认为它违反了中美建交公报的原则，构成对中国内政的干涉。</p>
+    <p class="significance">这部法律使得台湾问题在此后几十年里始终是中美关系中最敏感、最容易引发危机的议题。"建交但不放手"的模式——美国一方面承认一个中国原则，一方面以国内立法保持对台军售——形成了中美关系中的一个结构性矛盾。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">81</span>
+    <span class="term-name">勃列日涅夫"塔什干讲话"（1982）</span>
+    <span class="term-tags"><span class="term-tag tag-event">外交信号</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1982年3月，苏联领导人勃列日涅夫在乌兹别克斯坦首都塔什干发表的讲话，释放出改善中苏关系的信号——表示愿意改善两国关系、承认中国是社会主义国家、重申"一个中国"原则。</p>
+    <p class="detail">中方对此"投桃报李"——表达了改善关系的意愿，但明确提出<em>三大诉求</em>（消除"三大障碍"）：① 中苏边界和蒙古驻扎重兵问题 ② 苏联支持越南入侵柬埔寨 ③ 苏联武装占领阿富汗。第一轮正常化尝试（1982-1986）成效有限——苏联内部局势动荡（领导人频繁更替：勃列日涅夫1982年底去世，安德罗波夫和契尔年科相继短暂执政），未能在中方核心关切上作出实质让步。</p>
+    <p class="significance">"塔什干讲话"是中苏关系从对抗走向对话的起点——它为1982-1989年间长达七年的正常化进程打开了大门。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">82</span>
+    <span class="term-name">中苏正常化"三大障碍"</span>
+    <span class="term-tags"><span class="term-tag tag-policy">外交诉求</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1982年中方为改善中苏关系提出的三项前提条件，苏联必须在这三个问题上作出实质性让步——① 中苏边界和蒙古驻扎重兵 ② 苏联支持越南入侵柬埔寨 ③ 苏联武装占领阿富汗。三项诉求全部是<em>国家间</em>问题，没有任何意识形态或党际路线的内容。</p>
+    <p class="detail">第一轮尝试（1982-1986）成效有限。戈尔巴乔夫上台后推行"新思维"外交政策，苏方在蒙古撤军、从阿富汗撤军（1989年完成）、促使越南从柬埔寨撤军等方面相继采取实际行动。1987-1989年第二轮尝试取得突破——苏联"三大障碍"的逐步消除最终使中苏关系正常化成为可能。</p>
+    <p class="significance">三大诉求的"国家间"属性本身就是重大转变——它表明中国处理中苏关系时不再以党的意识形态判断为出发点，而是以国家间安全关切为出发点。这体现了"国家关系优先于党际关系"的外交理念转变。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">83</span>
+    <span class="term-name">戈尔巴乔夫访华（1989）</span>
+    <span class="term-tags"><span class="term-tag tag-event">历史事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1989年5月，苏联最高领导人戈尔巴乔夫访问中国，与邓小平举行会谈。这是三十年来（自1959年赫鲁晓夫访华后）第一位来华访问的苏联最高领导人。访问期间发表《中苏联合公报》，宣布两国关系正常化。</p>
+    <p class="detail">邓小平提出的处理历史问题的原则——"结束过去，开辟未来。……不过有个限度，只是了解，不予纠缠，重点在于开辟未来。"这实质上是将党际历史争论悬置起来，以国家关系逻辑取代党际争论逻辑。动因：经济发展需要和平稳定的周边环境 + 务实的对外政策。</p>
+    <p class="significance">中苏关系正常化是中国走上<em>独立自主的和平外交道路</em>的一个重大标志。从"一边倒"（联苏）→"两个拳头打人"（对抗苏）→"一条线"（联美抗苏）→"独立自主的不结盟"（与美苏均保持正常关系）——这一长达40年的演变至此完成。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">84</span>
+    <span class="term-name">"结束过去，开辟未来"</span>
+    <span class="term-tags"><span class="term-tag tag-quote">邓小平名句</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1989年邓小平在会见苏联外长谢瓦尔德纳泽（以及随后戈尔巴乔夫访华时）为中苏关系正常化提出的指导原则——"中苏两国领导人的任务是结束过去，开辟未来。……不过有个限度，只是了解，不予纠缠，重点在于开辟未来。"</p>
+    <p class="detail">这一原则的实质是：承认中苏之间存在大量历史恩怨和意识形态分歧，但将这些问题"悬置"——不去纠缠谁对谁错（"只是了解，不予纠缠"），而是聚焦于未来可以合作的实际事务。</p>
+    <p class="significance">"结束过去，开辟未来"精辟地概括了从"党际争论逻辑"到"国家利益逻辑"的转变——它标志着中国在处理大国关系时彻底摆脱了以意识形态和历史恩怨为判断标准的模式。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">85</span>
+    <span class="term-name">"不参加"投票（Non-Participation）</span>
+    <span class="term-tags"><span class="term-tag tag-concept">外交行为</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中国在重返联合国初期（1971-1978年）的一种独特表决行为——对不直接涉及中国核心利益的联合国决议草案既不投赞成票也不投反对票，而是干脆不参加表决。</p>
+    <p class="detail">"不参加"投票体现了中国在联合国"体制内的反对者"阶段的矛盾心态——席位有了，但思维模式仍然是革命外交的：不认可联合国的权威和规则，不愿意在这个"被帝国主义控制"的框架内被拉入投票博弈。这种"人在体制内、心在体制外"的姿态还反映在其他方面：对安理会和经社理事会以外的机构暂不参与；对联合国教科文组织（UNESCO）持消极态度。</p>
+    <p class="significance">"不参加"投票是理解中国从"革命者"到"建设者"转变的过渡性行为标志。1978年后随着外交纠左和国家战略转向经济建设，这种消极参与模式被全面深入的积极合作所取代——中国开始在所有联合国机构中积极投票、缴纳会费、参与维和行动。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">85A</span>
+    <span class="term-name">UNDP在华设立代表处（1979）</span>
+    <span class="term-tags"><span class="term-tag tag-event">标志事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1979年中国决定接纳联合国开发计划署（UNDP）在华设立代表处——标志着中国开始将国际多边机制视作<em>可以获得发展资源的平台</em>，而不仅仅是政治斗争的讲坛。这一决定与1975年的拒绝形成了鲜明的时代对比。</p>
+    <p class="detail">1972年中国重返联合国后不久，UNDP即提议在华设立代表处，但被中国拒绝——在当时的认识下，接受国际组织的援助被视为"依赖外部"、与"独立自主、自力更生"的路线不符。1979年的转变直接来自十一届三中全会后国家战略的变化——同样的机构、同样的项目类型，但由于从"政治安全优先"转变为"经济发展优先"，接受国际组织的发展援助从"有损自力更生"变成了"有利于现代化建设"。</p>
+    <p class="significance">UNDP设代表处是中国对国际多边经济组织态度根本转变的标志。1980年中国相继恢复了在世界银行和国际货币基金组织的合法席位——这些机构为中国基础设施建设、农业发展和经济改革提供了资金和技术支持。从革命者逻辑转向发展逻辑——这是理解中国从排斥国际体系到融入全球化进程的关键节点。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">85</span>
+    <span class="term-name">中国与联合国关系的三阶段</span>
+    <span class="term-tags"><span class="term-tag tag-theory">分析框架</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>课程对中国与联合国关系变迁的阶段性概括。</p>
+    <p class="detail"><em>阶段一：体制内的反对者（1971-1978）</em>——定位：反霸、宣传中国外交政策和革命形势的讲坛。保持超脱参与方式："不参加"投票；忽视联合国作为"促进合作"平台的特点。<em>阶段二：全面认识和务实对待（1978-1990年代中期）</em>——国家战略转移和外交纠左背景下；对联合国认识趋于理性务实；全面深化参与程度；服务于"以经济建设为中心"和"改革开放"的国家战略。UNDP在华设立代表处（1975年决定，1979年落实）是标志性事件——中国开始将联合国视作<em>获得发展资源的平台</em>。<em>阶段三：新时代</em>——"中国是现行国际体系的参与者、建设者、贡献者，同时也是受益者"（习近平，2015）。</p>
+    <p class="significance">中国与联合国关系变迁史浓缩了中国对国际体系态度从"革命者"到"建设者"的演变——从"另立一个革命的联合国"（周恩来，1965）到"维护以联合国为核心的国际体系"（习近平，2021），是一种根本性的身份重构。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">86</span>
+    <span class="term-name">毛泽东→邓小平外交理念转变</span>
+    <span class="term-tags"><span class="term-tag tag-theory">核心对比</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>课程最核心的比较分析框架——两个时代在三个维度上的根本差异。</p>
+    <p class="detail"><em>三维度对比：</em>① <em>关于时代和国际局势</em>——毛："革命和斗争"（帝国主义走向崩溃，社会主义走向胜利）；邓："和平和发展"（世界大战在几年内打不起来）② <em>关于中国的国际地位</em>——毛："中国革命中心论"（高估中国影响力）；邓："中国是个大国，又是个小国"（贫穷落后，需努力追赶）③ <em>关于对外政策的决定因素</em>——毛：从"国家性质"到"国家安全"（始终有"以谁划线"的逻辑）；邓：<em>"经济建设"</em>（外交为现代化服务）。</p>
+    <p class="significance">转变不是因为邓小平"放弃了原则"，而是因为对"什么是国家利益"有了更符合实际的认识——在全球化时代，经济发展和国家现代化本身就是最大的国家利益。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">87</span>
+    <span class="term-name">从"一边倒"到"独立自主"的演变脉络</span>
+    <span class="term-tags"><span class="term-tag tag-concept">宏观脉络</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中国外交战略定位从1949年到1982年的四次重大转变——"一边倒"（联苏反美）→"两个拳头打人"（同时对抗美苏）→"一条线，一大片"（联美反苏）→"独立自主的不结盟"（不与任何大国结盟）。</p>
+    <p class="detail">每个阶段背后的驱动因素不同："一边倒"——意识形态+国家安全+冷战两极刚性结构；"两个拳头打人"——极左外交+中苏分裂+安全焦虑；"一条线"——安全威胁驱动（苏联成为主要威胁）；"独立自主"——发展需求驱动（以经济建设为中心）。</p>
+    <p class="significance">演变的核心逻辑是从"以谁划线"（意识形态或安全威胁决定敌人和朋友）到"不以任何大国划线"（在独立自主基础上与一切国家发展关系）。决定因素从外部的、被动的（对抗某一敌人），转变为内生的、主动的（为发展服务）。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">88</span>
+    <span class="term-name">对外政策决定因素的演变</span>
+    <span class="term-tags"><span class="term-tag tag-theory">分析框架</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>中国对外政策由什么决定？这一问题的答案在不同时期根本不同——经历了从"国家性质（意识形态）"到"国家安全"再到"经济建设"的决定因素演变。</p>
+    <p class="detail"><em>第一阶段（1949-1960s中）：</em>以"国家性质"决定对外政策——社会主义国家 → 站在社会主义阵营 → 反对帝国主义。典型表现："一边倒"、"打扫干净屋子再请客"、对帝国主义国家不承认。<em>第二阶段（1960s末-1970s）：</em>以"国家安全"决定对外政策——谁威胁我最大，我就联合另一方对抗谁。转折：苏联成为"主要威胁"→外交转向建立反苏国际统一战线。典型表现：中美和解、"一条线一大片"。局限：调整动力主要来自外部安全环境，内生动力不强。<em>第三阶段（1978年后）：</em>以"经济建设"为中心决定对外政策——为经济发展创造良好（和平稳定）的外部环境。典型表现：中美建交的新动力（配合四个现代化）、中苏正常化、联合国政策转向务实。</p>
+    <p class="significance">从意识形态→安全→发展的演变，是中国外交从革命导向向发展导向、从外部威胁驱动向内在需求驱动的根本转型。当外交由持续存在的发展需求驱动时，它就有了一个不会轻易因外部环境变化而动摇的稳定锚。这是论述题最核心的分析框架之一。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">89</span>
+    <span class="term-name">Conformist vs Revisionist</span>
+    <span class="term-tags"><span class="term-tag tag-concept">核心辩论</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>当今学术界和政策界关于中国与国际秩序关系的核心辩论——中国到底是国际秩序的遵从者（Conformist）还是修正者（Revisionist）？课程给出的判断是：这个问题没有标准答案。</p>
+    <p class="detail">中国在不同议题领域扮演不同角色：在贸易和发展领域——现行秩序的受益者和维护者；在治理模式和人权话语方面——在某些领域挑战现有规则；在国际制度方面——推动增量改革（如亚投行、"一带一路"）。中国在国际体系中的行为是"复杂的"——既不是彻底的遵从者也不是彻底的修正者。</p>
+    <p class="significance">这个开放性问题不是要求你站队，而是考察你是否理解中国在多边体系中的行为复杂性。从"另立一个革命的联合国"（1965年）到"维护以联合国为核心的国际体系"（2021年）的演变本身，就是回答这个问题的最重要线索。</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <p>📚 基于吴昊老师2026年春季《中华人民共和国对外关系》课程讲义整理 · 北京大学国际关系学院</p>
+  <p>共89个名词解释 · 按单元组织 · 覆盖导论至第四单元全部核心概念</p>
+</footer>
+
+<script>
+// Toggle term
+function toggleTerm(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+// Search
+function doSearch(query) {
+  const terms = document.querySelectorAll('.term');
+  let visible = 0;
+  terms.forEach(term => {
+    const text = term.textContent.toLowerCase();
+    const q = query.toLowerCase().trim();
+    if (!q) {
+      term.classList.remove('hidden');
+      // Also respect current unit filter
+      const unit = term.dataset.unit;
+      const activeUnit = document.querySelector('.unit-chip.active')?.dataset.filter;
+      if (activeUnit && activeUnit !== 'all' && unit !== activeUnit) {
+        term.classList.add('hidden');
+      } else {
+        visible++;
+      }
+    } else {
+      if (text.includes(q)) {
+        term.classList.remove('hidden');
+        visible++;
+      } else {
+        term.classList.add('hidden');
+      }
+    }
+  });
+  document.getElementById('searchCount').textContent = query.trim() ? `找到 ${visible} 个结果` : '';
+}
+
+function clearSearch() {
+  document.querySelector('.search-input').value = '';
+  doSearch('');
+  filterUnit('all');
+}
+
+// Unit filter
+function filterUnit(unit) {
+  document.querySelectorAll('.unit-chip').forEach(chip => chip.classList.remove('active'));
+  const chip = document.querySelector(`.unit-chip[onclick="filterUnit('${unit}')"]`);
+  if (chip) chip.classList.add('active');
+
+  document.querySelectorAll('.term').forEach(term => {
+    const termUnit = term.dataset.unit;
+    if (unit === 'all' || termUnit === unit) {
+      term.classList.remove('hidden');
+    } else {
+      term.classList.add('hidden');
+    }
+  });
+
+  document.getElementById('searchCount').textContent = '';
+  document.querySelector('.search-input').value = '';
+}
+
+// Total count
+(function() {
+  const count = document.querySelectorAll('.term').length;
+  document.getElementById('totalCount').textContent = `共 ${count} 个名词`;
+})();
+
+// Scroll
+window.addEventListener('scroll', () => {
+  const btn = document.querySelector('.back-top');
+  btn.style.opacity = window.scrollY > 400 ? '1' : '0';
+});
+</script>
+
+</body>
+</html>

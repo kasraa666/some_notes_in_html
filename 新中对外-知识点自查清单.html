@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新中国对外关系 · 知识点自查清单</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --card: #fffefc;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #d8d5c8;
+    --red: #b91c1c;
+    --blue: #1e40af;
+    --green: #166534;
+    --amber: #92400e;
+    --purple: #6b21a8;
+    --teal: #115e59;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif;
+    background: var(--bg); color: var(--text); line-height: 1.75;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2b5a8c 50%, #1a3a5c 100%);
+    color: #fff; text-align: center; padding: 36px 20px 28px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }
+  .header h1 { font-size: 1.6em; letter-spacing: 3px; margin-bottom: 8px; }
+  .header .sub { opacity: .8; font-size: .9em; }
+
+  /* ── Progress Bar ── */
+  .progress-wrap {
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 14px 20px; position: sticky; top: 108px; z-index: 99;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .progress-bar-bg {
+    flex: 1; min-width: 200px; height: 18px;
+    background: #e5e7eb; border-radius: 9px; overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%; background: linear-gradient(90deg, #166534, #22c55e);
+    border-radius: 9px; transition: width 0.3s;
+    width: 0%;
+  }
+  .progress-text { font-weight: bold; font-size: 1.1em; color: var(--green); white-space: nowrap; }
+  .progress-detail { font-size: .8em; color: var(--muted); }
+
+  /* ── Legend / Filter ── */
+  .legend {
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+    padding: 8px 20px; background: #fff; border-bottom: 1px solid var(--border);
+  }
+  .legend-item { font-size: .78em; display: flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .btn-sm {
+    font-size: .75em; padding: 4px 12px; border-radius: 12px;
+    border: 1px solid #ccc; background: #fff; cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-sm.active { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 20px 20px 60px; }
+
+  /* ── Unit Section ── */
+  .unit { margin-bottom: 28px; }
+  .unit-hd {
+    padding: 14px 20px; border-radius: 10px 10px 0 0; color: #fff;
+    font-size: 1.1em; letter-spacing: 2px;
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; user-select: none;
+  }
+  .unit-hd .unit-stat { font-size: .75em; opacity: .85; font-weight: normal; }
+
+  .unit-body {
+    background: var(--card); border: 1px solid var(--border); border-top: none;
+    border-radius: 0 0 10px 10px; padding: 16px 20px;
+  }
+  .unit-body.collapsed { display: none; }
+
+  /* Colors */
+  .u0 { background: #1a3a5c; } .u0b { border-color: #1a3a5c; }
+  .u1 { background: #b91c1c; } .u1b { border-color: #b91c1c; }
+  .u2 { background: #1e40af; } .u2b { border-color: #1e40af; }
+  .u3 { background: #6b21a8; } .u3b { border-color: #6b21a8; }
+  .u4 { background: #166534; } .u4b { border-color: #166534; }
+
+  /* ── Category group ── */
+  .cat { margin-bottom: 16px; }
+  .cat-title {
+    font-size: .95em; font-weight: bold; color: #1a3a5c;
+    padding: 6px 12px; background: #f0f4f8; border-radius: 4px;
+    margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
+  }
+  .cat-stat { font-size: .75em; color: var(--muted); font-weight: normal; margin-left: auto; }
+
+  /* ── Item ── */
+  .item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 12px; border-radius: 6px; margin: 2px 0;
+    cursor: pointer; transition: background 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .item:hover { background: #f9fafb; }
+  .item.mastered { border-left-color: #22c55e; }
+  .item.partial { border-left-color: #f59e0b; }
+  .item.notyet { border-left-color: #e5e7eb; }
+
+  .item input[type=checkbox] { display: none; }
+  .check-box {
+    width: 20px; height: 20px; border-radius: 4px; flex-shrink: 0;
+    border: 2px solid #d1d5db; display: flex; align-items: center; justify-content: center;
+    margin-top: 2px; transition: all 0.2s;
+  }
+  .item.mastered .check-box { background: #22c55e; border-color: #22c55e; }
+  .item.partial .check-box { background: #f59e0b; border-color: #f59e0b; }
+  .item.notyet .check-box { background: #fff; border-color: #d1d5db; }
+
+  .check-box::after {
+    content: ''; font-size: 12px; color: #fff; display: none;
+  }
+  .item.mastered .check-box::after { content: '✓'; display: block; }
+  .item.partial .check-box::after { content: '~'; display: block; font-size: 14px; font-weight: bold; }
+
+  .item-text { flex: 1; font-size: .88em; line-height: 1.6; }
+  .item-tag {
+    font-size: .68em; padding: 1px 8px; border-radius: 10px;
+    white-space: nowrap; margin-left: 6px; font-weight: bold;
+  }
+  .tag-imp { background: #fef2f2; color: #b91c1c; }
+  .tag-date { background: #eff6ff; color: #1e40af; }
+  .tag-concept { background: #f0fdf4; color: #166534; }
+  .tag-quote { background: #fefce8; color: #92400e; }
+  .tag-name { background: #faf5ff; color: #6b21a8; }
+
+  /* ── floating buttons ── */
+  .float-btns {
+    position: fixed; bottom: 24px; right: 24px; display: flex;
+    flex-direction: column; gap: 8px; z-index: 200;
+  }
+  .float-btn {
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    cursor: pointer; font-size: 1.1em; box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    transition: transform .2s;
+  }
+  .float-btn:hover { transform: scale(1.1); }
+  .btn-reset { background: #fef2f2; color: #b91c1c; }
+  .btn-expand { background: #eff6ff; color: #1e40af; }
+  .btn-top { background: #1a3a5c; color: #fff; }
+
+  footer { text-align: center; padding: 30px; color: var(--muted); font-size: .85em; border-top: 1px solid var(--border); margin-top: 32px; }
+
+  @media print {
+    .header, .progress-wrap, .legend, .float-btns, footer { display: none; }
+    body { font-size: 11px; }
+    .unit-body { break-inside: avoid; }
+    .item { border-left: 3px solid #e5e7eb; }
+    .item.mastered { border-left-color: #22c55e; }
+    .item.partial { border-left-color: #f59e0b; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋 中华人民共和国对外关系 · 知识点自查清单</h1>
+  <div class="sub">点击每个知识点切换掌握程度：未掌握 → 部分掌握 → 已掌握 → 未掌握</div>
+</div>
+
+<div class="progress-wrap">
+  <span style="font-weight:bold;">📊 总进度</span>
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="totalBar"></div></div>
+  <span class="progress-text" id="totalPct">0%</span>
+  <span class="progress-detail" id="totalDetail"></span>
+</div>
+
+<div class="legend">
+  <span style="font-size:.78em;color:var(--muted);">图例：</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#22c55e;"></span> 已掌握</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> 部分掌握</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#e5e7eb;"></span> 未掌握</span>
+  <span style="margin-left:auto;"></span>
+  <button class="btn-sm" onclick="filterItems('all')" id="filterAll">全部</button>
+  <button class="btn-sm" onclick="filterItems('notyet')" id="filterNotyet">未掌握</button>
+  <button class="btn-sm" onclick="filterItems('partial')" id="filterPartial">部分掌握</button>
+  <button class="btn-sm" onclick="filterItems('mastered')" id="filterMastered">已掌握</button>
+  <button class="btn-sm" onclick="resetAll()">🔄 重置全部</button>
+  <button class="btn-sm" onclick="expandAll()">📂 展开全部</button>
+</div>
+
+<div class="container" id="checklist">
+
+<!-- ═══════════════ 导论 ═══════════════ -->
+<div class="unit" data-unit="0">
+  <div class="unit-hd u0" onclick="toggleUnit(this)">
+    <span>📖 导论：贯穿中华人民共和国对外关系的三条主线</span>
+    <span class="unit-stat" data-unit-stat="0"></span>
+  </div>
+  <div class="unit-body">
+
+    <div class="cat">
+      <div class="cat-title">🔴 主线一：中国革命运动 <span class="cat-stat" data-cat="rev"></span></div>
+      <div class="item" data-id="rev1" data-cat="rev" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">革命运动塑造政党身份——"独立自主"原则源自革命教训（"真正懂得独立自主是从遵义会议开始的"——毛泽东，1963）<span class="item-tag tag-concept">核心概念</span></span>
+      </div>
+      <div class="item" data-id="rev2" data-cat="rev" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">革命经历形成基本世界观——"国际体系的本质就是压迫和不平等"<span class="item-tag tag-concept">核心认知</span></span>
+      </div>
+      <div class="item" data-id="rev3" data-cat="rev" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">中共1949年前对外关系三阶段：1937年前共产国际支部 → 抗日民族统一战线时期 → 全面内战爆发后站在苏联阵营<span class="item-tag tag-date">时间线</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">🏛️ 主线二：中国内政 <span class="cat-stat" data-cat="domestic"></span></div>
+      <div class="item" data-id="dom1" data-cat="domestic" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">"对外关系是内政的延续"——国家统一/领土完整、经济发展、社会核心价值构建、执政合法性<span class="item-tag tag-concept">核心命题</span></span>
+      </div>
+      <div class="item" data-id="dom2" data-cat="domestic" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">前三十年高度关注国家安全；改革开放以来关注和平发展<span class="item-tag tag-concept">阶段对比</span></span>
+      </div>
+      <div class="item" data-id="dom3" data-cat="domestic" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">国家发展战略对外交政策的影响具有<strong>滞后性</strong>——文革结束后出现矛盾现象（需要和平环境 vs 判断"苏修亡我之心不死"）<span class="item-tag tag-imp">高频考点</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">🌍 主线三：国际环境 <span class="cat-stat" data-cat="intl"></span></div>
+      <div class="item" data-id="intl1" data-cat="intl" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">冷战两极格局（1949-1991）→ 后冷战多极化；国际环境的<strong>客观变化</strong> vs 领导人的<strong>主观认知</strong><span class="item-tag tag-concept">认知框架</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">📎 核心概念：对外关系 vs 外交 <span class="cat-stat" data-cat="core"></span></div>
+      <div class="item" data-id="core1" data-cat="core" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">对外关系涵盖范围更广：外交部（政治）+ 商务部（经济）+ 国防部（军事）+ 中联部（党际）<span class="item-tag tag-concept">制度认知</span></span>
+      </div>
+      <div class="item" data-id="core2" data-cat="core" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">中联部是<strong>党中央机构</strong>（非国务院下属），负责中共对外关系——"党政双轨"对外关系体系<span class="item-tag tag-imp">易错点</span></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第一单元 ═══════════════ -->
+<div class="unit" data-unit="1">
+  <div class="unit-hd u1" onclick="toggleUnit(this)">
+    <span>📗 第一单元：建国初期的对外关系（1949-1955）</span>
+    <span class="unit-stat" data-unit-stat="1"></span>
+  </div>
+  <div class="unit-body">
+
+    <div class="cat">
+      <div class="cat-title">1.1 建国前的中共对外关系（1945-1949）<span class="cat-stat" data-cat="pre49"></span></div>
+      <div class="item" data-id="pre1" data-cat="pre49" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"蒋之下的和平"</strong>——美苏两大阵营 × 国共两大阵营的四方关系<span class="item-tag tag-concept">核心概念</span></span>
+      </div>
+      <div class="item" data-id="pre2" data-cat="pre49" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">美苏都支持"蒋之下的和平"——美国出于对美苏关系和抗日需要，苏联出于避免与美冲突和维护东北利益（1945年中苏友好同盟条约由国民党签订）<span class="item-tag tag-date">1945</span></span>
+      </div>
+      <div class="item" data-id="pre3" data-cat="pre49" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">中共策略（1945）："在全国范围内大体要走法国的路"、"我们还是钻进去给蒋介石洗脸，而不要砍头"——毛泽东<span class="item-tag tag-quote">重要语录</span></span>
+      </div>
+      <div class="item" data-id="pre4" data-cat="pre49" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">斯大林初期对中共持怀疑态度——称中共为<strong>"人造奶油"共产党</strong>；转折点：1948年中共军事胜利后斯大林承认判断错误<span class="item-tag tag-imp">关键细节</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">1.2 中苏同盟的形成 <span class="cat-stat" data-cat="sino-sov1"></span></div>
+      <div class="item" data-id="ss1" data-cat="sino-sov1" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>米高扬西柏坡谈话</strong>——1949年1月<span class="item-tag tag-date">1949.1</span></span>
+      </div>
+      <div class="item" data-id="ss2" data-cat="sino-sov1" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>刘少奇秘密访问苏联</strong>——1949年6月<span class="item-tag tag-date">1949.6</span></span>
+      </div>
+      <div class="item" data-id="ss3" data-cat="sino-sov1" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>毛泽东访问苏联，签订《中苏友好同盟互助条约》</strong>——1949年12月至1950年2月，确立同盟关系，明确加入苏联阵营<span class="item-tag tag-date">1949.12-1950.2</span></span>
+      </div>
+      <div class="item" data-id="ss4" data-cat="sino-sov1" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">两大转折点：① 1945年底东北协调（开启合作第一步）② 1948年起中共军事胜利（地区性合作→全面战略合作）<span class="item-tag tag-concept">转折点</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">1.3 三大外交原则 <span class="cat-stat" data-cat="three-principles"></span></div>
+      <div class="item" data-id="tp1" data-cat="three-principles" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"一边倒"</strong>——和苏联结盟 + 对帝国主义国家不承认。定位：<strong>总揽全局的方针</strong><span class="item-tag tag-imp">核心原则</span></span>
+      </div>
+      <div class="item" data-id="tp2" data-cat="three-principles" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"另起炉灶"</strong>——不承认旧的外交关系，重新建立新的外交体系<span class="item-tag tag-concept">核心原则</span></span>
+      </div>
+      <div class="item" data-id="tp3" data-cat="three-principles" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"打扫干净屋子再请客"</strong>——清除帝国主义在华势力后再与西方建交<span class="item-tag tag-concept">核心原则</span></span>
+      </div>
+      <div class="item" data-id="tp4" data-cat="three-principles" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">三大原则的启示：冷战中美苏两大集团关系的根本性质是<strong>冲突</strong>；中国领导人对"革命中建立的国家的认识"决定了对外政策走向<span class="item-tag tag-imp">论述必备</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">1.4 中美关系与抗美援朝 <span class="cat-stat" data-cat="korea"></span></div>
+      <div class="item" data-id="kor1" data-cat="korea" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">中美交恶原因：冷战背景 + 美国对中共的打压；<strong>并非历史的必然</strong>，但可改变历史的机会不多<span class="item-tag tag-concept">历史判断</span></span>
+      </div>
+      <div class="item" data-id="kor2" data-cat="korea" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>军事目标的动态调整</strong>：10.2"歼灭和驱逐美国及其他国家的侵略军" → 10.3"恢复战争爆发前状况" → 10月中旬"构筑防御线"<span class="item-tag tag-imp">关键细节</span></span>
+      </div>
+      <div class="item" data-id="kor3" data-cat="korea" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">"草鞋没样，边打边像"——毛泽东<span class="item-tag tag-quote">重要语录</span></span>
+      </div>
+      <div class="item" data-id="kor4" data-cat="korea" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">意义：国家安全保障 + 民族自信提升 + 国际地位提高 + 现代化战争经验 + <strong>台湾问题延宕</strong><span class="item-tag tag-concept">五点意义</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">1.5 日内瓦会议（1954）<span class="cat-stat" data-cat="geneva"></span></div>
+      <div class="item" data-id="gen1" data-cat="geneva" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">1953年苏联提出"五国外长会"，解决朝鲜问题 + 印度支那问题<span class="item-tag tag-date">背景</span></span>
+      </div>
+      <div class="item" data-id="gen2" data-cat="geneva" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>奠边府战役大捷（1954.5.7）</strong>——印支讨论的关键转折点<span class="item-tag tag-imp">关键节点</span></span>
+      </div>
+      <div class="item" data-id="gen3" data-cat="geneva" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">两大矛盾点：停战问题（周恩来斡旋越共）+ 军事分界线（18度线还是13度线，周恩来再次斡旋）<span class="item-tag tag-concept">斡旋角色</span></span>
+      </div>
+      <div class="item" data-id="gen4" data-cat="geneva" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">意义：调整外交政策的<strong>开端</strong> + 周边外交和邻国关系良好开端 + 开始与西方国家展开接触 + "五大国"身份初步确立<span class="item-tag tag-imp">四大意义</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">1.6 和平共处五项原则与万隆会议 <span class="cat-stat" data-cat="five-principles"></span></div>
+      <div class="item" data-id="fp1" data-cat="five-principles" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>和平共处五项原则</strong>：互相尊重主权和领土完整、互不侵犯、互不干涉内政、平等互利、和平共处<span class="item-tag tag-imp">必须背诵</span></span>
+      </div>
+      <div class="item" data-id="fp0a" data-cat="five-principles" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1954.4 中印关于西藏的协定</strong>——五项原则的最初萌芽，首次写入"互相尊重领土主权、互不侵犯、互不干涉内政、平等互惠、和平共处"<span class="item-tag tag-date">1954.4</span></span>
+      </div>
+      <div class="item" data-id="fp2" data-cat="five-principles" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>周恩来"休会期之旅"</strong>（1954.6.25-6.29）：访问印度和缅甸，签署联合声明<span class="item-tag tag-date">1954.6</span></span>
+      </div>
+      <div class="item" data-id="fp3" data-cat="five-principles" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1954.7.7中央政治局扩大会议</strong>：决定大幅调整对外政策——结束"打扫干净屋子再请客"<span class="item-tag tag-date">1954.7.7</span></span>
+      </div>
+      <div class="item" data-id="fp4" data-cat="five-principles" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">"门要关死已经不可能了，而又有一种很有利的局势，需要我们走出去。"——毛泽东，1954<span class="item-tag tag-quote">重要语录</span></span>
+      </div>
+      <div class="item" data-id="fp5" data-cat="five-principles" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>毛泽东再提"中间地带"</strong>（1954，时隔八年1946→1954），意义：推动从革命外交向国家外交转变<span class="item-tag tag-concept">理论基础</span></span>
+      </div>
+      <div class="item" data-id="fp6" data-cat="five-principles" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>万隆会议（1955）</strong>：第一次由亚非独立国家参加且没有西方殖民国家参加的大型国际会议；方针——<strong>"求同存异"</strong><span class="item-tag tag-imp">核心考点</span></span>
+      </div>
+      <div class="item" data-id="fp7" data-cat="five-principles" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">五项原则的三大意义：① 国家身份构建（社会主义+亚洲新兴国家）② 革命外交→国家外交转变的标志 ③ 破解美国对华孤立<span class="item-tag tag-concept">三大意义</span></span>
+      </div>
+      <div class="item" data-id="fp8" data-cat="five-principles" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">印度的<strong>"中间人"角色</strong>：1950年代印度在中美之间扮演信息传递角色，尼赫鲁试图在中美之间发挥调解作用<span class="item-tag tag-concept">周边外交</span></span>
+      </div>
+      <div class="item" data-id="fp9" data-cat="five-principles" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1955年第一次台海危机</strong>：1955年1月解放军攻占一江山岛→美国国会通过《福尔摩沙决议案》授权总统使用武力→推动中美大使级会谈开启<span class="item-tag tag-imp">台海危机</span></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第二单元 ═══════════════ -->
+<div class="unit" data-unit="2">
+  <div class="unit-hd u2" onclick="toggleUnit(this)">
+    <span>📘 第二单元：发展和波动的十年（1955-1965）</span>
+    <span class="unit-stat" data-unit-stat="2"></span>
+  </div>
+  <div class="unit-body">
+
+    <div class="cat">
+      <div class="cat-title">2.1 中共八大与八项外交方针（1956.9）<span class="cat-stat" data-cat="eight-congress"></span></div>
+      <div class="item" data-id="ec1" data-cat="eight-congress" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>重要判断</strong>：革命运动时代已经结束；社会矛盾发生变化；国际局势趋向缓和，世界持久和平开始有了实现的可能<span class="item-tag tag-imp">核心判断</span></span>
+      </div>
+      <div class="item" data-id="ec2" data-cat="eight-congress" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>八项外交方针</strong>：巩固与苏联关系 + 和平共处五项原则基础上同亚非国家建交 + 同愿意建交的国家发展正常关系 + 反对使用武力 + 支持和平运动 + 反对殖民主义 + 支持社会主义运动 + 反对大国主义<span class="item-tag tag-concept">八项内容</span></span>
+      </div>
+      <div class="item" data-id="ec3" data-cat="eight-congress" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">后来外交"纠左"时被重新回归——邓小平时代关于"和平与发展"的论断实质是<strong>重回八大判断</strong><span class="item-tag tag-imp">前后呼应</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.2 苏共二十大及其影响（1956.2）<span class="cat-stat" data-cat="cpsu20"></span></div>
+      <div class="item" data-id="c20-1" data-cat="cpsu20" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"三和路线"</strong>：和平共处、和平过渡、和平竞赛<span class="item-tag tag-concept">核心概念</span></span>
+      </div>
+      <div class="item" data-id="c20-2" data-cat="cpsu20" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>赫鲁晓夫秘密报告</strong>——批判斯大林个人崇拜，引发社会主义阵营混乱（波匈事件）<span class="item-tag tag-imp">关键事件</span></span>
+      </div>
+      <div class="item" data-id="c20-3" data-cat="cpsu20" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">中共不同看法：对和平过渡保留意见；对秘密报告不完全认同（应全面评价斯大林）；<strong>留下隐患</strong><span class="item-tag tag-concept">分歧萌芽</span></span>
+      </div>
+      <div class="item" data-id="c20-4" data-cat="cpsu20" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">苏共二十大召开后国际反应：东欧动荡、资本主义国家共产党内部混乱；<strong>社会主义阵营在"非斯大林化"问题上陷入分裂</strong><span class="item-tag tag-concept">国际影响</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.3 波匈事件（1956）与中共介入 <span class="cat-stat" data-cat="polhun"></span></div>
+      <div class="item" data-id="ph1" data-cat="polhun" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>处理原则</strong>：对波兰——强调独立平等原则；对匈牙利——强调社会主义阵营稳定，排斥背离社会主义的倾向<span class="item-tag tag-imp">双重原则</span></span>
+      </div>
+      <div class="item" data-id="ph2" data-cat="polhun" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">影响：中共威望上升 + 斯大林评价分歧加深 + 中共认为应旗帜鲜明反对修正主义<span class="item-tag tag-concept">双重影响</span></span>
+      </div>
+      <div class="item" data-id="ph3" data-cat="polhun" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">赫鲁晓夫在波匈事件危机中"<strong>首先想到的就是'同兄弟的中国共产党协商'</strong>"——中共实际扮演了稳定社会主义阵营的角色<span class="item-tag tag-quote">关键细节</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.4 莫斯科会议（1957）<span class="cat-stat" data-cat="moscow57"></span></div>
+      <div class="item" data-id="mos1" data-cat="moscow57" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">国际共运史上规模最大、人数最多的盛会；发表《莫斯科宣言》；中国在会议中具有<strong>特殊地位</strong><span class="item-tag tag-concept">历史地位</span></span>
+      </div>
+      <div class="item" data-id="mos2" data-cat="moscow57" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>既维护了团结，仍暴露了分歧</strong>——宣言是"表面团结、深层分歧"的结构<span class="item-tag tag-imp">辩证评价</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.5 1958-1959：不断扩大的矛盾 <span class="cat-stat" data-cat="crisis5859"></span></div>
+      <div class="item" data-id="cr1" data-cat="crisis5859" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>四大矛盾</strong>：① 长波电台事件（主权和使用权）② 联合舰队事件（军事控制问题）③ 炮击金门（对外政策分歧）④ 大跃进与苏联态度（发展道路分歧）<span class="item-tag tag-imp">四大矛盾</span></span>
+      </div>
+      <div class="item" data-id="cr2" data-cat="crisis5859" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1959年赫鲁晓夫访华受到冷遇</strong>——标志着中苏同盟走向衰亡的<strong>转折点</strong><span class="item-tag tag-imp">关键转折</span></span>
+      </div>
+      <div class="item" data-id="cr3" data-cat="crisis5859" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">中苏在国际问题上的分歧开始被归结为赫鲁晓夫背离马克思主义——<strong>"修正主义"标签出现</strong><span class="item-tag tag-concept">定性转变</span></span>
+      </div>
+      <div class="item" data-id="cr4" data-cat="crisis5859" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中苏在核问题上的矛盾</strong>：苏联推动禁止核试验谈判、推迟履行向中国提供原子弹模型的协定 → 1959年6月苏联单方面废止协议；中方认为苏联与美国妥协损害中国利益<span class="item-tag tag-imp">核分歧</span></span>
+      </div>
+      <div class="item" data-id="cr5" data-cat="crisis5859" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">"赫鲁晓夫莫名其妙！毛泽东是怎么啦？"——赫鲁晓夫就联合舰队事件反应（1958.7），反映了双方互信的严重断裂<span class="item-tag tag-quote">重要细节</span></span>
+      </div>
+      <div class="item" data-id="cr6" data-cat="crisis5859" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>庐山会议后毛泽东"对赫鲁晓夫的宣战"</strong>：彭德怀事件后，毛泽东将苏联对公社的批评与党内斗争联系起来——"内外呼应"；中苏矛盾与国内政治交织<span class="item-tag tag-concept">内外交织</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.6 1960-1965：中苏关系的破裂 <span class="cat-stat" data-cat="split"></span></div>
+      <div class="item" data-id="sp1" data-cat="split" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">阶段一（1960春-1961夏）：布加勒斯特会议→短暂缓和→第二次莫斯科会议<span class="item-tag tag-date">时间线</span></span>
+      </div>
+      <div class="item" data-id="sp2" data-cat="split" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">阶段二（1961.10起）：苏共二十二大争执——"三和路线"升级版 + "全民国家""全民的党" + 再次批判斯大林<span class="item-tag tag-date">1961.10</span></span>
+      </div>
+      <div class="item" data-id="sp3" data-cat="split" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">阶段三（1962起持续恶化）：伊塔事件 → 核不扩散条约 → 中苏论战 → <strong>"九评"苏共中央公开信</strong><span class="item-tag tag-imp">关键节点</span></span>
+      </div>
+      <div class="item" data-id="sp4" data-cat="split" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>对破裂的反思</strong>：不同历史文化国情 + 对外关系不同看法（缓和 or 斗争）+ 国际形势判断不同 + <strong>无产阶级国际主义 vs 国家间关系原则的冲突</strong><span class="item-tag tag-concept">深层原因</span></span>
+      </div>
+      <div class="item" data-id="sp5" data-cat="split" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>苏共二十二大（1961.10）关键内容</strong>："全民国家""全民的党"理论；<strong>将斯大林遗体移出列宁墓</strong>——从根本上触犯了中共对社会主义本质的理解<span class="item-tag tag-imp">关键事件</span></span>
+      </div>
+      <div class="item" data-id="sp6" data-cat="split" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">十月革命47周年庆祝活动（1964）——中方确认苏联内外政策不因赫鲁晓夫下台而根本改变；<strong>中苏分裂已成定局</strong><span class="item-tag tag-concept">最终确认</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.7 中印边界冲突详情（L7） <span class="cat-stat" data-cat="india-detail"></span></div>
+      <div class="item" data-id="ind1" data-cat="india-detail" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中印关系蜜月期</strong>：1954.4中印关于西藏的协定 → 1954.6周恩来访印 → 和平共处五项原则<span class="item-tag tag-date">1954</span></span>
+      </div>
+      <div class="item" data-id="ind2" data-cat="india-detail" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"朗久"事件（1959）</strong>：中印边界首次武装冲突；苏联公开表态持中立态度令中国不满<span class="item-tag tag-imp">首次冲突</span></span>
+      </div>
+      <div class="item" data-id="ind3" data-cat="india-detail" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">周恩来与尼赫鲁通信（1959年9-11月）：中方主张"应根据历史背景和当前实际情况，通过友好协商全面解决边界问题"；尼赫鲁坚称"麦克马洪线无可争议"<span class="item-tag tag-concept">外交交锋</span></span>
+      </div>
+      <div class="item" data-id="ind4" data-cat="india-detail" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1959-1962年</strong>：双方试图缓和的努力失败 → 1962年自卫反击战 → 中方主动后撤<span class="item-tag tag-date">1959-1962</span></span>
+      </div>
+      <div class="item" data-id="ind5" data-cat="india-detail" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>古巴导弹危机与中印战争同期</strong>（1962.10-11）：美苏聚焦古巴，为中印冲突提供了特殊的国际窗口<span class="item-tag tag-concept">国际背景</span></span>
+      </div>
+      <div class="item" data-id="ind6" data-cat="india-detail" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>苏联因素</strong>：苏联在1959年中印冲突后保持中立→不满中国→1962年冲突前夕苏联加强向印度提供军事援助<span class="item-tag tag-concept">三角关系</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.8 中美大使级会谈详情（L7） <span class="cat-stat" data-cat="talks-detail"></span></div>
+      <div class="item" data-id="td1" data-cat="talks-detail" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">1954年日内瓦会议期间<strong>"领事级接触"</strong>：5月中旬美国通过英国渠道要求中国释放被押美国侨民；周恩来认为应"快开快谈"但未达成任何成果<span class="item-tag tag-concept">会谈前史</span></span>
+      </div>
+      <div class="item" data-id="td2" data-cat="talks-detail" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1955.8.1</strong> 中美大使级会谈正式开始——<strong>直接起因是1955年第一次台海危机</strong>，美国急于管控台海局势<span class="item-tag tag-date">1955.8.1</span></span>
+      </div>
+      <div class="item" data-id="td3" data-cat="talks-detail" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>钱学森回国</strong>（1955年）：1955.6钱学森通过亲属转信给陈叔通，中方以此要求美方放人；侨民回国协议是15年会谈中达成的<strong>唯一协议</strong><span class="item-tag tag-imp">标志性成果</span></span>
+      </div>
+      <div class="item" data-id="td4" data-cat="talks-detail" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">1957.12美方单方面降低会谈级别——中方视为破坏谈判→会谈中断；<strong>反映出美国内部在对华政策上的矛盾</strong><span class="item-tag tag-concept">中断原因</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">2.9 其他重要内容 <span class="cat-stat" data-cat="unit2-other"></span></div>
+      <div class="item" data-id="ot1" data-cat="unit2-other" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中印边界冲突（1962）</strong>：传统"习惯线" vs "麦克马洪线"（1914年西姆拉会议——中方从未承认）；古巴导弹危机同期发生<span class="item-tag tag-imp">事件</span></span>
+      </div>
+      <div class="item" data-id="ot2" data-cat="unit2-other" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"两个中间地带"</strong>：① 亚非拉经济落后国家 ② 欧洲、北美加拿大、大洋洲等；美苏为"第一世界"；意义——为对外关系提供新落脚点，促成了第二次建交高峰<span class="item-tag tag-concept">理论演进</span></span>
+      </div>
+      <div class="item" data-id="ot3" data-cat="unit2-other" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中美大使级会谈（1955-1970）</strong>：世界外交史上独特的"马拉松"会谈，共136次，唯一协议——侨民回国（钱学森回国）<span class="item-tag tag-imp">独特案例</span></span>
+      </div>
+      <div class="item" data-id="ot4" data-cat="unit2-other" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">中美大使级会谈三个阶段：① 1955.8-9（侨民协议）② 1955.9-1957.12（解除禁运+外长会谈，因美降级而结束）③ 1958金门炮战后（危机管理+沟通渠道）<span class="item-tag tag-concept">三阶段</span></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第三单元 ═══════════════ -->
+<div class="unit" data-unit="3">
+  <div class="unit-hd u3" onclick="toggleUnit(this)">
+    <span>📙 第三单元：文革期间的中国外交（1966-1976）</span>
+    <span class="unit-stat" data-unit-stat="3"></span>
+  </div>
+  <div class="unit-body">
+
+    <div class="cat">
+      <div class="cat-title">3.1 对外政策"左转"的前夜 <span class="cat-stat" data-cat="left-turn"></span></div>
+      <div class="item" data-id="lt1" data-cat="left-turn" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">"左"的含义：追求超越时代或高于现实可能性的目标；运用与实际能力不符的方式去追求目标<span class="item-tag tag-concept">概念界定</span></span>
+      </div>
+      <div class="item" data-id="lt2" data-cat="left-turn" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>王稼祥与"三和一少"</strong>：主张和缓方针、争取和平国际环境（八大方针延续）→ 被批判为"对帝国主义、修正主义和各国反动派要和，对民族解放运动支持要少"<span class="item-tag tag-imp">关键人物</span></span>
+      </div>
+      <div class="item" data-id="lt3" data-cat="left-turn" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">批判"三和一少"的后果：<strong>错过了一次调整对外关系和对外政策的重要机会</strong>，为文革极左外交铺路<span class="item-tag tag-imp">深远影响</span></span>
+      </div>
+      <div class="item" data-id="lt4" data-cat="left-turn" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">"左转"前夜的复杂背景：1954-八大期间平稳发展势头破灭——对外（中苏同盟逐步破裂）+ 对内（大跃进和人民公社失败）→ <strong>交织复杂的关系为"左转"奠定了基础</strong><span class="item-tag tag-concept">背景分析</span></span>
+      </div>
+      <div class="item" data-id="lt5" data-cat="left-turn" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">极左外交对外交系统的冲击时间线：<strong>1967.1上海造反派夺权</strong>→ 1967年5月外交部门开始受到冲击 → 1967.7-8外交部全面瘫痪<span class="item-tag tag-concept">时间线</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">3.2 极左外交思潮 <span class="cat-stat" data-cat="ultraleft"></span></div>
+      <div class="item" data-id="ul1" data-cat="ultraleft" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>八大十一中全会公报（1966.8）</strong>：世界革命新时代 → 帝国主义走向全面崩溃、社会主义走向全世界胜利 → <strong>无产阶级国际主义是最高指导原则</strong><span class="item-tag tag-imp">核心文件</span></span>
+      </div>
+      <div class="item" data-id="ul2" data-cat="ultraleft" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>极左外交四大特征</strong>：① 时代判断失误 ② 高估中国地位（"中国革命中心论"）③ 无产阶级国际主义至上 ④ "两个拳头打人"（反帝必反修）<span class="item-tag tag-imp">必须背诵</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">3.3 极左外交的实践 <span class="cat-stat" data-cat="ul-practice"></span></div>
+      <div class="item" data-id="ulp1" data-cat="ul-practice" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>外交部夺权事件</strong>：王力"八七讲话"→"红卫兵就不能干外交？"→批斗外交部党委→外交部运作瘫痪<span class="item-tag tag-imp">关键事件</span></span>
+      </div>
+      <div class="item" data-id="ulp2" data-cat="ul-practice" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"三砸一烧"</strong>：冲击印度使馆 + 袭击缅甸使馆 + 冲击印尼使馆 + <strong>火烧英国代办处</strong>（1967.8.22，最严重）。共同特点：均发生在外交部被冲击最严重的1967年7、8月<span class="item-tag tag-imp">极左顶峰</span></span>
+      </div>
+      <div class="item" data-id="ulp3" data-cat="ul-practice" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>火烧英国代办处背景链</strong>：1967年5月香港劳资纠纷（左派工人示威）→ 香港当局镇压（逮捕新华社记者）→ 北京群众抗议→英国代办处被冲击纵火<span class="item-tag tag-concept">事件链条</span></span>
+      </div>
+      <div class="item" data-id="ulp4" data-cat="ul-practice" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">极左外交其他表现：<strong>输出世界革命</strong>（在驻在国支持反政府运动）+ <strong>宣传毛泽东思想</strong>（红宝书全球发行，突破"内外有别"原则）<span class="item-tag tag-concept">其他表现</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">3.4 中国安全战略重塑：苏联成为主要威胁 <span class="cat-stat" data-cat="security-shift"></span></div>
+      <div class="item" data-id="sec1" data-cat="security-shift" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1960年起</strong>：零星边界冲突开始出现（伊塔事件等）；苏联开始向中苏边境增兵<span class="item-tag tag-date">1960</span></span>
+      </div>
+      <div class="item" data-id="sec0" data-cat="security-shift" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中苏边界"三笔领土账"</strong>：① 沙俄时期通过不平等条约割占（《瑷珲条约》《北京条约》等）② 苏联继承并巩固的边界 ③ 外蒙古独立问题<span class="item-tag tag-concept">历史经纬</span></span>
+      </div>
+      <div class="item" data-id="sec0b" data-cat="security-shift" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"北顶南放"战略</strong>：1950年代形成的国防方针——北方坚决顶住苏联方向压力，南方沿海灵活防御；前提是中苏同盟正常运作<span class="item-tag tag-concept">战略概念</span></span>
+      </div>
+      <div class="item" data-id="sec1a" data-cat="security-shift" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1964年</strong>：毛泽东放弃"北顶南放"战略（6月）；首次公开提出中苏边界问题（7月接见日本社会党人士）；苏联以"核战争"回应；10月赫鲁晓夫下台后毛泽东开始担忧苏联军事入侵<span class="item-tag tag-date">1964</span></span>
+      </div>
+      <div class="item" data-id="sec2" data-cat="security-shift" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1966年</strong>：苏蒙条约 → 苏联军事力量向中蒙边境推进<span class="item-tag tag-date">1966</span></span>
+      </div>
+      <div class="item" data-id="sec3" data-cat="security-shift" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1968.8 苏联入侵捷克斯洛伐克</strong>：勃列日涅夫主义——"有限主权论""国际专政论""社会主义大家庭论"等 → 苏联从"安全威胁"进化为<strong>"新的战争策源地"</strong><span class="item-tag tag-imp">关键转折</span></span>
+      </div>
+      <div class="item" data-id="sec4" data-cat="security-shift" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1969.3 珍宝岛事件</strong>：毛泽东明确提出"要准备打仗"；中国安全主要威胁<strong>由美国变为苏联</strong><span class="item-tag tag-imp">核心转折</span></span>
+      </div>
+      <div class="item" data-id="sec5" data-cat="security-shift" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"四人小组"战略研判</strong>：苏联威胁比美国大；"在可预见的时期内，美帝、苏修单独或联合发动大规模侵华战争的可能性都还不大"；叶剑英："东联孙吴，北拒曹魏"<span class="item-tag tag-imp">战略建议</span></span>
+      </div>
+      <div class="item" data-id="sec6" data-cat="security-shift" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>毛泽东1966年3月讲话</strong>："我们要准备修正主义来打，打进满洲，东三省，打进新疆，中央突破，从外蒙古打进北京……我们还要准备美苏合作，瓜分中国。"——体现了极端的安全焦虑<span class="item-tag tag-quote">重要语录</span></span>
+      </div>
+      <div class="item" data-id="sec7" data-cat="security-shift" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中苏边界全长约7300公里</strong>；50年代蜜月期"万里北疆有边无防"——边界问题被搁置；1960年代开始成为冲突焦点<span class="item-tag tag-concept">地理背景</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">3.5 中美和解 <span class="cat-stat" data-cat="rapprochement"></span></div>
+      <div class="item" data-id="rap1" data-cat="rapprochement" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">中国释放信号：<strong>转载尼克松就职演说</strong>（1969.1《人民日报》全文刊载）+ 提议恢复中美大使级会谈（1969.2）+ 两次试探性接触（1969夏、1969秋）<span class="item-tag tag-date">1969</span></span>
+      </div>
+      <div class="item" data-id="rap1b" data-cat="rapprochement" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>周恩来通过巴基斯坦传递关键信号</strong>（1969.12.2）：告诉巴基斯坦驻华大使——美国可以通过正式渠道与中国接触；标志着中国决策层已准备采取行动<span class="item-tag tag-imp">突破信号</span></span>
+      </div>
+      <div class="item" data-id="rap1c" data-cat="rapprochement" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">尼克松方面的条件积累：美国内部出现调整对华政策声音 + 美国社会对华舆论扭转 + <strong>尼克松作为"最让人放心的大鹰派"</strong>具有转向对华接触的独特政治信誉<span class="item-tag tag-concept">美方条件</span></span>
+      </div>
+      <div class="item" data-id="rap2" data-cat="rapprochement" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>乒乓外交</strong>（1971.4）：邀请美国乒乓球队访华——"小球转动大球"<span class="item-tag tag-imp">标志事件</span></span>
+      </div>
+      <div class="item" data-id="rap3" data-cat="rapprochement" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>基辛格秘密访华</strong>（1971.7 & 10）：讨论印支问题、中美关系正常化时间表、<strong>台湾问题（核心中的核心）</strong><span class="item-tag tag-imp">关键步骤</span></span>
+      </div>
+      <div class="item" data-id="rap4" data-cat="rapprochement" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>尼克松访华（1972.2）</strong>：毛泽东当日会见；周恩来会谈全球战略、台湾、地区问题；发表《上海公报》<span class="item-tag tag-imp">历史时刻</span></span>
+      </div>
+      <div class="item" data-id="rap5" data-cat="rapprochement" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">中美和解意义：实现历史性和解 + 中国摆脱外交孤立 + <strong>改变"战略三角"力量平衡</strong>，推动苏联削弱和解体及冷战结束<span class="item-tag tag-concept">三大意义</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">3.6 中美苏三角关系的复杂性 <span class="cat-stat" data-cat="triangle"></span></div>
+      <div class="item" data-id="tri1" data-cat="triangle" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>三方博弈</strong>：美国（联华遏苏但摆缓和姿态制约中国）+ 苏联（对华打和谈旗，对美国打中国牌）+ 中国（响应苏联边界会谈缓和局势，对美国<strong>打苏联牌</strong>加速中美正常化）<span class="item-tag tag-imp">三角博弈</span></span>
+      </div>
+      <div class="item" data-id="tri2" data-cat="triangle" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">毛泽东担心美国"踏着中国的肩膀跑莫斯科"——"被牵连"（Entrapment）的恐惧<span class="item-tag tag-quote">关键概念</span></span>
+      </div>
+      <div class="item" data-id="tri3" data-cat="triangle" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">⚠️ <strong>中国调整政策的主要原因主要是外部安全环境，内生动力不强</strong>——这就是中美关系在尼克松访华后长期未突破的原因<span class="item-tag tag-imp">核心判断</span></span>
+      </div>
+      <div class="item" data-id="tri4" data-cat="triangle" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>三角关系的结构性演变</strong>：1950s 严格两极（无三角空间）→ 1960s 中苏分裂打破两极（有雏形但中国"两个拳头打人"未利用）→ 1970s 真正三角博弈 → 1980s <strong>超越三角</strong>，中国成为独立一极<span class="item-tag tag-concept">结构演变</span></span>
+      </div>
+      <div class="item" data-id="tri5" data-cat="triangle" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>尼克松访华后中美关系低潮原因</strong>：尼克松后期（水门事件后外交停滞）+ 福特时期对苏缓和（台湾问题倒退）+ 卡特初期企图继续"缓和"政策→直到70年代后期缓和政策破产才迈开正常化步伐<span class="item-tag tag-concept">低潮分析</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">3.7 "一条线、一大片"与"三个世界" <span class="cat-stat" data-cat="line-worlds"></span></div>
+      <div class="item" data-id="lw1" data-cat="line-worlds" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"一条线"</strong>（1973.2，基辛格第五次访华）：从东到西建立反苏霸统一战线——美国、日本、中国、巴基斯坦、伊朗、土耳其、欧洲<span class="item-tag tag-imp">战略方针</span></span>
+      </div>
+      <div class="item" data-id="lw2" data-cat="line-worlds" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"一大片"</strong>：联合"一条线"周边的国家——"一大片的第三世界要团结"<span class="item-tag tag-concept">战略延伸</span></span>
+      </div>
+      <div class="item" data-id="lw3" data-cat="line-worlds" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>"三个世界"理论</strong>：第一世界（美苏）+ 第二世界（欧洲、日本、澳、加等）+ 第三世界（广大亚非拉）；邓小平1974年联大讲话正式提出<span class="item-tag tag-imp">核心理论</span></span>
+      </div>
+      <div class="item" data-id="lw4" data-cat="line-worlds" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">"三个世界"意义：成为1970年代中国外交指导思想 + 奠定对第三世界关系的立足点 + "第二世界"概念扩大外交空间<span class="item-tag tag-concept">理论意义</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">3.8 重返联合国 <span class="cat-stat" data-cat="un-return"></span></div>
+      <div class="item" data-id="unr1" data-cat="un-return" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">董必武参加1945年旧金山制宪会议——中共是联合国创始参与者<span class="item-tag tag-date">1945</span></span>
+      </div>
+      <div class="item" data-id="unr2" data-cat="un-return" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1971年三个提案</strong>：① 美日"重要问题"提案（需2/3多数）② "两阿提案"（恢复席位+驱逐蒋代表）③ 美国"双重代表权"提案<span class="item-tag tag-imp">关键节点</span></span>
+      </div>
+      <div class="item" data-id="unr3" data-cat="un-return" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>2758号决议</strong>通过；中国起初曾准备推迟进入（凌青回忆录），但最终决定参加<span class="item-tag tag-imp">重要细节</span></span>
+      </div>
+      <div class="item" data-id="unr4" data-cat="un-return" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">意义：中国国际地位加强 + <strong>"一个中国"原则</strong>成为当代国际体系组成部分<span class="item-tag tag-concept">历史意义</span></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 第四单元 ═══════════════ -->
+<div class="unit" data-unit="4">
+  <div class="unit-hd u4" onclick="toggleUnit(this)">
+    <span>📕 第四单元：改革开放以来的中国外交（1978至今）</span>
+    <span class="unit-stat" data-unit-stat="4"></span>
+  </div>
+  <div class="unit-body">
+
+    <div class="cat">
+      <div class="cat-title">4.1 文革结束与国家战略转移 <span class="cat-stat" data-cat="shift"></span></div>
+      <div class="item" data-id="sh1" data-cat="shift" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1977.8</strong> 十一大宣布文革结束；<strong>1978.12 十一届三中全会</strong>——以经济建设为中心，实行改革开放<span class="item-tag tag-date">1977-1978</span></span>
+      </div>
+      <div class="item" data-id="sh2" data-cat="shift" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>国家战略和对外政策的根本关系</strong>：对外政策发生根本性转变的动力来自于国家战略的转变——以经济建设为中心 → 为经济发展创造良好外部环境<span class="item-tag tag-imp">核心逻辑</span></span>
+      </div>
+      <div class="item" data-id="sh3" data-cat="shift" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">华国锋1977年政治报告："苏美两家是新世界大战的策源地，特别是苏联社会帝国主义具有更大的危险性"——体现<strong>滞后性</strong><span class="item-tag tag-concept">滞后性例证</span></span>
+      </div>
+      <div class="item" data-id="sh4" data-cat="shift" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>邓小平1981年关键讲话</strong>："世界大战在几年内打不起来…我们不要自己吓唬自己，造成人为的紧张。如果当前老是强调战争马上打起来，使我们的精力都集中到打仗上面，就会影响四个现代化建设。"<span class="item-tag tag-quote">重要语录</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">4.2 外交"纠左" <span class="cat-stat" data-cat="correct-left"></span></div>
+      <div class="item" data-id="cl1" data-cat="correct-left" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>纠左三大核心内容</strong>：① 摆脱"时代"问题束缚——提出"和平与发展"是当今世界的主题（认识时代问题上的<strong>巨大飞跃</strong>；重回中共八大判断）；百万大裁军（1985）<span class="item-tag tag-imp">第一维度</span></span>
+      </div>
+      <div class="item" data-id="cl2" data-cat="correct-left" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">② 对中国国际地位作出客观评价——"中国是个大国，又是个小国"（邓小平）；"<strong>千万不要当头，这是一个国策</strong>"<span class="item-tag tag-imp">第二维度</span></span>
+      </div>
+      <div class="item" data-id="cl3" data-cat="correct-left" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">③ <strong>国家利益回归</strong>对外政策的出发点——外交为经济建设服务、为现代化服务；从"国家性质"→"安全威胁"→<strong>"经济建设"</strong><span class="item-tag tag-imp">第三维度</span></span>
+      </div>
+      <div class="item" data-id="cl4" data-cat="correct-left" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>邓小平论和平时间</strong>："我们希望至少有50年到70年的和平时间。……我们面临发展和摆脱落后的任务。"<span class="item-tag tag-quote">发展逻辑</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">4.3 毛→邓外交理念转变 <span class="cat-stat" data-cat="mao-deng"></span></div>
+      <div class="item" data-id="md1" data-cat="mao-deng" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>三维度对比</strong>：关于时代——毛"革命和斗争" vs 邓"和平和发展"；关于中国地位——毛"中国革命中心论" vs 邓"贫穷落后，需努力追赶"；关于决定因素——毛从"国家性质"到"国家安全" vs 邓"经济建设"<span class="item-tag tag-imp">论述题核心</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">4.4 中共十二大与"独立自主"（1982）<span class="cat-stat" data-cat="twelfth"></span></div>
+      <div class="item" data-id="tw1" data-cat="twelfth" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>80年代三大任务</strong>：加紧现代化建设（核心）+ 实现国家统一 + 反对霸权主义和维护世界和平<span class="item-tag tag-imp">战略框架</span></span>
+      </div>
+      <div class="item" data-id="tw2" data-cat="twelfth" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>外交方针大调整</strong>：不同任何大国结盟；在独立自主、和平共处五项原则基础上同一切国家发展关系；核心——<strong>独立自主</strong><span class="item-tag tag-imp">核心内容</span></span>
+      </div>
+      <div class="item" data-id="tw3" data-cat="twelfth" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>演变脉络</strong>："一边倒" → "一条线，一大片" → <strong>"独立自主"</strong>；里程碑意义的重大调整<span class="item-tag tag-imp">脉络对比</span></span>
+      </div>
+      <div class="item" data-id="tw4" data-cat="twelfth" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">"中国不会打'美国牌'去对付苏联，不会打'苏联牌'去对付美国，也决不允许任何人玩'中国牌'"——黄华，1982年<span class="item-tag tag-quote">经典表述</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">4.5 中美建交 <span class="cat-stat" data-cat="us-china"></span></div>
+      <div class="item" data-id="uc1" data-cat="us-china" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">1978年布热津斯基访华 → 中美建交谈判 → <strong>1978.12《建交公报》</strong>：承认PRC是唯一合法政府；只有一个中国，台湾是中国一部分；1979.1.1与台湾断交、结束共同防御条约<span class="item-tag tag-date">1978-1979</span></span>
+      </div>
+      <div class="item" data-id="uc2" data-cat="us-china" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中方动力升级</strong>：从单纯对抗苏联扩张 → 配合国家发展战略需要——"我们相信中美关系正常化能为美国用先进的东西帮助我们实现四个现代化创造更有利的条件"（邓小平，1979）<span class="item-tag tag-imp">动力转变</span></span>
+      </div>
+      <div class="item" data-id="uc3" data-cat="us-china" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>《建交公报》vs《上海公报》</strong>：《建交公报》前进一大步——美方承认PRC是"唯一合法政府"（而非仅"acknowledge"）；"承认只有一个中国，台湾是中国的一部分"；1979.1.1美台断交、终止《共同防御条约》<span class="item-tag tag-imp">公报对比</span></span>
+      </div>
+      <div class="item" data-id="uc4" data-cat="us-china" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>美国国会随即通过《与台湾关系法》</strong>（1979.4）——承诺继续向台湾提供防御性武器，保留对台湾问题的干预杠杆<span class="item-tag tag-concept">遗留问题</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">4.6 中苏关系正常化 <span class="cat-stat" data-cat="sino-sov-norm"></span></div>
+      <div class="item" data-id="ssn0" data-cat="sino-sov-norm" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1979年不再续约《中苏友好同盟互助条约》</strong>——同盟关系正式结束，之后进入30年条约有效期终止程序<span class="item-tag tag-date">1979</span></span>
+      </div>
+      <div class="item" data-id="ssn0b" data-cat="sino-sov-norm" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>1982年勃列日涅夫"塔什干讲话"</strong>释放缓和信号——表示愿意改善中苏关系、承认中国是社会主义国家；中方"投桃报李"但明确提出三大诉求<span class="item-tag tag-date">1982</span></span>
+      </div>
+      <div class="item" data-id="ssn1" data-cat="sino-sov-norm" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>中方三大诉求</strong>：① 中苏边界和蒙古驻扎重兵 ② 支持越南入侵柬埔寨 ③ 武装占领阿富汗<span class="item-tag tag-imp">三大障碍</span></span>
+      </div>
+      <div class="item" data-id="ssn2" data-cat="sino-sov-norm" data-tags="date">
+        <div class="check-box"></div>
+        <span class="item-text">第一轮尝试（1982-1986）：成效有限（苏联领导人频繁更替，未在核心关切上让步）；第二轮（1987-1989）：恢复边界谈判 → 苏方撤军 → <strong>1989年戈尔巴乔夫访华</strong>——30年后第一位苏联最高领导人访华<span class="item-tag tag-date">1982-1989</span></span>
+      </div>
+      <div class="item" data-id="ssn3" data-cat="sino-sov-norm" data-tags="quote">
+        <div class="check-box"></div>
+        <span class="item-text">"结束过去，开辟未来。……只是了解，不予纠缠，重点在于开辟未来。"——邓小平，1989<span class="item-tag tag-quote">重要语录</span></span>
+      </div>
+      <div class="item" data-id="ssn4" data-cat="sino-sov-norm" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">意义：中国走上<strong>独立自主的和平外交道路</strong>的一个重大标志<span class="item-tag tag-concept">历史意义</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">4.7 中国与联合国关系的变迁 <span class="cat-stat" data-cat="un-evolve"></span></div>
+      <div class="item" data-id="une1" data-cat="un-evolve" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text"><strong>三阶段</strong>：① 体制内的反对者（1971-1978）——反霸讲坛，保持超脱，"不参加"投票 ② 全面认识和务实对待（1978-1990s中）——服务于经济建设，全面深化参与 ③ 新时代——"参与者、建设者、贡献者、受益者"<span class="item-tag tag-imp">阶段框架</span></span>
+      </div>
+      <div class="item" data-id="une2" data-cat="un-evolve" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">标志性事件：1975年UNDP在华设立代表处——中国开始将联合国视作<strong>获得发展资源的平台</strong>，而不仅是政治斗争讲坛<span class="item-tag tag-concept">转变标志</span></span>
+      </div>
+      <div class="item" data-id="une3" data-cat="un-evolve" data-tags="concept">
+        <div class="check-box"></div>
+        <span class="item-text">国际秩序话语演变：文革"帝国主义走向全面崩溃" → 1970s"三个世界反霸" → 1990s"建立国际政治经济新秩序" → 近年"维护以联合国为核心的国际体系"<span class="item-tag tag-concept">话语演变</span></span>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-title">4.8 核心辩论 <span class="cat-stat" data-cat="debate"></span></div>
+      <div class="item" data-id="deb1" data-cat="debate" data-tags="imp">
+        <div class="check-box"></div>
+        <span class="item-text">中国是国际秩序的<strong>Conformist（遵从者）还是Revisionist（修正者）</strong>？——没有标准答案，关键理解中国在不同议题领域扮演不同角色的复杂行为体<span class="item-tag tag-imp">开放问题</span></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- Floating buttons -->
+<div class="float-btns">
+  <button class="float-btn btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <button class="float-btn btn-expand" onclick="expandAll()" title="展开/折叠">⊞</button>
+  <button class="float-btn btn-reset" onclick="resetAll()" title="重置全部">↺</button>
+</div>
+
+<footer>
+  <p>📚 基于吴昊老师2026年春季《中华人民共和国对外关系》课程讲义整理 · 北京大学国际关系学院</p>
+  <p>点击知识点切换掌握程度 · 进度自动保存在浏览器中</p>
+</footer>
+
+<script>
+// ── State ──
+const STATES = ['notyet', 'partial', 'mastered'];
+const STORAGE_KEY = 'cn_foreign_relations_checklist_v2';
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+function saveState(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {}
+}
+
+let state = loadState();
+
+// ── Init items ──
+document.querySelectorAll('.item').forEach(item => {
+  const id = item.dataset.id;
+  const current = state[id] || 'notyet';
+  item.classList.add(current);
+
+  item.addEventListener('click', () => {
+    const cur = state[id] || 'notyet';
+    const idx = STATES.indexOf(cur);
+    const next = STATES[(idx + 1) % 3];
+    state[id] = next;
+    item.classList.remove('notyet', 'partial', 'mastered');
+    item.classList.add(next);
+    saveState(state);
+    updateAllStats();
+  });
+});
+
+// ── Unit toggle ──
+function toggleUnit(hd) {
+  const body = hd.nextElementSibling;
+  body.classList.toggle('collapsed');
+}
+
+// ── Expand/Collapse all ──
+let allExpanded = true;
+function expandAll() {
+  allExpanded = !allExpanded;
+  document.querySelectorAll('.unit-body').forEach(b => {
+    if (allExpanded) b.classList.remove('collapsed');
+    else b.classList.add('collapsed');
+  });
+}
+
+// ── Filter ──
+let currentFilter = 'all';
+function filterItems(status) {
+  currentFilter = status;
+  document.querySelectorAll('#filterAll, #filterNotyet, #filterPartial, #filterMastered')
+    .forEach(b => b.classList.remove('active'));
+  document.getElementById('filter' + status.charAt(0).toUpperCase() + status.slice(1)).classList.add('active');
+
+  document.querySelectorAll('.item').forEach(item => {
+    if (status === 'all') {
+      item.style.display = '';
+    } else {
+      const cur = state[item.dataset.id] || 'notyet';
+      item.style.display = cur === status ? '' : 'none';
+    }
+  });
+}
+
+// ── Reset ──
+function resetAll() {
+  if (!confirm('确定要重置所有知识点的掌握状态吗？此操作不可撤销。')) return;
+  state = {};
+  saveState(state);
+  document.querySelectorAll('.item').forEach(item => {
+    item.classList.remove('partial', 'mastered');
+    item.classList.add('notyet');
+  });
+  currentFilter = 'all';
+  document.querySelectorAll('#filterAll, #filterNotyet, #filterPartial, #filterMastered')
+    .forEach(b => b.classList.remove('active'));
+  document.getElementById('filterAll').classList.add('active');
+  document.querySelectorAll('.item').forEach(item => { item.style.display = ''; });
+  updateAllStats();
+}
+
+// ── Stats ──
+function countStats(selector) {
+  const items = document.querySelectorAll(selector);
+  let total = 0, mastered = 0, partial = 0;
+  items.forEach(item => {
+    total++;
+    const s = state[item.dataset.id] || 'notyet';
+    if (s === 'mastered') mastered++;
+    if (s === 'partial') partial++;
+  });
+  return { total, mastered, partial };
+}
+
+function updateAllStats() {
+  // Total
+  const all = countStats('.item');
+  const totalPct = all.total > 0 ? Math.round((all.mastered / all.total) * 100) : 0;
+  document.getElementById('totalBar').style.width = totalPct + '%';
+  document.getElementById('totalPct').textContent = totalPct + '%';
+  document.getElementById('totalDetail').textContent =
+    `已掌握 ${all.mastered} / ${all.total}（部分掌握 ${all.partial}）`;
+
+  // Per unit
+  for (let u = 0; u <= 4; u++) {
+    const stat = document.querySelector(`[data-unit-stat="${u}"]`);
+    if (!stat) continue;
+    const items = document.querySelectorAll(`.unit[data-unit="${u}"] .item`);
+    let m = 0, t = 0;
+    items.forEach(item => {
+      t++;
+      if ((state[item.dataset.id] || 'notyet') === 'mastered') m++;
+    });
+    stat.textContent = t > 0 ? `✅ ${m}/${t}` : '';
+  }
+
+  // Per category
+  document.querySelectorAll('.cat').forEach(catEl => {
+    const statEl = catEl.querySelector('.cat-stat');
+    if (!statEl) return;
+    const catId = statEl.getAttribute('data-cat');
+    if (!catId) return;
+    const items = document.querySelectorAll('.item[data-cat="' + catId + '"]');
+    let m = 0, t = 0;
+    items.forEach(item => {
+      t++;
+      if ((state[item.dataset.id] || 'notyet') === 'mastered') m++;
+    });
+    statEl.textContent = t > 0 ? '已掌握 ' + m + '/' + t : '';
+  });
+}
+
+// Init
+updateAllStats();
+</script>
+
+</body>
+</html>

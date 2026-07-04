@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新中国对外关系 — 期末复习资料</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --accent: #c41230;
+    --bg: #f5f5f0;
+    --card-bg: #fff;
+    --border: #d0cdc2;
+    --text: #222;
+    --muted: #5a5a5a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "STSong", "NSimSun", serif; background: var(--bg); color: var(--text); line-height: 1.72; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+
+  header {
+    background: var(--primary);
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  }
+  header h1 { font-size: 2.2em; letter-spacing: 3px; margin-bottom: 8px; }
+  header p { opacity: .8; font-size: 1em; }
+
+  .toc {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .toc h2 { border-bottom: 2px solid var(--primary); padding-bottom: 8px; margin-bottom: 16px; font-size: 1.3em; }
+  .toc ol { padding-left: 24px; }
+  .toc li { margin: 6px 0; }
+  .toc a { color: var(--primary); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; color: var(--accent); }
+
+  section { margin-bottom: 40px; }
+  .section-title {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px 6px 0 0;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 24px 28px;
+  }
+  .card h3 {
+    color: var(--accent);
+    font-size: 1.1em;
+    margin: 20px 0 10px 0;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .card h3:first-child { margin-top: 0; }
+  .card p { margin: 6px 0; }
+
+  .highlight-box {
+    background: #fff8e1;
+    border-left: 4px solid #e6a817;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .key-box {
+    background: #e8f0fe;
+    border-left: 4px solid #1a73e8;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .timeline { position: relative; padding-left: 30px; margin: 16px 0; }
+  .timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--primary); }
+  .timeline-item { position: relative; margin-bottom: 16px; }
+  .timeline-item::before { content: ""; position: absolute; left: -26px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .timeline-date { font-weight: bold; color: var(--primary); }
+
+  ul { padding-left: 24px; }
+  li { margin: 4px 0; }
+
+  .three-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+  }
+  @media (max-width: 700px) { .three-pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    background: linear-gradient(135deg, var(--primary), #2b5a8c);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .pillar h4 { font-size: 1.1em; margin-bottom: 8px; }
+  .pillar p { font-size: .9em; opacity: .9; }
+
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: .82em;
+    margin: 2px 4px;
+  }
+
+  blockquote {
+    border-left: 3px solid #bbb;
+    padding-left: 16px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 10px 0;
+  }
+
+  footer { text-align: center; padding: 30px; color: var(--muted); font-size: .9em; border-top: 1px solid var(--border); margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>中华人民共和国对外关系</h1>
+  <p>期末复习资料 · 基于2026年春季课程讲义整理</p>
+  <p style="font-size:.85em;margin-top:8px;">授课教师：吴昊 | 北京大学国际关系学院</p>
+</header>
+
+<div class="container">
+
+<!-- TOC -->
+<div class="toc">
+  <h2>📑 课程知识框架</h2>
+  <ol>
+    <li><a href="#s0">导论：三条主线</a></li>
+    <li><a href="#s1">第一单元：建国初期的对外关系（1949-1955）</a></li>
+    <li><a href="#s2">第二单元：发展和波动的十年（1955-1965）</a></li>
+    <li><a href="#s3">第三单元：文革期间的中国外交（1966-1976）</a></li>
+    <li><a href="#s4">第四单元：改革开放以来的中国外交（1978至今）</a></li>
+  </ol>
+</div>
+
+<!-- 导论 -->
+<section id="s0">
+  <div class="section-title">导论：贯穿中华人民共和国对外关系的三条主线</div>
+  <div class="card">
+    <div class="three-pillars">
+      <div class="pillar">
+        <h4>🔴 中国革命运动</h4>
+        <p>中华人民共和国对外关系是中共革命时期对外关系的延续。革命塑造了政党身份，确立了"独立自主"原则。</p>
+      </div>
+      <div class="pillar">
+        <h4>🏛️ 中国内政</h4>
+        <p>对外关系是内政的延续。重点关注：国家统一和领土完整、经济发展、社会核心价值构建、执政合法性问题。</p>
+      </div>
+      <div class="pillar">
+        <h4>🌍 国际环境</h4>
+        <p>冷战→后冷战（一超多强/多极化）。前三十年高度关注国家安全；改革开放以来关注和平发展。</p>
+      </div>
+    </div>
+
+    <h3>核心概念：对外关系 vs 外交</h3>
+    <p>对外关系涵盖范围更广，不仅包括外交部处理的政治关系，还包括经济关系（商务部）、军事关系（国防部）、文化关系（文化旅游部）、教育关系（教育部）以及党际关系（中联部）。中联部是党中央机构，负责中国共产党的对外关系。</p>
+
+    <h3>革命运动时期的重要遗产</h3>
+    <div class="key-box">
+      <p><strong>① 独立自主原则</strong>："真正懂得独立自主是从遵义会议开始的"——毛泽东（1963年）</p>
+      <p><strong>② 对国际局势的根本看法</strong>：国际体系的本质就是压迫和不平等</p>
+      <p><strong>③ 中国共产党1949年前的对外关系阶段</strong>：1937年前作为共产国际支部 → 抗日民族统一战线建立后立场多次转折 → 全面内战爆发后旗帜鲜明站在苏联阵营</p>
+    </div>
+  </div>
+</section>
+
+<!-- 第一单元 -->
+<section id="s1">
+  <div class="section-title">第一单元：建国初期的对外关系（1949-1955）</div>
+  <div class="card">
+
+    <h3>一、"蒋之下的和平"与建国前的中共对外关系（1945-1949）</h3>
+    <div class="highlight-box">
+      <p><strong>核心命题：</strong>理解新中国建国初期的对外政策，必须了解 1945-1949 期间中共的对外关系。</p>
+    </div>
+    <p><strong>复杂的四方关系：</strong>美苏两大阵营 × 国共两大阵营。美苏都支持"蒋之下的和平"——美国出于处理美苏关系和抗日需要，苏联出于避免与美冲突和维护东北利益的需要（1945年中苏友好同盟条约由国民党政府签订）。</p>
+    <p><strong>中共的策略（1945年）：</strong>作为实力最弱一方，目标是避免大规模内战，争取用政治方式加强自身政治地位。"在全国范围内大体要走法国的路"、"我们还是钻进去给蒋介石洗脸，而不要砍头"——毛泽东（1945年）。</p>
+
+    <h3>二、中苏关系的变化与同盟形成</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-date">1945年底</span> — 转折点一：东北的协调。合作的规模和范围有限，但开启了建立同盟关系的第一步。
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1948年起</span> — 转折点二：中共军事上的胜利。斯大林承认"我在判断中国形势方面犯了错误"。从地区性和策略性合作向全面战略合作转变。
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1949.1</span> — 米高扬西柏坡谈话
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1949.6</span> — 刘少奇秘密访问苏联
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1949.12-1950.2</span> — 毛泽东访问苏联，签订《中苏友好同盟互助条约》，确定同盟关系，明确加入苏联阵营
+      </div>
+    </div>
+
+    <h3>三、建国初期的三大外交原则</h3>
+    <div class="key-box">
+      <table style="width:100%;border-collapse:collapse;">
+        <tr style="background:#1a3a5c;color:#fff;">
+          <th style="padding:8px 12px;text-align:left;">原则</th><th style="padding:8px 12px;text-align:left;">内容</th><th style="padding:8px 12px;text-align:left;">定位</th>
+        </tr>
+        <tr style="background:#e8f0fe;">
+          <td style="padding:8px 12px;"><strong>一边倒</strong></td>
+          <td style="padding:8px 12px;">和苏联结盟 + 对帝国主义国家不承认</td>
+          <td style="padding:8px 12px;">总揽全局的方针</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;"><strong>另起炉灶</strong></td>
+          <td style="padding:8px 12px;">不承认旧的外交关系，重新建立新的外交体系</td>
+          <td style="padding:8px 12px;">——</td>
+        </tr>
+        <tr style="background:#e8f0fe;">
+          <td style="padding:8px 12px;"><strong>打扫干净屋子再请客</strong></td>
+          <td style="padding:8px 12px;">清除帝国主义在华势力后再与西方建交</td>
+          <td style="padding:8px 12px;">——</td>
+        </tr>
+      </table>
+    </div>
+    <p><strong>启示：</strong>冷战中美苏两大集团关系的根本性质是冲突；中国领导人对革命中建立的国家的认识决定了对外政策走向。</p>
+
+    <h3>四、中美关系与抗美援朝</h3>
+    <p><strong>中美交恶的原因：</strong>冷战背景、美国对中共的打压。并非历史的必然，但可改变历史的机会不多。</p>
+    <p><strong>抗美援朝决策过程：</strong></p>
+    <ul>
+      <li>各方态度复杂：中国内部有不同意见，苏、朝各有态度</li>
+      <li>军事目标的动态调整：从"歼灭和驱逐美国及其他国家的侵略军"(10.2) → 恢复战争爆发前状况(10.3) → 构筑防御线(10月中旬)</li>
+    </ul>
+    <p><strong>抗美援朝的意义：</strong></p>
+    <ul>
+      <li>国家安全得到保障</li>
+      <li>极大提升民族自信</li>
+      <li>国际地位显著提高</li>
+      <li>获得现代化战争经验</li>
+      <li>台湾问题延宕——"草鞋没样，边打边像"（毛泽东）</li>
+    </ul>
+
+    <h3>五、日内瓦会议（1954）</h3>
+    <p>1953年苏联提出"五国外长会"，解决朝鲜问题 + 印度支那问题。</p>
+    <p><strong>中方预设目标：</strong>朝鲜问题解决希望不大，力求取得政治上有利地位；印度支那问题力争"出结果"。</p>
+    <p><strong>印度支那讨论（5.8-7.21）：</strong>奠边府战役大捷（5.7）是关键转折。两大矛盾点：停战问题（周恩来方案斡旋越共）、军事分界线（18度线还是13度线，周恩来再次斡旋）。</p>
+    <p><strong>日内瓦会议的意义：</strong>调整外交政策的开端、周边外交和邻国关系良好开端、开始与西方国家展开接触。</p>
+
+    <h3>六、和平共处五项原则与万隆会议</h3>
+    <div class="key-box">
+      <p><strong>周恩来"休会期之旅"</strong>（1954.6.25-6.29）：访问印度和缅甸，签署联合声明，同意以和平共处五项原则作为双边关系指导原则。</p>
+      <p><strong>1954.7.7 中央政治局扩大会议</strong>：决定采取更进取的印度支那和平政策，决定大幅调整对外政策——结束"打扫干净屋子再请客"。</p>
+      <blockquote>"前几年，我们说打扫干净房子再请客。现在经过初步整理，房子已经基本打扫干净了，因此可以请一些客人来。"——周恩来（1954年）<br>
+      "门要关死已经不可能了，而又有一种很有利的局势，需要我们走出去。"——毛泽东（1954年）</blockquote>
+    </div>
+
+    <p><strong>和平共处五项原则：</strong>互相尊重主权和领土完整、互不侵犯、互不干涉内政、平等互利、和平共处。</p>
+    <p><strong>毛泽东再提"中间地带"</strong>（1954年）：时隔八年（1946→1954），意义在于推动从革命外交向国家外交的转变。</p>
+    <p><strong>万隆会议（1955年）</strong>：第一次由获得独立的亚非国家参加且没有西方殖民国家参加的大型国际会议。方针："求同存异"。意义：进一步深化对和平共处可能性的思考，深化国家身份的构建——不仅是社会主义国家，也是亚洲新兴国家。</p>
+
+    <h3>七、和平共处五项原则的意义总结</h3>
+    <ul>
+      <li><strong>国家身份构建：</strong>不仅是社会主义国家，也是亚洲新兴国家</li>
+      <li><strong>革命外交→国家外交转变：</strong>标志性事件</li>
+      <li><strong>破解美国对华孤立：</strong>战略手段</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 第二单元 -->
+<section id="s2">
+  <div class="section-title">第二单元：发展和波动的十年（1955-1965）</div>
+  <div class="card">
+
+    <h3>一、中共八大与八项外交方针（1956年9月）</h3>
+    <p><strong>重要判断：</strong>革命运动时代已经结束；社会矛盾发生变化；国际局势趋向缓和，世界持久和平开始有了实现的可能。</p>
+
+    <div class="key-box">
+      <p><strong>八项外交方针：</strong></p>
+      <ol>
+        <li>巩固和加强与苏联及社会主义国家的关系</li>
+        <li>在和平共处五项原则基础上同亚非国家建立和发展友好关系</li>
+        <li>同愿意与中国建交并发展经济文化的国家发展正常的国家关系</li>
+        <li>反对在国际事务中使用或威胁使用武力以及推行战争政策</li>
+        <li>支持世界人民的和平运动</li>
+        <li>反对殖民主义和支持反对殖民主义的斗争</li>
+        <li>支持各国的社会主义运动</li>
+        <li>在对外交往中采取平等对待的态度和严格反对大国主义</li>
+      </ol>
+    </div>
+    <p>这八项方针是在长期实践、探索和总结的基础上逐步酝酿形成的。但如何解释1955-1965对外政策的波折？——这是理解本单元的关键问题。</p>
+
+    <h3>二、苏共二十大及其影响（1956年2月）</h3>
+    <p><strong>苏共二十大的主要观点：</strong></p>
+    <ul>
+      <li><strong>对外政策：</strong>"和平共处、和平过渡、和平竞赛"（三和路线）</li>
+      <li><strong>国内政策：</strong>平衡轻重工业发展，提高人民生活水平</li>
+      <li><strong>党内：</strong>加强集体领导，反对个人崇拜</li>
+      <li><strong>赫鲁晓夫秘密报告</strong>（批判斯大林个人崇拜）</li>
+    </ul>
+    <p><strong>中共的不同看法：</strong>对和平过渡问题保留意见；对赫鲁晓夫秘密报告不完全认同。社会主义阵营内部产生混乱，中苏在一些问题上开始存在不同思路，<strong>留下隐患</strong>。</p>
+
+    <h3>三、波匈事件（1956年）与中共的介入</h3>
+    <p>波匈事件是"非斯大林化"的直接后果。中共的介入提高了自身在世界社会主义阵营中的威望。</p>
+    <p><strong>中共处理波匈危机的原则：</strong></p>
+    <ul>
+      <li>强调在社会主义国家关系中实行独立平等的原则（对波兰）</li>
+      <li>强调社会主义阵营的稳定，坚决排斥和打击一切有可能背离社会主义道路的措施和倾向（对匈牙利）</li>
+    </ul>
+    <p><strong>影响：</strong>在斯大林评价问题上分歧加深；中共认为应旗帜鲜明反对修正主义；对国际形势和各社会主义国家发展道路的认识发生新变化。</p>
+
+    <h3>四、莫斯科会议（1957年）</h3>
+    <p>国际共运史上规模最大、人数最多的盛会之一。发表《莫斯科宣言》，系统概括国际共运经验，强调社会主义阵营团结。中国在会议中具有特殊地位。<strong>既维护了社会主义阵营在一段时间内的稳定，但仍暴露了中苏对世界形势看法的分歧。</strong></p>
+
+    <h3>五、1958-1959：不断扩大的矛盾</h3>
+    <div class="highlight-box">
+      <p><strong>四大矛盾：</strong></p>
+      <p>① <strong>长波电台事件</strong>：苏方提议"联合建设和管理"，中方关注主权和使用权</p>
+      <p>② <strong>联合舰队事件</strong>：苏方（尤金）提出建设"共同潜艇舰队"，中方认为援助不应附加条件</p>
+      <p>③ <strong>炮击金门（1958.8.23）</strong>：中方未在赫鲁晓夫访华期间及时通报；苏方担忧激化东亚紧张局势；双方在对外政策上出现分歧</p>
+      <p>④ <strong>大跃进与苏联态度</strong>：苏联避免评论→赫鲁晓夫访问波兰期间评论苏联公社→毛泽东的强烈反应→庐山会议后"对赫鲁晓夫的宣战"</p>
+    </div>
+    <p><strong>1959年赫鲁晓夫访华</strong>：旨在缓和中苏关系，受到冷遇。三天会谈爆发争吵。<strong>这标志着中苏同盟走向衰亡的转折点。</strong>中苏在国际问题上的分歧开始被归结为赫鲁晓夫背离马克思主义（"修正主义"）。</p>
+
+    <h3>六、1960-1965：中苏关系的破裂</h3>
+    <p><strong>阶段划分：</strong></p>
+    <ul>
+      <li><strong>1960年春-1961年夏：</strong>布加勒斯特会议→短暂缓和→第二次莫斯科会议</li>
+      <li><strong>1961年10月起：</strong>苏共二十二大争执（继续"三和路线" + "全民国家""全民的党" + 再次批判斯大林）</li>
+      <li><strong>1962年起持续恶化：</strong>伊塔事件→核不扩散条约→中苏论战→九评苏共中央公开信</li>
+    </ul>
+
+    <p><strong>对中苏关系破裂的反思：</strong></p>
+    <ul>
+      <li>不同的历史文化、国情和发展阶段</li>
+      <li>对外关系的不同看法：缓和 or 世界斗争？</li>
+      <li>国际形势的有利条件如何判断？</li>
+      <li>无产阶级国际主义原则和国家间关系原则的冲突</li>
+    </ul>
+
+    <h3>七、中印边界冲突（1962年）</h3>
+    <p><strong>历史经纬：</strong>传统"习惯线" vs "麦克马洪线"（1914年西姆拉会议——中方从未承认）。</p>
+    <p><strong>导火索：</strong>1959年西藏平叛后印度因素凸显 → 1959年"朗久"事件 → 苏联态度不满 → 1962年中印边境自卫反击战 → 中方主动后撤。</p>
+    <p><strong>国际背景：</strong>古巴导弹危机同期发生，影响冷战格局。</p>
+
+    <h3>八、"两个中间地带"和第二次建交高峰</h3>
+    <div class="key-box">
+      <p><strong>毛泽东提出"两个中间地带"（1960年代）：</strong></p>
+      <p>① <strong>第一个中间地带：</strong>亚非拉广大经济落后国家</p>
+      <p>② <strong>第二个中间地带：</strong>欧洲、北美加拿大、大洋洲等国家</p>
+      <p>美国和苏联为"第一世界"，都想统治世界。</p>
+      <p><strong>意义：</strong>在中苏关系恶化的背景下，为中国对外关系提供了新的落脚点（尤其是亚非拉）；为中国与西方国家改善关系提供了理论依据；直接促成了1960-1964期间的第二次建交高峰。</p>
+    </div>
+
+    <h3>九、中美大使级会谈（1955-1970）</h3>
+    <p>世界外交史上独特的"马拉松"会谈，共136次，一直持续到基辛格秘密访华。</p>
+    <p><strong>三个阶段：</strong></p>
+    <ul>
+      <li><strong>第一阶段（1955.8-1955.9）：</strong>达成有关侨民回国的协议（钱学森回国）。这是15年间达成的<strong>唯一</strong>协议。</li>
+      <li><strong>第二阶段（1955.9-1957.12）：</strong>中方提出解除贸易禁运 + 举行外长级会谈。因美方单方面降低会谈级别而结束。</li>
+      <li><strong>第三阶段（1958金门炮战后）：</strong>功能转变为危机管理和沟通渠道。</li>
+    </ul>
+    <p><strong>意义：</strong>贯穿的主线是台湾问题；矛盾来源和管控目的；为未来中美关系正常化"托底"。</p>
+  </div>
+</section>
+
+<!-- 第三单元 -->
+<section id="s3">
+  <div class="section-title">第三单元：文革期间的中国外交（1966-1976）</div>
+  <div class="card">
+
+    <h3>一、对外政策"左转"的前夜</h3>
+    <p><strong>"左"的含义：</strong>追求超越时代或高于现实可能性的目标；运用与实际能力不符的方式去追求目标。</p>
+    <p><strong>1954至中共八大期间的平稳发展势头破灭：</strong>对外——中苏同盟逐步破裂；对内——大跃进和人民公社。交织复杂的关系为"左转"奠定了基础。</p>
+
+    <h3>二、王稼祥与"三和一少"</h3>
+    <div class="highlight-box">
+      <p><strong>王稼祥对外政策的主张（1959-1962年）：</strong></p>
+      <ul>
+        <li>采取和缓的方针，注意斗争的策略，争取和平的国际环境</li>
+        <li>调整对外宣传、周边安全、中苏意识形态争论、民族解放运动、对外援助等政策</li>
+      </ul>
+      <p><strong>目的：</strong>消除对外政策中已经出现的"左"的倾向，为克服国内经济困难（三年困难时期）争取良好国际环境。</p>
+      <p><strong>被批判为"三和一少"</strong>：对帝国主义、修正主义和各国反动派要和，对民族解放运动和革命运动支持要少。</p>
+      <p><strong>批判的后果：</strong>错过了一次调整对外关系和对外政策的重要机会。</p>
+    </div>
+
+    <h3>三、文革开始和极左外交思潮的泛滥</h3>
+    <p><strong>八大第十一次全体会议公报（1966年8月）的核心内容：</strong></p>
+    <ul>
+      <li><strong>时代问题：</strong>世界革命的新时代</li>
+      <li><strong>世界政治形势：</strong>帝国主义走向全面崩溃，社会主义走向全世界胜利</li>
+      <li><strong>对外政策最高指导原则：</strong>无产阶级国际主义（而非国家利益）</li>
+      <li><strong>对外政策任务：</strong>支持亚非民族解放运动 + 建立反美统一战线 + 将反苏联修正主义斗争进行到底</li>
+    </ul>
+
+    <h3>四、极左外交的四大特征</h3>
+    <div class="key-box">
+      <p>① <strong>对时代和世界形势的判断不符合实际</strong>——错误估计世界发展方向；否定国际形势中缓和因素的存在</p>
+      <p>② <strong>高估中国在世界政治中的地位和影响力</strong>——"中国革命中心论"；毛泽东思想在世界范围内的作用</p>
+      <p>③ <strong>将无产阶级国际主义置于中心位置</strong>——以国家性质决定处理国际关系的标准；忽视国家利益在对外政策中的重要性</p>
+      <p>④ <strong>"两个拳头打人"</strong>——"反帝必反修"，极少数同时与两个超级大国对抗的国家</p>
+    </div>
+
+    <h3>五、极左外交的实践</h3>
+    <p><strong>外交部夺权事件：</strong>王力"八七讲话"→"红卫兵就不能干外交？"→批斗外交部党委领导→外交部运作瘫痪。</p>
+    <p><strong>"三砸一烧"（极左外交混乱的顶峰）：</strong>冲击印度使馆、袭击缅甸使馆、冲击印尼使馆、<strong>火烧英国代办处</strong>（1967年香港劳资纠纷背景下，外交部被彻底夺权后发生）。这些事件共同特点：均发生在外交部被冲击最严重的1967年7、8月期间。</p>
+
+    <h3>六、中国安全战略的重塑：苏联成为主要威胁</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-date">1960年起</span> — 零星边界冲突开始出现（伊塔事件）
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1964年</span> — 中苏边境谈判；毛泽东首次公开提出中苏边界问题；苏联以"核战争"回应；毛泽东放弃"北顶南放"战略
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1966年</span> — 苏蒙条约 → 苏联将军事力量向中蒙边境推进
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1968年8月</span> — 苏联入侵捷克斯洛伐克（布拉格之春）→ 勃列日涅夫主义："有限主权论""国际专政论""社会主义大家庭论"等
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1969年3月</span> — 珍宝岛事件 → 毛泽东明确提出"要准备打仗"
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1969年6月</span> — 勃列日涅夫提出"亚洲集体安全体系"
+      </div>
+    </div>
+    <p><strong>"四人小组"的战略判断：</strong>苏联对中国的安全威胁比美国大；"在可预见的时期内，美帝、苏修单独或联合发动大规模侵华战争的可能性都还不大"。叶帅借用三国典故："东联孙吴，北拒曹魏"。</p>
+    <p><strong>中国安全战略的重大转变：</strong>苏联从"安全威胁"进化为"新的战争策源地"→对中国安全的主要威胁由美国变为苏联→外交逐步转向建立<strong>反苏国际统一战线</strong>的轨道。</p>
+
+    <h3>七、中美和解（Rapprochement）</h3>
+    <p><strong>60年代中期中美对抗的三个层次：</strong>全球战略层次、地区层次、双边关系层次。</p>
+    <p><strong>走向和解的关键步骤：</strong></p>
+    <ul>
+      <li>中国向美国发出信号（转载尼克松就职演说、提议恢复中美大使级会谈）</li>
+      <li>尼克松"联华遏苏"战略条件逐步成熟（政府内部、社会舆论、尼克松本人的特殊可信度）</li>
+      <li>两次试探性接触（1969年夏、1969年秋起）→恢复中美大使级会谈</li>
+      <li>乒乓外交（1971年）</li>
+      <li>基辛格秘密访华（1971年7月&10月）</li>
+      <li><strong>尼克松访华（1972年2月）</strong>：毛泽东当日会见；周恩来会谈涉及全球战略形势、台湾问题、地区问题；发表《联合公报》</li>
+    </ul>
+    <p><strong>中美和解的意义：</strong>中美实现历史性和解；中国摆脱外交孤立，打开外交局面；改变了"战略三角"（美、中、苏）的力量平衡，推动苏联的削弱、解体以及冷战的结束。</p>
+
+    <h3>八、中美苏三角关系的复杂性</h3>
+    <div class="highlight-box">
+      <p><strong>美国：</strong>试图联合中国力量牵制苏联，但也随时摆出与苏联缓和关系的姿态制约中国 → 令毛泽东不断担心美国要"踏着中国的肩膀跑莫斯科"</p>
+      <p><strong>苏联：</strong>试图通过对中国打出和谈的旗帜，增加同美国进行争夺的资本；在谈判桌上向美国打中国牌</p>
+      <p><strong>中国：</strong>响应苏联边界会谈建议以缓和紧张局势；利用谈判桌对美国打苏联牌，加速中美关系正常化步伐</p>
+      <p>⚠️ <strong>中国调整政策的主要原因主要是外部安全环境，内生动力不强。</strong></p>
+    </div>
+
+    <h3>九、"一条线、一大片"与反苏国际统一战线</h3>
+    <p><strong>"一条线"：</strong>基辛格第五次访华（1973.2）时毛泽东提出，即"从东到西建立一条反苏霸的统一战线"——美国、日本、中国、巴基斯坦、伊朗、土耳其、欧洲。</p>
+    <p><strong>"一大片"：</strong>进一步联合"一条线"周边的国家。"一大片的第三世界要团结"——毛泽东。</p>
+    <p><strong>意义：</strong>反苏国际统一战线政策最终形成的重要标志。一方面需要同广大亚非拉新独立国家合作，另一方面也需要联合同美国关系密切的多数西方国家。但也存在困难——"这一反霸统一战线，坦率地讲是包括美国在内的"（邓小平，1979年）。</p>
+
+    <h3>十、"三个世界"理论</h3>
+    <div class="key-box">
+      <p><strong>第一世界：</strong>美国和苏联——"原子弹多，也比较富"</p>
+      <p><strong>第二世界：</strong>欧洲、日本、澳大利亚、加拿大等——"原子弹没有那么多，也没有那么富"</p>
+      <p><strong>第三世界：</strong>广大亚非拉国家——"亚洲除了日本，都是第三世界。整个非洲都是第三世界，拉丁美洲也是第三世界"</p>
+    </div>
+    <p><strong>背景：</strong>1970年代多极化开始出现，并强烈冲击两极格局。相较于"两个中间地带"（1960年代中期）进一步发展。邓小平联大讲话（1974年）正式提出。</p>
+    <p><strong>意义：</strong>成为1970年代中国外交的指导思想：奠定对第三世界国家关系的立足点；确立对苏联的认识；"第二世界"的形成为中国外交带来更大的发展空间。</p>
+
+    <h3>十一、重返联合国</h3>
+    <p><strong>漫漫长路：</strong></p>
+    <ul>
+      <li><strong>1949-1951：</strong>深陷中美对抗漩涡（朝鲜战争）</li>
+      <li><strong>1951-1971：</strong>联合国外的"革命者"——美国利用程序手段阻挠（从"暂不讨论"到"重要议案"）；中国对联合国持否定、反对态度（中苏分裂进一步激化）；但私下态度复杂（毛泽东对美国友人斯诺说"不能"说中国不想进入联合国）</li>
+    </ul>
+    <p><strong>1971年三个提案：</strong></p>
+    <ul>
+      <li>① 美日"重要提案"（需要三分之二多数）</li>
+      <li>② <strong>"两阿提案"</strong>——阿尔巴尼亚、阿尔及利亚等17国，要求恢复中国在联合国的合法席位并将蒋介石代表驱逐</li>
+      <li>③ 美国"双重代表权"提案——PRC获安理会位置，但不剥夺"中华民国"代表权</li>
+    </ul>
+    <p><strong>2758号决议</strong>通过后，中国方面曾一度准备推迟进入（凌青回忆录），但最终决定参加。</p>
+    <p><strong>意义：</strong>表明中国国际地位日益加强和影响迅速提升；标志着"一个中国"原则成为当代国际体系的一个组成部分。</p>
+  </div>
+</section>
+
+<!-- 第四单元 -->
+<section id="s4">
+  <div class="section-title">第四单元：改革开放以来的中国外交（1978至今）</div>
+  <div class="card">
+
+    <h3>一、文革结束与国家战略转移</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-date">1977.8</span> — 十一届全国代表大会宣布文革结束
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">1978.12</span> — <strong>十一届三中全会</strong>——明确将"全党工作的着重点和全国人民的注意力转移到社会主义经济建设上来"，实行改革开放政策
+      </div>
+    </div>
+    <p><strong>国家战略和对外政策的根本关系：</strong>对外政策发生根本性转变的动力来自于国家战略的转变。新的战略：以经济建设为中心 → 新的对外政策目标：为经济发展创造良好（和平稳定）的外部环境。</p>
+    <p><strong>但存在滞后性：</strong>长期保持的对世界政治形势的判断不可能因国内政局变化立即消失。文革结束后出现矛盾现象——一边强调需要和平稳定的国际环境，一边对国际形势判断却趋向严峻（华国锋1977年政治报告："苏美两家是新世界大战的策源地，特别是苏联社会帝国主义具有更大的危险性"）。</p>
+
+    <h3>二、外交"纠左"</h3>
+    <div class="key-box">
+      <p><strong>纠左的核心内容：</strong></p>
+      <p>① <strong>摆脱"时代"问题上的束缚</strong>——提出"和平与发展"是当今世界的主题（认识时代问题上的巨大飞跃；彻底否定建国以来在时代问题上长期坚持的主要观点；重回中共八大判断）；百万大裁军</p>
+      <p>② <strong>对中国的国际地位作出客观评价</strong>——直面经济发展在世界上处于落后水平的现状；"中国是个大国，又是个小国"（邓小平）；开始转向务实的对外政策；"千万不要当头，这是一个国策"，因为"这个头我们当不起"</p>
+      <p>③ <strong>国家利益回归对外政策的出发点</strong>——外交为国家利益服务，在十一届三中全会后就是"为经济建设服务"、"为实现现代化服务"</p>
+    </div>
+
+    <h3>三、从毛泽东到邓小平：外交理念的根本转变</h3>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0;">
+      <tr style="background:#1a3a5c;color:#fff;">
+        <th style="padding:8px;"></th><th style="padding:8px;">关于时代和国际局势</th><th style="padding:8px;">关于中国的国际地位</th><th style="padding:8px;">关于对外政策的决定因素</th>
+      </tr>
+      <tr>
+        <td style="padding:8px;"><strong>毛泽东</strong></td><td style="padding:8px;">革命和斗争</td><td style="padding:8px;">"中国革命中心论"</td><td style="padding:8px;">从"国家性质"到"国家安全"</td>
+      </tr>
+      <tr style="background:#e8f0fe;">
+        <td style="padding:8px;"><strong>邓小平</strong></td><td style="padding:8px;">和平和发展</td><td style="padding:8px;">贫穷落后，需努力追赶</td><td style="padding:8px;">经济建设</td>
+      </tr>
+    </table>
+
+    <h3>四、中共十二大与"独立自主"（1982年）</h3>
+    <p><strong>80年代三大任务：</strong>加紧现代化建设（核心）、实现国家统一、反对霸权主义和维护世界和平。</p>
+    <p><strong>外交方针大调整：</strong></p>
+    <ul>
+      <li>中国<strong>不同任何大国结盟</strong></li>
+      <li>在独立自主、和平共处五项原则的基础上，同世界一切国家包括结盟国家和不结盟国家建立和发展各方面的关系</li>
+      <li><strong>核心：独立自主！</strong></li>
+    </ul>
+    <p><strong>演变脉络：</strong>"一边倒" → "一条线，一大片" → <strong>"独立自主"</strong></p>
+    <p><strong>意义：</strong>对外战略发展史上具有里程碑意义的重大调整；提升了中国的国际地位，使中国真正成为国际舞台上一支独立自主的力量；为中国经济建设营造了相对有利的环境。</p>
+
+    <h3>五、中美建交</h3>
+    <div class="timeline">
+      <div class="timeline-item"><span class="timeline-date">70年代早期</span> — 美苏缓和；尼克松后期中美关系低潮</div>
+      <div class="timeline-item"><span class="timeline-date">70年代中期</span> — 苏攻美守；福特时期对苏缓和、台湾问题倒退</div>
+      <div class="timeline-item"><span class="timeline-date">卡特执政初期</span> — 企图继续"缓和"政策；70年代后期缓和政策破产，迈开中美关系正常化步伐</div>
+      <div class="timeline-item"><span class="timeline-date">1978年</span> — 布热津斯基访华；中美建交谈判；发表《建交公报》，1979年1月1日断交台湾并结束共同防御条约</div>
+      <div class="timeline-item"><span class="timeline-date">1979年1月</span> — 邓小平访美</div>
+    </div>
+    <p><strong>中美最终建交之原因：</strong></p>
+    <ul>
+      <li>两国重新就遏制苏联达成一致</li>
+      <li>中方实现中美关系正常化的动力已从单纯对抗苏联扩张，提升到配合国家发展战略需要的层次——"我们相信中美关系正常化能为美国用先进的东西帮助我们实现四个现代化创造更有利的条件"（邓小平，1979年）</li>
+    </ul>
+
+    <h3>六、中苏关系正常化</h3>
+    <p><strong>第一轮尝试（1982-1986）：</strong>勃列日涅夫"塔什干讲话"释放缓和信号 → 中方"投桃报李"但提出三大诉求（中苏边界和蒙古驻扎重兵、支持越南入侵柬埔寨、武装占领阿富汗）→ 苏方未能在中方核心关切上让步，成效有限。</p>
+    <p><strong>第二轮尝试（1987-1989）：</strong>中苏恢复边界谈判 → 苏方撤军（蒙古、阿富汗以及越南问题）→ <strong>1989年戈尔巴乔夫访华</strong>（30年后第一位来华访问的苏联最高领导人）→《中苏联合公报》宣布两国关系正常化。</p>
+    <blockquote>"中苏两国领导人的任务是结束过去，开辟未来。……只是了解，不予纠缠，重点在于开辟未来。"——邓小平，1989年</blockquote>
+    <p><strong>意义：</strong>是中国走上独立自主的和平外交道路的一个重大标志。</p>
+
+    <h3>七、中国与联合国关系的变迁</h3>
+    <p><strong>第一阶段——体制内的反对者（1971-1978）：</strong>将联合国定位为反霸、宣传中国外交政策和革命形势的讲坛；参与方式保持超脱（对于安理会和经社理事会以外的机构暂不参与；"不参加"投票）。</p>
+    <p><strong>第二阶段——全面认识和务实对待（1978-1990年代中期）：</strong>国家战略转移（社会主义现代化建设）→外交纠左 → 对联合国的认识趋于理性务实（普世性和权威性；但也存在不足）；联合国政策为国家战略和对外政策服务；全面深化参与程度；服务于"以经济建设为中心"和"改革开放"。</p>
+  </div>
+</section>
+
+<footer>
+  <p>📚 以上资料基于吴昊老师2026年春季《中华人民共和国对外关系》课程讲义整理</p>
+  <p>主要参考教材：牛军《中华人民共和国对外关系史概论（1949-2000）》（北京大学出版社，2010年）</p>
+</footer>
+
+</div>
+</body>
+</html>
