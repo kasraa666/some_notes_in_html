@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国对外关系史（上）—— 课程知识总结</title>
+<style>
+  :root {
+    --primary: #8B0000;
+    --accent: #D4A017;
+    --bg: #fdf8f0;
+    --card: #ffffff;
+    --text: #2c2c2c;
+    --light-text: #5a5a5a;
+    --border: #e0d5c1;
+    --highlight: #fff8e7;
+    --red-accent: #c0392b;
+    --blue-accent: #2471a3;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "Noto Serif SC", "STSong", "SimSun", "Songti SC", "KaiTi", "楷体", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height:1.85;
+    font-size:17px;
+  }
+  /* ---- 顶部标题 ---- */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color:#fff;
+    padding:60px 20px 50px;
+    text-align:center;
+    border-bottom:5px solid var(--accent);
+  }
+  .hero h1 { font-size:2.6em; letter-spacing:4px; margin-bottom:8px; font-weight:700; }
+  .hero .subtitle { font-size:1.15em; color:#ccc; margin-bottom:4px; }
+  .hero .info { font-size:0.9em; color:#aaa; margin-top:12px; }
+  /* ---- 导航 ---- */
+  .nav-wrap {
+    background:#fff; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; gap:6px;
+    padding:10px 20px; justify-content:center;
+  }
+  .nav-inner a {
+    text-decoration:none; color:var(--text); font-size:0.82em; padding:5px 11px;
+    border-radius:16px; transition:all .2s; white-space:nowrap;
+    border:1px solid transparent;
+  }
+  .nav-inner a:hover, .nav-inner a.active {
+    background:var(--primary); color:#fff; border-color:var(--primary);
+  }
+  /* ---- 主体 ---- */
+  .container { max-width:1000px; margin:0 auto; padding:30px 20px 60px; }
+  /* ---- 章节卡片 ---- */
+  section { margin-bottom:44px; }
+  .ch-title {
+    font-size:1.6em; font-weight:700; color:var(--primary); border-left:6px solid var(--accent);
+    padding-left:16px; margin-bottom:18px; line-height:1.4;
+  }
+  .ch-title small { font-size:0.55em; color:var(--light-text); display:block; font-weight:400; margin-top:2px; }
+  .card {
+    background:var(--card); border:1px solid var(--border); border-radius:10px;
+    padding:22px 26px; margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  }
+  .card h3 {
+    font-size:1.1em; color:var(--primary); margin-bottom:10px;
+    padding-bottom:6px; border-bottom:1px dashed var(--border);
+  }
+  .card h4 { font-size:1em; color:#444; margin:12px 0 6px; }
+  .card ul, .card ol { padding-left:22px; margin:6px 0; }
+  .card li { margin-bottom:4px; }
+  .card p { margin:6px 0; }
+  /* ---- 标签 ---- */
+  .tag {
+    display:inline-block; background:var(--highlight); color:#8B6914;
+    font-size:0.78em; padding:2px 10px; border-radius:10px; margin-right:5px;
+    border:1px solid #e8d8a0;
+  }
+  .tag.red { background:#fdecea; color:var(--red-accent); border-color:#f5c6cb; }
+  .tag.blue { background:#e8f4fd; color:var(--blue-accent); border-color:#b8daff; }
+  /* ---- 时间线 ---- */
+  .timeline { position:relative; padding-left:30px; }
+  .timeline::before {
+    content:''; position:absolute; left:10px; top:4px; bottom:4px;
+    width:2px; background:var(--border);
+  }
+  .tl-item { position:relative; margin-bottom:14px; }
+  .tl-item::before {
+    content:''; position:absolute; left:-24px; top:7px;
+    width:10px; height:10px; border-radius:50%; background:var(--accent);
+    border:2px solid #fff; box-shadow:0 0 0 2px var(--accent);
+  }
+  .tl-year { font-weight:700; color:var(--primary); margin-right:8px; }
+  /* ---- 引用 ---- */
+  blockquote {
+    background:var(--highlight); border-left:3px solid var(--accent);
+    margin:12px 0; padding:10px 18px; font-size:0.92em; color:#5a4a30;
+    border-radius:0 6px 6px 0;
+  }
+  blockquote.primary {
+    background:#fdf2f2; border-left-color:var(--red-accent); color:#5a3030;
+  }
+  /* ---- 表格 ---- */
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:0.9em; }
+  th { background:var(--primary); color:#fff; padding:8px 12px; text-align:left; }
+  td { padding:7px 12px; border-bottom:1px solid var(--border); }
+  tr:nth-child(even) td { background:#fafaf5; }
+  /* ---- 重点框 ---- */
+  .highlight-box {
+    background:linear-gradient(135deg, #fff5f5, #fff8e7);
+    border:2px solid var(--accent); border-radius:10px;
+    padding:18px 22px; margin:16px 0;
+  }
+  .highlight-box h3 { color:var(--red-accent); margin-bottom:8px; }
+  /* ---- 响应式 ---- */
+  @media (max-width:700px) {
+    .hero h1 { font-size:1.6em; }
+    .container { padding:16px 10px 40px; }
+    .card { padding:14px 16px; }
+    .nav-inner a { font-size:0.72em; padding:4px 8px; }
+  }
+  /* ---- 打印 ---- */
+  @media print {
+    .nav-wrap { display:none; }
+    .hero { padding:20px; }
+    section { page-break-inside:avoid; }
+  }
+  /* ---- 知识点网格 ---- */
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:600px) { .grid-2 { grid-template-columns:1fr; } }
+  /* ---- 返回顶部 ---- */
+  .back-top {
+    position:fixed; bottom:30px; right:30px; width:42px; height:42px;
+    background:var(--primary); color:#fff; border:none; border-radius:50%;
+    font-size:1.3em; cursor:pointer; opacity:0.7; transition:opacity .2s;
+    z-index:99;
+  }
+  .back-top:hover { opacity:1; }
+  hr.sep { border:none; border-top:2px dotted var(--border); margin:30px 0; }
+</style>
+</head>
+<body>
+
+<!-- ====== 顶部 ====== -->
+<header class="hero">
+  <h1>中国对外关系史（上）</h1>
+  <p class="subtitle">History of China's Foreign Relations, Part I</p>
+  <p class="info">课程号 02430211 · 北京大学 · 春季学期 · 李扬帆 教授<br>
+  整理自课堂十五讲PPT、教学大纲及期末复习要点 · 2026年6月</p>
+</header>
+
+<!-- ====== 导航 ====== -->
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <a href="#intro">导论</a>
+    <a href="#ch1">第一章·鸦片战争</a>
+    <a href="#ch2">第二章·洋务运动</a>
+    <a href="#ch3">第三章·边疆危机</a>
+    <a href="#ch4">第四章·甲午战争</a>
+    <a href="#ch5">第五章·全面危机</a>
+    <a href="#ch6">第六章·义和团</a>
+    <a href="#ch7">第七章·民国外交</a>
+    <a href="#ch8">第八章·抗战外交</a>
+    <a href="#ch9">第九章·走向新中国</a>
+    <a href="#sino-jp">专题·中日关系</a>
+    <a href="#review">复习重点</a>
+    <a href="#timeline">大事年表</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ====== 导论 ====== -->
+<section id="intro">
+  <div class="ch-title">导论 <small>知己·知国·知天下（6学时）</small></div>
+
+  <div class="card">
+    <h3>一、课程核心理念</h3>
+    <p><strong>"没有停滞的帝国，只有停滞的研究"</strong>——本课程从多重视角反思传统明清断代史的线性叙事，以丰富的史事证明中国在帝制时代仍是一个<strong>"涌动的天下"</strong>。</p>
+    <p>时代呼唤中国提出原创性的世界观。几个世纪以来，以欧洲历史逻辑观察东方的盛行，在某种意义上源自<strong>东方学者的缺席和缺位</strong>。19世纪中期至二十世纪，中国对外关系在两个背景下展开：</p>
+    <ul>
+      <li><span class="tag red">外部</span> 完全不同于东亚传统国际关系的政治文化环境——列强侵略政策使中外关系以<strong>冲突</strong>为基本特征</li>
+      <li><span class="tag blue">内部</span> 中国人看待外部世界和反观自身传统的基本格调发生<strong>剧烈嬗变</strong>——卷入一场迄今仍在进行的大变局</li>
+    </ul>
+    <p><strong>核心命题：</strong>民国外交一定意义上是晚清外交的继续，因为中国近代外交的基本问题——<em>主权独立与领土完整</em>——并没有得到彻底解决。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、如何研究历史——三重角度</h3>
+    <div class="grid-2">
+      <div>
+        <h4>1. 长度角度</h4>
+        <p>几千年历史，要抓住历史的<strong>"长时段"</strong>脉络，感受思想的影响。布罗代尔（Fernand Braudel）的"长时段"理论——人在思考，思想在影响人。</p>
+      </div>
+      <div>
+        <h4>2. 比较角度</h4>
+        <p>在全球化和亚洲比较的背景下拓展研究视野。中国历史与世界历史的关联，超越"冲击-反应"模式。</p>
+      </div>
+      <div>
+        <h4>3. 进入现场角度</h4>
+        <p>重视历史现场感和细节，回到具体人物和事件之中去理解。"了解之同情"（陈寅恪语）。</p>
+      </div>
+      <div>
+        <h4>核心素养</h4>
+        <p>独立思想、独立人格——"自由之思想，独立之精神"。学问就是<strong>"思无邪"</strong>——摒弃功利、回归本心（孔子论《诗》三百，一言以蔽之，曰思无邪）。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>三、中国传统对外关系——"天下"体系</h3>
+    <p><strong>五服制度：</strong>《尚书·禹贡》——王畿→甸服→候服→绥服→要服→荒服（500里×5=2500里）</p>
+    <p><strong>周礼九服：</strong>王、侯、甸、男、采、卫、蛮、夷、镇、藩</p>
+    <p><strong>核心结构：</strong>中国人设想的<strong>"中心—外围"</strong>结构。朝（political）贡（trade）= tribute，是政治仪式与贸易交换的统一体。</p>
+    <blockquote>
+      天下观的核心：中国不是一个简单的"国家"（state），而是一个以文化认同为核心的<strong>文明体</strong>。梁启超感叹："吾中国有最可怪者一事，则以数百兆人立国于世界者数千年，而至今无一国名也。"（《中国积弱溯源论》，1900年）
+    </blockquote>
+  </div>
+
+  <div class="card">
+    <h3>四、中国文明的延续性——何以2500年不断？</h3>
+    <ul>
+      <li><strong>地理条件：</strong>相对封闭而广阔的大陆环境，形成独立发展的地理基础</li>
+      <li><strong>人口规模：</strong>统一时代远超欧洲的人口基数（见下表）</li>
+      <li><strong>文字统一：</strong>表意文字超越方言差异，形成文化共同体</li>
+      <li><strong>制度设计：</strong>科举制度、郡县制、儒家意识形态——"士绅阶层"（the Gentry Class）是社会稳定的中坚力量</li>
+      <li><strong>文化韧性：</strong>顾炎武"天下兴亡，匹夫有责"——文化认同高于政权更迭。顾炎武区分"亡国"（易姓改号）与"亡天下"（仁义充塞、率兽食人）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>五、明末清初的中西交往</h3>
+    <ul>
+      <li><strong>丝绸之路：</strong>先秦草原之路（前10-前4世纪）→ 亚历山大·希腊化时期（前4-前2世纪）→ 西汉张骞通西域（前2世纪，丝路正式形成）→ 罗马帝国时期（前1世纪-2世纪，希腊罗马已知"赛里斯"即中国）→ 汉唐鼎盛（3-9世纪，陆海丝路并行）</li>
+      <li><strong>大秦与中国：</strong>《后汉书》载166年大秦王安敦（Antoninus）遣使至汉——正史首见罗马遣使（可能有希腊-叙利亚商人冒充）</li>
+      <li><strong>郑和下西洋：</strong>明成祖"疑惠帝亡海外，欲踪迹之，且欲耀兵异域，示中国富强"（《明史·郑和传》）</li>
+      <li><strong>隆庆开海：</strong>明末对外贸易的开放</li>
+      <li><strong>传教士来华：</strong>利玛窦（Matteo Ricci）、汤若望（Johann Adam Schall von Bell）、南怀仁（Ferdinand Verbiest）等——"西学东渐"与"东学西传"的双向交流</li>
+      <li><strong>康熙历狱：</strong>杨光先"宁可使中夏无好历法，不可使中夏有西洋人"——中西文化冲突的典型事件</li>
+      <li><strong>马戛尔尼使团（1793）：</strong>礼仪之争——叩头问题。马戛尔尼日记中的"破船论"——中国是一艘破烂的旧船</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 导论核心思考题</h3>
+    <p><strong>中国传统对外关系的历史遗产是什么？</strong></p>
+    <ul>
+      <li>① 统一王朝的外交体制（朝贡-册封体系）</li>
+      <li>② "天下"观念的延续——中心-外围的世界认知结构</li>
+      <li>③ 文化中心主义——以文化认同而非种族/领土界定"中国"</li>
+      <li>④ "大一统"思想——政治统一与文明延续的意识形态基础</li>
+      <li>⑤ 朝贡贸易体制——政治仪式与贸易交换的复合体</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第一章 ====== -->
+<section id="ch1">
+  <div class="ch-title">第一章 维护传统对外关系体系的失败 <small>两次鸦片战争时期的对外关系（6学时）</small></div>
+
+  <div class="card">
+    <h3>一、第一次鸦片战争（1839-1842）</h3>
+    <h4>背景：中英印三角贸易</h4>
+    <p>英国从印度向中国输入<strong>鸦片</strong>，从中国购买<strong>茶叶</strong>，向中国推销<strong>棉织品</strong>。鸦片的大量输入导致中国白银大量外流，造成严重的经济和社会危机。</p>
+    <p><strong>战争爆发的外因：</strong>英国工业革命后的扩张需求；中英印三角贸易中英国的利益驱动；英国商务监督取代公司大班后，官方对鸦片贸易的默许乃至支持。</p>
+    <p><strong>战争爆发的内因：</strong>禁烟运动触及英国利益。林则徐禁烟动机的双重性：维护国民健康与维护白银不外流。</p>
+
+    <h4>军事对比</h4>
+    <p>清军火药的配比严重落后：关天培使用的火药配比为80:10:10（黑炭:硝石:硫磺），而西方近代黑色火药化学反应方程式（1825年确立）：2KNO₃ + 3C + S → K₂S + N₂ + 3CO₂。直至1836年，清廷才提出"军储利器，枪炮为先"，但不久又强调"枪箭并重，不容偏废"。</p>
+    <p><strong>认知局限：</strong>林则徐、邓廷桢最初认为"夷兵除枪炮之外，击刺步伐俱非所娴，而其腿足缠束紧密，屈伸皆所不便，若至岸上，更无能为"——严重低估英军陆战能力。</p>
+    <p><strong>荒唐战术：</strong>杨芳以"尿桶迎敌"（以秽物破洋人妖术）；奕经制定"五虎制敌"计划——寅年寅月寅日寅时由属虎之将出战，"虎能吃羊（洋）"。</p>
+
+    <h4>关键人物</h4>
+    <ul>
+      <li><strong>林则徐：</strong>蒋廷黻评"林则徐实在有两个，一个是士大夫心目中的林则徐（主剿、百战百胜），一个是真正的林则徐（慢慢觉悟了的）"。其《拟谕英吉利国王檄》展现了传统的天朝世界观——"茶叶、大黄，外国所不可一日无也"</li>
+      <li><strong>琦善：</strong>通常被视为"卖国贼"，但需放在历史语境中重新审视——"边衅"的提出并非毫无道理</li>
+    </ul>
+
+    <h4>《南京条约》（1842）</h4>
+    <p>割让香港岛，开放五口通商（广州、福州、厦门、宁波、上海），赔款2100万银元，协定关税。不平等条约制度由此建立。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、"汉奸"问题与三元里事件</h3>
+    <p>林则徐家书："此次爬沙角后山之人，大半皆汉奸……后来有人拿鸦片，即碰其钉，有人说汉奸，则曰：汝即汉奸。"据《筹办夷务始末》和《南海县志》，英军进攻时有约1200人援助英人，而三元里抗英群众仅5-10人。三元里抗英斗争与"赎城费"问题密切相关——十三行行商纷纷捐款赎城，群众运动具有复杂的经济动机。</p>
+  </div>
+
+  <div class="card">
+    <h3>三、魏源与"师夷长技以制夷"</h3>
+    <p>魏源（1794-1857），湖南隆回人，与龚自珍齐名。1841年林则徐被罢免途经镇江，将《四洲志》交魏源。魏源据此编成<strong>《海国图志》</strong>（1842年50卷→1847年60卷→1852年100卷）：</p>
+    <blockquote>
+      "是书何以作？曰：为以夷攻夷而作，为以夷款夷而作，为师夷之长技以制夷而作。""善师四夷者，能制四夷；不善师外夷者，外夷制之。"
+    </blockquote>
+    <p><strong>核心思想：</strong>①以守为战，坚壁清野；②以夷攻夷，以夷款夷；③师夷养兵练兵之法。突破了中国中心论，开辟向西方学习之新风，被誉为"区域与国别研究之父"、洋务先声。</p>
+    <p><strong>历史讽刺：</strong>《海国图志》在中国不被重视，却大量传入日本（1850年3部→1854年15部），对日本明治维新产生重大启蒙作用。佐久间象山视魏源为"海外同志"，提出"东洋道德，西洋技术"（和魂洋才）。日本学者感叹："呜呼！忠智之士，忧国著书，不为其君用，反为他邦兴。"</p>
+  </div>
+
+  <div class="card">
+    <h3>四、湖湘文化与晚清人才群</h3>
+    <p><strong>"若道中华国果亡，除非湖南人尽死"</strong>——杨度《湖南少年歌》（1903年）。近代以来湖湘六大人才群体：①经学主变派（陶澍、魏源、贺长龄）→②理学经世派（曾国藩、胡林翼、左宗棠、郭嵩焘）→③资产阶级维新派（谭嗣同、唐才常）→④资产阶级革命派（黄兴、蔡锷、宋教仁）→⑤君主立宪派（谭延闿、杨度）→⑥新民学会派（毛泽东、蔡和森）。</p>
+    <p>湖湘文化三大源流：周敦颐（濂溪先生，理学奠基人）→岳麓书院（朱张会讲1167年）→王夫之（船山先生，明末清初思想家）。核心精神：经世致用、躬行实践、敢为人先。</p>
+  </div>
+
+  <div class="card">
+    <h3>五、第二次鸦片战争（1856-1860）</h3>
+    <p><strong>导火索：</strong>马神甫事件（西林教案，1856）与亚罗号事件（1856）。</p>
+    <p><strong>关键人物：</strong>叶名琛——"不战不和不守；不死不降不走"；僧格林沁——大沽口战术胜利却导致战略与外交的彻底失败，劫持英外交官巴夏礼为人质，最终1860年大沽口惨败。</p>
+    <p><strong>制度性变化：</strong>①总理各国事务衙门（1861年由奕訢奏请设立，1901年依《辛丑条约》改为外务部，位列六部之上）；②外国公使常驻北京（1873年同治亲政，各国公使以五鞠躬礼觐见，礼仪之争终获解决）；③赫德（Robert Hart）出任海关总税务司（1863-1908），建立近代海关制度。</p>
+  </div>
+
+  <div class="card">
+    <h3>六、斌椿使团（1866）与蒲安臣使团（1868-1870）</h3>
+    <p><strong>斌椿使团：</strong>近代首个官派赴欧考察团，由赫德提议，63岁的斌椿任团长，游历英法俄德等十余国，著《乘槎笔记》。</p>
+    <p><strong>蒲安臣使团：</strong>首个正式外交使团，由卸任美国驻华公使蒲安臣任首席使臣，签订《蒲安臣条约》（中美《天津条约续增条款》），确立平等往来、自由移民等原则——晚清主动走向近代外交的重要尝试。</p>
+    <p><strong>对比日本：</strong>岩仓使团（1871-1873）规模更大（48人+59名留学生），历时近两年访问12国，耗资百万日元——充分体现明治政府向西方学习的决心，但也埋下了效仿德国军国主义的隐患。</p>
+  </div>
+
+  <div class="card">
+    <h3>七、郭嵩焘——中国首位驻外公使</h3>
+    <p>郭嵩焘（1818-1891），1876年任驻英公使（后兼驻法公使），著《使西纪程》。副使刘锡鸿罗织其"十大罪状"——"此京师所同指目为汉奸之人"。郭嵩焘的遭遇折射出晚清中国接受近代国际秩序的艰难。他在观察西方后得出的结论：不仅要学"器"，更要学"道"——<strong>治标与治本的双重任务</strong>。</p>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 核心思辨</h3>
+    <p><strong>鸦片战争是否是中国对外关系的分水岭？</strong></p>
+    <p>需要超越"战和=爱国卖国"的二元逻辑。鸦片战争后，中国人对外部世界的认知开始缓慢变化（魏源、徐继畬等），但传统朝贡体制并未立即瓦解。鸦片战争"没能真正打开中国的大门"——十三行体制仍延续，曾国藩、左宗棠等人仍视和局为上策。真正的分水岭可能要到<strong>甲午战争</strong>才完成。</p>
+    <p><strong>超越战和、爱国卖国的二元论：</strong>晚清对外关系的性质是"无国家主义的文化生存问题"vs"民族国家主义"的冲突。清流派主战与洋务派理性对外观的根本分歧在于：不知何时战、一味主战（清流派），还是分清不同战争状态、理性决策（洋务派）。战和观不等于爱国卖国观。</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第二章 ====== -->
+<section id="ch2">
+  <div class="ch-title">第二章 建立新型对外关系模式的尝试 <small>洋务运动时期的对外关系（6学时）</small></div>
+
+  <div class="card">
+    <h3>一、洋务运动的背景与曾国藩</h3>
+    <p><strong>背景：</strong>经世致用思想的兴起；群众运动与条约口岸的兴起；地方督抚权力的膨胀（参与对外交涉，汉族督抚的兴起）；所谓"三千年未有之变局"（李鸿章语）。</p>
+    <p><strong>曾国藩（1811-1872）：</strong>湘军创始人，"内用黄老，外示儒术"，实现儒家"立功、立德、立言"三不朽。其《讨粤匪檄》（1854年）以保卫"名教"为旗号。蔡锷辑、蒋介石补《曾胡治兵语录》。毛泽东1917年评价："愚于近人，独服曾文正。"蒋介石誉其为"足为吾人之师资，做人楷模"。</p>
+    <p><strong>天津教案（1870）：</strong>因法国育婴堂幼童死亡率高引发民愤，法国领事丰大业被击毙，20名外国人死亡。曾国藩、李鸿章以妥协处理：赔款50万两、处死18人、流放官员。曾国藩因此被骂为"卖国贼"，晚年郁郁。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、洋务派的外交思想</h3>
+    <ul>
+      <li><strong>承认变局：</strong>为改革寻求理论依据——"千古变局"</li>
+      <li><strong>寻求和平：</strong>在弱国地位下尽量维持和平的对外关系</li>
+      <li><strong>信守合约：</strong>"大信不约"的传统与近代条约体系的冲突</li>
+      <li><strong>均势思想：</strong>以夷制夷（如李鸿章"以俄制日"的地缘战略）</li>
+      <li><strong>文化中心主义：</strong>排外主义的深层文化根源——阻碍理性外交</li>
+    </ul>
+    <p><strong>核心人物：</strong>郭嵩焘（先知式的开放思想）、郑观应（《盛世危言》——商战思想）、王韬（改良主义思想家）、张之洞（"中体西用"的集大成者）、曾纪泽（中俄伊犁交涉中的杰出外交官）。</p>
+  </div>
+
+  <div class="card">
+    <h3>三、反洋教运动</h3>
+    <p>文化入侵与本土抵制：传教士享有治外法权保护，部分传教士行为不端（如马神甫案），教案频发。反洋教运动既是文化冲突的表现，也交织着基层社会矛盾。</p>
+  </div>
+
+  <div class="card">
+    <h3>四、对洋务运动的反思</h3>
+    <p><strong>黄仁宇的"冲击-反应"模式评论：</strong>①作为文化实体的中国在本质上没有被改变，中国不可能西化；②欧洲民族主义没有成为中国世界观的主流；③中体西用是难以逾越的命题；④"救亡压倒启蒙"（李泽厚）——但二者实则并不矛盾；⑤洋务运动不能救大清，能否救中国？</p>
+    <p><strong>历史教训：</strong>单纯进行经济和军事改革而不实现政治体制改革是走不通的。这一点与1978年以来的改革开放形成对照——背景与目的（自强复兴求富）、策动者与执行者、手段与内容、影响均有同有异，但本质上都面临"经济改革与政治改革的关系"这一核心命题。</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第三章 ====== -->
+<section id="ch3">
+  <div class="ch-title">第三章 顽强的交涉 <small>边疆地区的普遍危机（3学时）</small></div>
+
+  <div class="card">
+    <h3>边疆危机的全景</h3>
+    <div class="grid-2">
+      <div>
+        <h4>西北·新疆伊犁问题</h4>
+        <p>俄国趁新疆动乱侵占伊犁（1871）。左宗棠收复新疆（1876-1878），曾纪泽赴俄改约（1881），部分收回伊犁。左宗棠"舆榇出关"以示决心。</p>
+      </div>
+      <div>
+        <h4>东南·台湾琉球问题</h4>
+        <p>日本1874年侵台（牡丹社事件），1879年吞并琉球（改为冲绳县）。清政府虽抗议但无力阻止，琉球问题至今悬而未决。</p>
+      </div>
+      <div>
+        <h4>西南·西藏问题</h4>
+        <p>英国势力从印度渗透西藏，1888年隆吐山战役，1890年《中英藏印条约》。清政府在西藏的影响力受挑战。</p>
+      </div>
+      <div>
+        <h4>中法战争（1883-1885）</h4>
+        <p>法国侵占越南，清军参战。镇南关大捷（冯子材）后，清政府"乘胜即收"，签订《中法新约》，放弃对越南的宗主权——"不败而败"。</p>
+      </div>
+    </div>
+    <p><strong>边疆问题的一般原因：</strong>①清帝国本身的衰落；②周边属国体系的松动；③列强全球扩张的压力；④清政府"重内轻外"的战略取舍——"保藩固圉"与"弃藩自保"的两难。</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第四章 ====== -->
+<section id="ch4">
+  <div class="ch-title">第四章 清帝国东亚霸权的彻底丧失 <small>中日甲午战争（3学时）</small></div>
+
+  <div class="card">
+    <h3>一、战争背景与起因</h3>
+    <p><strong>直接原因：</strong>朝鲜东学党起义（1894年），中日同时出兵朝鲜。根本原因：日本侵略扩张蓄谋已久（大陆政策——"征服朝鲜、满洲、中国"）+ 脱亚入欧建立现代国家的内在需要。</p>
+    <p><strong>三种原因说：</strong>①东学党起义（表面导火索）→②海外市场保护和拓展（经济动因）→③严重的国内政治危机（政治动因）→ 根本原因：侵略扩张蓄谋已久。</p>
+    <p><strong>李鸿章1870年预见：</strong>"日本近在肘腋，永为中土之患。……笼络之或为我用，拒绝之则必为我仇。"可惜为时已晚。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、战争后果</h3>
+    <ul>
+      <li><strong>中国霸权的丧失：</strong>东亚传统朝贡体系彻底崩溃</li>
+      <li><strong>中日关系逆转：</strong>由漠视进入敌对</li>
+      <li><strong>中国反向学习日本：</strong>大批留学生赴日（1898年戊戌变法亦以日本为参照）</li>
+      <li><strong>中国民族主义的觉醒：</strong>甲午惨败激发了前所未有的民族危机意识</li>
+      <li><strong>《马关条约》：</strong>割让台湾、澎湖列岛，赔款2亿两白银（相当于日本4年财政收入），允许日本在华设厂——列强瓜分中国的序幕</li>
+    </ul>
+    <blockquote>
+      李鸿章在谈判中对伊藤博文说："台湾已是口中之物。"伊藤答："尚未下咽，饥甚。"——这场战争以最残酷的方式终结了东亚的传统秩序。
+    </blockquote>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 核心思辨：日本崛起对中日关系的历史意义</h3>
+    <p>日本崛起标志着东亚传统国际关系体系的内因崩溃。中日两千年的信息不对称——中国对日本的"高调日本观"（同文同种、一衣带水、天然应从属于中华秩序）遭遇日本的"现实国家主义"——终于在甲午摊牌。<strong>"中国近代之败，实为意识之败，而非力量之败。"</strong></p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第五章 ====== -->
+<section id="ch5">
+  <div class="ch-title">第五章 陷入全面危机的中国 <small>中国民族主义的觉醒（3学时）</small></div>
+
+  <div class="card">
+    <h3>一、列强瓜分中国的狂潮</h3>
+    <p>甲午战争后，列强在中国强占租借地和划分势力范围：德国占胶州湾→俄国占旅顺大连→英国占威海卫、新界→法国占广州湾。中国面临被瓜分的亡国危机。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、美国的"门户开放"政策（1899-1900）</h3>
+    <p>美国国务卿海约翰（John Hay）提出"门户开放"照会：①各国在中国的既得利益不受干扰；②各国在华贸易机会均等；③保持中国领土与行政完整。实质是美国以经济手段参与列强在中国的竞争，避免中国被彻底瓜分而损害美国利益。</p>
+  </div>
+
+  <div class="card">
+    <h3>三、民族主义的觉醒</h3>
+    <p>从"国不知有民，则民不知有国"（1840-1900年的普遍状态），到甲午战后"救亡"成为时代主题。维新运动（1898年戊戌变法）是民族危机刺激下的第一次制度性改革尝试。民族主义的兴起具有双重性：既是救亡的思想武器，也可能滑向盲目排外。</p>
+    <blockquote>
+      1895-2013：民族主义的强国之梦及其困境——"成也在兹，败也在兹"。
+    </blockquote>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第六章 ====== -->
+<section id="ch6">
+  <div class="ch-title">第六章 文化入侵与排外的尖锐对立 <small>义和团运动时期的对外关系（3学时）</small></div>
+
+  <div class="card">
+    <h3>一、义和团运动的起源</h3>
+    <p>19世纪末山东等地民间秘密结社（义和拳）与反洋教情绪结合，发展出"扶清灭洋"的口号。起义的思想根源：文化排外主义 + 底层社会矛盾 + 对列强侵略的朴素反抗。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、清廷的分裂</h3>
+    <p>慈禧太后一度利用义和团对抗列强（1900年6月对十一国宣战），而东南各省督抚（李鸿章、张之洞、刘坤一等）组织<strong>"东南互保"</strong>，拒绝执行中央的宣战令——标志着中央政府权威的严重削弱和地方势力的"准独立"状态。</p>
+  </div>
+
+  <div class="card">
+    <h3>三、李鸿章外交总评</h3>
+    <p>李鸿章（1823-1901），晚清外交的核心人物：</p>
+    <ul>
+      <li><strong>时代感：</strong>"千古变局、数千年未有之变局"</li>
+      <li><strong>国家意识：</strong>东南互保中的国家利益至上</li>
+      <li><strong>转型贡献：</strong>从朝贡到现代外交的转型推动者</li>
+      <li><strong>地缘战略：</strong>防日与"以俄制日"（以夷制夷）</li>
+    </ul>
+    <blockquote class="primary">
+      梁启超评："吾敬李鸿章之才，吾惜李鸿章之识，吾悲李鸿章之遇。""以一人敌一国"——晚清外交困境下个人的悲剧命运。<br>
+      李鸿章遗折（1901）："窃念多难兴邦，殷忧启圣……举行新政，力图自强。"
+    </blockquote>
+    <p><strong>《辛丑条约》（1901）：</strong>赔款4.5亿两白银（庚子赔款），允许列强在北京至山海关沿线驻军，划定使馆区——中国彻底沦为半殖民地。</p>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 晚清外交的遗产</h3>
+    <p>不能简单地以"忠/奸""爱国/卖国""仇外/媚外""战/和"的二元对立来评价晚清外交人物。晚清外交面临的核心困境是：<strong>一个以文化认同为基础的天下体系，如何在列强的枪炮下转变为以主权和国家利益为基础的现代民族国家？</strong>这一转型至今仍在进行。</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第七章 ====== -->
+<section id="ch7">
+  <div class="ch-title">第七章 民国综述 <small>一个似是而非的时代（6学时）</small></div>
+
+  <div class="card">
+    <h3>一、民国：四个"似是而非"</h3>
+    <ol>
+      <li><strong>是第二次春秋战国吗？</strong>人文鼎盛、外交活跃、血性张扬，但春秋为创造文化而生，民国为捍卫文化而死；混战性质不同；天下观vs世界意识。</li>
+      <li><strong>民国是开放时代吗？</strong>政治与文艺有自由，但"对外开放与对内不开放并存"——枭雄背后均有列强影子。</li>
+      <li><strong>民国是现代的嚒？</strong>"救亡压倒启蒙"（李泽厚）。近代民族国家构建是人为过程：从反满到五族共和，与欧洲单一民族主义不同，仍保留天下意识——"未完成的国家"。</li>
+      <li><strong>民国外交官是爱国的吗？</strong>"弱国无外交"与"人民外交"的冲突。顾维钧在巴黎和会上说："China can not lose Shandong as same as the west world can not lose Jerusalem!"</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>二、北洋政府外交成就</h3>
+    <table>
+      <tr><th>年份</th><th>事件</th><th>意义</th></tr>
+      <tr><td>1917</td><td>对德奥宣战</td><td>废除德奥治外法权、终止庚子赔款——第一个废除不平等条约的政府</td></tr>
+      <tr><td>1919</td><td>巴黎和会拒签条约 / 收复外蒙古</td><td>外交胜利；徐树铮出兵收复外蒙古</td></tr>
+      <tr><td>1919.10</td><td>与玻利维亚签订平等条约</td><td>第一个与原无约国谈成的平等条约</td></tr>
+      <tr><td>1921-22</td><td>华盛顿会议</td><td>推翻"二十一条"和山东条款；首次全面讨论废除不平等条约</td></tr>
+      <tr><td>1924</td><td>《中俄解决悬案大纲协定》</td><td>苏俄承认废除旧约——与1945/1950两个中苏条约相比是"绝对的胜利"</td></tr>
+      <tr><td>1925-26</td><td>关税特别会议 / 治外法权谈判</td><td>承认中国关税自主权；罢免洋人总税务司安格联</td></tr>
+      <tr><td>1926-28</td><td>废除中比、中西旧约</td><td>开始对旧约逐个击破</td></tr>
+    </table>
+    <p><strong>北洋政府评价：</strong>虽政局动荡，但在废除不平等条约、收回国家权益方面取得了不可忽视的成就——"弱国的强外交"。</p>
+  </div>
+
+  <div class="card">
+    <h3>三、民国废约进程（1919-1947）</h3>
+    <p>收回租界：1919年天津德奥租界→1924年苏联放弃的前俄租界→1927年汉口九江英租界→1945年全部日租界→1947年全部租界收回完成。</p>
+    <p>收回关税自主权：中美（1928.7.25）→中英（1928.12.20）→中日（1930.5.6）等12国。</p>
+    <p>收回治外法权：中墨（1929）→中英、中美（1943.1.11，太平洋战争爆发后方全面废除对大国的不平等条约）。</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第八章 ====== -->
+<section id="ch8">
+  <div class="ch-title">第八章 抗日战争期间的外交 <small>（9学时）</small></div>
+
+  <div class="card">
+    <h3>一、战前局势（二十世纪三十年代初）</h3>
+    <p>日本侵占东北（1931年九一八事变）、成立伪满洲国（1932）、退出国联。中国诉诸国联调停失败——国际联盟无力制止侵略。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、日本侵华的历史线索</h3>
+    <p>从1874年侵台→1894年甲午战争→1914年侵占山东→1915年"二十一条"→1931年九一八→1937年七七事变（全面侵华）。日本的大陆政策具有极强的连续性——"征韩论"→"满蒙生命线"→"大东亚共荣圈"。</p>
+  </div>
+
+  <div class="card">
+    <h3>三、抗战中的中国</h3>
+    <p><strong>蒋介石庐山声明（1937.7.17）：</strong>"如果战端一开，那就是地无分南北，年无分老幼，无论何人，皆有守土抗战之责任。"</p>
+    <p><strong>军事牺牲：</strong>国民政府军与日军22次大型会战、1117次大型战斗。国民政府军作战伤亡约323万人、病亡约42万人，总计损失约365万人。自卢沟桥事变至1945年6月，国民党军少将以上将领牺牲115人（上将8人，中将42人，少将65人）——佟麟阁、赵登禹、张自忠、戴安澜……</p>
+    <p><strong>湖南战场：</strong>抗战期间六场大会战在湖南——三次长沙会战、常德会战、长衡会战、湘西会战。74军57师在常德以八千之师对付四万之寇，孤军奋战16昼夜，仅剩200余人突围。衡阳保卫战（1944.6）毙敌19502人——"打湖南比打中国的任何一个省都吃力"（今井武夫语）。湖南征兵210-250万，与人口第一大省四川持平。湖南芷江受降（1945.8.21），日方代表今井武夫。</p>
+  </div>
+
+  <div class="card">
+    <h3>四、美国介入与中国国际地位提高</h3>
+    <p><strong>开罗会议（1943.11）：</strong>蒋介石、罗斯福、丘吉尔会晤，发表《开罗宣言》，明确日本须归还台湾、澎湖列岛等中国领土——中国的大国地位首次获得国际认可。会议讨论了反攻缅甸、香港、琉球、印度支那、战后处理日本等问题。</p>
+  </div>
+
+  <div class="card">
+    <h3>五、对日战争索赔问题</h3>
+    <p>中国军民死伤3500万人，直接财产损失1000亿美元，间接损失5000亿美元。但由于美国的阻挠，中国仅获得2200多万美元赔偿。1951年旧金山和会，美国主持宣布盟国放弃对日本的一切赔偿要求。1972年中日邦交正常化，周恩来宣布"毛主席说放弃赔偿要求"——战争索赔成为中国外交史上一个永远的遗憾。</p>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 抗战期间的"新耻"</h3>
+    <p><strong>雅尔塔会议（1945.2）：</strong>美苏英背着中国秘密协定：苏联对日作战的条件包括外蒙古现状维持、大连商港国际化、旅顺港租给苏联为海军基地、中苏共管中东铁路和南满铁路——美苏共同出卖中国。蒋介石日记（1945.9.2）："旧耻虽雪，而新耻重重，不知此耻何日可以复雪矣。"</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 第九章 ====== -->
+<section id="ch9">
+  <div class="ch-title">第九章 从抗战胜利到新中国成立 <small>（3学时）</small></div>
+
+  <div class="card">
+    <h3>一、美国在国共矛盾中的纠葛</h3>
+    <p>抗战胜利后，美国派马歇尔使华（1945-1947）试图调停国共内战，但最终失败。美国对华政策在"支持蒋介石"与"避免卷入中国内战"之间摇摆不定，最终全面介入——成为中美关系史上的沉重一页。</p>
+  </div>
+
+  <div class="card">
+    <h3>二、中共建国前的对外关系</h3>
+    <p>从"一边倒"外交方针的确立（1949年毛泽东《论人民民主专政》），到中苏同盟的建立（1950年《中苏友好同盟互助条约》）。新中国的外交在美苏冷战的夹缝中艰难起步。</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 中日关系专题 ====== -->
+<section id="sino-jp">
+  <div class="ch-title">专题：中日关系 <small>民族特性与历史溯源</small></div>
+
+  <div class="card">
+    <h3>一、中日关系的千年脉络</h3>
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-year">公元前210年</span>徐福东渡——高调处理对日关系的种子</div>
+      <div class="tl-item"><span class="tl-year">汉魏时期</span>"汉倭奴国王"金印（57年）——朝贡关系的开始，中日关系的单向性</div>
+      <div class="tl-item"><span class="tl-year">607年</span>小野妹子使隋——"日出处天子致书日没处天子无恙"——日本追求平等身份，被中国忽视</div>
+      <div class="tl-item"><span class="tl-year">663年</span>白村江之战——倭国惨败，此后900年不敢入侵朝鲜半岛，转学大唐</div>
+      <div class="tl-item"><span class="tl-year">1274/1281年</span>元寇——"神风"传说，日本文明得以保全</div>
+      <div class="tl-item"><span class="tl-year">嘉靖年间</span>倭寇乱华——"大抵真倭十之三，从倭者十之七"，"倭寇"观阻止中国真实了解日本</div>
+      <div class="tl-item"><span class="tl-year">1592/1597年</span>万历援朝抗倭——丰臣秀吉侵略朝鲜为侵华的战略尝试</div>
+      <div class="tl-item"><span class="tl-year">1894-95年</span>甲午战争——千年关系的彻底摊牌</div>
+      <div class="tl-item"><span class="tl-year">1931-1945年</span>日本侵华——"日本中断中国历史发展的自然进程"</div>
+      <div class="tl-item"><span class="tl-year">1972年</span>中日邦交正常化——放弃战争赔偿要求</div>
+      <div class="tl-item"><span class="tl-year">1979-2022年</span>日本ODA援华——约3.3万亿日元（约3200亿RMB），2022年3月终止</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>二、"高调日本观"——中国对日认知的根本缺陷</h3>
+    <p><strong>高调日本观：</strong>认为日本和中国同源同种、一衣带水，理应从属于以中华文明为基础的世界秩序——导致虚构的亲近感，忽视日本国家利益和尊严的内在需求。</p>
+    <p><strong>两千年的信息不对称：</strong>中国对日本长期处于忽视→漠视→不信任的状态。日本（尤其是德川幕府以来）却一直在认真研究中国——朱舜水、王阳明心学、隐元和尚等三位明朝人对日本产生深远影响。东乡平八郎的印章"一生伏首拜阳明"。</p>
+    <blockquote>
+      "中国近代之败，实为意识之败，而非力量之败。……请别漠视你的对手。"
+    </blockquote>
+  </div>
+
+  <div class="card">
+    <h3>三、明治维新为何成功？</h3>
+    <p><strong>福泽谕吉《文明论概略》(1875)：</strong>中国自秦始皇以来，"至尊"与"至强"集中于皇帝一身，形成绝对专制。日本则"至尊未必至强，至强未必至尊"（天皇至尊，幕府至强），为自由思想留下空间。"中国如果不经过一番变革就不可能达到日本这样的程度。在汲取西洋文明方面，日本是比中国容易的。"</p>
+    <p><strong>结构性原因：</strong>日本的分封制（类似于周制）vs 中国的大一统专制。日本的多元权力结构为现代化改革提供了制度弹性。</p>
+    <p><strong>日本国民性：</strong>本尼迪克特《菊花与刀》归纳——"日本人既好斗又和善，既保守又善于接受新事物，既尚武又爱美，既蛮横又文雅，既顺从又不甘任人摆布。"武士道精神：自律、忠诚、尊严、义、勇气、孤独。</p>
+  </div>
+
+  <div class="card">
+    <h3>四、日本年号——中国文化的深远影响</h3>
+    <p>明治（《易经》"圣人南面而听天下，向明而治"）→大正（《易经》"大亨以正，天之道也"）→昭和（《尚书》"百姓昭明，协和万邦"）→平成（《史记》"内平外成"、《尚书》"地平天成"）→令和（《万叶集》，亦有张衡《归田赋》"仲春令月，时和气清"的影子）——日本文化的表层有深刻的中国印迹，但内核早已走出一条独立道路。</p>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 日本对中国发展的三重历史意义</h3>
+    <ol>
+      <li>不服中国主导的东亚秩序——挑战者角色</li>
+      <li>中断中国历史发展的自然进程——侵略者角色（1894-1945）</li>
+      <li>日本成为中国新的政权合法性的工具——1936年后中共抗日民族统一战线的合法性来源；1949年至今，民族主义作为政治动员工具</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 复习重点 ====== -->
+<section id="review">
+  <div class="ch-title">期末复习重点 <small>综合自第十五讲"勾重点"及总复习PPT</small></div>
+
+  <div class="card">
+    <h3>一、课程三大核心问题</h3>
+    <ol>
+      <li><strong>中国为什么能在2500年间保持其文明的延续性？</strong>——地理条件、人口规模、文字统一、制度设计（科举/郡县/儒家意识形态）、文化韧性</li>
+      <li><strong>中国传统对外关系及中国的身份认同是什么？</strong>——"天下"体系（中心-外围结构），朝贡-册封体制，"中国"是一个文化概念而非民族国家概念</li>
+      <li><strong>传统对外关系留下了什么遗产？</strong>——统一王朝的外交体制、文化中心主义、大一统思想、朝贡贸易体制</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>二、中国近代民族主义的演变</h3>
+    <p><strong>三个阶段的民族主义话语：</strong></p>
+    <ul>
+      <li><strong>朱元璋（1367）：</strong>"驱除胡虏，恢复中华，立纲陈纪，救济斯民"——种族民族主义</li>
+      <li><strong>杨秀清、萧朝贵（1852）：</strong>"创建义旗，扫除妖孽，廓清华夏"——太平天国的反满话语</li>
+      <li><strong>孙中山（1903-1905）：</strong>"驱除鞑虏，恢复中华，创立民国，平均地权"——从反满到五族共和的华丽转身；1912年两次祭明太祖陵——"我的太祖啊！"——辛亥革命志士的集体无意识</li>
+    </ul>
+    <p>"革命"一词的传入：日人初译英文Revolution为"革命"，出自《易经》"汤武革命，顺乎天而应乎人"。1895年孙中山等在日本报纸上首次看到"支那革命党首领孙逸仙抵日"的报道，此后沿用。</p>
+  </div>
+
+  <div class="card">
+    <h3>三、重要人物评价框架</h3>
+    <table>
+      <tr><th>人物</th><th>核心贡献/思想</th><th>评价关键词</th></tr>
+      <tr><td>林则徐</td><td>禁烟、开眼看世界</td><td>"两个林则徐"——传统士大夫形象与真实历史形象</td></tr>
+      <tr><td>魏源</td><td>《海国图志》"师夷长技以制夷"</td><td>经世致用；影响日本远超影响中国</td></tr>
+      <tr><td>曾国藩</td><td>湘军、洋务运动奠基</td><td>"内用黄老，外示儒术"；立功立德立言三不朽</td></tr>
+      <tr><td>李鸿章</td><td>晚清外交核心人物</td><td>"以一人敌一国"；"吾敬其才，惜其识，悲其遇"（梁启超）</td></tr>
+      <tr><td>郭嵩焘</td><td>首任驻英公使、《使西纪程》</td><td>治标与治本——超越时代的先见之明；被诬为"汉奸"</td></tr>
+      <tr><td>顾维钧</td><td>巴黎和会、华盛顿会议</td><td>"弱国的强外交"代表人物</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>四、期末考试核心思辨题</h3>
+    <ol>
+      <li>鸦片战争是否是中国对外关系的分水岭？——需从传统体系维护失败的角度分析</li>
+      <li>清末对外关系的规范化与现代化其背后的动因是什么？——内忧外患双重压力</li>
+      <li>边疆问题发生的一般原因是什么？——帝国衰败+列强扩张+属国体系松动</li>
+      <li>日本的崛起对中日关系的历史意义？——意识之败+信息不对称+传统体系内因崩溃</li>
+      <li>中国民族主义是如何觉醒的？——从"国不知有民"到救亡意识</li>
+      <li>晚清对外关系的启示？——超越战和、爱国卖国的二元论</li>
+      <li>北洋政府的对外关系是失败的吗？——重新评价"弱国强外交"</li>
+      <li>国民政府的抗日外交得失如何？——大国地位的确立与战后权益的丧失</li>
+      <li>美国对华政策如何影响中国和东亚政治格局？——从介入到纠葛</li>
+    </ol>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 课程总纲——贯穿始终的分析视角</h3>
+    <ul>
+      <li><strong>中心-外围结构的瓦解与重构：</strong>从朝贡体系到条约体系，再到民族国家体系的艰难转型</li>
+      <li><strong>"涌动的天下"而非"停滞的帝国"：</strong>中国对外关系是一个动态的、充满调适与抵抗的过程</li>
+      <li><strong>超越二元对立：</strong>忠/奸、爱国/卖国、战/和、仇外/媚外、东方/西方、强国/弱国、现代/前现代、改革/革命</li>
+      <li><strong>意识之败：</strong>近代中国对外关系失败的核心在于世界观和认知的滞后</li>
+      <li><strong>"救亡"与"启蒙"的纠缠：</strong>民族独立与文化革新的双重任务至今仍在进行</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====== 大事年表 ====== -->
+<section id="timeline">
+  <div class="ch-title">大事年表 <small>1500-1949</small></div>
+
+  <div class="card">
+    <table>
+      <tr><th style="width:110px">时间</th><th>事件</th><th>意义</th></tr>
+      <tr><td>1517</td><td>葡萄牙人首次来华（皮雷斯使团）</td><td>欧洲势力开始直接接触中国</td></tr>
+      <tr><td>1582</td><td>利玛窦抵澳门</td><td>开启明末清初的西学东渐</td></tr>
+      <tr><td>1601</td><td>利玛窦入京</td><td>传教士进入中国宫廷</td></tr>
+      <tr><td>1644</td><td>明清易代</td><td>东北亚国际秩序的重大重组</td></tr>
+      <tr><td>1661-1722</td><td>康熙朝</td><td>汤若望、南怀仁供职宫廷；礼仪之争</td></tr>
+      <tr><td>1793</td><td>马戛尔尼使团</td><td>叩头礼仪之争；"停滞的帝国"论的起点</td></tr>
+      <tr><td>1839-1842</td><td>第一次鸦片战争</td><td>《南京条约》——不平等条约制度开始</td></tr>
+      <tr><td>1842</td><td>魏源《海国图志》50卷</td><td>"师夷长技以制夷"</td></tr>
+      <tr><td>1856-1860</td><td>第二次鸦片战争</td><td>总理衙门设立；外国公使驻京</td></tr>
+      <tr><td>1861-1895</td><td>洋务运动</td><td>自强求富——"中体西用"</td></tr>
+      <tr><td>1866</td><td>斌椿使团出访欧洲</td><td>近代首个官派赴欧考察团</td></tr>
+      <tr><td>1868</td><td>蒲安臣使团、《蒲安臣条约》</td><td>首个正式外交使团</td></tr>
+      <tr><td>1868</td><td>日本明治维新</td><td>日本走上近代化道路</td></tr>
+      <tr><td>1876</td><td>郭嵩焘使英</td><td>中国首任驻外公使</td></tr>
+      <tr><td>1883-1885</td><td>中法战争</td><td>"不败而败"——放弃越南宗主权</td></tr>
+      <tr><td>1894-1895</td><td>中日甲午战争</td><td>朝贡体系彻底崩溃；《马关条约》</td></tr>
+      <tr><td>1898</td><td>戊戌变法</td><td>制度性改革的尝试与失败</td></tr>
+      <tr><td>1899-1900</td><td>义和团运动</td><td>排外主义的高峰；八国联军侵华</td></tr>
+      <tr><td>1901</td><td>《辛丑条约》</td><td>中国彻底沦为半殖民地</td></tr>
+      <tr><td>1911</td><td>辛亥革命</td><td>帝制终结；"五族共和"</td></tr>
+      <tr><td>1919</td><td>巴黎和会 / 五四运动</td><td>拒签和约；民族主义新高潮</td></tr>
+      <tr><td>1921-1922</td><td>华盛顿会议</td><td>收回山东权益——弱国的外交胜利</td></tr>
+      <tr><td>1924</td><td>《中俄解决悬案大纲协定》</td><td>苏俄承认废除旧约</td></tr>
+      <tr><td>1931</td><td>九一八事变</td><td>日本侵占东北</td></tr>
+      <tr><td>1937-1945</td><td>全面抗日战争</td><td>中国成为世界反法西斯同盟大国</td></tr>
+      <tr><td>1943</td><td>开罗会议</td><td>中国大国地位首次获国际认可</td></tr>
+      <tr><td>1945</td><td>雅尔塔会议</td><td>美苏秘密协定——"新耻"</td></tr>
+      <tr><td>1949</td><td>中华人民共和国成立</td><td>对外关系进入全新阶段</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====== 页脚 ====== -->
+<div style="text-align:center;padding:40px 0 20px;color:var(--light-text);font-size:0.85em;">
+  <p>整理自李扬帆教授《中国对外关系史（上）》课堂十五讲PPT、教学大纲及总复习PPT</p>
+  <p>参考教材：李扬帆《走出晚清》《晚清三十人》《国恨：民国外交二十人》《涌动的天下》《被误读的天下秩序》</p>
+  <p style="margin-top:8px;">"没有停滞的帝国，只有停滞的研究。" —— 2026年6月整理</p>
+</div>
+
+</div>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</button>
+
+</body>
+</html>

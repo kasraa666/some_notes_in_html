@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国对外关系史 · 名词解释手册</title>
+<style>
+:root{--bg:#f8f6f0;--card:#fffefc;--text:#1a1a1a;--muted:#6b6b6b;--border:#d8d5c8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Source Han Serif SC","SimSun","Microsoft YaHei",serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:16px}
+.header{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);color:#fff;text-align:center;padding:32px 20px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.header h1{font-size:1.5em;letter-spacing:3px;margin-bottom:6px}
+.header .sub{opacity:.78;font-size:.85em}
+.search-wrap{background:#fff;padding:10px 20px;border-bottom:1px solid var(--border);position:sticky;top:92px;z-index:99;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search-input{flex:1;min-width:180px;padding:8px 14px;border:1px solid #ccc;border-radius:20px;font-size:.88em;font-family:inherit;outline:none}
+.search-input:focus{border-color:#1a1a2e}
+.search-clear{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.82em;text-decoration:underline}
+.search-count{font-size:.78em;color:var(--muted);white-space:nowrap}
+.unit-filters{display:flex;gap:6px;flex-wrap:wrap;padding:6px 20px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:134px;z-index:98}
+.unit-chip{padding:3px 12px;border-radius:12px;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:.75em;font-family:inherit;transition:all .2s}
+.unit-chip.active{background:#1a1a2e;color:#fff;border-color:#1a1a2e}
+.container{max-width:900px;margin:0 auto;padding:16px 20px 60px}
+.unit-section{margin-bottom:20px}
+.unit-title{font-size:1em;font-weight:bold;padding:10px 16px;border-radius:6px 6px 0 0;color:#fff;letter-spacing:1px}
+.u-intro{background:#1a1a2e}.u1{background:#8b1a1a}.u2{background:#1e40af}.u3{background:#b8860b}.u4{background:#166534}.u5{background:#6b21a8}.u6{background:#0e7490}.u7{background:#9d174d}.u8{background:#1a1a2e}
+.unit-terms{padding:2px 0}
+.term{background:var(--card);border:1px solid var(--border);border-radius:4px;margin:3px 0}
+.term.hidden{display:none}
+.term-header{padding:10px 14px;display:flex;align-items:baseline;gap:8px;cursor:pointer;user-select:none;transition:background.15s}
+.term-header:hover{background:#f9fafb}
+.term-num{color:var(--muted);font-size:.72em;min-width:24px}
+.term-name{flex:1;font-weight:700;font-size:.92em;color:#1a1a2e}
+.term-tags{display:flex;gap:4px;flex-shrink:0}
+.term-tag{font-size:.62em;padding:1px 7px;border-radius:10px;font-weight:700;white-space:nowrap}
+.tag-event{background:#fef2f2;color:#991b1b}.tag-concept{background:#eff6ff;color:#1e40af}.tag-person{background:#faf5ff;color:#6b21a8}.tag-policy{background:#ecfdf5;color:#166534}.tag-doc{background:#fffbeb;color:#92400e}.tag-theory{background:#fdf2f8;color:#9d174d}
+.term-arrow{color:var(--muted);font-size:.65em;transition:transform.3s}
+.term-header.open .term-arrow{transform:rotate(180deg)}
+.term-body{display:none;padding:0 14px 14px;border-top:1px dashed #e5e7eb;font-size:.85em;line-height:1.8}
+.term-body.open{display:block}
+.term-body .def{margin:8px 0}
+.term-body .def strong{color:#991b1b}
+.term-body .detail{margin:6px 0;color:#333}
+.term-body .detail em{color:#1e40af;font-style:normal;font-weight:600}
+.term-body .significance{margin:8px 0;padding:8px 14px;background:#f9fafb;border-left:3px solid #1a1a2e;border-radius:0 4px 4px 0;font-size:.82em;color:#444}
+.term-body .significance::before{content:"要点：";font-weight:700;color:#1a1a2e}
+.back-top{position:fixed;bottom:24px;right:24px;width:38px;height:38px;border-radius:50%;background:#1a1a2e;color:#fff;border:none;cursor:pointer;font-size:1.1em;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:200}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:.8em;border-top:1px solid var(--border);margin-top:16px}
+@media print{.header,.search-wrap,.unit-filters,.back-top,footer{display:none}body{font-size:10px}.term-body{display:block!important}.term{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="header"><h1>中国对外关系史 · 名词解释手册</h1><div class="sub">李扬帆教授 · 2026春 · 覆盖导论至第九章+中日专题</div></div>
+<div class="search-wrap"><input type="text" class="search-input" placeholder="搜索名词..." oninput="doSearch(this.value)"><button class="search-clear" onclick="clearSearch()">清除</button><span class="search-count" id="searchCount"></span></div>
+<div class="unit-filters"><button class="unit-chip active" onclick="filterUnit('all')">全部</button><button class="unit-chip" onclick="filterUnit('intro')">导论</button><button class="unit-chip" onclick="filterUnit('unit1')">第一至二章</button><button class="unit-chip" onclick="filterUnit('unit2')">第三至五章</button><button class="unit-chip" onclick="filterUnit('unit3')">第六至七章</button><button class="unit-chip" onclick="filterUnit('unit4')">第八至九章+专题</button><span style="font-size:.75em;color:var(--muted);margin-left:auto;" id="totalCount"></span></div>
+<div class="container" id="glossary">
+
+<!-- ====== 导论 ====== -->
+<div class="unit-section" data-unit="intro"><div class="unit-title u-intro">导论</div><div class="unit-terms">
+
+<div class="term" data-unit="intro"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">01</span><span class="term-name">天下观</span><span class="term-tags"><span class="term-tag tag-concept">核心概念</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>传统中国自我认知和世界认知的核心框架——中国居于"天下之中"，是文明的化身。中国以"文化认同"而非"领土边界"来定义自身，是一个"文明体"而非"民族国家"。</p><p class="detail">基本结构：<em>"中心—外围"</em>——五服制度（甸→侯→绥→要→荒，每层向外500里）；"普天之下，莫非王土；率土之滨，莫非王臣"。关键特征：文化定义——"夷狄入中国则中国之"，接受中国文化就是中国人；等级性与普遍性的统一——中心高于边缘，但理论上可无限扩容。</p><p class="significance">天下观是理解传统中国对外关系的根本出发点。梁启超1900年"至今无一国名"的困惑正是对天下观的反思——作为一个文明体存在了几千年，但从未被清晰地建构成一个近代意义上的主权国家。</p></div></div>
+
+<div class="term" data-unit="intro"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">02</span><span class="term-name">朝贡体制（Tribute System）</span><span class="term-tags"><span class="term-tag tag-concept">核心制度</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>传统东亚国际秩序的基本制度安排——周边国家定期派遣使团来华"朝贡"，中国皇帝册封其君主，形成以中国为中心的政治-经济-文化复合秩序。</p><p class="detail">五大特征：①<em>政治仪式</em>——叩头礼、册封仪式象征性地承认中国皇帝的最高权威。②<em>贸易交换</em>——"贡"与"市"紧密结合，"厚往薄来"——回赐价值往往远超贡品。③<em>文化认同</em>——朝贡国接受中国文字、历法、礼仪和儒学。④<em>非条约性</em>——"大信不约"——以道德信任而非法律条约为依据。⑤<em>中心-外围结构</em>——以中国为文明中心，周边呈圈层分布。</p><p class="significance">朝贡体制不可能以原有形式恢复——现代国际体系以主权平等为基本原则，东亚各国已形成稳固的民族国家认同。但某些元素（贸易促和平、文化认同为基础的区域合作）可能在"人类命运共同体"等新理念中以创造性方式被激活。</p></div></div>
+
+<div class="term" data-unit="intro"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">03</span><span class="term-name">"没有停滞的帝国，只有停滞的研究"</span><span class="term-tags"><span class="term-tag tag-theory">核心命题</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>课程最基本的方法论立场——挑战西方学界关于"中国是一个停滞的帝国"的传统叙事。中国在帝制时代就是一个<em>"涌动的天下"</em>——动态的、充满调适与抵抗的过程。</p><p class="detail">针对黄仁宇"冲击-反应"模式的批判——该模式隐含了"中国是停滞的帝国"这一预设。"冲击-反应"模式的问题：预设中国只有在外来冲击下才会"被动"发生变化——忽视了中国内部的变革动力和主动创造性。课程主张以"涌动的天下"替代——拒斥将中国历史简化为由西方"激活"的故事。</p><p class="significance">这个命题是批判"冲击-反应"模式的出发点和论述前提。答题时可用于论证中国变革的内生动力。</p></div></div>
+
+<div class="term" data-unit="intro"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">04</span><span class="term-name">马戛尔尼使团（1793）</span><span class="term-tags"><span class="term-tag tag-event">标志事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1793年英国国王乔治三世派遣马戛尔尼伯爵（George Macartney）率领使团访华，试图与中国建立平等的外交和贸易关系。因跪拜礼仪（叩头问题）发生争议，使团最终无功而返。</p><p class="detail">乾隆皇帝以"天朝物产丰盈，无所不有，原不藉外夷货物以通有无"拒绝了英国的通商请求。马戛尔尼在日记中写下了著名的<em>"破船论"</em>——中国是一艘破烂的旧船，靠运气漂浮但经不起风浪。这次接触暴露了两个世界之间巨大的认知鸿沟——英国以为在谈平等的贸易关系，中国以为在接待又一个朝贡使团。</p><p class="significance">马戛尔尼使团是"停滞的帝国"论的历史起点。中英之间在"这是平等的国交往来还是朝贡的上下关系"这一基本问题上的认知错位，贯穿了此后半个多世纪的中西交往。</p></div></div>
+
+<div class="term" data-unit="intro"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">05</span><span class="term-name">利玛窦（Matteo Ricci）</span><span class="term-tags"><span class="term-tag tag-person">人物</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>意大利耶稣会传教士，1582年抵澳门，1601年进入北京宫廷。他是明末清初"西学东渐"与"东学西传"双向交流的最重要桥梁。</p><p class="detail">利玛窦采用"适应主义"策略——学汉语、穿儒服、以儒学概念翻译基督教教义（"天主"→"上帝"），与徐光启、李之藻等中国士大夫建立了密切关系。他将西方数学、天文学、地理学知识（如《坤舆万国全图》）传入中国，同时将中国经典翻译到欧洲。</p><p class="significance">利玛窦代表了中西文明早期的和平交流模式——与其后的枪炮外交形成鲜明对比，是对"冲击-反应"模式的有力反证。</p></div></div>
+
+<div class="term" data-unit="intro"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">06</span><span class="term-name">五服制度</span><span class="term-tags"><span class="term-tag tag-concept">制度概念</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>《尚书·禹贡》中描述的理想化政治地理结构——以王畿为中心，向外每500里为一层，共五层：甸服→侯服→绥服→要服→荒服。</p><p class="detail">每层与中心的政治关系和文化亲疏程度递减——越往外围，文明程度越低，与王畿的关系越松散。这是"天下观"的制度化表达——以中国为中心、圈层式向外扩展的世界秩序想象。</p><p class="significance">五服制度是理解"中心-外围"结构的基础概念。它不是一个实际执行的行政制度，而是一套关于"中国与世界关系"的认知模型。</p></div></div>
+
+</div></div>
+
+<!-- ====== 第一至二章 ====== -->
+<div class="unit-section" data-unit="unit1"><div class="unit-title u1">第一至二章：鸦片战争至洋务运动</div><div class="unit-terms">
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">07</span><span class="term-name">《南京条约》（1842）</span><span class="term-tags"><span class="term-tag tag-doc">条约</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1842年8月29日中英签订的结束第一次鸦片战争的条约，是中国近代史上<em>第一个不平等条约</em>。</p><p class="detail">核心内容：①割让香港岛；②开放广州、福州、厦门、宁波、上海五口通商；③赔款2100万银元；④协定关税（中国无权自行制定关税税率）；⑤片面最惠国待遇、领事裁判权等制度安排。由此建立了<em>不平等条约制度</em>——一套系统性剥夺中国主权的法律框架。</p><p class="significance">《南京条约》被传统史学视为中国"近代史的开端"。但课程强调：鸦片战争"没能真正打开中国大门"——条约体系建立后，朝贡体制并未立即崩溃，中国人的世界观也并未立即改变。真正的分水岭要到甲午战争才完成。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">08</span><span class="term-name">林则徐——"两个林则徐"</span><span class="term-tags"><span class="term-tag tag-person">人物</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>蒋廷黻的精辟判断——"林则徐实在有两个，一个是士大夫心目中的林则徐（主剿、百战百胜），一个是真正的林则徐（慢慢觉悟了的）。"</p><p class="detail">士大夫心目中的：民族英雄——禁烟、抗英、铁骨铮铮。<em>真正的：</em>在实践中逐渐觉悟——发现原有认知不足→开始了解西方→被贬途中将《四洲志》交魏源→促成《海国图志》。世界观局限：认为英军"腿不能弯""至岸上更无能为"；"茶叶大黄外国不可一日无"。精神高度："苟利国家生死以，岂因祸福避趋之"——将个人命运与国运捆绑的近代国家意识。</p><p class="significance">林则徐是"觉醒与局限并存"的典型——他站在传统天下观与近代世界认知的门槛上，开了"开眼看世界"的第一步。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">09</span><span class="term-name">魏源与《海国图志》</span><span class="term-tags"><span class="term-tag tag-person">人物+著作</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>魏源（1794-1857），湖南人。1841年林则徐被贬途经镇江将《四洲志》交魏源，魏源据此编成《海国图志》（1842年50卷→1847年60卷→1852年100卷），系统介绍世界地理历史。</p><p class="detail">核心命题：<em>"师夷长技以制夷"</em>——"是书何以作？曰：为以夷攻夷而作，为以夷款夷而作，为师夷之长技以制夷而作。"三大策略：以守为战（坚壁清野）+以夷攻夷+师夷养兵练兵之法。<em>历史反讽：</em>在中国不受重视→大量传入日本（1850年3部→1854年15部以上）→佐久间象山"海外同志"→对明治维新重大启蒙。日本学者感叹："忠智之士忧国著书，不为其君用，反为他邦兴。"</p><p class="significance">魏源被誉"区域与国别研究之父"、洋务先声。《海国图志》在中国冷遇、日本热捧的反讽，是"意识之败"最生动的例证。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">10</span><span class="term-name">僧格林沁与劫持巴夏礼事件</span><span class="term-tags"><span class="term-tag tag-event">关键事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>第二次鸦片战争期间，清军将领僧格林沁于1859年大沽口击沉英法军舰取得战术胜利，但随后劫持英国谈判代表巴夏礼（Harry Parkes）为人质，违反外交惯例，导致英法联军大规模报复。</p><p class="detail">后果：1860年英法联军攻陷大沽口→占领北京→火烧圆明园→签订《北京条约》（割让九龙、增开天津为商埠、赔款增至800万两白银）——远比此前《天津条约》更为苛刻。一道义上令人振奋的战术胜利，因后续处置不当，在战略层面导致灾难性后果。</p><p class="significance">课程"战不等于爱国"的核心案例——僧格林沁英勇善战不容否定，但他的行为直接触发了更大的灾难。"战"如果不能以理性的战略判断为基础，带来的可能不是光荣而是毁灭。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">11</span><span class="term-name">总理各国事务衙门</span><span class="term-tags"><span class="term-tag tag-concept">制度变革</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1861年由恭亲王奕訢奏请设立的清中央政府外交机构，标志着中国传统对外关系体制的第一次重大制度性调整。1901年依《辛丑条约》改为"外务部"，位列六部之上。</p><p class="detail">设立背景：第二次鸦片战争后，传统的礼部和理藩院已无法处理与西方列强的复杂外交事务。总理衙门负责处理一切涉及"夷务"（后改称"洋务"）的事宜——外交谈判、条约管理、海关、派遣使臣等。它虽然仍是临时性的、非正式的机构（名义上不是"部"），但标志着中国在制度层面开始接纳近代外交模式。</p><p class="significance">从理藩院（处理朝贡关系）→总理衙门→外务部（现代外交部）——中国从天下体系向主权国家体系转型的微观制度史。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">12</span><span class="term-name">曾国藩</span><span class="term-tags"><span class="term-tag tag-person">人物</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>曾国藩（1811-1872），湘军创始人，洋务运动奠基人。"内用黄老，外示儒术"——被公认为儒家"立功、立德、立言"三不朽的典范。</p><p class="detail">天津教案（1870年）：法国领事丰大业被击毙、20名外国人死亡→曾国藩以"赔款50万两+处死18人+流放官员"妥协处理→保全和局，为洋务事业争取时间。在当时被舆论痛骂为"卖国贼"，晚年郁郁。</p><p class="significance">天津教案的妥协处理体现了洋务派"弱国地位下以妥协换取时间"的现实主义逻辑。曾国藩的遭遇——爱国的动机居然被骂为卖国——恰恰印证了"超越战和、爱国卖国二元论"的必要性。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">13</span><span class="term-name">郭嵩焘</span><span class="term-tags"><span class="term-tag tag-person">人物</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>郭嵩焘（1818-1891），1876年任驻英公使（后兼驻法公使），中国首任驻外公使。著《使西纪程》，提出不仅要学西方的"器"（技术），更要学"道"（制度）。</p><p class="detail">他的副使刘锡鸿罗织"十大罪状"弹劾他——"此京师所同指目为汉奸之人"。郭嵩焘在观察西方后的结论超越了同时代所有洋务派——西方不仅在船炮方面领先，其议会制度、法治、市民社会同样值得研究。<em>治标与治本的双重任务</em>——是他对洋务运动"中体西用"的最深刻超越。</p><p class="significance">郭嵩焘是一位超越时代的先知——他的思想在当世不被容纳，被诬为"汉奸"，而历史证明他是正确的。他的遭遇是先知者悲剧的缩影。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">14</span><span class="term-name">蒲安臣使团（1868-1870）</span><span class="term-tags"><span class="term-tag tag-event">外交事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1868年清廷派遣的首个正式外交使团，由卸任美国驻华公使蒲安臣（Anson Burlingame）任首席使臣，访问美英法德俄等十余国，签订《蒲安臣条约》（中美《天津条约续增条款》）。</p><p class="detail">《蒲安臣条约》是晚清与西方签订的第一个具有平等性质的条约——确立自由移民原则、保障双方国民在对方国家的权利。蒲安臣在俄病逝于任上——一个美国人为中国外交鞠躬尽瘁。使团体现了晚清主动走向近代外交的尝试。</p><p class="significance">蒲安臣使团与斌椿使团（1866）一起，标志着中国从被动接受冲击到主动派员了解世界的转变——"涌动的天下"而非"停滞的帝国"的例证。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">15</span><span class="term-name">李鸿章——"敬其才、惜其识、悲其遇"</span><span class="term-tags"><span class="term-tag tag-person">人物</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>李鸿章（1823-1901），晚清外交核心人物。梁启超三句话："吾敬李鸿章之才，吾惜李鸿章之识，吾悲李鸿章之遇"——"以一人敌一国"的悲剧命运。</p><p class="detail">核心贡献："千古变局"的时代判断→"外须和戎，内须变法"的方针→洋务运动主要推动者→建设北洋海军→"以夷制夷"地缘战略（联俄制日）。身后背负《马关条约》《中俄密约》《辛丑条约》的"卖国贼"骂名。遗折（1901）："窃念多难兴邦，殷忧启圣……举行新政，力图自强。"</p><p class="significance">李鸿章是课程"超越二元论"最重要的分析对象——他不是卖国贼，他是一个试图在旧制度废墟上挽救国家却最终被废墟埋葬的人。个体的精明无法替代制度的更新——这是他留给改革者最深刻的警示。</p></div></div>
+
+<div class="term" data-unit="unit1"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">16</span><span class="term-name">洋务派外交思想（五大要素）</span><span class="term-tags"><span class="term-tag tag-concept">分析框架</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>以自强为终极目标、以"变局"为基本认知、以"以夷制夷"为核心策略的现实主义外交体系。</p><p class="detail">五大要素：①<em>承认变局</em>——"千古变局"的认知突破。②<em>寻求和平</em>——弱国地位下以和局换取时间和空间。③<em>信守合约</em>——接受条约作为法律框架，违约招致更大灾难。④<em>均势思想</em>——"以夷制夷"，利用列强矛盾维护利益。⑤<em>文化中心主义局限</em>——只学"器"不学"道"，"中体西用"不可逾越的天花板。</p><p class="significance">这五要素是回答"概述洋务派外交思想"论述题的标准框架。</p></div></div>
+
+</div></div>
+
+<!-- ====== 第三至五章 ====== -->
+<div class="unit-section" data-unit="unit2"><div class="unit-title u2">第三至五章：边疆危机至民族觉醒</div><div class="unit-terms">
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">17</span><span class="term-name">海防与塞防之争（1870s）</span><span class="term-tags"><span class="term-tag tag-event">战略争议</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1870年代清政府内部关于国防资源优先配置方向的重大争论——面对西北俄国扩张和东南日本崛起的双重威胁，有限的财力应先投入海防还是塞防？</p><p class="detail"><em>海防派（李鸿章）：</em>"目前之患在东南"（日本最紧迫）；优先建海军；"新疆不复，于肢体之元气无伤；海疆不防，则腹心之大患愈棘"。<em>塞防派（左宗棠）：</em>"重新疆者所以保蒙古，保蒙古者所以卫京师"；放弃新疆俄国将继续东进。<em>结局：</em>折中——左宗棠"舆榇出关"收复新疆+李鸿章建北洋海军。</p><p class="significance">中国近代第一次以"国家战略"高度讨论安全资源优先配置问题。左宗棠保全了西北边疆；李鸿章对日本威胁的预警在二十年后甲午战争得到最惨烈验证。</p></div></div>
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">18</span><span class="term-name">中法战争（1883-1885）——"不败而败"</span><span class="term-tags"><span class="term-tag tag-event">军事事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>法国侵略越南并进攻中国，清军参战。冯子材率军在镇南关取得大捷，但清政府"乘胜即收"，签订《中法新约》，放弃对越南的宗主权。</p><p class="detail">"不败而败"——在战场上取得了胜利，在谈判桌上却放弃了越南。清政府的战略判断：继续与法国在越南纠缠将消耗国力，且可能给日本在朝鲜方向制造机会。因此"乘胜收兵"换取体面的和局。</p><p class="significance">"不败而败"不仅是一个军事-外交案例，更揭示了弱国的战略困境——局部胜利不足以改变整体劣势。</p></div></div>
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">19</span><span class="term-name">左宗棠收复新疆</span><span class="term-tags"><span class="term-tag tag-event">军事行动</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1876-1878年左宗棠率军收复被阿古柏侵占的新疆（除伊犁外）。左宗棠64岁高龄"舆榇出关"（抬着棺材出征以示必死决心）。</p><p class="detail">背景：俄国趁新疆动乱侵占伊犁（1871），阿古柏在南疆建立了依附俄英的傀儡政权。左宗棠的西征军克服了后勤补给极度困难的挑战。收复后，曾纪泽1881年赴俄谈判，部分收回了伊犁地区。</p><p class="significance">今天的新疆之所以是中国的，左宗棠西征打下的基础功不可没——这是海防塞防之争中塞防派取得的最重大实际成果。</p></div></div>
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">20</span><span class="term-name">《马关条约》（1895）</span><span class="term-tags"><span class="term-tag tag-doc">条约</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1895年4月中日签订的结束甲午战争的条约。①割让台湾全岛及澎湖列岛；②赔款2亿两白银（相当于日本4年财政收入）；③允许日本在华设厂；④承认朝鲜"独立"（实际上沦为日本保护国）。</p><p class="detail">谈判中李鸿章被日本刺客刺伤——以"伤重"延迟谈判争取时间，但日本条件基本未变。李鸿章："台湾已是口中之物。"伊藤博文："尚未下咽，饥甚。"</p><p class="significance">《马关条约》不仅是领土和经济的割让，更标志着以中国为中心的东亚朝贡体系的<em>彻底崩溃</em>——朝鲜"独立"意味着最后一个最重要的朝贡国脱离中国。巨额赔款使日本完成了原始资本积累，加速其工业化进程。</p></div></div>
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">21</span><span class="term-name">"门户开放"政策（1899-1900）</span><span class="term-tags"><span class="term-tag tag-policy">美国政策</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>美国国务卿海约翰（John Hay）提出的对华政策照会——①各国在中国的既得利益不受干扰；②各国在华贸易机会均等；③保持中国领土与行政完整。</p><p class="detail">实质：美国以经济手段参与列强在中国的竞争，避免中国被彻底瓜分而损害美国利益——美国当时在亚洲的军事实力不足，选择以"公平竞争"的方式确保自己的商业机会。客观上确实在列强瓜分狂潮中为保全国土提供了一定的外部制衡。</p><p class="significance">"门户开放"是美国对华政策的基石，持续影响至二战期间。它既是对中国主权的尊重（维持领土完整），又是对中国主权的侵犯（未经中国同意即决定对华政策）。</p></div></div>
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">22</span><span class="term-name">《辛丑条约》（1901）</span><span class="term-tags"><span class="term-tag tag-doc">条约</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>义和团运动失败后中国与十一国签订的条约。①赔款4.5亿两白银（庚子赔款，39年还清本息共约9.8亿两）；②允许列强在北京至山海关沿线驻军；③划定东交民巷为使馆区，中国人不得居住；④改总理衙门为外务部，位列六部之上。</p><p class="detail">赔款以关税和盐税为担保——列强由此控制了中国两大财政命脉。"使馆区驻军"和"北戴河至山海关外国驻军权"——中国首都从此门户大开。</p><p class="significance">《辛丑条约》使中国<em>彻底沦为半殖民地</em>。它是慈禧太后以情绪化的"宣战"决策导致的灾难性后果——"战不等于爱国"的最惨痛例证。</p></div></div>
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">23</span><span class="term-name">"东南互保"</span><span class="term-tags"><span class="term-tag tag-event">重大事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1900年义和团运动期间，两广总督李鸿章、湖广总督张之洞、两江总督刘坤一等东南各省督抚拒绝执行清廷对十一国的宣战令，与各国驻沪领事达成互保协议——保全东南半壁免遭战火。</p><p class="detail">以传统道德标准，这是严重的"抗旨不遵"——但以国家利益来衡量，恰恰是在清政府做出灾难性决策后，唯一理性的应对方式。保全了中国最富庶的地区，为后来的经济恢复和制度变革保存了实力基础。</p><p class="significance">"东南互保"是"忠君≠爱国"、"抗旨≠卖国"的极端案例——中央权威的严重削弱与对国家利益的理性守护并存。</p></div></div>
+
+<div class="term" data-unit="unit2"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">24</span><span class="term-name">"革命"一词的传入</span><span class="term-tags"><span class="term-tag tag-concept">文化概念</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>日人初译英文Revolution为"革命"，取自《易经》"汤武革命，顺乎天而应乎人"。1895年孙中山等在日本报纸上首次看到"支那革命党首领孙逸仙抵日"的报道，此后沿用。</p><p class="detail">中国古典"革命"（王朝更替+天命转移）与近代西方Revolution（制度性根本变革）的涵义融合，赋予了革命话语双重合法性——传统天命论+现代变革理念。</p><p class="significance">"革命"的语义演变反映了近代中日之间复杂的文化互动——日本是中国学习西方的重要中介。</p></div></div>
+
+</div></div>
+
+<!-- ====== 第六至七章 ====== -->
+<div class="unit-section" data-unit="unit3"><div class="unit-title u3">第六至七章：义和团与民国外交</div><div class="unit-terms">
+
+<div class="term" data-unit="unit3"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">25</span><span class="term-name">义和团运动</span><span class="term-tags"><span class="term-tag tag-event">重大事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>19世纪末山东等地民间秘密结社（义和拳）与反洋教情绪结合发展出的大规模排外运动——"扶清灭洋"——文化排外主义与底层社会矛盾交织的产物。</p><p class="detail">清廷分裂：慈禧一度利用义和团对抗列强→向十一国宣战；东南督抚"东南互保"拒不执行。最终：八国联军侵华→《辛丑条约》。义和团运动的悲剧在于：民众朴素的反侵略热情被清政府的不理性决策所利用和放大，最终以更大的屈辱收场。</p><p class="significance">义和团是"文化入侵与排外的尖锐对立"的巅峰。它提出了一个至今未过时的问题：如何在抵抗外来文化入侵时，避免滑向盲目的文化排外主义？</p></div></div>
+
+<div class="term" data-unit="unit3"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">26</span><span class="term-name">顾维钧</span><span class="term-tags"><span class="term-tag tag-person">核心人物</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>顾维钧（1888-1985），中国近代最杰出的外交家之一，哥伦比亚大学法学博士。巴黎和会（1919）、华盛顿会议（1921-22）中国代表团核心成员，被誉为"弱国强外交"的代表。</p><p class="detail">巴黎和会：脱稿英语法语演讲——"中国不能失去山东，正如西方不能失去耶路撒冷"——全场震动。<em>外交哲学：</em>①外交的本质是妥协——"百分之六七十即是大胜"；②"宁为玉碎"在外交上不能接受——"国家是不能任其破碎的"；③唯一准绳是民族利益——"永恒的，不因时间、舆论或党派而改变"——超越党派和个人。<em>对"人民外交"的批判：</em>"群众组织起来大游行或组成代表团对中国代表施加压力，常常造成灾难性的后果"。</p><p class="significance">顾维钧是课程论述"专业外交vs人民外交"张力的核心素材——他以亲身经历揭示了弱国在公众舆论与专业外交之间的两难困境。</p></div></div>
+
+<div class="term" data-unit="unit3"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">27</span><span class="term-name">巴黎和会拒签对德和约（1919）</span><span class="term-tags"><span class="term-tag tag-event">标志事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1919年6月28日中国代表团拒绝在《凡尔赛和约》上签字——中国近代外交史上第一个以拒签方式表达抗议的重大事件。</p><p class="detail">背景：中国1917年参战成为战胜国→期望以战胜国身份收回德国在山东权益→1919年4月英法美秘密决定将山东权益转让日本→山东条款严重损害中国主权。顾维钧在大会上的演讲从历史、法律、地理、民族自决论证中国对山东不可争议的主权。拒签的多重原因：核心利益被出卖+五四运动国内民意压力+威尔逊理想主义破产。</p><p class="significance">拒签维护了道义尊严，为次年华盛顿会议重新讨论山东问题提供了前提——如果签了就等于追认山东权益让与日本的合法性。</p></div></div>
+
+<div class="term" data-unit="unit3"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">28</span><span class="term-name">华盛顿会议（1921-1922）</span><span class="term-tags"><span class="term-tag tag-event">外交会议</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1921-1922年在美国华盛顿召开的关于远东和太平洋问题的国际会议。中国代表团由施肇基、顾维钧、王宠惠率领，取得重大外交成果。</p><p class="detail">主要成果：①推翻"二十一条"（1915年日本对华不平等条约）中的山东条款——日本同意归还山东权益；②首次在国际会议上<em>全面讨论废除不平等条约</em>问题；③《九国公约》以多边条约形式确认了门户开放原则。成功原因：借美英对日本扩张的警惕 → "逐个击破"的外交策略 → 一战后的特定国际格局。</p><p class="significance">华盛顿会议是中国近代少有的通过多边外交实现核心利益的外交胜利——验证了顾维钧"百分之六七十即是大胜"的务实外交哲学。</p></div></div>
+
+<div class="term" data-unit="unit3"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">29</span><span class="term-name">北洋政府废约成就</span><span class="term-tags"><span class="term-tag tag-concept">制度变革</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1912-1928年北洋政府时期在政局动荡中取得的常被忽视的外交成就——第一个系统废除不平等条约的中国政府。</p><p class="detail">核心成就：1917对德奥宣战——废除德奥治外法权、终止庚子赔款；1919拒签凡尔赛和约；1919徐树铮收复外蒙古；1919.10与玻利维亚签订首个与原无约国的平等条约；1921-22华盛顿会议推翻"二十一条"山东条款；1924《中俄解决悬案大纲协定》——苏俄承认废除旧约（与1945和1950中苏条约比是"绝对的胜利"）；1925-26关税特别会议——承认中国关税自主权；收回租界：1919德奥→1924前俄→1927汉口九江英租界。</p><p class="significance">评价标准应该是政府是否在既有国力和国际环境下最大限度地维护了国家利益——而不是它的国内政治性质。北洋政府的外交不应被简单地判定为"失败"。</p></div></div>
+
+<div class="term" data-unit="unit3"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">30</span><span class="term-name">民族主义演变：从"驱除胡虏"到"五族共和"</span><span class="term-tags"><span class="term-tag tag-theory">核心命题</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>中国近代民族主义从种族定义（排斥满族）到政治定义（多民族国家认同）的转变——浓缩了近代中国"从天下到国家"的身份重构过程。</p><p class="detail">三阶段：①朱元璋（1367）"驱除胡虏，恢复中华"——种族民族主义，华夷之辨。②杨秀清（1852）"扫除妖孽，廓清华夏"——太平天国的反满革命动员。③孙中山（1903-1905）"驱除鞑虏，恢复中华"→1912年"五族共和"的华丽转身——"合汉、满、蒙、回、藏诸族为一人"。<em>转变原因：</em>"驱除鞑虏"的逻辑一旦贯彻到底，蒙古、西藏、新疆也将被"驱逐"出中国。"保全国土"的现实考量迫使从种族→政治的转型。</p><p class="significance">这个转变表明"中华民族"不是天然存在的实体，而是一个在危机中被<em>人为建构</em>的政治概念。课程中"未完成的国家"指的就是这种建构至今仍在进行。</p></div></div>
+
+</div></div>
+
+<!-- ====== 第八至九章+专题 ====== -->
+<div class="unit-section" data-unit="unit4"><div class="unit-title u4">第八至九章+中日专题</div><div class="unit-terms">
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">31</span><span class="term-name">开罗会议与《开罗宣言》（1943）</span><span class="term-tags"><span class="term-tag tag-doc">国际会议</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1943年11月蒋介石、罗斯福、丘吉尔在埃及开罗会晤，发表《开罗宣言》，明确日本须归还台湾、澎湖列岛等侵占的中国领土。<em>中国的大国地位首次获得国际认可。</em></p><p class="detail">会议讨论了反攻缅甸、香港、琉球、印度支那、战后处理日本等问题。这是中国领导人首次以"大国"身份参与战后国际秩序的设计，但中国大国地位的含金量有限——1945年雅尔塔会议（美苏英背着中国秘密协定）证明了这一点。</p><p class="significance">开罗会议是抗战外交的最高峰——中国形式上完成了从半殖民地到"四强"之一的身份跃升。但雅尔塔"新耻"接踵而至，暴露了名义地位与实际影响力的差距。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">32</span><span class="term-name">雅尔塔会议与"新耻"（1945）</span><span class="term-tags"><span class="term-tag tag-event">关键事件</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>1945年2月美苏英三国在雅尔塔秘密协定——苏联对日作战的条件包括：外蒙古现状维持、大连商港国际化、旅顺港租给苏联为海军基地、中苏共管中东铁路和南满铁路。<em>美苏共同出卖中国。</em></p><p class="detail">中国作为对日作战的主要国家——军民死伤3500万——却被排除在大国决策之外。蒋介石日记（1945.9.2）："旧耻虽雪，而新耻重重，不知此耻何日可以复雪矣。"</p><p class="significance">雅尔塔"新耻"是理解战后中美苏关系和中苏同盟的关键背景——它极大地加深了中共对美国的警惕和反感，为后来"一边倒"埋下了结构性伏笔。它也证明：名义上的大国地位与实际的决策参与权之间存在巨大鸿沟。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">33</span><span class="term-name">马歇尔使华（1945-1947）</span>
+    <span class="term-tags"><span class="term-tag tag-event">外交事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1945年12月至1947年1月，美国总统杜鲁门派遣五星上将乔治·马歇尔（George C. Marshall）为特使来华，调停国共内战。经过一年多的努力，调停以失败告终——美国对华政策在"支持蒋介石"与"避免卷入中国内战"之间摇摆不定，最终全面介入。</p>
+    <p class="detail">马歇尔调停的失败原因：①国共双方积怨已深，停战协议屡次被破坏；②美国政策的内在矛盾——一方面要求蒋介石进行政治改革，一方面继续提供军事经济援助；③蒋介石过高估计自身实力，发动全面内战。马歇尔在离华声明中坦承："和平的最大障碍是国共两党之间彼此几乎不可磨灭的怀疑。"</p>
+    <p class="significance">马歇尔使华是中美关系从战时同盟走向战后对抗的关键转折点。美国此后全面支持蒋介石打内战，导致中美关系在此后二十多年陷入全面对抗。这段历史成为新中国成立后"一边倒"方针的重要外部背景。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">32B</span>
+    <span class="term-name">《中美友好通商航海条约》（1946）</span>
+    <span class="term-tags"><span class="term-tag tag-doc">条约</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1946年11月中美两国在南京签订的商约——在"友好通商航海"的名义下，规定了双方国民在对方国家享有广泛的经济权利。由于当时中国国力远逊于美国，实际上是为美国资本全面进入中国市场敞开了大门。</p>
+    <p class="detail">条约规定双方国民在对方国家享有"国民待遇"和"最惠国待遇"——在设厂、经商、购置不动产、金融、采矿等方面几乎不受限制。表面上是平等条约，但由于中美经济发展水平悬殊（1946年美国GDP约为中国的25倍），"平等"的条款实质上是对强者有利的单向开放。中共对此强烈反对，将其定性为"新的不平等条约"和蒋介石"卖国"的罪证之一。</p>
+    <p class="significance">《中美商约》是在主权独立条件下签订的"形式上平等、实质上不平等"的条约典型案例。它说明废除不平等条约制度之后，经济实力的不对等仍然可以产生事实上的不对等——这种结构性矛盾至今仍是南北关系中的核心议题。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">32C</span>
+    <span class="term-name">"一边倒"方针</span>
+    <span class="term-tags"><span class="term-tag tag-policy">外交原则</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>1949年6月毛泽东在《论人民民主专政》中明确宣告的新中国外交基本方针——"一边倒，是孙中山的四十年经验和共产党的二十八年经验教给我们的……我们在国际上是属于以苏联为首的反帝国主义战线一方面的"。</p>
+    <p class="detail">三条主线的合力作用：革命运动（中共与苏联的历史关系+意识形态认同）+ 内政（巩固新生政权需要外部安全保障和经济援助）+ 国际环境（冷战两极刚性框架——在美苏之间必须做出选择）。"一边倒"不等于放弃独立自主——在同盟内部中国从未接受苏联的"指挥"，从抗美援朝决策到联合舰队事件都体现了这一点。</p>
+    <p class="significance">"一边倒"确立了新中国加入社会主义阵营的基本立场。它的演变脉络——"一边倒"→"一条线"→"独立自主"——是理解新中国外交史的核心线索。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">32D</span>
+    <span class="term-name">太平天国对外政策</span>
+    <span class="term-tags"><span class="term-tag tag-event">历史事件</span></span>
+    <span class="term-arrow">▼</span>
+  </div>
+  <div class="term-body">
+    <p class="def"><strong>定义：</strong>太平天国（1850-1864）在处理对外关系上具有明显的两面性——以"拜上帝教"认同对西方列强存有亲近感（"洋兄弟"），但在涉及主权问题上又拒绝承认清政府签订的不平等条约。</p>
+    <p class="detail">对内有两条路线张力：①《天朝田亩制度》——"有田同耕，有饭同食……无处不均匀，无人不饱暖"——财产公有平均分配的农业社会主义理想；②洪仁玕《资政新篇》——发展工商业、办银行、修铁路、办邮政、奖励发明——19世纪中期最具近代色彩的改革方案。对外有两面性：洪秀全自称耶稣之弟，"洋兄弟"被视天然盟友；但太平天国拒绝承认清廷签订的不平等条约，拒绝列强以"承认条约"换取中立。</p>
+    <p class="significance">太平天国是"新旧交替时代的复杂产物"——不是单纯的旧式农民起义，也不是真正的近代革命；它在对外关系上的两面性恰恰反映了传统中国在遭遇西方式"同教认同"和"条约-主权"体系时的困惑和选择。</p>
+  </div>
+</div>
+
+<div class="term" data-unit="unit4">
+  <div class="term-header" onclick="toggleTerm(this)">
+    <span class="term-num">33</span>
+    <span class="term-name">日本在传统东亚体系中的角色</span><span class="term-tags"><span class="term-tag tag-theory">核心概念</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>从若即若离的参与者→自己为中心的"小华夷秩序"建构→体系终结者的三重演变。</p><p class="detail">古代：半边缘——足利义满接受"日本国王"册封换取贸易利益，但大多数时候不参与朝贡。德川锁国时期：建构以自己为中心的区域网络（对马藩→朝鲜；萨摩藩→琉球；松前藩→北海道）。明治维新后：1874侵台试探→1879吞并琉球→1894甲午摧毁中国霸权。中国对日本的五重错判："同文同种"（文化相似≠利益一致）、"一衣带水"（地理邻近≠政治亲近）、"天然从属"（忽视日本独立国家意识）、"蕞尔小国"（低估日本近代化成就）、"倭寇"标签（妨碍真正了解日本）。</p><p class="significance">日本从"体系边缘"到"体系中心"的逆袭是中国"意识之败"最残酷但最精准的案例。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">34</span><span class="term-name">"高调日本观"</span><span class="term-tags"><span class="term-tag tag-concept">核心概念</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>课程提炼的概念——中国对日本长期抱持的一种虚构的亲近感：认为日本同文同种、一衣带水、天然应从属于中华文明秩序。这种"高调"的想象导致中国严重忽视了日本的独立国家利益和战略野心。</p><p class="detail">两千年的信息不对称：中国对日本——忽视→漠视→不信任；日本对中国——认真研究。三位明朝人（朱舜水、王阳明心学、隐元和尚）对日本产生深远影响；东乡平八郎"一生伏首拜阳明"。与此对照，中国的倭寇叙事——"大抵真倭十之三，从倭者十之七"——阻止了中国真正了解日本。<em>"请别漠视你的对手"</em>——这是课程从千年中日关系中提取的最深刻教训。</p><p class="significance">"高调日本观"是"意识之败"在中日关系中的具体化——它是甲午前中国人对日本'视而不见'的认知状态的精确概括。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">35</span><span class="term-name">福泽谕吉《文明论概略》（1875）</span><span class="term-tags"><span class="term-tag tag-person">人物+著作</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>日本启蒙思想家福泽谕吉的代表作，从政治结构角度诊断了中日现代化的根本差异——中国"至尊"与"至强"合一（绝对专制），日本"至尊未必至强"（天皇与幕府分权）——为日本的自由思想留下了制度空间。</p><p class="detail">福泽谕吉的判断："中国如果不经过一番变革就不可能达到日本这样的程度。在汲取西洋文明方面，日本是比中国容易的。"日本的分封制（近似于周制）vs 中国的大一统——多元权力结构为明治维新提供了制度弹性，而中国的绝对专制使任何实质性的制度变革都面临巨大阻力。</p><p class="significance">福泽谕吉的分析精准揭示了为什么同样面对西方冲击，日本的反应比中国快了至少三十年——不是人聪明与否，而是制度结构的不同。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">36</span><span class="term-name">对日战争索赔问题</span><span class="term-tags"><span class="term-tag tag-think">历史反思</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>中国军民在抗战中死伤3500万人，直接财产损失1000亿美元，间接损失5000亿美元。但由于美国阻挠，中国仅获得约2200多万美元赔偿。1951年旧金山和会宣布盟国放弃对日一切赔偿要求。1972年中日邦交正常化，周恩来宣布"毛主席说放弃赔偿要求"。</p><p class="detail">放弃赔偿是多重因素的结果：美国主导的战后安排（冷战背景下需要扶植日本作为反共桥头堡）、两岸分治（PRC和ROC均无法有效主张赔偿权）、1972年正常化的政治需要（"以放弃赔偿换取关系突破"）。</p><p class="significance">战争索赔的丧失是抗战外交的最大遗憾之一。它与雅尔塔"新耻"共同构成了中国近代外交中"战胜却未得到应有利益"的悲剧性主题。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">37</span><span class="term-name">常德会战与湖南战场</span><span class="term-tags"><span class="term-tag tag-event">战役</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>抗日战争期间湖南战场的重要战役。74军57师在常德以八千之师对付四万之寇，孤军奋战16昼夜，仅剩200余人突围。衡阳保卫战（1944.6）毙敌19502人——日军承认"打湖南比打中国的任何一个省都吃力"。</p><p class="detail">抗战期间六场大会战在湖南：三次长沙会战、常德会战、长衡会战、湘西会战。湖南征兵210-250万，与人口第一大省四川持平。1945年8月21日芷江受降——日方代表今井武夫。</p><p class="significance">湖南战场的牺牲和贡献，是理解课程中"湖湘文化"概念的历史背景——"若道中华国果亡，除非湖南人尽死"并非虚言。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">38</span><span class="term-name">黄仁宇"冲击-反应"模式</span><span class="term-tags"><span class="term-tag tag-theory">理论框架</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>解释中国近代历史变迁的经典框架——中国近代的变革主要是对西方冲击的被动反应。黄仁宇的观点：①中国不可能西化；②欧洲民族主义未成中国世界观主流；③中体西用难以逾越；④变化主要是被动反应。</p><p class="detail">模式的合理之处：描述层面有力——鸦片战争→"开眼看世界"；甲午→维新运动；义和团+辛丑→清末新政；日本入侵→民族主义全面觉醒。冲击-反应的链条清晰可见。<em>根本缺陷：</em>预设中国是"停滞的帝国"——这正是课程要批判的核心。"冲击-反应"忽视了明末清初中西交流等内部调适动力，将复杂历史简化为单向因果。</p><p class="significance">评价"冲击-反应"模式是课程必考的论述思辨题。更好的框架：<em>"外部冲击与内部调适的互动"</em>——中国在回应冲击中主动寻找新的可能性。"没有停滞的帝国，只有停滞的研究"。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">39</span><span class="term-name">洋务运动与改革开放的异同</span><span class="term-tags"><span class="term-tag tag-theory">对比分析</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>19世纪下半叶的洋务运动（1861-1895）与20世纪末的改革开放（1978至今）——两次"向西方学习"的自强运动，跨越百年的呼应，却有根本性的差异。</p><p class="detail"><em>相同：</em>背景（外部压力下自强）、手段（引进技术建工业派留学生）、核心挑战（经济改革与政治改革关系）。<em>根本不同：</em>时代与国际环境——半殖民地被动vs主权独立主动；改革深度——器物层面vs全面系统；领导力量——地方督抚各自为政vs党中央统一领导；社会基础——少数上层vs全社会动员；结果——甲午溃败+清朝覆灭vs世界第二大经济体。<em>历史启示：</em>洋务运动的最大教训——"单纯经济军事改革而不政治体制改革走不通"——被改革开放所汲取。洋务运动对改革开放而言是直接的历史镜鉴。</p><p class="significance">此题集中体现了课程的"长时段"分析视角——将不同时代的同类现象加以比较和对照。</p></div></div>
+
+<div class="term" data-unit="unit4"><div class="term-header" onclick="toggleTerm(this)"><span class="term-num">40</span><span class="term-name">超越二元对立——课程的核心方法论</span><span class="term-tags"><span class="term-tag tag-theory">方法论</span></span><span class="term-arrow">▼</span></div><div class="term-body"><p class="def"><strong>定义：</strong>课程最基本的分析立场——拒斥"战/和、爱国/卖国、东方/西方、强国/弱国、现代/前现代、改革/革命、忠臣/奸臣"的简单二元对立，以更复杂的、历史化的视角评价晚清以来的外交人物和事件。</p><p class="detail">核心困境：晚清对外关系的性质是"无国家主义的文化生存问题"与"民族国家主义"的冲突。清流派主战与洋务派理性对外观的根本分歧——不知何时战、一味主战（清流派）vs分清不同战争状态、理性决策（洋务派）。<em>判断标准：</em>不是"战"还是"和"的姿态，而是决策者是否以国家长远利益——而非个人清誉、党派私利或情绪化的"民意"——为根本考量。</p><p class="significance">答题时可用于评价一切晚清+民国人物和事件。如果不运用这个方法论，对林则徐/琦善/曾国藩/李鸿章/郭嵩焘/顾维钧等人的分析将停留在简单的道德评判层面。</p></div></div>
+
+</div></div>
+
+</div>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer><p>基于李扬帆教授2026春《中国对外关系史》十五讲PPT及总复习整理 · 北京大学</p></footer>
+
+<script>
+function toggleTerm(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open')}
+function doSearch(q){
+  const terms=document.querySelectorAll('.term');
+  let v=0;
+  terms.forEach(term=>{
+    const text=term.textContent.toLowerCase();
+    const ql=q.toLowerCase().trim();
+    if(!ql){term.classList.remove('hidden');v++}else{if(text.includes(ql)){term.classList.remove('hidden');v++}else{term.classList.add('hidden')}}
+  });
+  document.getElementById('searchCount').textContent=q.trim()?'找到'+v+'个':'';
+}
+function clearSearch(){document.querySelector('.search-input').value='';doSearch('');filterUnit('all')}
+function filterUnit(u){
+  document.querySelectorAll('.unit-chip').forEach(c=>c.classList.remove('active'));
+  const chip=document.querySelector('.unit-chip[onclick="filterUnit(\''+u+'\')"]');
+  if(chip)chip.classList.add('active');
+  document.querySelectorAll('.term').forEach(term=>{term.dataset.unit===u||u==='all'?term.classList.remove('hidden'):term.classList.add('hidden')});
+  document.getElementById('searchCount').textContent='';document.querySelector('.search-input').value=''
+}
+(function(){const c=document.querySelectorAll('.term').length;document.getElementById('totalCount').textContent='共'+c+'个名词'})()
+</script>
+</body>
+</html>

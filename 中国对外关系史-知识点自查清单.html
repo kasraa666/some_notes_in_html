@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国对外关系史 · 知识点自查清单</title>
+<style>
+  :root { --bg: #fafaf7; --card: #fffefc; --text: #1a1a1a; --muted: #6b6b6b; --border: #d8d5c8; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Microsoft YaHei", serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; text-align: center; padding: 32px 20px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,.15); }
+  .header h1 { font-size: 1.5em; letter-spacing: 3px; margin-bottom: 6px; }
+  .header .sub { opacity: .8; font-size: .85em; }
+  .progress-wrap { background: #fff; border-bottom: 1px solid var(--border); padding: 10px 20px; position: sticky; top: 92px; z-index: 99; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .progress-bar-bg { flex: 1; min-width: 180px; height: 14px; background: #e5e7eb; border-radius: 7px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #166534, #22c55e); border-radius: 7px; transition: width 0.3s; width: 0%; }
+  .progress-text { font-weight: bold; font-size: 1em; color: #166534; white-space: nowrap; }
+  .progress-detail { font-size: .78em; color: var(--muted); }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 6px 20px; background: #fff; border-bottom: 1px solid var(--border); }
+  .legend-item { font-size: .75em; display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .btn-sm { font-size: .72em; padding: 3px 10px; border-radius: 12px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-family: inherit; }
+  .btn-sm.active { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+  .container { max-width: 960px; margin: 0 auto; padding: 16px 20px 60px; }
+  .unit { margin-bottom: 24px; }
+  .unit-hd { padding: 12px 18px; border-radius: 8px 8px 0 0; color: #fff; font-size: 1em; letter-spacing: 1px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+  .unit-hd .unit-stat { font-size: .72em; opacity: .85; font-weight: normal; }
+  .unit-body { background: var(--card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 14px 18px; }
+  .unit-body.collapsed { display: none; }
+  .u0 { background: #1a1a2e; } .u1 { background: #8b1a1a; } .u2 { background: #1e40af; } .u3 { background: #b8860b; } .u4 { background: #166534; } .u5 { background: #6b21a8; } .u6 { background: #0e7490; } .u7 { background: #9d174d; } .u8 { background: #1e40af; } .u9 { background: #166534; } .u10 { background: #8b1a1a; }
+  .cat { margin-bottom: 14px; }
+  .cat-title { font-size: .9em; font-weight: bold; color: #1a1a2e; padding: 5px 10px; background: #f0f4f8; border-radius: 4px; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+  .cat-stat { font-size: .72em; color: var(--muted); font-weight: normal; margin-left: auto; }
+  .item { display: flex; align-items: flex-start; gap: 8px; padding: 6px 10px; border-radius: 4px; margin: 1px 0; cursor: pointer; transition: background 0.15s; border-left: 3px solid transparent; }
+  .item:hover { background: #f9fafb; }
+  .item.mastered { border-left-color: #22c55e; }
+  .item.partial { border-left-color: #f59e0b; }
+  .item.notyet { border-left-color: #e5e7eb; }
+  .check-box { width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0; border: 2px solid #d1d5db; display: flex; align-items: center; justify-content: center; margin-top: 2px; font-size: 10px; color: #fff; transition: all 0.2s; }
+  .item.mastered .check-box { background: #22c55e; border-color: #22c55e; }
+  .item.partial .check-box { background: #f59e0b; border-color: #f59e0b; }
+  .item-text { flex: 1; font-size: .85em; line-height: 1.55; }
+  .item-tag { font-size: .66em; padding: 1px 7px; border-radius: 10px; white-space: nowrap; margin-left: 5px; font-weight: bold; }
+  .tag-imp { background: #fef2f2; color: #991b1b; } .tag-date { background: #eff6ff; color: #1e40af; } .tag-concept { background: #f0fdf4; color: #166534; } .tag-quote { background: #fefce8; color: #92400e; } .tag-name { background: #faf5ff; color: #6b21a8; } .tag-think { background: #fff7ed; color: #9a3412; }
+  .float-btns { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 8px; z-index: 200; }
+  .float-btn { width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; font-size: 1em; box-shadow: 0 2px 8px rgba(0,0,0,.2); transition: transform .2s; }
+  .float-btn:hover { transform: scale(1.1); }
+  .btn-reset { background: #fef2f2; color: #991b1b; } .btn-expand { background: #eff6ff; color: #1e40af; } .btn-top { background: #1a1a2e; color: #fff; }
+  footer { text-align: center; padding: 24px; color: var(--muted); font-size: .8em; border-top: 1px solid var(--border); margin-top: 24px; }
+  @media print { .header, .progress-wrap, .legend, .float-btns, footer { display: none; } body { font-size: 10px; } .unit-body { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="header"><h1>中国对外关系史 · 知识点自查清单</h1><div class="sub">李扬帆教授 · 2026春 · 点击切换掌握状态：未掌握→部分掌握→已掌握→未掌握</div></div>
+<div class="progress-wrap"><span style="font-weight:bold;">总进度</span><div class="progress-bar-bg"><div class="progress-bar-fill" id="totalBar"></div></div><span class="progress-text" id="totalPct">0%</span><span class="progress-detail" id="totalDetail"></span></div>
+<div class="legend"><span style="font-size:.75em;color:var(--muted);">图例：</span><span class="legend-item"><span class="legend-dot" style="background:#22c55e;"></span> 已掌握</span><span class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> 部分掌握</span><span class="legend-item"><span class="legend-dot" style="background:#e5e7eb;"></span> 未掌握</span><span style="margin-left:auto;"></span><button class="btn-sm active" onclick="filterItems('all')" id="filterAll">全部</button><button class="btn-sm" onclick="filterItems('notyet')" id="filterNotyet">未掌握</button><button class="btn-sm" onclick="filterItems('partial')" id="filterPartial">部分掌握</button><button class="btn-sm" onclick="filterItems('mastered')" id="filterMastered">已掌握</button><button class="btn-sm" onclick="resetAll()">重置</button><button class="btn-sm" onclick="expandAll()">展开全部</button></div>
+<div class="container" id="checklist">
+
+<!-- ====== 导论 ====== -->
+<div class="unit" data-unit="0">
+<div class="unit-hd u0" onclick="toggleUnit(this)"><span>导论：知己·知国·知天下</span><span class="unit-stat" data-unit-stat="0"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">课程核心理念 <span class="cat-stat" data-cat="core"></span></div>
+<div class="item" data-id="c1" data-cat="core"><div class="check-box"></div><span class="item-text"><strong>"没有停滞的帝国，只有停滞的研究"</strong>——中国是一个"涌动的天下"<span class="item-tag tag-imp">核心命题</span></span></div>
+<div class="item" data-id="c2" data-cat="core"><div class="check-box"></div><span class="item-text"><strong>民国外交是晚清外交的继续</strong>——近代外交基本问题（主权独立与领土完整）并未彻底解决<span class="item-tag tag-imp">核心命题</span></span></div>
+<div class="item" data-id="c3" data-cat="core"><div class="check-box"></div><span class="item-text"><strong>三重研究角度</strong>：长时段（布罗代尔）+ 比较（全球化/亚洲）+ 进入现场（了解之同情）<span class="item-tag tag-concept">方法论</span></span></div>
+<div class="item" data-id="c4" data-cat="core"><div class="check-box"></div><span class="item-text">"自由之思想，独立之精神"；"思无邪"——摒弃功利回归本心<span class="item-tag tag-quote">核心理念</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">天下体系与朝贡体制 <span class="cat-stat" data-cat="tianxia"></span></div>
+<div class="item" data-id="tx1" data-cat="tianxia"><div class="check-box"></div><span class="item-text"><strong>五服制度</strong>：甸→侯→绥→要→荒（500里×5）；核心：<strong>"中心—外围"结构</strong><span class="item-tag tag-imp">核心考点</span></span></div>
+<div class="item" data-id="tx2" data-cat="tianxia"><div class="check-box"></div><span class="item-text"><strong>朝贡体制（Tribute System）</strong>：政治仪式+贸易交换；"大信不约"；"厚往薄来"<span class="item-tag tag-imp">核心考点</span></span></div>
+<div class="item" data-id="tx3" data-cat="tianxia"><div class="check-box"></div><span class="item-text"><strong>中国是"文明体"而非"民族国家"</strong>——以文化认同（非领土边界）界定自身<span class="item-tag tag-concept">身份认同</span></span></div>
+<div class="item" data-id="tx4" data-cat="tianxia"><div class="check-box"></div><span class="item-text">梁启超（1900）："以数百兆人立国于世界者数千年，而至今无一国名也"<span class="item-tag tag-quote">重要语录</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">文明延续性 & 明末清初中西交往 <span class="cat-stat" data-cat="civ"></span></div>
+<div class="item" data-id="civ1" data-cat="civ"><div class="check-box"></div><span class="item-text">文明2500年不断：地理+人口+文字+科举/郡县/儒家+文化韧性（顾炎武"亡国"vs"亡天下"）<span class="item-tag tag-concept">五大因素</span></span></div>
+<div class="item" data-id="civ2" data-cat="civ"><div class="check-box"></div><span class="item-text"><strong>利玛窦</strong>来华——"西学东渐"与"东学西传"双向交流；康熙历狱（杨光先）<span class="item-tag tag-date">明末清初</span></span></div>
+<div class="item" data-id="civ3" data-cat="civ"><div class="check-box"></div><span class="item-text"><strong>马戛尔尼使团（1793）</strong>：叩头礼仪之争；马戛尔尼"破船论"——两个世界的认知鸿沟<span class="item-tag tag-imp">标志事件</span></span></div>
+<div class="item" data-id="civ4" data-cat="civ"><div class="check-box"></div><span class="item-text"><strong>丝绸之路</strong>：张骞通西域（前2世纪正式形成）→汉唐鼎盛；大秦王安敦遣使（166年）<span class="item-tag tag-date">时间线</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第一章 ====== -->
+<div class="unit" data-unit="1">
+<div class="unit-hd u1" onclick="toggleUnit(this)"><span>第一章 两次鸦片战争时期的对外关系</span><span class="unit-stat" data-unit-stat="1"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">第一次鸦片战争（1839-1842）<span class="cat-stat" data-cat="ch1war"></span></div>
+<div class="item" data-id="w1" data-cat="ch1war"><div class="check-box"></div><span class="item-text"><strong>中英印三角贸易</strong>：鸦片→中国；茶叶→英国；棉织品→印度/中国。鸦片致白银外流<span class="item-tag tag-imp">核心考点</span></span></div>
+<div class="item" data-id="w2" data-cat="ch1war"><div class="check-box"></div><span class="item-text">军事对比：清火药配比80:10:10 vs 西方火药方程式；"枪箭并重，不容偏废"<span class="item-tag tag-concept">军事认知</span></span></div>
+<div class="item" data-id="w3" data-cat="ch1war"><div class="check-box"></div><span class="item-text">认知局限：林则徐"夷兵腿足缠束紧密，若至岸上更无能为"；杨芳"尿桶迎敌"<span class="item-tag tag-think">荒唐战术</span></span></div>
+<div class="item" data-id="w4" data-cat="ch1war"><div class="check-box"></div><span class="item-text"><strong>《南京条约》（1842）</strong>：割香港岛+五口通商+赔款2100万+协定关税<span class="item-tag tag-imp">必背条约</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">重要人物 <span class="cat-stat" data-cat="ch1fig"></span></div>
+<div class="item" data-id="f1" data-cat="ch1fig"><div class="check-box"></div><span class="item-text"><strong>林则徐</strong>：蒋廷黻"两个林则徐"——士大夫心目中的 vs 真正慢慢觉悟的。"苟利国家生死以"<span class="item-tag tag-imp">关键人物</span></span></div>
+<div class="item" data-id="f2" data-cat="ch1fig"><div class="check-box"></div><span class="item-text"><strong>琦善</strong>：传统"卖国贼"需重新审视；"边衅"的提出并非毫无道理<span class="item-tag tag-name">重新评价</span></span></div>
+<div class="item" data-id="f3" data-cat="ch1fig"><div class="check-box"></div><span class="item-text"><strong>魏源《海国图志》</strong>（1842-1852）："师夷长技以制夷"；日本热捧→中国冷遇的历史反讽<span class="item-tag tag-imp">核心人物</span></span></div>
+<div class="item" data-id="f4" data-cat="ch1fig"><div class="check-box"></div><span class="item-text"><strong>湖湘文化</strong>：六大人才群（经世→维新→革命）；"若道中华国果亡，除非湖南人尽死"<span class="item-tag tag-name">文化背景</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">第二次鸦片战争（1856-1860）<span class="cat-stat" data-cat="ch1s2"></span></div>
+<div class="item" data-id="s1" data-cat="ch1s2"><div class="check-box"></div><span class="item-text">导火索：马神甫事件+亚罗号事件；叶名琛"不战不和不守；不死不降不走"<span class="item-tag tag-date">1856</span></span></div>
+<div class="item" data-id="s2" data-cat="ch1s2"><div class="check-box"></div><span class="item-text"><strong>僧格林沁</strong>：大沽口战术胜利→劫持巴夏礼→英法报复→北京失陷、圆明园被焚<span class="item-tag tag-imp">战术胜战略败</span></span></div>
+<div class="item" data-id="s3" data-cat="ch1s2"><div class="check-box"></div><span class="item-text"><strong>总理衙门（1861）</strong>：奕訢奏请设立→1901改外务部（列六部之上）<span class="item-tag tag-imp">制度变革</span></span></div>
+<div class="item" data-id="s4" data-cat="ch1s2"><div class="check-box"></div><span class="item-text">外国公使驻京（1873同治亲政五鞠躬礼）；赫德海关总税务司（1863-1908）<span class="item-tag tag-date">制度变革</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">斌椿使团 & 蒲安臣使团 & 郭嵩焘 <span class="cat-stat" data-cat="ch1shituan"></span></div>
+<div class="item" data-id="st1" data-cat="ch1shituan"><div class="check-box"></div><span class="item-text"><strong>斌椿使团（1866）</strong>：近代首个官派赴欧考察团，著《乘槎笔记》<span class="item-tag tag-date">1866</span></span></div>
+<div class="item" data-id="st2" data-cat="ch1shituan"><div class="check-box"></div><span class="item-text"><strong>蒲安臣使团（1868-70）</strong>：首个正式外交使团；《蒲安臣条约》——中美平等条约<span class="item-tag tag-date">1868</span></span></div>
+<div class="item" data-id="st3" data-cat="ch1shituan"><div class="check-box"></div><span class="item-text">对比岩仓使团（1871-73）：48人+59留学生历时两年访12国——中日学习西方的决心差距<span class="item-tag tag-think">中日对比</span></span></div>
+<div class="item" data-id="gst1" data-cat="ch1shituan"><div class="check-box"></div><span class="item-text"><strong>郭嵩焘</strong>：首任驻英公使，《使西纪程》——不仅学"器"更要学"道"；被诬"汉奸"<span class="item-tag tag-imp">先知悲剧</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">核心思辨：鸦片战争是分水岭吗？<span class="cat-stat" data-cat="ch1think"></span></div>
+<div class="item" data-id="th1" data-cat="ch1think"><div class="check-box"></div><span class="item-text">鸦片战争"没能真正打开中国大门"——十三行仍延续，朝贡体制未立即瓦解<span class="item-tag tag-imp">必考思辨</span></span></div>
+<div class="item" data-id="th2" data-cat="ch1think"><div class="check-box"></div><span class="item-text"><strong>真正的分水岭可能是甲午战争</strong>——曾国藩左宗棠仍视和局为上策<span class="item-tag tag-imp">必考思辨</span></span></div>
+<div class="item" data-id="th3" data-cat="ch1think"><div class="check-box"></div><span class="item-text"><strong>超越战和、爱国卖国的二元论</strong>——清流派主战≠爱国，洋务派主和≠卖国<span class="item-tag tag-think">方法论</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第二章 ====== -->
+<div class="unit" data-unit="2">
+<div class="unit-hd u2" onclick="toggleUnit(this)"><span>第二章 洋务运动时期的对外关系</span><span class="unit-stat" data-unit-stat="2"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">洋务运动与曾国藩 <span class="cat-stat" data-cat="ch2bg"></span></div>
+<div class="item" data-id="zg1" data-cat="ch2bg"><div class="check-box"></div><span class="item-text"><strong>洋务运动背景</strong>：经世致用思想兴起；汉族督抚权力膨胀；"三千年未有之变局"（李鸿章）<span class="item-tag tag-imp">背景</span></span></div>
+<div class="item" data-id="zg2" data-cat="ch2bg"><div class="check-box"></div><span class="item-text"><strong>曾国藩</strong>："内用黄老，外示儒术"——立功立德立言三不朽；《讨粤匪檄》（1854）<span class="item-tag tag-imp">关键人物</span></span></div>
+<div class="item" data-id="zg3" data-cat="ch2bg"><div class="check-box"></div><span class="item-text"><strong>天津教案（1870）</strong>：法国领事被击毙→20外国人死→赔款50万+处死18人→被骂"卖国贼"<span class="item-tag tag-imp">事件</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">洋务派外交思想 <span class="cat-stat" data-cat="ch2diplo"></span></div>
+<div class="item" data-id="yd1" data-cat="ch2diplo"><div class="check-box"></div><span class="item-text"><strong>五大要素</strong>：①承认变局 ②寻求和平 ③信守合约 ④均势思想（以夷制夷）⑤文化中心主义局限<span class="item-tag tag-imp">必背框架</span></span></div>
+<div class="item" data-id="yd2" data-cat="ch2diplo"><div class="check-box"></div><span class="item-text"><strong>核心人物</strong>：郑观应《盛世危言》商战思想；张之洞"中体西用"；曾纪泽中俄伊犁交涉<span class="item-tag tag-name">人物群</span></span></div>
+<div class="item" data-id="yd3" data-cat="ch2diplo"><div class="check-box"></div><span class="item-text"><strong>历史教训</strong>：单纯经济军事改革而不政治体制改革走不通——与改革开放对照<span class="item-tag tag-think">反思</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第三章 ====== -->
+<div class="unit" data-unit="3">
+<div class="unit-hd u3" onclick="toggleUnit(this)"><span>第三章 边疆地区的普遍危机</span><span class="unit-stat" data-unit-stat="3"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">边疆危机的全景 <span class="cat-stat" data-cat="ch3border"></span></div>
+<div class="item" data-id="bd1" data-cat="ch3border"><div class="check-box"></div><span class="item-text"><strong>西北·伊犁</strong>：俄国占伊犁(1871)→左宗棠收复新疆(1876-78)→曾纪泽改约(1881)<span class="item-tag tag-imp">四大危机</span></span></div>
+<div class="item" data-id="bd2" data-cat="ch3border"><div class="check-box"></div><span class="item-text"><strong>东南·琉球</strong>：日本1874侵台→1879吞并琉球改冲绳县——问题至今悬而未决<span class="item-tag tag-imp">四大危机</span></span></div>
+<div class="item" data-id="bd3" data-cat="ch3border"><div class="check-box"></div><span class="item-text"><strong>中法战争（1883-85）</strong>：镇南关大捷（冯子材）→"乘胜即收"→放弃越南宗主权——不败而败<span class="item-tag tag-imp">四大危机</span></span></div>
+<div class="item" data-id="bd4" data-cat="ch3border"><div class="check-box"></div><span class="item-text">西南西藏：英国从印度渗透→1888隆吐山→1890《中英藏印条约》<span class="item-tag tag-concept">西南</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">海防与塞防之争（1870s）<span class="cat-stat" data-cat="ch3haifang"></span></div>
+<div class="item" data-id="hf1" data-cat="ch3haifang"><div class="check-box"></div><span class="item-text"><strong>海防派（李鸿章）</strong>：目前之患在东南（日本）；"新疆不复，于肢体之元气无伤"<span class="item-tag tag-imp">高频考点</span></span></div>
+<div class="item" data-id="hf2" data-cat="ch3haifang"><div class="check-box"></div><span class="item-text"><strong>塞防派（左宗棠）</strong>："重新疆者所以保蒙古，保蒙古者所以卫京师"<span class="item-tag tag-imp">高频考点</span></span></div>
+<div class="item" data-id="hf3" data-cat="ch3haifang"><div class="check-box"></div><span class="item-text">折中采纳——左宗棠"舆榇出关"收复新疆 + 李鸿章建北洋海军<span class="item-tag tag-think">结局</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第四章 ====== -->
+<div class="unit" data-unit="4">
+<div class="unit-hd u4" onclick="toggleUnit(this)"><span>第四章 中日甲午战争</span><span class="unit-stat" data-unit-stat="4"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">甲午战争（1894-1895）<span class="cat-stat" data-cat="ch4war"></span></div>
+<div class="item" data-id="jw1" data-cat="ch4war"><div class="check-box"></div><span class="item-text"><strong>直接原因</strong>：朝鲜东学党起义→中日同时出兵；根本原因：日本大陆政策蓄谋已久<span class="item-tag tag-imp">起因</span></span></div>
+<div class="item" data-id="jw2" data-cat="ch4war"><div class="check-box"></div><span class="item-text"><strong>《马关条约》</strong>：割台湾澎湖+赔2亿两（=日4年财政收入）+允日在华设厂<span class="item-tag tag-imp">必背条约</span></span></div>
+<div class="item" data-id="jw3" data-cat="ch4war"><div class="check-box"></div><span class="item-text"><strong>五大后果</strong>：朝贡体系崩溃+中日关系逆转+中国反向学日+民族主义觉醒+列强瓜分序幕<span class="item-tag tag-concept">全面后果</span></span></div>
+<div class="item" data-id="jw4" data-cat="ch4war"><div class="check-box"></div><span class="item-text">李鸿章："台湾已是口中之物。"伊藤博文："尚未下咽，饥甚。"<span class="item-tag tag-quote">经典对话</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">核心思辨：意识之败 <span class="cat-stat" data-cat="ch4think"></span></div>
+<div class="item" data-id="jt1" data-cat="ch4think"><div class="check-box"></div><span class="item-text"><strong>"中国近代之败，实为意识之败，而非力量之败"</strong><span class="item-tag tag-imp">核心命题</span></span></div>
+<div class="item" data-id="jt2" data-cat="ch4think"><div class="check-box"></div><span class="item-text"><strong>"高调日本观"</strong>：认为日本同文同种、一衣带水、应从属中华——忽视其国家利益和尊严<span class="item-tag tag-imp">核心概念</span></span></div>
+<div class="item" data-id="jt3" data-cat="ch4think"><div class="check-box"></div><span class="item-text">福泽谕吉《文明论概略》：中国"至尊"与"至强"合一→绝对专制 vs 日本"至尊未必至强"<span class="item-tag tag-think">结构性对比</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第五章 ====== -->
+<div class="unit" data-unit="5">
+<div class="unit-hd u5" onclick="toggleUnit(this)"><span>第五章 中国民族主义的觉醒</span><span class="unit-stat" data-unit-stat="5"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">瓜分危机与门户开放 <span class="cat-stat" data-cat="ch5crisis"></span></div>
+<div class="item" data-id="gc1" data-cat="ch5crisis"><div class="check-box"></div><span class="item-text">德国胶州湾→俄国旅顺大连→英国威海卫新界→法国广州湾<span class="item-tag tag-date">瓜分狂潮</span></span></div>
+<div class="item" data-id="gc2" data-cat="ch5crisis"><div class="check-box"></div><span class="item-text"><strong>美国"门户开放"（1899-1900）</strong>：海约翰照会；贸易机会均等+维持中国领土行政完整<span class="item-tag tag-imp">美国政策</span></span></div>
+<div class="item" data-id="gc3" data-cat="ch5crisis"><div class="check-box"></div><span class="item-text">"国不知有民，则民不知有国"→甲午战后"救亡"成主题→维新运动（1898戊戌变法）<span class="item-tag tag-concept">民族主义觉醒</span></span></div>
+<div class="item" data-id="gc4" data-cat="ch5crisis"><div class="check-box"></div><span class="item-text">民族主义双重性：救亡武器 vs 盲目排外——"成也在兹，败也在兹"<span class="item-tag tag-think">双重性</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第六章 ====== -->
+<div class="unit" data-unit="6">
+<div class="unit-hd u6" onclick="toggleUnit(this)"><span>第六章 义和团运动时期的对外关系</span><span class="unit-stat" data-unit-stat="6"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">义和团与《辛丑条约》<span class="cat-stat" data-cat="ch6yihe"></span></div>
+<div class="item" data-id="yh1" data-cat="ch6yihe"><div class="check-box"></div><span class="item-text">19世纪末山东义和拳+反洋教→"扶清灭洋"——文化排外主义+底层社会矛盾<span class="item-tag tag-concept">起源</span></span></div>
+<div class="item" data-id="yh2" data-cat="ch6yihe"><div class="check-box"></div><span class="item-text"><strong>"东南互保"</strong>：李鸿章张之洞刘坤一拒绝执行慈禧宣战令——中央权威严重削弱<span class="item-tag tag-imp">关键事件</span></span></div>
+<div class="item" data-id="yh3" data-cat="ch6yihe"><div class="check-box"></div><span class="item-text"><strong>《辛丑条约》（1901）</strong>：赔4.5亿两+北京至山海关驻军+划定使馆区<span class="item-tag tag-imp">必背条约</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">李鸿章总评 <span class="cat-stat" data-cat="ch6li"></span></div>
+<div class="item" data-id="li1" data-cat="ch6li"><div class="check-box"></div><span class="item-text"><strong>四大维度</strong>：时代感（千古变局）+国家意识+转型贡献+地缘战略（防日/以俄制日）<span class="item-tag tag-imp">评价框架</span></span></div>
+<div class="item" data-id="li2" data-cat="ch6li"><div class="check-box"></div><span class="item-text">梁启超："吾敬李鸿章之才，吾惜李鸿章之识，吾悲李鸿章之遇"——"以一人敌一国"<span class="item-tag tag-quote">必背评语</span></span></div>
+<div class="item" data-id="li3" data-cat="ch6li"><div class="check-box"></div><span class="item-text"><strong>超越二元对立</strong>：晚清外交核心困境——从天下体系到民族国家的转型至今未完成<span class="item-tag tag-think">方法论</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第七章 ====== -->
+<div class="unit" data-unit="7">
+<div class="unit-hd u7" onclick="toggleUnit(this)"><span>第七章 民国综述：一个似是而非的时代</span><span class="unit-stat" data-unit-stat="7"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">四个"似是而非"<span class="cat-stat" data-cat="ch7four"></span></div>
+<div class="item" data-id="mg1" data-cat="ch7four"><div class="check-box"></div><span class="item-text">是第二次春秋战国吗？春秋为创造文化而生，民国为捍卫文化而死<span class="item-tag tag-think">命题一</span></span></div>
+<div class="item" data-id="mg2" data-cat="ch7four"><div class="check-box"></div><span class="item-text">是开放时代吗？"对外开放与对内不开放并存"——枭雄背后有列强影子<span class="item-tag tag-think">命题二</span></span></div>
+<div class="item" data-id="mg3" data-cat="ch7four"><div class="check-box"></div><span class="item-text">是现代的嚒？"救亡压倒启蒙"（李泽厚）；"未完成的国家"<span class="item-tag tag-think">命题三</span></span></div>
+<div class="item" data-id="mg4" data-cat="ch7four"><div class="check-box"></div><span class="item-text">外交官是爱国的吗？"弱国无外交"与"人民外交"的冲突——顾维钧的批判<span class="item-tag tag-think">命题四</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">顾维钧——弱国的强外交 <span class="cat-stat" data-cat="ch7gu"></span></div>
+<div class="item" data-id="gu1" data-cat="ch7gu"><div class="check-box"></div><span class="item-text"><strong>巴黎和会（1919）</strong>：脱稿演讲"中国不能失去山东，正如西方不能失去耶路撒冷"<span class="item-tag tag-imp">名场面</span></span></div>
+<div class="item" data-id="gu2" data-cat="ch7gu"><div class="check-box"></div><span class="item-text"><strong>批判"人民外交"</strong>：外交不能百分之百成功；"百分之六七十即是大胜"<span class="item-tag tag-imp">外交哲学</span></span></div>
+<div class="item" data-id="gu3" data-cat="ch7gu"><div class="check-box"></div><span class="item-text">唯一准绳是民族利益——"永恒的，不因时间、舆论或党派而改变"<span class="item-tag tag-quote">核心语录</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">北洋政府外交成就 <span class="cat-stat" data-cat="ch7by"></span></div>
+<div class="item" data-id="by1" data-cat="ch7by"><div class="check-box"></div><span class="item-text"><strong>1917对德奥宣战</strong>——废除德奥治外法权终止庚子赔款——<strong>第一个废约的政府</strong><span class="item-tag tag-imp">常被忽视</span></span></div>
+<div class="item" data-id="by2" data-cat="ch7by"><div class="check-box"></div><span class="item-text"><strong>华盛顿会议（1921-22）</strong>：推翻"二十一条"和山东条款；首次全面讨论废约<span class="item-tag tag-imp">外交胜利</span></span></div>
+<div class="item" data-id="by3" data-cat="ch7by"><div class="check-box"></div><span class="item-text"><strong>《中俄解决悬案大纲》（1924）</strong>：苏俄承认废除旧约——比1945/1950条约是"绝对的胜利"<span class="item-tag tag-imp">标志成就</span></span></div>
+<div class="item" data-id="by4" data-cat="ch7by"><div class="check-box"></div><span class="item-text">废约进程：收回租界（1919-1947）+关税自主（1928-1930）+治外法权（1943全面废除）<span class="item-tag tag-date">时间线</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">民族主义：从"驱除胡虏"到"五族共和"<span class="cat-stat" data-cat="ch7nation"></span></div>
+<div class="item" data-id="nt1" data-cat="ch7nation"><div class="check-box"></div><span class="item-text">朱元璋（1367）"驱除胡虏恢复中华"→杨秀清（1852）→孙中山（1903-1905）<span class="item-tag tag-concept">三节点</span></span></div>
+<div class="item" data-id="nt2" data-cat="ch7nation"><div class="check-box"></div><span class="item-text">孙中山1912年两次祭明太祖陵——"我的太祖啊！"——从反满到五族共和的华丽转身<span class="item-tag tag-quote">名场面</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第八章 ====== -->
+<div class="unit" data-unit="8">
+<div class="unit-hd u8" onclick="toggleUnit(this)"><span>第八章 抗日战争期间的外交</span><span class="unit-stat" data-unit-stat="8"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">抗战中的中国 <span class="cat-stat" data-cat="ch8war"></span></div>
+<div class="item" data-id="kz1" data-cat="ch8war"><div class="check-box"></div><span class="item-text">日本侵华连续性：1874→1894→1914→1915→1931→1937——大陆政策极强连续性<span class="item-tag tag-concept">历史线索</span></span></div>
+<div class="item" data-id="kz2" data-cat="ch8war"><div class="check-box"></div><span class="item-text">22次大型会战、1117次大型战斗；伤亡约323万+病亡约42万；少将以上牺牲115人<span class="item-tag tag-imp">军事牺牲</span></span></div>
+<div class="item" data-id="kz3" data-cat="ch8war"><div class="check-box"></div><span class="item-text"><strong>湖南战场</strong>：六场大会战；常德74军57师八千对四万16昼夜；衡阳毙敌19502人；芷江受降<span class="item-tag tag-imp">重要战场</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">大国地位与"新耻"<span class="cat-stat" data-cat="ch8status"></span></div>
+<div class="item" data-id="cl1" data-cat="ch8status"><div class="check-box"></div><span class="item-text"><strong>开罗会议（1943.11）</strong>：蒋罗丘会晤→《开罗宣言》→中国大国地位首次国际认可<span class="item-tag tag-imp">核心事件</span></span></div>
+<div class="item" data-id="ya1" data-cat="ch8status"><div class="check-box"></div><span class="item-text"><strong>雅尔塔会议（1945.2）</strong>：美苏英背中国秘密协定——"旧耻虽雪，而新耻重重"（蒋日记）<span class="item-tag tag-imp">必考事件</span></span></div>
+<div class="item" data-id="cl2" data-cat="ch8status"><div class="check-box"></div><span class="item-text"><strong>战争索赔</strong>：死伤3500万损失1500亿美元→仅获2200多万美元赔偿→1972放弃<span class="item-tag tag-think">遗憾</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 第九章 ====== -->
+<div class="unit" data-unit="9">
+<div class="unit-hd u9" onclick="toggleUnit(this)"><span>第九章 从抗战胜利到新中国成立</span><span class="unit-stat" data-unit-stat="9"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">抗战胜利后的中美关系 <span class="cat-stat" data-cat="ch9a"></span></div>
+<div class="item" data-id="cc1" data-cat="ch9a"><div class="check-box"></div><span class="item-text"><strong>马歇尔使华（1945-1947）</strong>：调停国共内战→失败→"和平的最大障碍是国共两党之间几乎不可磨灭的怀疑"<span class="item-tag tag-imp">关键事件</span></span></div>
+<div class="item" data-id="cc1b" data-cat="ch9a"><div class="check-box"></div><span class="item-text"><strong>《中美友好通商航海条约》（1946）</strong>：形式平等实质不平等——为美国资本全面进入中国敞开门<span class="item-tag tag-imp">重要条约</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">新中国外交的起步 <span class="cat-stat" data-cat="ch9b"></span></div>
+<div class="item" data-id="cc2" data-cat="ch9b"><div class="check-box"></div><span class="item-text"><strong>"一边倒"方针</strong>：毛泽东《论人民民主专政》（1949.6）——三条主线合力作用<span class="item-tag tag-imp">核心方针</span></span></div>
+<div class="item" data-id="cc3" data-cat="ch9b"><div class="check-box"></div><span class="item-text"><strong>"打扫干净屋子再请客"</strong>：清除帝国主义在华势力后再与西方建交——与1954年结束此方针形成对比<span class="item-tag tag-concept">外交原则</span></span></div>
+<div class="item" data-id="cc4" data-cat="ch9b"><div class="check-box"></div><span class="item-text"><strong>《中苏友好同盟互助条约》（1950）</strong>：毛泽东访苏→与斯大林签约→明确加入苏联阵营<span class="item-tag tag-date">1950.2</span></span></div>
+<div class="item" data-id="cc5" data-cat="ch9b"><div class="check-box"></div><span class="item-text">冷战格局对中国外交的塑造：朝鲜战争（1950-53）→中美全面对抗→台湾问题延宕<span class="item-tag tag-concept">国际环境</span></span></div>
+</div>
+
+</div></div>
+
+<!-- ====== 中日关系专题 ====== -->
+<div class="unit" data-unit="10">
+<div class="unit-hd u10" onclick="toggleUnit(this)"><span>专题：中日关系——民族特性与历史溯源</span><span class="unit-stat" data-unit-stat="10"></span></div>
+<div class="unit-body">
+
+<div class="cat"><div class="cat-title">千年脉络 <span class="cat-stat" data-cat="jp1"></span></div>
+<div class="item" data-id="jp1" data-cat="jp1"><div class="check-box"></div><span class="item-text">57年"汉倭奴国王"金印→607小野妹子使隋→663白村江倭败→1274/1281元寇"神风"<span class="item-tag tag-date">古代</span></span></div>
+<div class="item" data-id="jp2" data-cat="jp1"><div class="check-box"></div><span class="item-text">1592/1597万历援朝抗倭→1894甲午千年摊牌→1931-1945日本侵华→1972邦交正常化<span class="item-tag tag-date">近现代</span></span></div>
+<div class="item" data-id="jp3" data-cat="jp1"><div class="check-box"></div><span class="item-text">1979-2022日本ODA援华约3.3万亿日元（约3200亿RMB）<span class="item-tag tag-date">当代</span></span></div>
+</div>
+
+<div class="cat"><div class="cat-title">"高调日本观"与明治维新 <span class="cat-stat" data-cat="jp2"></span></div>
+<div class="item" data-id="gd1" data-cat="jp2"><div class="check-box"></div><span class="item-text"><strong>"高调日本观"</strong>：虚构的亲近感——中国对日两千年的信息不对称<span class="item-tag tag-imp">核心概念</span></span></div>
+<div class="item" data-id="gd2" data-cat="jp2"><div class="check-box"></div><span class="item-text"><strong>明治维新为何成功？</strong>分封制（类周制）vs大一统专制——多元权力结构提供改革弹性<span class="item-tag tag-imp">结构性原因</span></span></div>
+<div class="item" data-id="gd3" data-cat="jp2"><div class="check-box"></div><span class="item-text"><strong>日本对中国三重意义</strong>：①挑战者 ②侵略者（1894-1945）③政权合法性工具（1936至今）<span class="item-tag tag-imp">核心框架</span></span></div>
+</div>
+
+</div></div>
+
+</div>
+
+<div class="float-btns">
+  <button class="float-btn btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="float-btn btn-expand" onclick="expandAll()">⊞</button>
+  <button class="float-btn btn-reset" onclick="resetAll()">↺</button>
+</div>
+<footer><p>基于李扬帆教授2026春《中国对外关系史》十五讲PPT及总复习整理 · 北京大学</p></footer>
+
+<script>
+const STATES=['notyet','partial','mastered'];
+const KEY='china_fr_checklist';
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch{return{}}}
+function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}}
+let state=load();
+document.querySelectorAll('.item').forEach(item=>{
+  const id=item.dataset.id;
+  const cur=state[id]||'notyet';
+  item.classList.add(cur);
+  item.addEventListener('click',()=>{
+    const cur2=state[id]||'notyet';
+    const idx=STATES.indexOf(cur2);
+    const next=STATES[(idx+1)%3];
+    state[id]=next;
+    item.classList.remove('notyet','partial','mastered');
+    item.classList.add(next);
+    save(state);
+    updateStats();
+  });
+});
+function toggleUnit(hd){hd.nextElementSibling.classList.toggle('collapsed');}
+let expanded=true;
+function expandAll(){expanded=!expanded;document.querySelectorAll('.unit-body').forEach(b=>{if(expanded)b.classList.remove('collapsed');else b.classList.add('collapsed');});}
+let filter='all';
+function filterItems(s){
+  filter=s;
+  document.querySelectorAll('#filterAll,#filterNotyet,#filterPartial,#filterMastered').forEach(b=>b.classList.remove('active'));
+  document.getElementById('filter'+s.charAt(0).toUpperCase()+s.slice(1)).classList.add('active');
+  document.querySelectorAll('.item').forEach(item=>{
+    if(s==='all')item.style.display='';
+    else{const cu=state[item.dataset.id]||'notyet';item.style.display=cu===s?'':'none';}
+  });
+}
+function resetAll(){
+  if(!confirm('确定重置所有进度？'))return;
+  state={};save(state);
+  document.querySelectorAll('.item').forEach(item=>{item.classList.remove('partial','mastered');item.classList.add('notyet');});
+  filter='all';
+  document.querySelectorAll('#filterAll,#filterNotyet,#filterPartial,#filterMastered').forEach(b=>b.classList.remove('active'));
+  document.getElementById('filterAll').classList.add('active');
+  document.querySelectorAll('.item').forEach(item=>{item.style.display='';});
+  updateStats();
+}
+function updateStats(){
+  let ttl=0,mst=0,prt=0;
+  document.querySelectorAll('.item').forEach(item=>{ttl++;const s=state[item.dataset.id]||'notyet';if(s==='mastered')mst++;if(s==='partial')prt++;});
+  const tp=ttl>0?Math.round(mst/ttl*100):0;
+  document.getElementById('totalBar').style.width=tp+'%';
+  document.getElementById('totalPct').textContent=tp+'%';
+  document.getElementById('totalDetail').textContent='已掌握'+mst+'/'+ttl+'（部分掌握'+prt+'）';
+  for(let u=0;u<=10;u++){
+    const stat=document.querySelector('[data-unit-stat="'+u+'"]');
+    if(!stat)continue;
+    let m=0,t=0;
+    document.querySelectorAll('.unit[data-unit="'+u+'"] .item').forEach(item=>{t++;if((state[item.dataset.id]||'notyet')==='mastered')m++;});
+    stat.textContent=t>0?m+'/'+t:'';
+  }
+  document.querySelectorAll('.cat').forEach(catEl=>{
+    const statEl=catEl.querySelector('.cat-stat');
+    if(!statEl)return;
+    const catId=statEl.getAttribute('data-cat');
+    if(!catId)return;
+    let m=0,t=0;
+    document.querySelectorAll('.item[data-cat="'+catId+'"]').forEach(item=>{t++;if((state[item.dataset.id]||'notyet')==='mastered')m++;});
+    statEl.textContent=t>0?m+'/'+t:'';
+  });
+}
+updateStats();
+</script>
+</body>
+</html>
