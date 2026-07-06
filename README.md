@@ -1,74 +1,177 @@
-# some_notes_in_html
+# 📚 some_notes_in_html
 
-This repository stores exam review notes and summaries from reading literary works. I utilized AI to complete page construction and content organization, which greatly improves the efficiency of sorting and reviewing learning materials.
+> **AI-powered academic knowledge base** — exam review notes & literary reading summaries, built as self-contained, browser-ready HTML pages.
 
----
-
-## 📥 Quick Download
-
-Click any file to open/download directly. Right-click → **Save link as** to download.
-
-### 📖 波斯语写作 (Persian Writing)
-
-| File | Description |
-|---|---|
-| [波斯语写作复习汇编-第1页](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%B3%A2%E6%96%AF%E8%AF%AD%E5%86%99%E4%BD%9C%E5%A4%8D%E4%B9%A0%E6%B1%87%E7%BC%96-%E7%AC%AC1%E9%A1%B5.html) | Persian writing review — Page 1 of 3 |
-| [波斯语写作复习汇编-第2页](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%B3%A2%E6%96%AF%E8%AF%AD%E5%86%99%E4%BD%9C%E5%A4%8D%E4%B9%A0%E6%B1%87%E7%BC%96-%E7%AC%AC2%E9%A1%B5.html) | Persian writing review — Page 2 of 3 (structure & linking expressions) |
-| [波斯语写作复习汇编-第3页](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%B3%A2%E6%96%AF%E8%AF%AD%E5%86%99%E4%BD%9C%E5%A4%8D%E4%B9%A0%E6%B1%87%E7%BC%96-%E7%AC%AC3%E9%A1%B5.html) | Persian writing review — Page 3 of 3 (genre templates) |
-
-### 🇮🇷 现代伊朗的政治经济学 (Political Economy of Modern Iran)
-
-| File | Description |
-|---|---|
-| [现代伊朗的政治经济学_研读解析](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E7%8E%B0%E4%BB%A3%E4%BC%8A%E6%9C%97%E7%9A%84%E6%94%BF%E6%B2%BB%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E7%A0%94%E8%AF%BB%E8%A7%A3%E6%9E%90.html) | Reading analysis & study notes |
-
-### 🏛 毛概 (Mao Zedong Thought)
-
-| File | Description |
-|---|---|
-| [毛概-复习资料](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%AF%9B%E6%A6%82-%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99.html) | Chapter-by-chapter review notes |
-| [毛概-考试题库](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%AF%9B%E6%A6%82-%E8%80%83%E8%AF%95%E9%A2%98%E5%BA%93.html) | Exam question bank |
-| [毛概-真题解析](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%AF%9B%E6%A6%82-%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90.html) | Past exam analysis |
-| [毛概-主题串讲复习](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%AF%9B%E6%A6%82-%E4%B8%BB%E9%A2%98%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0.html) | Thematic review |
-
-### 🌏 新中国对外关系 (PRC Foreign Relations)
-
-| File | Description |
-|---|---|
-| [新中对外-复习资料](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%96%B0%E4%B8%AD%E5%AF%B9%E5%A4%96-%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99.html) | General review notes |
-| [新中对外-考试题库](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%96%B0%E4%B8%AD%E5%AF%B9%E5%A4%96-%E8%80%83%E8%AF%95%E9%A2%98%E5%BA%93.html) | Exam question bank |
-| [新中对外-论述题专题复习](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%96%B0%E4%B8%AD%E5%AF%B9%E5%A4%96-%E8%AE%BA%E8%BF%B0%E9%A2%98%E4%B8%93%E9%A2%98%E5%A4%8D%E4%B9%A0.html) | Essay question review |
-| [新中对外-名词解释手册](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%96%B0%E4%B8%AD%E5%AF%B9%E5%A4%96-%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E6%89%8B%E5%86%8C.html) | Key terms glossary |
-| [新中对外-知识点自查清单](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%96%B0%E4%B8%AD%E5%AF%B9%E5%A4%96-%E7%9F%A5%E8%AF%86%E7%82%B9%E8%87%AA%E6%9F%A5%E6%B8%85%E5%8D%95.html) | Self-check checklist |
-| [新中对外-主题串讲复习](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%96%B0%E4%B8%AD%E5%AF%B9%E5%A4%96-%E4%B8%BB%E9%A2%98%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0.html) | Thematic review |
-| [新中对外-L9-L13知识总结](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E6%96%B0%E4%B8%AD%E5%AF%B9%E5%A4%96-L9-L13%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93.html) | Lectures 9–13 summary |
-
-### 📜 中国对外关系史 (History of Chinese Foreign Relations)
-
-| File | Description |
-|---|---|
-| [中国对外关系史_课程总结](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E5%9B%BD%E5%AF%B9%E5%A4%96%E5%85%B3%E7%B3%BB%E5%8F%B2_%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93.html) | Course summary |
-| [中国对外关系史-考试题库](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E5%9B%BD%E5%AF%B9%E5%A4%96%E5%85%B3%E7%B3%BB%E5%8F%B2-%E8%80%83%E8%AF%95%E9%A2%98%E5%BA%93.html) | Exam question bank |
-| [中国对外关系史-名词解释手册](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E5%9B%BD%E5%AF%B9%E5%A4%96%E5%85%B3%E7%B3%BB%E5%8F%B2-%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E6%89%8B%E5%86%8C.html) | Key terms glossary |
-| [中国对外关系史-真题及参考答案](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E5%9B%BD%E5%AF%B9%E5%A4%96%E5%85%B3%E7%B3%BB%E5%8F%B2-%E7%9C%9F%E9%A2%98%E5%8F%8A%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.html) | Past exams with answers |
-| [中国对外关系史-知识点自查清单](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E5%9B%BD%E5%AF%B9%E5%A4%96%E5%85%B3%E7%B3%BB%E5%8F%B2-%E7%9F%A5%E8%AF%86%E7%82%B9%E8%87%AA%E6%9F%A5%E6%B8%85%E5%8D%95.html) | Self-check checklist |
-| [中国对外关系史-主题串讲复习](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E5%9B%BD%E5%AF%B9%E5%A4%96%E5%85%B3%E7%B3%BB%E5%8F%B2-%E4%B8%BB%E9%A2%98%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0.html) | Thematic review |
-
-### 🇨🇳🤝🇺🇸 中美经贸关系 (China–US Economic Relations)
-
-| File | Description |
-|---|---|
-| [中美经贸关系复习提纲](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E5%A4%8D%E4%B9%A0/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E8%B4%B8%E5%85%B3%E7%B3%BB%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2.html) | Review outline |
-| [中美经贸关系_考前重点串讲](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E5%A4%8D%E4%B9%A0/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E8%B4%B8%E5%85%B3%E7%B3%BB_%E8%80%83%E5%89%8D%E9%87%8D%E7%82%B9%E4%B8%B2%E8%AE%B2.html) | Pre-exam key points |
-| [中美经贸关系_名词解释手册](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E5%A4%8D%E4%B9%A0/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E8%B4%B8%E5%85%B3%E7%B3%BB_%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E6%89%8B%E5%86%8C.html) | Key terms glossary |
-| [中美经贸关系_模拟题库](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E5%A4%8D%E4%B9%A0/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E8%B4%B8%E5%85%B3%E7%B3%BB_%E6%A8%A1%E6%8B%9F%E9%A2%98%E5%BA%93.html) | Mock exam bank |
-| [中美经贸关系_知识点自查清单](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E5%A4%8D%E4%B9%A0/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E8%B4%B8%E5%85%B3%E7%B3%BB_%E7%9F%A5%E8%AF%86%E7%82%B9%E8%87%AA%E6%9F%A5%E6%B8%85%E5%8D%95.html) | Self-check checklist |
-| [中美经论述题 史诗级加强](https://raw.githubusercontent.com/kasraa666/some_notes_in_html/main/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E5%A4%8D%E4%B9%A0/%E4%B8%AD%E7%BE%8E%E7%BB%8F%E8%AE%BA%E8%BF%B0%E9%A2%98%20%E5%8F%B2%E8%AF%97%E7%BA%A7%E5%8A%A0%E5%BC%BA.html) | Essay question super review |
-
-> 💡 **Tip**: Each file is a self-contained HTML page — just open it in any browser. No extra tools needed.
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Pages](https://img.shields.io/badge/HTML-100%25-orange)](https://github.com/kasraa666/some_notes_in_html)
+[![Status](https://img.shields.io/badge/status-actively%20maintained-brightgreen)]()
 
 ---
 
-## 📝 License
+## ✨ Why This Exists
 
-MIT
+I built this repository to solve a real problem: **organizing dense university course materials into clean, searchable, visually structured review pages** — and doing it at scale with AI assistance.
+
+Instead of scattered Word docs or handwritten notes, every subject here is a **self-contained `.html` file** that you can open in any browser — no build step, no framework, no toolchain. Just double-click and study.
+
+---
+
+## 🧠 What's Inside
+
+| # | Subject | Files | Coverage |
+|---|---------|-------|----------|
+| 📝 | **Persian Writing** (波斯语写作) | 3 | Structure, linking expressions, genre templates |
+| 🇮🇷 | **Political Economy of Modern Iran** | 1 | Full book analysis (Katouzian, 1926–1979) |
+| 🕌 | **Concise Islamic Law** (简明伊斯兰教法) | 1 | Complete Hanafi fiqh summary (59 chapters) |
+| 🏛 | **Mao Zedong Thought** (毛概) | 4 | Chapter notes, exam bank, past papers, thematic review |
+| 🌏 | **PRC Foreign Relations** (新中国对外关系) | 7 | Notes, glossary, essay prep, self-check, exam bank |
+| 📜 | **History of Chinese Foreign Relations** | 6 | Course summary, glossary, past exams, question bank |
+| 🇨🇳🤝🇺🇸 | **China–US Economic Relations** (中美经贸) | 6 | Outline, key points, glossary, mock exams, essay prep |
+
+**24 files · 7 subjects · 100% self-contained HTML**
+
+---
+
+## 🚀 How to Use
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/kasraa666/some_notes_in_html.git
+
+# 2. Open any file in your browser
+open 波斯语写作复习汇编-第1页.html     # macOS
+start 波斯语写作复习汇编-第1页.html    # Windows
+```
+
+Or **browse directly on GitHub** — click any `.html` file, then click the "Raw" button to view it rendered.
+
+> 💡 **Tip**: Each page is fully self-contained. CSS is embedded. No internet needed. Works offline perfectly.
+
+---
+
+## 🤖 AI-Assisted Workflow
+
+This entire repository was built with a **human-in-the-loop AI pipeline**:
+
+```
+Raw Course Notes / Books
+        │
+        ▼
+┌─────────────────────────┐
+│  AI Content Extraction  │  ← LLM parses raw materials into structured outlines
+└─────────────────────────┘
+        │
+        ▼
+┌─────────────────────────┐
+│  AI Page Generation     │  ← LLM generates clean HTML with embedded CSS
+└─────────────────────────┘
+        │
+        ▼
+┌─────────────────────────┐
+│  Human Review & Edit    │  ← I verify accuracy, fix errors, refine layout
+└─────────────────────────┘
+        │
+        ▼
+   ✅ Final .html page
+```
+
+This turns what would be **hours of manual formatting** per page into a ~15-minute review cycle, while keeping me in control of correctness.
+
+---
+
+## 🎨 Design System
+
+Every page shares a consistent visual language:
+
+- **Gradient headers** — subject-specific color palettes for visual navigation
+- **Card-based layout** — key concepts rendered as responsive info cards
+- **Two-column TOC** — wide tables of contents that collapse to single column on mobile
+- **Code blocks** — Persian/Arabic terminology displayed in styled monospace
+- **Mobile-first** — `@media (max-width: 640px)` breakpoints on all pages
+- **Print-friendly** — clean layouts that render well on paper
+
+---
+
+## 🗂️ Repository Structure
+
+```
+some_notes_in_html/
+│
+├── README.md                          ← You are here
+├── LICENSE                            ← MIT
+│
+├── 📝 Persian Writing
+│   ├── 波斯语写作复习汇编-第1页.html   ← Structure & linking expressions
+│   ├── 波斯语写作复习汇编-第2页.html   ← Topic-specific vocabulary
+│   └── 波斯语写作复习汇编-第3页.html   ← Genre templates
+│
+├── 🇮🇷 Iranian Studies
+│   ├── 现代伊朗的政治经济学_研读解析.html  ← Katouzian book analysis
+│   └── 简明伊斯兰教法总结.html             ← Hanafi fiqh summary
+│
+├── 🏛 Mao Zedong Thought (毛概)
+│   ├── 毛概-复习资料.html
+│   ├── 毛概-考试题库.html
+│   ├── 毛概-真题解析.html
+│   └── 毛概-主题串讲复习.html
+│
+├── 🌏 PRC Foreign Relations (新中国对外关系)
+│   ├── 新中对外-复习资料.html
+│   ├── 新中对外-考试题库.html
+│   ├── 新中对外-论述题专题复习.html
+│   ├── 新中对外-名词解释手册.html
+│   ├── 新中对外-知识点自查清单.html
+│   ├── 新中对外-主题串讲复习.html
+│   └── 新中对外-L9-L13知识总结.html
+│
+├── 📜 History of Chinese Foreign Relations (中国对外关系史)
+│   ├── 中国对外关系史_课程总结.html
+│   ├── 中国对外关系史-考试题库.html
+│   ├── 中国对外关系史-名词解释手册.html
+│   ├── 中国对外关系史-真题及参考答案.html
+│   ├── 中国对外关系史-知识点自查清单.html
+│   └── 中国对外关系史-主题串讲复习.html
+│
+└── 🇨🇳🤝🇺🇸 China–US Economic Relations
+    └── 中美经复习/
+        ├── 中美经贸关系复习提纲.html
+        ├── 中美经贸关系_考前重点串讲.html
+        ├── 中美经贸关系_名词解释手册.html
+        ├── 中美经贸关系_模拟题库.html
+        ├── 中美经贸关系_知识点自查清单.html
+        └── 中美经论述题 史诗级加强.html
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Content** | Pure HTML5 + Embedded CSS3 |
+| **AI Pipeline** | LLM Prompt Engineering (structured extraction → page generation) |
+| **Version Control** | Git + GitHub |
+| **License** | MIT |
+
+No JavaScript frameworks. No build tools. No dependencies. Just HTML files that work everywhere, forever.
+
+---
+
+## 📄 License
+
+MIT — see [LICENSE](LICENSE) for details.
+
+---
+
+## 🙋‍♂️ Author
+
+**Xie Kesai** — undergraduate at Peking University (Persian Language & Literature + International Politics).
+
+- 🔗 GitHub: [@kasraa666](https://github.com/kasraa666)
+- 📧 Email: xiekesai@stu.pku.edu.cn
+
+---
+
+<p align="center">
+  <sub>Built with 🤖 + ☕ · Last updated July 2026</sub>
+</p>
